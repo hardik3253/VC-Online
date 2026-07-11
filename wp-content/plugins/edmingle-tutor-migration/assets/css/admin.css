@@ -1,0 +1,19 @@
+/**
+ * Admin Styles for Edmingle Tutor Migration
+ */
+
+.etm-dashboard .etm-grid-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.etm-dashboard .etm-card {
+	margin-bottom: 0; /* Override WordPress postbox margin */
+}
+
+.etm-dashboard .etm-card .inside {
+	margin-bottom: 0;
+	padding-bottom: 15px;
+}
