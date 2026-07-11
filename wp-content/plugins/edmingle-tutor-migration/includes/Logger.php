@@ -1,6 +1,6 @@
 <?php
 /**
- * Logger & Verification Logic
+ * Logger & Debug Mode
  *
  * @package Edmingle_Tutor_Migration\Includes
  */
@@ -9,13 +9,28 @@ namespace ETM\Includes;
 
 class Logger {
 
+	private static $option_name = 'etm_debug_mode';
+
 	/**
-	 * Write a log message to a specific file type.
+	 * Check if debug mode is enabled.
+	 *
+	 * @return bool
+	 */
+	public static function is_debug_enabled() {
+		return get_option( self::$option_name, 'no' ) === 'yes';
+	}
+
+	/**
+	 * Write a log message if debug mode is enabled.
 	 *
 	 * @param string $message
 	 * @param string $type
 	 */
-	public static function write_log( $message, $type = 'general' ) {
+	public static function write_log( $message, $type = 'debug' ) {
+		if ( ! self::is_debug_enabled() ) {
+			return;
+		}
+
 		$upload_dir = wp_upload_dir();
 		$log_dir = $upload_dir['basedir'] . '/edmingle-migration/logs';
 		$log_file = $log_dir . '/' . sanitize_key( $type ) . '-' . date( 'Y-m-d' ) . '.log';
@@ -32,120 +47,34 @@ class Logger {
 	}
 
 	/**
-	 * Get log summary statistics.
+	 * Log full API request/response.
 	 *
-	 * @return array
+	 * @param string $method
+	 * @param string $endpoint
+	 * @param array $headers
+	 * @param array $body
+	 * @param array $response
 	 */
-	public function get_stats() {
-		$stats = array(
-			'imported' => 0,
-			'updated'  => 0,
-			'failed'   => 0,
-			'skipped'  => 0,
-		);
-
-		$upload_dir = wp_upload_dir();
-		$log_dir = $upload_dir['basedir'] . '/edmingle-migration/logs';
-
-		if ( ! is_dir( $log_dir ) ) {
-			return $stats;
+	public static function log_api_call( $method, $endpoint, $headers, $body, $response ) {
+		if ( ! self::is_debug_enabled() ) {
+			return;
 		}
 
-		$files = glob( $log_dir . '/*.log' );
-
-		foreach ( $files as $file ) {
-			$handle = fopen( $file, 'r' );
-			if ( $handle ) {
-				while ( ( $line = fgets( $handle ) ) !== false ) {
-					$line_lower = strtolower( $line );
-					if ( strpos( $line_lower, 'created' ) !== false || strpos( $line_lower, 'successfully' ) !== false ) {
-						$stats['imported']++;
-					} elseif ( strpos( $line_lower, 'updated' ) !== false ) {
-						$stats['updated']++;
-					} elseif ( strpos( $line_lower, 'skipped' ) !== false ) {
-						$stats['skipped']++;
-					} elseif ( strpos( $line_lower, 'error' ) !== false || strpos( $line_lower, 'failed' ) !== false ) {
-						$stats['failed']++;
-					}
-				}
-				fclose( $handle );
-			}
-		}
-
-		return $stats;
-	}
-
-	/**
-	 * Get verification data (enrollments).
-	 *
-	 * @param int $limit
-	 * @return array
-	 */
-	public function get_verification_data( $limit = 100 ) {
-		$data = array();
+		$log_data = "================================================\n";
+		$log_data .= "Method: $method\n";
+		$log_data .= "Endpoint: $endpoint\n";
+		$log_data .= "Headers: " . wp_json_encode( $headers ) . "\n";
+		$log_data .= "Payload: " . wp_json_encode( $body ) . "\n";
+		$log_data .= "Response Status: " . ( isset( $response['status_code'] ) ? $response['status_code'] : 'Unknown' ) . "\n";
 		
-		$args = array(
-			'post_type'      => 'tutor_enrolled',
-			'post_status'    => 'any',
-			'posts_per_page' => $limit,
-			'orderby'        => 'date',
-			'order'          => 'DESC',
-		);
-
-		$query = new \WP_Query( $args );
-
-		if ( $query->have_posts() ) {
-			foreach ( $query->posts as $post ) {
-				$user   = get_userdata( $post->post_author );
-				$course = get_post( $post->post_parent );
-				
-				$progress = get_user_meta( $post->post_author, '_tutor_course_progress_' . $post->post_parent, true );
-				$progress = $progress ? $progress . '%' : '0%';
-				
-				$expiry = get_post_meta( $post->ID, '_tutor_enrolled_expiry_date', true );
-				$expiry = $expiry ? date( 'Y-m-d', strtotime( $expiry ) ) : 'Lifetime';
-
-				$data[] = array(
-					'student'  => $user ? $user->display_name . ' (' . $user->user_email . ')' : 'Unknown',
-					'course'   => $course ? $course->post_title : 'Unknown',
-					'progress' => $progress,
-					'expiry'   => $expiry,
-					'status'   => ucfirst( $post->post_status ),
-				);
-			}
+		if ( is_wp_error( $response ) ) {
+			$log_data .= "Error: " . $response->get_error_message() . "\n";
+		} else {
+			$log_data .= "Response Data: " . ( isset( $response['raw'] ) ? $response['raw'] : wp_json_encode( $response ) ) . "\n";
 		}
+		
+		$log_data .= "================================================\n";
 
-		return $data;
-	}
-
-	/**
-	 * Export verification data as CSV.
-	 */
-	public function export_csv() {
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( 'Unauthorized' );
-		}
-
-		$data = $this->get_verification_data( -1 ); // Get all for export
-
-		header( 'Content-Type: text/csv; charset=utf-8' );
-		header( 'Content-Disposition: attachment; filename=migration-verification-' . date( 'Y-m-d' ) . '.csv' );
-
-		$output = fopen( 'php://output', 'w' );
-
-		fputcsv( $output, array( 'Student', 'Course', 'Progress', 'Expiry', 'Status' ) );
-
-		foreach ( $data as $row ) {
-			fputcsv( $output, array(
-				$row['student'],
-				$row['course'],
-				$row['progress'],
-				$row['expiry'],
-				$row['status'],
-			) );
-		}
-
-		fclose( $output );
-		exit;
+		self::write_log( $log_data, 'api' );
 	}
 }

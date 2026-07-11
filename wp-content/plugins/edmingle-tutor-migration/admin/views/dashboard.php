@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin Dashboard View
+ * Dashboard View (Phase 0)
  *
  * @package Edmingle_Tutor_Migration\Admin\Views
  */
@@ -10,94 +10,31 @@ if ( ! defined( 'WPINC' ) ) {
 }
 ?>
 <div class="wrap etm-dashboard">
-	<h1 class="wp-heading-inline"><?php esc_html_e( 'Edmingle to Tutor LMS Migration', 'edmingle-tutor-migration' ); ?></h1>
+	<h1 class="wp-heading-inline"><?php esc_html_e( 'Edmingle Migration Dashboard', 'edmingle-tutor-migration' ); ?></h1>
 	<hr class="wp-header-end">
 
-	<div class="etm-actions-bar" style="margin: 20px 0; display: flex; align-items: center; gap: 15px;">
-		<button type="button" class="button button-secondary"><?php esc_html_e( 'Verify Data', 'edmingle-tutor-migration' ); ?></button>
-		<button type="button" class="button button-primary" id="etm-run-migration"><?php esc_html_e( 'Run Complete Migration', 'edmingle-tutor-migration' ); ?></button>
-		<button type="button" class="button button-secondary" id="etm-resume-migration" style="display:none;"><?php esc_html_e( 'Resume Migration', 'edmingle-tutor-migration' ); ?></button>
-		
-		<div class="etm-batch-config">
-			<label for="etm-batch-size"><strong><?php esc_html_e( 'Batch Size:', 'edmingle-tutor-migration' ); ?></strong></label>
-			<input type="number" id="etm-batch-size" value="50" min="1" max="500" style="width: 70px;">
+	<div class="postbox" style="max-width: 600px; margin-top: 20px;">
+		<div class="postbox-header">
+			<h2 class="hndle"><?php esc_html_e( 'Test Connection', 'edmingle-tutor-migration' ); ?></h2>
 		</div>
-	</div>
-
-	<div id="etm-migration-progress-container" style="display:none; margin-bottom: 20px;">
-		<p id="etm-migration-status-text" style="font-weight: bold; margin-bottom: 5px;"><?php esc_html_e( 'Preparing migration...', 'edmingle-tutor-migration' ); ?></p>
-		<progress id="etm-migration-progress-bar" value="0" max="100" style="width: 100%; height: 25px;"></progress>
-		<div id="etm-migration-error" class="notice notice-error" style="display:none; margin-top:10px;"><p></p></div>
-	</div>
-
-	<div class="etm-grid-container">
-		
-		<!-- Card: API Connection -->
-		<div class="postbox etm-card">
-			<div class="postbox-header">
-				<h2 class="hndle"><?php esc_html_e( 'API Connection', 'edmingle-tutor-migration' ); ?></h2>
+		<div class="inside">
+			<p><?php esc_html_e( 'Test your connection to the Edmingle API using the credentials provided in the Settings page.', 'edmingle-tutor-migration' ); ?></p>
+			
+			<div style="margin: 20px 0;">
+				<button type="button" class="button button-primary button-hero" id="etm-test-connection-btn">
+					<?php esc_html_e( 'Test Connection', 'edmingle-tutor-migration' ); ?>
+				</button>
+				<span class="spinner" id="etm-test-spinner" style="float:none; margin-top: 5px;"></span>
 			</div>
-			<div class="inside">
-				<p id="etm-connection-status"><?php esc_html_e( 'Status: Not Connected', 'edmingle-tutor-migration' ); ?></p>
-				<button type="button" class="button button-secondary" id="etm-test-connection"><?php esc_html_e( 'Test Connection', 'edmingle-tutor-migration' ); ?></button>
-				<span class="spinner" id="etm-connection-spinner" style="float:none; margin-top:0;"></span>
+
+			<div id="etm-test-results" style="display:none; padding: 15px; border-left: 4px solid #fff; background: #fff;">
+				<h3 style="margin-top:0;" id="etm-test-status-heading"></h3>
+				<ul style="margin-bottom:0;">
+					<li><strong>HTTP Status:</strong> <span id="etm-test-http"></span></li>
+					<li><strong>Response Time:</strong> <span id="etm-test-time"></span></li>
+					<li><strong>Auth Method:</strong> <span id="etm-test-method"></span></li>
+				</ul>
 			</div>
 		</div>
-
-		<!-- Card: Students -->
-		<div class="postbox etm-card">
-			<div class="postbox-header">
-				<h2 class="hndle"><?php esc_html_e( 'Students', 'edmingle-tutor-migration' ); ?></h2>
-			</div>
-			<div class="inside">
-				<p><?php esc_html_e( 'Migrated: 0 / 0', 'edmingle-tutor-migration' ); ?></p>
-				<button type="button" class="button button-secondary"><?php esc_html_e( 'Sync Students', 'edmingle-tutor-migration' ); ?></button>
-			</div>
-		</div>
-
-		<!-- Card: Enrollments -->
-		<div class="postbox etm-card">
-			<div class="postbox-header">
-				<h2 class="hndle"><?php esc_html_e( 'Enrollments', 'edmingle-tutor-migration' ); ?></h2>
-			</div>
-			<div class="inside">
-				<p><?php esc_html_e( 'Migrated: 0 / 0', 'edmingle-tutor-migration' ); ?></p>
-				<button type="button" class="button button-secondary"><?php esc_html_e( 'Sync Enrollments', 'edmingle-tutor-migration' ); ?></button>
-			</div>
-		</div>
-
-		<!-- Card: Progress -->
-		<div class="postbox etm-card">
-			<div class="postbox-header">
-				<h2 class="hndle"><?php esc_html_e( 'Progress', 'edmingle-tutor-migration' ); ?></h2>
-			</div>
-			<div class="inside">
-				<p><?php esc_html_e( 'Migrated: 0 / 0', 'edmingle-tutor-migration' ); ?></p>
-				<button type="button" class="button button-secondary"><?php esc_html_e( 'Sync Progress', 'edmingle-tutor-migration' ); ?></button>
-			</div>
-		</div>
-
-		<!-- Card: Expiry -->
-		<div class="postbox etm-card">
-			<div class="postbox-header">
-				<h2 class="hndle"><?php esc_html_e( 'Course Expiry', 'edmingle-tutor-migration' ); ?></h2>
-			</div>
-			<div class="inside">
-				<p><?php esc_html_e( 'Migrated: 0 / 0', 'edmingle-tutor-migration' ); ?></p>
-				<button type="button" class="button button-secondary"><?php esc_html_e( 'Sync Expiry', 'edmingle-tutor-migration' ); ?></button>
-			</div>
-		</div>
-
-		<!-- Card: Migration Logs -->
-		<div class="postbox etm-card">
-			<div class="postbox-header">
-				<h2 class="hndle"><?php esc_html_e( 'Migration Logs', 'edmingle-tutor-migration' ); ?></h2>
-			</div>
-			<div class="inside">
-				<p><?php esc_html_e( 'No recent activity.', 'edmingle-tutor-migration' ); ?></p>
-				<a href="#" class="button button-secondary"><?php esc_html_e( 'View Logs', 'edmingle-tutor-migration' ); ?></a>
-			</div>
-		</div>
-
 	</div>
 </div>

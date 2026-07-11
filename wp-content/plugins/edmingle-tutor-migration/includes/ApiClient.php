@@ -1,6 +1,6 @@
 <?php
 /**
- * Reusable API Client for Edmingle
+ * API Client
  *
  * @package Edmingle_Tutor_Migration\Includes
  */
@@ -9,184 +9,118 @@ namespace ETM\Includes;
 
 class ApiClient {
 
-	/**
-	 * The base URL of the API.
-	 *
-	 * @var string
-	 */
+	private $auth;
 	private $base_url;
 
-	/**
-	 * The API Token.
-	 *
-	 * @var string
-	 */
-	private $api_token;
-
-	/**
-	 * The API Secret.
-	 *
-	 * @var string
-	 */
-	private $api_secret;
-
-	/**
-	 * Max retries for failed requests.
-	 *
-	 * @var int
-	 */
-	private $max_retries = 3;
-
-	/**
-	 * Timeout in seconds.
-	 *
-	 * @var int
-	 */
-	private $timeout = 30;
-
-	/**
-	 * Constructor.
-	 */
 	public function __construct() {
-		$this->authenticate();
+		$this->auth     = new Auth();
+		$this->base_url = rtrim( get_option( 'etm_api_base_url', '' ), '/' );
 	}
 
 	/**
-	 * Retrieve credentials and authenticate.
+	 * Connect and verify credentials.
 	 *
-	 * @since 1.0.0
-	 */
-	public function authenticate() {
-		$settings = get_option( 'etm_api_settings', array() );
-		$this->base_url   = isset( $settings['base_url'] ) ? trailingslashit( $settings['base_url'] ) : '';
-		$this->api_token  = isset( $settings['api_token'] ) ? $settings['api_token'] : '';
-		$this->api_secret = isset( $settings['api_secret'] ) ? $settings['api_secret'] : '';
-	}
-
-	/**
-	 * Test the API connection.
-	 *
-	 * @since 1.0.0
-	 * @return bool|\WP_Error True on success, WP_Error on failure.
+	 * @return bool|\WP_Error
 	 */
 	public function connect() {
-		// Attempting a simple GET request to base URL or a known health endpoint
-		$response = $this->get( '' );
+		if ( empty( $this->base_url ) ) {
+			return new \WP_Error( 'missing_url', __( 'Base URL is not configured.', 'edmingle-tutor-migration' ) );
+		}
 
-		if ( is_wp_error( $response ) ) {
-			return $response;
+		$login = $this->auth->login();
+
+		if ( is_wp_error( $login ) ) {
+			return $login;
 		}
 
 		return true;
 	}
 
 	/**
-	 * Perform a GET request with optional pagination.
+	 * Execute an arbitrary API request (used by API Explorer).
 	 *
-	 * @since 1.0.0
-	 * @param string $endpoint The API endpoint.
-	 * @param array  $query_args Optional query parameters.
-	 * @return array|\WP_Error Response body array or WP_Error.
-	 */
-	public function get( $endpoint, $query_args = array() ) {
-		$url = $this->base_url . ltrim( $endpoint, '/' );
-
-		if ( ! empty( $query_args ) ) {
-			$url = add_query_arg( $query_args, $url );
-		}
-
-		$args = array(
-			'method'  => 'GET',
-			'headers' => $this->get_headers(),
-			'timeout' => $this->timeout,
-		);
-
-		return $this->request( $url, $args );
-	}
-
-	/**
-	 * Perform a POST request.
-	 *
-	 * @since 1.0.0
-	 * @param string $endpoint The API endpoint.
-	 * @param array  $body The request payload.
-	 * @return array|\WP_Error Response body array or WP_Error.
-	 */
-	public function post( $endpoint, $body = array() ) {
-		$url = $this->base_url . ltrim( $endpoint, '/' );
-
-		$args = array(
-			'method'  => 'POST',
-			'headers' => $this->get_headers(),
-			'timeout' => $this->timeout,
-			'body'    => wp_json_encode( $body ),
-		);
-
-		return $this->request( $url, $args );
-	}
-
-	/**
-	 * Centralized request method with retry logic and error handling.
-	 *
-	 * @since 1.0.0
-	 * @param string $url The complete URL.
-	 * @param array  $args Request arguments.
-	 * @param int    $attempt Current retry attempt.
+	 * @param string $method GET, POST, PUT, DELETE, PATCH
+	 * @param string $endpoint The endpoint path (e.g., /api/v1/users)
+	 * @param array  $custom_headers Array of headers
+	 * @param array  $body The request body
+	 * @param array  $query_params Query parameters to append to URL
+	 * @param bool   $attempt_refresh Whether to try token refresh on 401
 	 * @return array|\WP_Error
 	 */
-	private function request( $url, $args, $attempt = 1 ) {
+	public function execute_request( $method, $endpoint, $custom_headers = array(), $body = array(), $query_params = array(), $attempt_refresh = true ) {
 		if ( empty( $this->base_url ) ) {
-			return new \WP_Error( 'missing_url', __( 'API Base URL is not configured.', 'edmingle-tutor-migration' ) );
+			return new \WP_Error( 'missing_url', __( 'Base URL is not configured.', 'edmingle-tutor-migration' ) );
 		}
 
-		$response = wp_remote_request( $url, $args );
+		if ( ! $this->auth->is_authenticated() ) {
+			$login = $this->auth->login();
+			if ( is_wp_error( $login ) ) {
+				return $login;
+			}
+		}
+
+		$url = $this->base_url . '/' . ltrim( $endpoint, '/' );
+
+		if ( ! empty( $query_params ) ) {
+			$url = add_query_arg( $query_params, $url );
+		}
+
+		$headers = array(
+			'Content-Type'  => 'application/json',
+			'Accept'        => 'application/json',
+			'Authorization' => 'Bearer ' . $this->auth->get_token(),
+		);
+
+		if ( ! empty( $custom_headers ) && is_array( $custom_headers ) ) {
+			$headers = array_merge( $headers, $custom_headers );
+		}
+
+		$args = array(
+			'method'  => strtoupper( $method ),
+			'headers' => $headers,
+			'timeout' => 30,
+		);
+
+		if ( ! empty( $body ) && in_array( $args['method'], array( 'POST', 'PUT', 'PATCH' ) ) ) {
+			$args['body'] = wp_json_encode( $body );
+		}
+
+		$start_time = microtime( true );
+		$response   = wp_remote_request( $url, $args );
+		$end_time   = microtime( true );
+
+		$execution_time = round( ( $end_time - $start_time ) * 1000 ); // in ms
 
 		if ( is_wp_error( $response ) ) {
-			if ( $attempt < $this->max_retries ) {
-				sleep( 1 ); // Brief pause before retry
-				return $this->request( $url, $args, $attempt + 1 );
-			}
 			return $response;
 		}
 
 		$status_code = wp_remote_retrieve_response_code( $response );
-		$body = wp_remote_retrieve_body( $response );
-		$decoded_body = json_decode( $body, true );
 
-		if ( $status_code >= 400 ) {
-			// Retry on 5xx errors or rate limits (429)
-			if ( in_array( $status_code, array( 429, 500, 502, 503, 504 ) ) && $attempt < $this->max_retries ) {
-				sleep( 2 ); 
-				return $this->request( $url, $args, $attempt + 1 );
+		// If unauthorized, try to refresh token once
+		if ( 401 === $status_code && $attempt_refresh ) {
+			$refresh = $this->auth->refresh_token();
+			if ( ! is_wp_error( $refresh ) ) {
+				return $this->execute_request( $method, $endpoint, $custom_headers, $body, $query_params, false );
 			}
-
-			$error_message = isset( $decoded_body['message'] ) ? $decoded_body['message'] : wp_remote_retrieve_response_message( $response );
-			return new \WP_Error( 'api_error_' . $status_code, $error_message, $decoded_body );
 		}
 
-		return $decoded_body ? $decoded_body : $body;
-	}
+		$body_str        = wp_remote_retrieve_body( $response );
+		$response_size   = strlen( $body_str );
+		$response_headers = wp_remote_retrieve_headers( $response )->getAll();
 
-	/**
-	 * Build standardized API headers.
-	 *
-	 * @since 1.0.0
-	 * @return array
-	 */
-	private function get_headers() {
-		$headers = array(
-			'Content-Type' => 'application/json',
-			'Accept'       => 'application/json',
+		$data = json_decode( $body_str, true );
+		if ( json_last_error() !== JSON_ERROR_NONE ) {
+			$data = $body_str; // Keep as string if not JSON
+		}
+
+		return array(
+			'status_code'    => $status_code,
+			'execution_time' => $execution_time,
+			'response_size'  => $response_size,
+			'headers'        => $response_headers,
+			'data'           => $data,
+			'raw'            => $body_str,
 		);
-
-		if ( ! empty( $this->api_token ) ) {
-			$headers['Authorization'] = 'Bearer ' . $this->api_token;
-		}
-
-		if ( ! empty( $this->api_secret ) ) {
-			$headers['X-Api-Secret'] = $this->api_secret;
-		}
-
-		return $headers;
 	}
 }

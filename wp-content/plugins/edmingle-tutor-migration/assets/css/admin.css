@@ -1,19 +1,122 @@
-/**
- * Admin Styles for Edmingle Tutor Migration
+/* 
+ * Plugin Admin CSS (Phase 0) 
  */
 
-.etm-dashboard .etm-grid-container {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+.etm-dashboard, .etm-settings, .etm-api-explorer, .etm-logs {
+	max-width: 1200px;
+}
+
+/* Tabs */
+.etm-form-tabs {
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+.etm-tab, .etm-res-tab {
+	display: inline-block;
+	padding: 8px 15px;
+	text-decoration: none;
+	color: #3c434a;
+	border: 1px solid transparent;
+	border-bottom: none;
+	margin-bottom: -1px;
+}
+.etm-tab.active, .etm-res-tab.active {
+	background: #fff;
+	border-color: #ccc;
+	font-weight: bold;
+}
+.etm-tab-content, .etm-res-tab-content {
+	display: none;
+}
+.etm-tab-content.active, .etm-res-tab-content.active {
+	display: block;
+}
+
+/* API Form */
+.etm-form-row {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+.etm-form-row select {
+	width: 120px;
+	font-weight: bold;
+}
+.etm-form-row input[type="text"] {
+	flex-grow: 1;
+	font-family: monospace;
+}
+.etm-tab-content textarea {
+	width: 100%;
+	font-family: monospace;
+	background: #f0f0f1;
+}
+
+/* Response Viewer */
+.etm-response-meta {
+	display: flex;
 	gap: 20px;
-	margin-top: 20px;
+	padding: 10px;
+	background: #f6f7f7;
+	border: 1px solid #c3c4c7;
+}
+.status-badge {
+	padding: 3px 8px;
+	border-radius: 3px;
+	font-weight: bold;
+	color: #fff;
+}
+.status-success { background: #46b450; }
+.status-error { background: #d63638; }
+
+#etm-pretty-code, #etm-headers-code {
+	display: block;
+	padding: 15px;
+	background: #1e1e1e;
+	color: #d4d4d4;
+	max-height: 400px;
+	overflow: auto;
 }
 
-.etm-dashboard .etm-card {
-	margin-bottom: 0; /* Override WordPress postbox margin */
+/* Toggle Switch */
+.etm-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
 }
-
-.etm-dashboard .etm-card .inside {
-	margin-bottom: 0;
-	padding-bottom: 15px;
+.etm-switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.etm-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+.etm-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+input:checked + .etm-slider {
+  background-color: #2271b1;
+}
+input:checked + .etm-slider:before {
+  transform: translateX(26px);
+}
+.etm-slider.round {
+  border-radius: 24px;
+}
+.etm-slider.round:before {
+  border-radius: 50%;
 }
