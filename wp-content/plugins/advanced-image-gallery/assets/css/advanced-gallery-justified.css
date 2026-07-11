@@ -1,0 +1,31 @@
+.zlfms-justified-gallery .zlfms_gallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--zlfms-justified-gutter, 15px);
+  width: 100%;
+  aspect-ratio: auto;
+}
+
+.zlfms-justified-gallery .zlfms-gallery-item {
+  position: relative;
+  overflow: hidden;
+  height: var(--zlfms-justified-row-height, 220px);
+  flex: 0 0 calc(25% - var(--zlfms-justified-gutter, 15px));
+  transition: height 0.3s ease;
+}
+
+.zlfms-justified-gallery .zlfms-gallery-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  min-height: var(--zlfms-justified-row-height, 220px);
+}
+
+.zlfms-justified-gallery .zlfms-gallery-item > a,
+.zlfms-justified-gallery .zlfms-gallery-item > .zlfms_video_player {
+  display: block;
+  height: 100%;
+}

@@ -1,0 +1,2342 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-04-18 11:29+0600\n"
+"PO-Revision-Date: 2023-11-22 15:26+0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+"X-Poedit-Basepath: ../includes\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: widgets\n"
+"X-Poedit-SearchPathExcluded-0: ../assets\n"
+
+#: admin/views/settings-page-view.php:23
+msgid "Widgets"
+msgstr ""
+
+#: admin/views/settings-page-view.php:35
+msgid "Manage Widgets"
+msgstr ""
+
+#: admin/views/settings-page-view.php:40
+msgid "Enable All"
+msgstr ""
+
+#: admin/views/settings-page-view.php:43
+msgid "Disable All"
+msgstr ""
+
+#: admin/views/settings-page-view.php:65
+msgid "PRO"
+msgstr ""
+
+#: admin/views/settings-page-view.php:98
+msgid "Doc"
+msgstr ""
+
+#: admin/views/settings-page-view.php:103
+msgid "Demo"
+msgstr ""
+
+#: admin/views/settings-page-view.php:116
+msgid "Save Changes"
+msgstr ""
+
+#: feedback.php:87
+msgid "Goodbyes are always hard"
+msgstr ""
+
+#: feedback.php:90
+msgid "Would you quickly give us your reason for doing so?"
+msgstr ""
+
+#: feedback.php:95
+msgid "Temporary deactivation"
+msgstr ""
+
+#: feedback.php:99
+msgid "Set up is too difficult"
+msgstr ""
+
+#: feedback.php:103
+msgid "Causes issues with Elementor"
+msgstr ""
+
+#: feedback.php:107
+msgid "Lack of documentation"
+msgstr ""
+
+#: feedback.php:111
+msgid "Not the features I wanted"
+msgstr ""
+
+#: feedback.php:115
+msgid "Found a better plugin"
+msgstr ""
+
+#: feedback.php:119
+msgid "Incompatible with theme or plugin"
+msgstr ""
+
+#: feedback.php:123
+msgid "Other"
+msgstr ""
+
+#: feedback.php:127
+msgid "What was the difficult part?"
+msgstr ""
+
+#: feedback.php:128
+msgid "What was the issue?"
+msgstr ""
+
+#: feedback.php:129
+msgid "What can we describe more?"
+msgstr ""
+
+#: feedback.php:130
+msgid "How could we improve?"
+msgstr ""
+
+#: feedback.php:131
+msgid "Can you mention it?"
+msgstr ""
+
+#: feedback.php:132
+msgid "With what plugin or theme is incompatible?"
+msgstr ""
+
+#: feedback.php:133
+msgid "Please specify:"
+msgstr ""
+
+#: feedback.php:137
+msgid "Tell us more about your reason..."
+msgstr ""
+
+#: feedback.php:141
+msgid "Would you like to share your e-mail and elements usage with us so that we can write you back?"
+msgstr ""
+
+#: feedback.php:146
+msgid "No, I'd like to stay anonymous"
+msgstr ""
+
+#: feedback.php:151
+msgid "Skip & Deactivate"
+msgstr ""
+
+#: feedback.php:152
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: widget.php:92 widget.php:105
+#, php-format
+msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
+msgstr ""
+
+#: widget.php:93 widget.php:106
+msgid " Marquee Addons for Elementor – Advanced Elements & Modern Motion Widgets"
+msgstr ""
+
+#: widget.php:94
+msgid "Elementor"
+msgstr ""
+
+#: widget.php:107
+msgid "PHP"
+msgstr ""
+
+#: widget.php:232
+msgid "This section requires JavaScript to load properly. Please enable JavaScript in your browser and reload the page."
+msgstr ""
+
+#: widget.php:319
+msgid "Rate Us"
+msgstr ""
+
+#: widget.php:327 widgets/traits/common-controls/promotional-banner.php:14
+msgid "Get Marquee Addons Pro"
+msgstr ""
+
+#: widget.php:340
+msgid "Marquee Addons"
+msgstr ""
+
+#: widget.php:350
+msgid "Marquee Addons Pro"
+msgstr ""
+
+#: widgets/class-deensimc-animated-heading.php:46
+msgid "Animated Heading"
+msgstr ""
+
+#: widgets/class-deensimc-animated-word-roller.php:49
+msgid "Animated Word Roller"
+msgstr ""
+
+#: widgets/class-deensimc-button-marquee.php:35
+#: widgets/class-deensimc-button-marquee.php:64
+msgid "Button Marquee"
+msgstr ""
+
+#: widgets/class-deensimc-image-accordion.php:31
+msgid "Image Accordion"
+msgstr ""
+
+#: widgets/class-deensimc-image-hotspot.php:27
+msgid "Image Hotspot"
+msgstr ""
+
+#: widgets/class-deensimc-image-marquee.php:42
+msgid "Image Marquee"
+msgstr ""
+
+#: widgets/class-deensimc-news-ticker.php:38
+msgid "News Ticker"
+msgstr ""
+
+#: widgets/class-deensimc-search.php:36
+msgid "Search"
+msgstr ""
+
+#: widgets/class-deensimc-search.php:179
+#: widgets/traits/search/search-content-controls.php:71
+msgid "Search..."
+msgstr ""
+
+#: widgets/class-deensimc-stacked-slider.php:47
+msgid "Stacked Slider"
+msgstr ""
+
+#: widgets/class-deensimc-testimonial-marquee.php:47
+msgid "Testimonial Marquee"
+msgstr ""
+
+#: widgets/class-deensimc-text-marquee.php:43
+msgid "Text Marquee"
+msgstr ""
+
+#: widgets/class-deensimc-video-marquee.php:52
+msgid "Video Marquee"
+msgstr ""
+
+#: widgets/class-deensimc-video-marquee.php:81
+#: widgets/traits/video-marquee/style-contents.php:20
+msgid "Videos"
+msgstr ""
+
+#: widgets/class-deensimc-video-marquee.php:97
+msgid "Video List"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:14
+msgid "Animated Text Effect"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:23
+msgid "Effect Type"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:27
+#: widgets/traits/image-marquee/content-image.php:66
+msgid "Fill"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:28
+msgid "Outline"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:29
+msgid "Gradient"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:30
+msgid "Image Masking"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:39
+#: widgets/traits/button-marquee/trait-button-style-controls.php:149
+#: widgets/traits/button-marquee/trait-button-style-controls.php:188
+#: widgets/traits/image-accordion/trait-style-cta-controls.php:47
+#: widgets/traits/image-accordion/trait-style-cta-controls.php:78
+#: widgets/traits/image-accordion/trait-style-description-controls.php:33
+#: widgets/traits/image-hotspot/trait-deensimc-style-tooltip-controls.php:26
+#: widgets/traits/image-marquee/style-caption-controls.php:58
+#: widgets/traits/search/search-field-styles.php:140
+#: widgets/traits/search/search-field-styles.php:199
+#: widgets/traits/search/submit-styles-controls.php:99
+#: widgets/traits/search/submit-styles-controls.php:163
+#: widgets/traits/stacked-slider/style-button-controls.php:41
+#: widgets/traits/stacked-slider/style-button-controls.php:101
+#: widgets/traits/testimonial-marquee/style-review.php:120
+msgid "Text Color"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:54
+msgid "Outline Color"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:68
+msgid "Outline Width (px)"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:96
+msgid "Gradient Text"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:109
+msgid "Mask Image"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:127
+msgid "Mask Size"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:131
+#: widgets/traits/video-marquee/content-hosted.php:33
+msgid "Auto"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:132
+#: widgets/traits/image-marquee/content-image.php:64
+msgid "Cover"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:133
+#: widgets/traits/image-marquee/content-image.php:65
+msgid "Contain"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:147
+msgid "Mask Position"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:151
+msgid "Top Left"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:152
+msgid "Top Center"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:153
+msgid "Top Right"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:154
+msgid "Center Left"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:155
+msgid "Center Center"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:156
+msgid "Center Right"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:157
+msgid "Bottom Left"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:158
+msgid "Bottom Center"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:159
+msgid "Bottom Right"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:171
+msgid "Cursor Color"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:184
+msgid "Cursor Width"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:208
+msgid "Line Color"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animated-text-effect-controls.php:221
+msgid "Line Width"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:10
+msgid "Animation Effect"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:16
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:408
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:70
+msgid "Animation"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:18
+#: widgets/traits/animated-heading/trait-animation-controls.php:159
+#: widgets/traits/button-marquee/trait-button-style-controls.php:63
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:136
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:293
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:375
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:427
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:41
+#: widgets/traits/search/search-content-controls.php:94
+#: widgets/traits/text-marquee/content-text-repeater.php:91
+msgid "On"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:19
+#: widgets/traits/animated-heading/trait-animation-controls.php:160
+#: widgets/traits/button-marquee/trait-button-style-controls.php:64
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:135
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:292
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:374
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:426
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:40
+#: widgets/traits/search/search-content-controls.php:95
+#: widgets/traits/text-marquee/content-text-repeater.php:92
+msgid "Off"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:25
+msgid "Type"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:30
+msgid "Slide"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:31
+msgid "Slide Horizontal"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:32
+msgid "3D Rotation"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:33
+msgid "Construct"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:34
+msgid "Typing"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:35
+msgid "Twist"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:36
+msgid "Line"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:37
+msgid "Wave"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:38
+msgid "Swing"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:39
+msgid "Tilt"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:40
+msgid "Lean"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:45
+#: widgets/traits/button-marquee/trait-button-marquee-controls.php:67
+#: widgets/traits/common-controls/marquee-controls.php:80
+#: widgets/traits/text-marquee/style-text-contents.php:242
+msgid "Speed"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:55
+msgid "Pause Between Words (sec)"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:68
+msgid "Pause After Typed (sec)"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:81
+msgid "Delay Per Word (sec)"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:94
+#: widgets/traits/animated-heading/trait-animation-controls.php:108
+msgid "Slide Direction"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:102
+msgid "To Top"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:103
+msgid "To Bottom"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:116
+msgid "To Left"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:117
+msgid "To Right"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:122
+msgid "Line Type"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:130
+msgid "Single Underline"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:131
+msgid "Double Underline"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:132
+msgid "Wavy Underline"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:133
+msgid "Zigzag Underline"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:134
+msgid "Circle"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:140
+msgid "Delay Before Erase (sec)"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-animation-controls.php:153
+msgid "Pause on Hover"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-text-styles-controls.php:27
+msgid "Font Color"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-text-styles-controls.php:41
+#: widgets/traits/search/search-field-styles.php:102
+#: widgets/traits/search/submit-styles-controls.php:35
+msgid "Typography"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-text-styles-controls.php:65
+msgid "Text Shadow"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-title-controls.php:11
+#: widgets/traits/animated-word-roller/content-text-repeater.php:25
+#: widgets/traits/animated-word-roller/style-contents.php:24
+#: widgets/traits/image-accordion/content.php:40
+#: widgets/traits/image-accordion/trait-style-title-controls.php:17
+#: widgets/traits/image-marquee/content-image.php:170
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:49
+#: widgets/traits/news-ticker/style-section-control.php:84
+#: widgets/traits/search/query-content-controls.php:118
+#: widgets/traits/search/query-content-controls.php:230
+#: widgets/traits/stacked-slider/content-primary.php:65
+#: widgets/traits/stacked-slider/style-title-controls.php:19
+#: widgets/traits/testimonial-marquee/content-repeater.php:64
+#: widgets/traits/testimonial-marquee/style-name-title.php:73
+msgid "Title"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-title-controls.php:17
+msgid "Before Text"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-title-controls.php:20
+msgid "Before text"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-title-controls.php:25
+#: widgets/traits/button-marquee/trait-button-controls.php:21
+#: widgets/traits/news-ticker/news-ticker-query-control.php:108
+#: widgets/traits/news-ticker/news-ticker-query-control.php:134
+#: widgets/traits/news-ticker/news-ticker-query-control.php:137
+#: widgets/traits/search/search-content-controls.php:69
+#: widgets/traits/search/search-content-controls.php:138
+#: widgets/traits/testimonial-marquee/style-review.php:103
+#: widgets/traits/text-marquee/content-text-repeater.php:44
+#: widgets/traits/text-marquee/style-text-contents.php:26
+msgid "Text"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-title-controls.php:27
+msgid "Animated Text"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-title-controls.php:32
+msgid "Animated Texts"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-title-controls.php:42
+msgid "After Text"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-title-controls.php:45
+msgid "After text"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-title-controls.php:49
+#: widgets/traits/animated-word-roller/content-text-repeater.php:111
+#: widgets/traits/image-hotspot/trait-deensimc-style-tooltip-controls.php:46
+#: widgets/traits/image-marquee/style-caption-controls.php:31
+#: widgets/traits/image-marquee/style-image-controls.php:27
+#: widgets/traits/stacked-slider/style-contents.php:28
+#: widgets/traits/stacked-slider/style-image.php:26
+#: widgets/traits/testimonial-marquee/content-repeater.php:145
+#: widgets/traits/text-marquee/content-text-repeater.php:118
+msgid "Alignment"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-title-controls.php:53
+#: widgets/traits/animated-word-roller/content-text-repeater.php:115
+#: widgets/traits/button-marquee/trait-button-controls.php:123
+#: widgets/traits/button-marquee/trait-button-style-controls.php:30
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:221
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:317
+#: widgets/traits/image-hotspot/trait-deensimc-style-tooltip-controls.php:50
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:29
+#: widgets/traits/image-marquee/style-caption-controls.php:35
+#: widgets/traits/news-ticker/style-section-control.php:97
+#: widgets/traits/search/search-content-controls.php:168
+#: widgets/traits/stacked-slider/content-primary.php:29
+#: widgets/traits/stacked-slider/style-box.php:30
+#: widgets/traits/stacked-slider/style-contents.php:32
+#: widgets/traits/stacked-slider/style-dots.php:78
+#: widgets/traits/stacked-slider/style-image.php:30
+#: widgets/traits/testimonial-marquee/content-repeater.php:149
+#: widgets/traits/text-marquee/content-text-repeater.php:122
+msgid "Left"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-title-controls.php:57
+#: widgets/traits/animated-word-roller/content-text-repeater.php:119
+#: widgets/traits/button-marquee/trait-button-style-controls.php:34
+#: widgets/traits/image-accordion/content.php:176
+#: widgets/traits/image-accordion/content.php:203
+#: widgets/traits/image-hotspot/trait-deensimc-image-controls.php:36
+#: widgets/traits/image-hotspot/trait-deensimc-style-tooltip-controls.php:54
+#: widgets/traits/image-marquee/content-image.php:87
+#: widgets/traits/image-marquee/style-caption-controls.php:39
+#: widgets/traits/image-marquee/style-image-controls.php:35
+#: widgets/traits/stacked-slider/style-box.php:34
+#: widgets/traits/stacked-slider/style-contents.php:36
+#: widgets/traits/stacked-slider/style-dots.php:82
+#: widgets/traits/stacked-slider/style-image.php:34
+#: widgets/traits/testimonial-marquee/content-repeater.php:153
+#: widgets/traits/text-marquee/content-text-repeater.php:126
+#: widgets/traits/text-marquee/style-text-contents.php:169
+msgid "Center"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-title-controls.php:61
+#: widgets/traits/animated-word-roller/content-text-repeater.php:123
+#: widgets/traits/button-marquee/trait-button-controls.php:127
+#: widgets/traits/button-marquee/trait-button-style-controls.php:38
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:225
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:325
+#: widgets/traits/image-hotspot/trait-deensimc-style-tooltip-controls.php:58
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:37
+#: widgets/traits/image-marquee/style-caption-controls.php:43
+#: widgets/traits/news-ticker/style-section-control.php:101
+#: widgets/traits/search/search-content-controls.php:172
+#: widgets/traits/stacked-slider/content-primary.php:37
+#: widgets/traits/stacked-slider/style-contents.php:40
+#: widgets/traits/stacked-slider/style-dots.php:86
+#: widgets/traits/stacked-slider/style-image.php:38
+#: widgets/traits/testimonial-marquee/content-repeater.php:157
+#: widgets/traits/text-marquee/content-text-repeater.php:130
+msgid "Right"
+msgstr ""
+
+#: widgets/traits/animated-heading/trait-title-controls.php:76
+#: widgets/traits/text-marquee/content-text-repeater.php:154
+msgid "HTML Tag"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-additional-options.php:16
+msgid "Additional Options"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-additional-options.php:24
+msgid "Active Word Duration"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-additional-options.php:25
+msgid "Time each word stays active (in seconds)."
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-additional-options.php:37
+msgid "Visible Word"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-additional-options.php:51
+msgid "Visible Word Notice"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-additional-options.php:52
+msgid "Please make sure to select an odd number that is less than or equal to the total number of words in your list."
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:17
+#: widgets/traits/animated-word-roller/style-contents.php:17
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:28
+#: widgets/traits/news-ticker/style-section-control.php:218
+#: widgets/traits/stacked-slider/content-primary.php:17
+#: widgets/traits/testimonial-marquee/content-repeater.php:32
+#: widgets/traits/testimonial-marquee/style-contents.php:26
+msgid "Content"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:27
+msgid "The Perfect Choice For Any"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:28
+#: widgets/traits/animated-word-roller/content-text-repeater.php:41
+#: widgets/traits/image-accordion/content.php:43
+#: widgets/traits/stacked-slider/content-primary.php:68
+#: widgets/traits/text-marquee/content-text-repeater.php:47
+msgid "Type your title here"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:38
+msgid "Word"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:40
+#: widgets/traits/image-accordion/content.php:42
+msgid "Default title"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:49
+#: widgets/traits/text-marquee/content-text-repeater.php:30
+msgid "Text Icon"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:63
+msgid "Word Lists"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:68
+msgid "Maker"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:71
+msgid "Creative"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:74
+msgid "Coffee Lover"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:77
+msgid "Developer"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:80
+msgid "Designer"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:83
+msgid "Creator"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:93
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:62
+msgid "Title HTML Tag"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:97
+msgid "H1"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:98
+#: widgets/traits/stacked-slider/content-primary.php:83
+msgid "H2"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:99
+#: widgets/traits/stacked-slider/content-primary.php:84
+msgid "H3"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:100
+#: widgets/traits/stacked-slider/content-primary.php:85
+msgid "H4"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:101
+#: widgets/traits/stacked-slider/content-primary.php:86
+msgid "H5"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:102
+#: widgets/traits/stacked-slider/content-primary.php:87
+msgid "H6"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/content-text-repeater.php:103
+msgid "div"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/style-contents.php:32
+msgid "Animated words"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/style-contents.php:62
+#: widgets/traits/animated-word-roller/style-contents.php:125
+#: widgets/traits/common-controls/style-edge-shadow.php:29
+#: widgets/traits/image-hotspot/trait-deensimc-style-hotspot-controls.php:26
+#: widgets/traits/image-hotspot/trait-deensimc-style-tooltip-controls.php:142
+#: widgets/traits/news-ticker/style-section-control.php:116
+#: widgets/traits/news-ticker/style-section-control.php:227
+#: widgets/traits/news-ticker/style-section-control.php:336
+#: widgets/traits/news-ticker/style-section-control.php:370
+#: widgets/traits/search/clear-styles-controls.php:54
+#: widgets/traits/search/clear-styles-controls.php:77
+#: widgets/traits/search/style-triggerer-controls.php:58
+#: widgets/traits/search/style-triggerer-controls.php:99
+#: widgets/traits/testimonial-marquee/style-contents.php:42
+#: widgets/traits/testimonial-marquee/style-contents.php:77
+#: widgets/traits/testimonial-marquee/style-contents.php:161
+#: widgets/traits/testimonial-marquee/style-name-title.php:33
+#: widgets/traits/testimonial-marquee/style-name-title.php:89
+#: widgets/traits/testimonial-marquee/style-review.php:79
+#: widgets/traits/text-marquee/style-text-contents.php:52
+#: widgets/traits/text-marquee/style-text-contents.php:72
+#: widgets/traits/text-marquee/style-text-contents.php:97
+#: widgets/traits/video-marquee/style-play-icon.php:26
+msgid "Color"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/style-contents.php:83
+msgid "Icons"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/style-contents.php:92
+#: widgets/traits/common-controls/style-edge-shadow.php:40
+#: widgets/traits/image-hotspot/trait-deensimc-style-hotspot-controls.php:38
+#: widgets/traits/testimonial-marquee/style-contents.php:104
+#: widgets/traits/testimonial-marquee/style-review.php:56
+#: widgets/traits/text-marquee/style-text-contents.php:110
+#: widgets/traits/video-marquee/style-play-icon.php:38
+msgid "Size"
+msgstr ""
+
+#: widgets/traits/animated-word-roller/style-contents.php:109
+#: widgets/traits/button-marquee/trait-button-style-controls.php:103
+#: widgets/traits/image-accordion/trait-style-image-controls.php:54
+msgid "Gap"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:12
+#: widgets/traits/button-marquee/trait-button-style-controls.php:17
+#: widgets/traits/image-accordion/content.php:60
+#: widgets/traits/image-accordion/trait-style-cta-controls.php:19
+#: widgets/traits/stacked-slider/style-contents.php:80
+msgid "Button"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:23
+msgid "Click here"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:24
+msgid "Enter button text"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:34
+msgid "Link Type"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:38
+msgid "Custom link"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:39
+msgid "Youtube"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:40
+#: widgets/traits/video-marquee/content-url-fields.php:21
+msgid "Vimeo"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:41
+msgid "Self hosted"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:50
+#: widgets/traits/button-marquee/trait-button-controls.php:67
+#: widgets/traits/button-marquee/trait-button-controls.php:79
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:48
+#: widgets/traits/image-marquee/content-image.php:112
+#: widgets/traits/image-marquee/content-image.php:127
+#: widgets/traits/text-marquee/content-text-repeater.php:54
+#: widgets/traits/video-marquee/content-url-fields.php:32
+#: widgets/traits/video-marquee/content-url-fields.php:47
+#: widgets/traits/video-marquee/content-url-fields.php:61
+msgid "Link"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:52
+#: widgets/traits/image-accordion/content.php:87
+#: widgets/traits/text-marquee/content-text-repeater.php:56
+msgid "https://your-link.com"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:69
+#: widgets/traits/button-marquee/trait-button-controls.php:81
+#: widgets/traits/video-marquee/content-url-fields.php:34
+#: widgets/traits/video-marquee/content-url-fields.php:49
+#: widgets/traits/video-marquee/content-url-fields.php:63
+#: widgets/traits/video-marquee/content-url-fields.php:110
+msgid "Enter your URL"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:92
+#: widgets/traits/video-marquee/content-url-fields.php:89
+msgid "Choose Video File"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:107
+#: widgets/traits/button-marquee/trait-button-style-controls.php:267
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:59
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:86
+#: widgets/traits/news-ticker/news-ticker-query-control.php:107
+#: widgets/traits/news-ticker/news-ticker-query-control.php:119
+#: widgets/traits/search/search-content-controls.php:46
+#: widgets/traits/search/search-content-controls.php:78
+#: widgets/traits/search/search-content-controls.php:113
+#: widgets/traits/search/search-content-controls.php:150
+#: widgets/traits/testimonial-marquee/style-contents.php:53
+#: widgets/traits/testimonial-marquee/style-review.php:25
+#: widgets/traits/text-marquee/style-text-contents.php:88
+#: widgets/traits/video-marquee/content-image-overlay.php:68
+msgid "Icon"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:119
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:72
+#: widgets/traits/search/search-content-controls.php:164
+msgid "Icon Position"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:147
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:102
+#: widgets/traits/news-ticker/style-section-control.php:191
+#: widgets/traits/search/submit-styles-controls.php:67
+msgid "Icon Spacing"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:171
+msgid "Button ID"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-controls.php:177
+msgid "Please make sure the ID is unique and not used elsewhere on the page this form is displayed. This field allows A-Z, a-z, 0-9 & underscore chars without spaces."
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-marquee-controls.php:17
+#: widgets/traits/common-controls/marquee-controls.php:25
+msgid "Marquee Options"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-marquee-controls.php:25
+msgid "Marquee"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-marquee-controls.php:27
+#: widgets/traits/button-marquee/trait-button-marquee-controls.php:39
+#: widgets/traits/button-marquee/trait-button-marquee-controls.php:54
+#: widgets/traits/common-controls/marquee-controls.php:37
+#: widgets/traits/common-controls/marquee-controls.php:52
+#: widgets/traits/common-controls/marquee-controls.php:67
+#: widgets/traits/image-marquee/content-image.php:153
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:105
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:135
+#: widgets/traits/text-marquee/style-text-contents.php:232
+msgid "Yes"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-marquee-controls.php:28
+#: widgets/traits/button-marquee/trait-button-marquee-controls.php:40
+msgid "no"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-marquee-controls.php:37
+#: widgets/traits/common-controls/marquee-controls.php:50
+msgid "Reverse"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-marquee-controls.php:52
+msgid "Marquee On Hover"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-marquee-controls.php:55
+#: widgets/traits/common-controls/marquee-controls.php:38
+#: widgets/traits/common-controls/marquee-controls.php:53
+#: widgets/traits/common-controls/marquee-controls.php:68
+#: widgets/traits/image-marquee/content-image.php:154
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:106
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:136
+#: widgets/traits/text-marquee/style-text-contents.php:233
+msgid "No"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-style-controls.php:26
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:209
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:313
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:23
+#: widgets/traits/image-marquee/content-image.php:79
+#: widgets/traits/news-ticker/style-section-control.php:93
+#: widgets/traits/search/search-field-styles.php:80
+#: widgets/traits/stacked-slider/content-primary.php:25
+msgid "Position"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-style-controls.php:42
+msgid "Full"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-style-controls.php:61
+msgid "Fixed width"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-style-controls.php:73
+#: widgets/traits/image-marquee/style-image-controls.php:57
+#: widgets/traits/search/search-field-styles.php:30
+#: widgets/traits/search/search-field-styles.php:55
+#: widgets/traits/stacked-slider/style-image.php:53
+#: widgets/traits/testimonial-marquee/style-contents-box.php:37
+#: widgets/traits/video-marquee/style-contents.php:48
+msgid "Width"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-style-controls.php:142
+#: widgets/traits/image-accordion/trait-style-cta-controls.php:40
+#: widgets/traits/image-accordion/trait-style-image-controls.php:118
+#: widgets/traits/image-marquee/style-image-controls.php:144
+#: widgets/traits/search/clear-styles-controls.php:47
+#: widgets/traits/search/search-field-styles.php:123
+#: widgets/traits/search/style-triggerer-controls.php:51
+#: widgets/traits/search/submit-styles-controls.php:92
+#: widgets/traits/stacked-slider/style-button-controls.php:23
+#: widgets/traits/stacked-slider/style-color-controls.php:30
+#: widgets/traits/text-marquee/style-text-contents.php:45
+msgid "Normal"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-style-controls.php:181
+#: widgets/traits/image-accordion/content.php:135
+#: widgets/traits/image-accordion/trait-style-cta-controls.php:71
+#: widgets/traits/image-accordion/trait-style-image-controls.php:144
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:58
+#: widgets/traits/image-marquee/style-image-controls.php:161
+#: widgets/traits/search/clear-styles-controls.php:70
+#: widgets/traits/search/style-triggerer-controls.php:92
+#: widgets/traits/search/submit-styles-controls.php:156
+#: widgets/traits/stacked-slider/style-button-controls.php:83
+#: widgets/traits/stacked-slider/style-color-controls.php:61
+#: widgets/traits/text-marquee/style-text-contents.php:65
+msgid "Hover"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-style-controls.php:209
+#: widgets/traits/image-accordion/trait-style-cta-controls.php:99
+msgid "Border Color"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-style-controls.php:241
+#: widgets/traits/image-accordion/trait-style-cta-controls.php:136
+#: widgets/traits/image-accordion/trait-style-image-controls.php:81
+#: widgets/traits/image-hotspot/trait-deensimc-style-hotspot-controls.php:151
+#: widgets/traits/image-hotspot/trait-deensimc-style-tooltip-controls.php:153
+#: widgets/traits/image-marquee/style-image-controls.php:189
+#: widgets/traits/news-ticker/style-section-control.php:72
+#: widgets/traits/search/search-field-styles.php:244
+#: widgets/traits/search/style-triggerer-controls.php:147
+#: widgets/traits/search/submit-styles-controls.php:222
+#: widgets/traits/stacked-slider/style-button-controls.php:60
+#: widgets/traits/stacked-slider/style-button-controls.php:120
+#: widgets/traits/testimonial-marquee/style-contents-box.php:127
+#: widgets/traits/testimonial-marquee/style-image.php:88
+#: widgets/traits/video-marquee/style-contents.php:123
+msgid "Border Radius"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-style-controls.php:254
+#: widgets/traits/image-accordion/trait-style-cta-controls.php:114
+#: widgets/traits/image-accordion/trait-style-description-controls.php:44
+#: widgets/traits/image-accordion/trait-style-title-controls.php:58
+#: widgets/traits/image-hotspot/trait-deensimc-style-hotspot-controls.php:128
+#: widgets/traits/image-hotspot/trait-deensimc-style-tooltip-controls.php:130
+#: widgets/traits/search/search-field-styles.php:257
+#: widgets/traits/search/style-triggerer-controls.php:160
+#: widgets/traits/search/submit-styles-controls.php:238
+#: widgets/traits/stacked-slider/style-contents.php:56
+#: widgets/traits/stacked-slider/style-contents.php:98
+#: widgets/traits/stacked-slider/style-image.php:80
+#: widgets/traits/testimonial-marquee/style-contents-box.php:104
+#: widgets/traits/testimonial-marquee/style-review.php:131
+msgid "Padding"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-style-controls.php:279
+#: widgets/traits/news-ticker/style-section-control.php:153
+#: widgets/traits/news-ticker/style-section-control.php:281
+#: widgets/traits/search/search-field-styles.php:151
+#: widgets/traits/search/search-field-styles.php:210
+#: widgets/traits/search/submit-styles-controls.php:110
+#: widgets/traits/search/submit-styles-controls.php:174
+msgid "Icon Color"
+msgstr ""
+
+#: widgets/traits/button-marquee/trait-button-style-controls.php:298
+#: widgets/traits/news-ticker/style-section-control.php:166
+#: widgets/traits/news-ticker/style-section-control.php:296
+#: widgets/traits/search/clear-styles-controls.php:25
+#: widgets/traits/search/search-field-styles.php:269
+#: widgets/traits/search/style-triggerer-controls.php:29
+#: widgets/traits/search/submit-styles-controls.php:44
+msgid "Icon Size"
+msgstr ""
+
+#: widgets/traits/common-controls/gap-control.php:18
+msgid "Gaps"
+msgstr ""
+
+#: widgets/traits/common-controls/marquee-controls.php:35
+msgid "Show Vertical"
+msgstr ""
+
+#: widgets/traits/common-controls/marquee-controls.php:65
+msgid "Pause On Hover"
+msgstr ""
+
+#: widgets/traits/common-controls/marquee-controls.php:95
+msgid "Show Edge Shadow"
+msgstr ""
+
+#: widgets/traits/common-controls/marquee-controls.php:97
+#: widgets/traits/image-accordion/content.php:62
+#: widgets/traits/image-marquee/content-image.php:182
+#: widgets/traits/stacked-slider/content-advance.php:27
+#: widgets/traits/stacked-slider/content-advance.php:39
+#: widgets/traits/testimonial-marquee/content-repeater.php:87
+#: widgets/traits/testimonial-marquee/content-repeater.php:114
+#: widgets/traits/video-marquee/content-hosted.php:19
+#: widgets/traits/video-marquee/content-image-overlay.php:28
+#: widgets/traits/video-marquee/content-image-overlay.php:54
+#: widgets/traits/video-marquee/content-video-options.php:64
+#: widgets/traits/video-marquee/content-video-options.php:79
+#: widgets/traits/video-marquee/content-video-options.php:106
+#: widgets/traits/video-marquee/content-youtube-vimeo.php:78
+#: widgets/traits/video-marquee/content-youtube-vimeo.php:92
+#: widgets/traits/video-marquee/content-youtube-vimeo.php:106
+msgid "Show"
+msgstr ""
+
+#: widgets/traits/common-controls/marquee-controls.php:98
+#: widgets/traits/image-accordion/content.php:63
+#: widgets/traits/image-marquee/content-image.php:183
+#: widgets/traits/stacked-slider/content-advance.php:28
+#: widgets/traits/stacked-slider/content-advance.php:40
+#: widgets/traits/testimonial-marquee/content-repeater.php:88
+#: widgets/traits/testimonial-marquee/content-repeater.php:115
+#: widgets/traits/video-marquee/content-hosted.php:18
+#: widgets/traits/video-marquee/content-image-overlay.php:29
+#: widgets/traits/video-marquee/content-image-overlay.php:55
+#: widgets/traits/video-marquee/content-video-options.php:63
+#: widgets/traits/video-marquee/content-video-options.php:78
+#: widgets/traits/video-marquee/content-video-options.php:105
+#: widgets/traits/video-marquee/content-youtube-vimeo.php:77
+#: widgets/traits/video-marquee/content-youtube-vimeo.php:91
+#: widgets/traits/video-marquee/content-youtube-vimeo.php:105
+msgid "Hide"
+msgstr ""
+
+#: widgets/traits/common-controls/promotional-banner.php:15
+msgid "Get the premium version of the Marquee Addons and grow your website capabilities."
+msgstr ""
+
+#: widgets/traits/common-controls/promotional-banner.php:17
+msgid "Upgrade Now"
+msgstr ""
+
+#: widgets/traits/common-controls/style-edge-shadow.php:18
+msgid "Edge Shadow"
+msgstr ""
+
+#: widgets/traits/common-controls/style-edge-shadow.php:72
+msgid "Blur"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:19
+#: widgets/traits/image-accordion/content.php:98
+#: widgets/traits/image-accordion/trait-style-image-controls.php:19
+#: widgets/traits/image-marquee/content-image.php:20
+#: widgets/traits/testimonial-marquee/style-image.php:18
+msgid "Images"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:29
+#: widgets/traits/testimonial-marquee/content-repeater.php:43
+#: widgets/traits/video-marquee/content-image-overlay.php:38
+msgid "Choose Image"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:50
+#: widgets/traits/image-accordion/trait-style-description-controls.php:17
+#: widgets/traits/image-marquee/content-image.php:172
+#: widgets/traits/stacked-slider/content-primary.php:97
+msgid "Description"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:52
+#: widgets/traits/image-accordion/content.php:104
+#: widgets/traits/image-accordion/content.php:108
+#: widgets/traits/image-accordion/content.php:112
+#: widgets/traits/image-accordion/content.php:116
+#: widgets/traits/image-accordion/content.php:120
+msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:53
+#: widgets/traits/stacked-slider/content-primary.php:101
+msgid "Type your description here"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:73
+#: widgets/traits/stacked-slider/content-primary.php:111
+msgid "Button Text"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:75
+msgid "Learn More"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:85
+msgid "Button URL"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:103
+msgid "Set"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:107
+msgid "Your"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:111
+msgid "Journey"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:115
+msgid "To"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:119
+msgid "Success"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:130
+msgid "Active Behaviour"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:134
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:59
+msgid "Click"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:143
+msgid "Heading Tag"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:159
+msgid "Title Alignment"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:168
+#: widgets/traits/image-accordion/trait-style-title-controls.php:49
+msgid "Horizontal"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:172
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:76
+#: widgets/traits/image-hotspot/trait-deensimc-image-controls.php:32
+msgid "Start"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:180
+#: widgets/traits/image-accordion/content.php:207
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:80
+#: widgets/traits/image-hotspot/trait-deensimc-image-controls.php:40
+msgid "End"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:195
+#: widgets/traits/image-accordion/trait-style-title-controls.php:50
+msgid "Vertical"
+msgstr ""
+
+#: widgets/traits/image-accordion/content.php:199
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:257
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:321
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:33
+#: widgets/traits/image-marquee/style-image-controls.php:31
+#: widgets/traits/stacked-slider/content-primary.php:33
+#: widgets/traits/text-marquee/style-text-contents.php:165
+msgid "Top"
+msgstr ""
+
+#: widgets/traits/image-accordion/trait-style-cta-controls.php:150
+#: widgets/traits/search/submit-styles-controls.php:251
+#: widgets/traits/stacked-slider/style-description-controls.php:44
+#: widgets/traits/stacked-slider/style-title-controls.php:44
+#: widgets/traits/testimonial-marquee/style-name-title.php:44
+#: widgets/traits/testimonial-marquee/style-review.php:33
+#: widgets/traits/text-marquee/style-text-contents.php:134
+msgid "Spacing"
+msgstr ""
+
+#: widgets/traits/image-accordion/trait-style-image-controls.php:27
+#: widgets/traits/image-marquee/style-image-controls.php:80
+#: widgets/traits/news-ticker/style-section-control.php:30
+msgid "Height"
+msgstr ""
+
+#: widgets/traits/image-accordion/trait-style-image-controls.php:108
+#: widgets/traits/image-accordion/trait-style-image-controls.php:152
+#: widgets/traits/testimonial-marquee/style-contents-box.php:61
+msgid "Overlay Color"
+msgstr ""
+
+#: widgets/traits/image-accordion/trait-style-title-controls.php:33
+msgid "Image Title Color"
+msgstr ""
+
+#: widgets/traits/image-accordion/trait-style-title-controls.php:45
+msgid "Title Position"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:17
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:392
+#: widgets/traits/image-hotspot/trait-deensimc-style-hotspot-controls.php:18
+msgid "Hotspot"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:35
+msgid "Label"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:133
+msgid "Custom Hotspot Size"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:138
+msgid "Set custom Hotspot size that will only affect this specific hotspot."
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:145
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:346
+#: widgets/traits/image-hotspot/trait-deensimc-style-hotspot-controls.php:70
+#: widgets/traits/image-hotspot/trait-deensimc-style-tooltip-controls.php:84
+msgid "Min Width"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:171
+#: widgets/traits/image-hotspot/trait-deensimc-style-hotspot-controls.php:93
+msgid "Min Height"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:198
+msgid "Tooltip Content"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:200
+msgid "Add Your Tooltip Text Here"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:216
+msgid "Horizontal Orientation"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:236
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:273
+msgid "Offset"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:253
+msgid "Vertical Orientation"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:261
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:329
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:41
+#: widgets/traits/image-marquee/style-image-controls.php:39
+#: widgets/traits/stacked-slider/content-primary.php:41
+#: widgets/traits/stacked-slider/style-box.php:38
+#: widgets/traits/text-marquee/style-text-contents.php:173
+msgid "Bottom"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:290
+msgid "Custom Tooltip Properties"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:295
+msgid "Set custom Tooltip opening that will only affect this specific hotspot."
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:302
+#: widgets/traits/image-hotspot/trait-deensimc-style-tooltip-controls.php:75
+#: widgets/traits/stacked-slider/style-box.php:18
+#: widgets/traits/testimonial-marquee/style-contents-box.php:20
+msgid "Box"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:372
+msgid "Text Wrap"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:411
+msgid "Soft Beat"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:412
+#: widgets/traits/search/search-content-controls.php:29
+msgid "Expand"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:413
+msgid "Overlay"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:414
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:60
+#: widgets/traits/image-marquee/content-image.php:68
+#: widgets/traits/image-marquee/content-image.php:116
+#: widgets/traits/image-marquee/content-image.php:169
+#: widgets/traits/video-marquee/content-hosted.php:34
+msgid "None"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:424
+msgid "Sequenced Animation"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-hotspots-controls.php:437
+msgid "Sequence Duration"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-style-hotspot-controls.php:116
+msgid "Box Color"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-style-tooltip-controls.php:18
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:16
+msgid "Tooltip"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-style-tooltip-controls.php:62
+msgid "Justified"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-style-tooltip-controls.php:107
+msgid "Max Width"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:55
+msgid "Trigger"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:73
+msgid "Fade In/Out"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:74
+msgid "Fade Grow"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:75
+msgid "Fade By Direction"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:76
+msgid "Slide By Direction"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:79
+msgid "Enter your image caption"
+msgstr ""
+
+#: widgets/traits/image-hotspot/trait-deensimc-tooltip-controls.php:90
+msgid "Animation Duration"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:28
+msgid "Add Images"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:60
+msgid "Display Size"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:67
+msgid "Scale Down"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:83
+msgid "Left Top"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:84
+msgid "Center Top"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:85
+msgid "Right Top"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:86
+msgid "Left Center"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:88
+msgid "Right Center"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:89
+msgid "Left Bottom"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:90
+msgid "Center Bottom"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:91
+msgid "Right Bottom"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:117
+msgid "Media File"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:118
+msgid "Custom URL"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:142
+msgid "Lightbox"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:146
+#, php-format
+msgid "Manage your site’s lightbox settings in the %1$sLightbox panel%2$s."
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:152
+msgid "Default"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:165
+#: widgets/traits/image-marquee/content-image.php:171
+#: widgets/traits/image-marquee/style-caption-controls.php:20
+msgid "Caption"
+msgstr ""
+
+#: widgets/traits/image-marquee/content-image.php:180
+#: widgets/traits/video-marquee/content-youtube-vimeo.php:30
+msgid "Lazy Load"
+msgstr ""
+
+#: widgets/traits/image-marquee/style-caption-controls.php:69
+#: widgets/traits/stacked-slider/style-box.php:54
+#: widgets/traits/stacked-slider/style-button-controls.php:30
+#: widgets/traits/stacked-slider/style-button-controls.php:90
+msgid "Background Color"
+msgstr ""
+
+#: widgets/traits/image-marquee/style-caption-controls.php:96
+msgid "Space"
+msgstr ""
+
+#: widgets/traits/image-marquee/style-image-controls.php:19
+#: widgets/traits/stacked-slider/style-image.php:18
+msgid "Image"
+msgstr ""
+
+#: widgets/traits/image-marquee/style-image-controls.php:100
+#: widgets/traits/testimonial-marquee/style-contents-box.php:72
+#: widgets/traits/text-marquee/style-layout-controls.php:27
+#: widgets/traits/video-marquee/style-contents.php:67
+msgid "Section Height"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:16
+#: widgets/traits/news-ticker/style-section-control.php:22
+#: widgets/traits/text-marquee/style-layout-controls.php:17
+msgid "Layout"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:25
+msgid "Post Per Ticker"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:30
+msgid "Maximum 20 posts can be displayed."
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:38
+msgid "Show label"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:51
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:52
+msgid "Latest News"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:103
+msgid "Apply To Custom News Title Length"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:117
+msgid "Title Length"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:126
+msgid "Enter the Number of letters to show."
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-layout-control.php:133
+msgid "Open In New Window"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:16
+#: widgets/traits/search/query-content-controls.php:17
+msgid "Query"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:25
+msgid "Categories"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:30
+msgid "Select category"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:38
+msgid "Tags"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:43
+msgid "Select tag"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:58
+#: widgets/traits/search/query-content-controls.php:82
+#: widgets/traits/search/query-content-controls.php:194
+msgid "Authors"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:63
+msgid "Type to search users"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:71
+#: widgets/traits/search/query-content-controls.php:114
+#: widgets/traits/search/query-content-controls.php:226
+msgid "Order By"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:74
+#: widgets/traits/news-ticker/news-ticker-query-control.php:110
+#: widgets/traits/search/query-content-controls.php:96
+#: widgets/traits/search/query-content-controls.php:117
+#: widgets/traits/search/query-content-controls.php:208
+#: widgets/traits/search/query-content-controls.php:229
+msgid "Date"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:75
+#: widgets/traits/search/query-content-controls.php:122
+#: widgets/traits/search/query-content-controls.php:234
+msgid "Random"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:86
+#: widgets/traits/search/query-content-controls.php:131
+#: widgets/traits/search/query-content-controls.php:243
+msgid "Order"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:89
+#: widgets/traits/search/query-content-controls.php:135
+#: widgets/traits/search/query-content-controls.php:247
+msgid "ASC"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:90
+#: widgets/traits/search/query-content-controls.php:134
+#: widgets/traits/search/query-content-controls.php:246
+msgid "DESC"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:104
+msgid "Separator Type"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:109
+msgid "Feature Image"
+msgstr ""
+
+#: widgets/traits/news-ticker/news-ticker-query-control.php:136
+msgid "|"
+msgstr ""
+
+#: widgets/traits/news-ticker/style-section-control.php:63
+msgid "Container Border"
+msgstr ""
+
+#: widgets/traits/news-ticker/style-section-control.php:242
+#: widgets/traits/testimonial-marquee/style-contents.php:173
+msgid "Hover Color"
+msgstr ""
+
+#: widgets/traits/news-ticker/style-section-control.php:271
+#: widgets/traits/news-ticker/style-section-control.php:326
+#: widgets/traits/news-ticker/style-section-control.php:360
+#: widgets/traits/news-ticker/style-section-control.php:398
+msgid "Post Separator"
+msgstr ""
+
+#: widgets/traits/news-ticker/style-section-control.php:410
+#: widgets/traits/testimonial-marquee/style-image.php:53
+msgid "Image Size"
+msgstr ""
+
+#: widgets/traits/search/clear-styles-controls.php:18
+msgid "Clear"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:24
+#: widgets/traits/video-marquee/content-url-fields.php:16
+msgid "Source"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:27
+#: widgets/traits/search/query-content-controls.php:99
+#: widgets/traits/search/query-content-controls.php:211
+msgid "All"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:28
+msgid "Products"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:29
+msgid "Post"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:30
+msgid "Pages"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:31
+msgid "Floating Elements"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:32
+msgid "Theme Builder"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:45
+msgid "Include"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:52
+msgid "Include By"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:55
+#: widgets/traits/search/query-content-controls.php:167
+msgid "Term"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:56
+#: widgets/traits/search/query-content-controls.php:168
+msgid "Author"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:60
+msgid "Select items to include"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:67
+#: widgets/traits/search/query-content-controls.php:179
+msgid "Terms"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:72
+#: widgets/traits/search/query-content-controls.php:184
+msgid "Terms are items in a taxonomy. The available taxonomies are: Categories, Tags, Formats and custom taxonomies."
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:100
+#: widgets/traits/search/query-content-controls.php:212
+msgid "Past Day"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:101
+#: widgets/traits/search/query-content-controls.php:213
+msgid "Past Week"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:102
+#: widgets/traits/search/query-content-controls.php:214
+msgid "Past Month"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:103
+#: widgets/traits/search/query-content-controls.php:215
+msgid "Past Quarter"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:104
+#: widgets/traits/search/query-content-controls.php:216
+msgid "Past Year"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:105
+#: widgets/traits/search/query-content-controls.php:217
+msgid "Custom"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:119
+#: widgets/traits/search/query-content-controls.php:231
+msgid "Menu Order"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:120
+#: widgets/traits/search/query-content-controls.php:232
+msgid "Last Modified"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:121
+#: widgets/traits/search/query-content-controls.php:233
+msgid "Comment Count"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:144
+#: widgets/traits/search/query-content-controls.php:256
+msgid "Query ID"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:147
+#: widgets/traits/search/query-content-controls.php:259
+msgid "Give your Query a custom unique id to allow server side filtering"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:157
+msgid "Exclude"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:164
+msgid "Exclude By"
+msgstr ""
+
+#: widgets/traits/search/query-content-controls.php:172
+msgid "Select items to exclude"
+msgstr ""
+
+#: widgets/traits/search/search-content-controls.php:17
+#: widgets/traits/search/search-field-styles.php:22
+msgid "Search Field"
+msgstr ""
+
+#: widgets/traits/search/search-content-controls.php:25
+msgid "Input Style"
+msgstr ""
+
+#: widgets/traits/search/search-content-controls.php:30
+msgid "Popup"
+msgstr ""
+
+#: widgets/traits/search/search-content-controls.php:37
+#: widgets/traits/search/style-triggerer-controls.php:21
+msgid "Triggerer"
+msgstr ""
+
+#: widgets/traits/search/search-content-controls.php:60
+msgid "Placeholder"
+msgstr ""
+
+#: widgets/traits/search/search-content-controls.php:92
+msgid "Autocomplete"
+msgstr ""
+
+#: widgets/traits/search/search-content-controls.php:104
+msgid "Clear Button"
+msgstr ""
+
+#: widgets/traits/search/search-content-controls.php:127
+msgid "Submit Button"
+msgstr ""
+
+#: widgets/traits/search/search-content-controls.php:140
+msgid "Submit"
+msgstr ""
+
+#: widgets/traits/search/search-field-styles.php:110
+msgid "Placeholder Color"
+msgstr ""
+
+#: widgets/traits/search/search-field-styles.php:164
+#: widgets/traits/search/search-field-styles.php:223
+#: widgets/traits/search/style-triggerer-controls.php:137
+#: widgets/traits/search/submit-styles-controls.php:136
+#: widgets/traits/search/submit-styles-controls.php:200
+msgid "Border"
+msgstr ""
+
+#: widgets/traits/search/search-field-styles.php:173
+#: widgets/traits/search/search-field-styles.php:232
+#: widgets/traits/search/style-triggerer-controls.php:81
+#: widgets/traits/search/style-triggerer-controls.php:123
+#: widgets/traits/search/submit-styles-controls.php:145
+#: widgets/traits/search/submit-styles-controls.php:209
+msgid "Box Shadow"
+msgstr ""
+
+#: widgets/traits/search/search-field-styles.php:183
+msgid "Focus"
+msgstr ""
+
+#: widgets/traits/search/search-field-styles.php:289
+msgid "Icon Gap"
+msgstr ""
+
+#: widgets/traits/search/submit-styles-controls.php:22
+msgid "Submit button"
+msgstr ""
+
+#: widgets/traits/stacked-slider/content-advance.php:17
+msgid "Advance"
+msgstr ""
+
+#: widgets/traits/stacked-slider/content-advance.php:25
+#: widgets/traits/stacked-slider/style-dots.php:17
+msgid "Dots"
+msgstr ""
+
+#: widgets/traits/stacked-slider/content-advance.php:37
+#: widgets/traits/video-marquee/content-video-options.php:25
+msgid "Autoplay"
+msgstr ""
+
+#: widgets/traits/stacked-slider/content-advance.php:49
+msgid "Animation Speed"
+msgstr ""
+
+#: widgets/traits/stacked-slider/content-primary.php:54
+msgid "Choose Images"
+msgstr ""
+
+#: widgets/traits/stacked-slider/content-primary.php:67
+msgid "Enter your title"
+msgstr ""
+
+#: widgets/traits/stacked-slider/content-primary.php:79
+msgid "Title HTML"
+msgstr ""
+
+#: widgets/traits/stacked-slider/content-primary.php:88
+msgid "Span"
+msgstr ""
+
+#: widgets/traits/stacked-slider/content-primary.php:89
+msgid "P"
+msgstr ""
+
+#: widgets/traits/stacked-slider/content-primary.php:100
+msgid "Enter your description here"
+msgstr ""
+
+#: widgets/traits/stacked-slider/content-primary.php:113
+msgid "Lets Go"
+msgstr ""
+
+#: widgets/traits/stacked-slider/content-primary.php:121
+msgid "Button Link"
+msgstr ""
+
+#: widgets/traits/stacked-slider/style-box.php:26
+msgid "Vertical Position"
+msgstr ""
+
+#: widgets/traits/stacked-slider/style-box.php:65
+msgid "Space Between"
+msgstr ""
+
+#: widgets/traits/stacked-slider/style-color-controls.php:17
+msgid "Colors"
+msgstr ""
+
+#: widgets/traits/stacked-slider/style-color-controls.php:37
+#: widgets/traits/stacked-slider/style-color-controls.php:68
+msgid "Title Color"
+msgstr ""
+
+#: widgets/traits/stacked-slider/style-color-controls.php:48
+#: widgets/traits/stacked-slider/style-color-controls.php:79
+msgid "Description Color"
+msgstr ""
+
+#: widgets/traits/stacked-slider/style-contents.php:20
+#: widgets/traits/testimonial-marquee/style-contents.php:18
+msgid "Contents"
+msgstr ""
+
+#: widgets/traits/stacked-slider/style-description-controls.php:19
+msgid "Descripton"
+msgstr ""
+
+#: widgets/traits/stacked-slider/style-dots.php:25
+msgid "Dot Color"
+msgstr ""
+
+#: widgets/traits/stacked-slider/style-dots.php:36
+msgid "Dot Active Color"
+msgstr ""
+
+#: widgets/traits/stacked-slider/style-dots.php:47
+msgid "Dot Distance"
+msgstr ""
+
+#: widgets/traits/stacked-slider/style-dots.php:74
+msgid "Text Alignment"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:22
+msgid "Testimonial Texts"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:35
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:36
+msgid "Type testimonial content"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:54
+#: widgets/traits/testimonial-marquee/style-name-title.php:17
+msgid "Name"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:56
+msgid "John Snow"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:57
+msgid "Enter name here"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:66
+msgid "Engineer"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:67
+msgid "Enter title here"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:85
+msgid "Show Rating"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:97
+msgid "Rating"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:112
+msgid "Rating In Text"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:127
+msgid "Testimonial Items"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:132
+msgid "Steve"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:135
+msgid "John"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:174
+msgid "Quote Left"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-repeater.php:185
+msgid "Quote Right"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-text-unfold.php:17
+#: widgets/traits/testimonial-marquee/style-contents.php:145
+msgid "Text Unfold"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-text-unfold.php:25
+msgid "Length (word)"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-text-unfold.php:31
+msgid "If the excerpt length is greater than the total words of the original text, this setting will not have any effect."
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-text-unfold.php:38
+msgid "Fold Text"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-text-unfold.php:40
+msgid "Show more"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-text-unfold.php:47
+msgid "Unfold Text"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/content-text-unfold.php:49
+msgid "Show less"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/helper-methods.php:69
+msgid "("
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/helper-methods.php:69
+msgid ")"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/style-image.php:26
+msgid "Image Spacing"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/style-review.php:17
+msgid "Review"
+msgstr ""
+
+#: widgets/traits/testimonial-marquee/style-review.php:91
+msgid "Unmark Color"
+msgstr ""
+
+#: widgets/traits/text-marquee/content-text-repeater.php:20
+#: widgets/traits/text-marquee/style-text-contents.php:18
+msgid "Texts"
+msgstr ""
+
+#: widgets/traits/text-marquee/content-text-repeater.php:46
+msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+msgstr ""
+
+#: widgets/traits/text-marquee/content-text-repeater.php:70
+msgid "Text List"
+msgstr ""
+
+#: widgets/traits/text-marquee/content-text-repeater.php:75
+#: widgets/traits/text-marquee/content-text-repeater.php:78
+msgid "Item content. Click the edit button to change this text."
+msgstr ""
+
+#: widgets/traits/text-marquee/content-text-repeater.php:89
+msgid "Text wrap"
+msgstr ""
+
+#: widgets/traits/text-marquee/style-text-contents.php:161
+msgid "Icon Alignment"
+msgstr ""
+
+#: widgets/traits/text-marquee/style-text-contents.php:189
+msgid "Offset X"
+msgstr ""
+
+#: widgets/traits/text-marquee/style-text-contents.php:209
+msgid "Offset Y"
+msgstr ""
+
+#: widgets/traits/text-marquee/style-text-contents.php:230
+msgid "Auto Rotation"
+msgstr ""
+
+#: widgets/traits/text-marquee/style-text-contents.php:257
+msgid "Direction"
+msgstr ""
+
+#: widgets/traits/text-marquee/style-text-contents.php:260
+msgid "Anti-Clockwise"
+msgstr ""
+
+#: widgets/traits/text-marquee/style-text-contents.php:261
+msgid "Clockwise"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-hosted.php:16
+msgid "Download Button"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-hosted.php:29
+msgid "Preload"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-hosted.php:32
+msgid "Metadata"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-hosted.php:38
+msgid "Preload attribute lets you specify how the video should be loaded when the page loads."
+msgstr ""
+
+#: widgets/traits/video-marquee/content-hosted.php:39
+msgid "Learn more"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-hosted.php:52
+msgid "Poster"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-image-overlay.php:17
+#: widgets/traits/video-marquee/content-image-overlay.php:26
+msgid "Image Overlay"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-image-overlay.php:52
+#: widgets/traits/video-marquee/style-play-icon.php:18
+msgid "Play Icon"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-url-fields.php:20
+msgid "YouTube"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-url-fields.php:22
+msgid "Dailymotion"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-url-fields.php:23
+msgid "Self Hosted"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-url-fields.php:78
+msgid "External URL"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-url-fields.php:104
+msgid "URL"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-url-fields.php:121
+msgid "Start Time"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-url-fields.php:123
+msgid "Specify a start time (in seconds)"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-url-fields.php:132
+msgid "End Time"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-url-fields.php:134
+msgid "Specify an end time (in seconds)"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-video-options.php:16
+msgid "Video Options"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-video-options.php:28
+#, php-format
+msgid "Note: Autoplay is affected by %1$s Google’s Autoplay policy %2$s on Chrome browsers."
+msgstr ""
+
+#: widgets/traits/video-marquee/content-video-options.php:40
+msgid "Mute"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-video-options.php:49
+msgid "Loop"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-video-options.php:61
+msgid "Player Controls"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-video-options.php:76
+msgid "Video Info"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-video-options.php:90
+msgid "Modest Branding"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-video-options.php:103
+msgid "Logo"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-youtube-vimeo.php:17
+msgid "Privacy Mode"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-youtube-vimeo.php:19
+msgid "When you turn on privacy mode, YouTube/Vimeo won't store information about visitors on your website unless they play the video."
+msgstr ""
+
+#: widgets/traits/video-marquee/content-youtube-vimeo.php:59
+msgid "Suggested Videos"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-youtube-vimeo.php:62
+msgid "Current Video Channel"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-youtube-vimeo.php:63
+msgid "Any Video"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-youtube-vimeo.php:75
+msgid "Intro Title"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-youtube-vimeo.php:89
+msgid "Intro Portrait"
+msgstr ""
+
+#: widgets/traits/video-marquee/content-youtube-vimeo.php:103
+msgid "Intro Byline"
+msgstr ""
+
+#: widgets/traits/video-marquee/style-contents.php:28
+msgid "Aspect Ratio"
+msgstr ""

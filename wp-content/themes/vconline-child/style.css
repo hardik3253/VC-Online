@@ -1,0 +1,154 @@
+/*
+Theme Name: VCOnline Child
+Author: 
+Description: Your description goes here
+Version: 1.0
+Template: tutorstarter
+
+This is the child theme for TutorStarter theme, generated with Generate Child Theme plugin by catchthemes.
+
+(optional values you can add: Theme URI, Author URI, License, License URI, Tags, Text Domain)
+*/
+
+.navbar .navbar-brand img {
+    max-height: 75px !important;
+}
+.vc-feature-course .tutor-wrap {
+	padding: 0 !important;
+}
+.vc-feature-course .tutor-card {
+	background-color: transparent;
+	border: unset;
+}
+.tutor-lms .site-content .entry-header {
+	display: none;
+}
+.tutor-lms .tutor-wrap .tutor-login-wrap {
+	margin-top: 0;
+	margin-bottom: 0;
+	background-color: #fff;
+}
+.navbar {
+	justify-content: space-between !important;
+}
+.navbar .vc-mobile-right-menu {
+	order: 2;
+}
+.navbar .vc-mobile-right-menu .navbar-utils a.btn-getstarted {
+	padding-bottom: 0;
+    padding-right: 0;
+    font-size: 16px;
+}
+.vc-feature-course .tutor-card .tutor-ratio {
+	padding-top: 60%;
+}
+.vc-feature-course .tutor-card .tutor-ratio img {
+	width: auto !important;
+}
+.vc-feature-course .tutor-card .tutor-card-body {
+	justify-content: center;
+}
+.deensimc-testimonial-marquee blockquote:before {
+	display: none;
+}
+.navbar .navbar-nav li a {
+	font-weight: 500;
+}
+header .navbar {
+	max-width: unset;
+	margin: unset;
+	padding: 0;
+	display: flex;
+}
+header .navbar .vc-header-data-wrapper {
+	width: 100%;
+}
+header .navbar .vc-header-top {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 1px solid #cccccc6b;
+}
+header .navbar .vc-header-bottom {
+	max-width: 1280px;
+    margin: 0 auto;
+    padding: 5px 30px;
+}
+.navbar-nav .sub-menu li a {
+	font-weight: 500 !important;
+    color: #57586E;
+}
+.navbar-nav .sub-menu li a:hover {
+	color: #000 !important;
+}	
+.navbar-nav .menu-item .sub-menu a:after {
+	background-color: #000 !important;
+}
+.navbar-nav .menu-item .sub-menu a {
+	font-size: 16px !important;
+}
+.navbar .navbar-nav .menu-item.current-menu-item a:after {
+	display: none;
+}
+.navbar .navbar-nav .menu-item.current-menu-item a {
+	color: #57586E !important;
+}
+.navbar .navbar-nav .menu-item:hover a {
+	color: #000 !important;
+}
+.tutor-ratio-16x9 {
+    padding-top: 65.25%;
+}
+.single-courses.postid-669 .tutor-course-details-tab .tutor-nav .tutor-nav-item:nth-child(3) {
+	display: none;
+}
+.wp-icon-section {
+	position:absolute;
+	bottom: 0;
+}
+.whatsapp-float{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:20px;
+    right:20px;
+    z-index:9999;
+}
+.whatsapp-float img{
+    width:100%;
+    height:auto;
+}
+.tutor-card .tutor-reviews .tutor-reviewer-name {
+	display: none;
+}
+#tutor-pro-social-authentication #tutor-pro-google-authentication {
+	display: flex;
+}
+#tutor-pro-social-authentication #tutor-pro-google-authentication iframe {
+	margin: 0 !important;
+}
+
+@media (max-width: 767px) {
+	header .navbar {
+		max-width: 1280px;
+		margin: 0 auto;
+		padding: 10px 15px;
+		display: grid;
+	}
+	header .navbar .vc-mobile-right-menu {
+		display: flex;
+	}
+	header .navbar .navbar-utils {
+        order: 1;
+    }
+	.vc-feature-course .tutor-card .tutor-ratio {
+		padding-top: 70%;
+	}
+	#page .tutor-wrap {
+		padding-top: 0 !important;
+	}
+	.tutor-mt-12 {
+		margin-top: 0;
+	}
+}

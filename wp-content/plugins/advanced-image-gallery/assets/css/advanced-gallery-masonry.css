@@ -1,0 +1,31 @@
+.zlfms-masonry-gallery .zlfms_gallery {
+  display: block;
+  column-count: var(--zlfms-masonry-columns, 3);
+  column-gap: var(--zlfms-masonry-gutter, 20px);
+  width: 100%;
+  aspect-ratio: auto;
+}
+
+.zlfms-masonry-gallery .zlfms-gallery-item {
+  break-inside: avoid;
+  margin-bottom: var(--zlfms-masonry-gutter, 20px);
+  position: relative;
+}
+
+.zlfms-masonry-gallery .zlfms-gallery-img {
+  display: block;
+  width: 100%;
+  padding-bottom: var(--zlfms-masonry-item-ratio, 75%);
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+
+.zlfms-masonry-gallery .zlfms-gallery-item > a,
+.zlfms-masonry-gallery .zlfms-gallery-item > .zlfms_video_player {
+  display: block;
+}
+
+.zlfms-masonry-gallery .zlfms-gallery-item .zlfms_video_player {
+  display: block;
+}

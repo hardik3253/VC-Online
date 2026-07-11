@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^(www\.)?online\.vcacademy\.in$ [NC]
+RewriteRule ^(.*)$ https://vcacademy.in/online-courses/$1 [L,R=301]

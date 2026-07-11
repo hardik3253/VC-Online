@@ -1,0 +1,9 @@
+/*
+Theme Name: VCOnline Child
+Template: tutorstarter
+
+This is the child theme for TutorStarter theme, generated with Generate Child Theme plugin by catchthemes.
+
+Right to Left text support.
+*/
+@import url("../tutorstarter/rtl.css");

@@ -1,0 +1,21 @@
+# WordPress uploads
+wp-content/uploads/
+
+# All-in-One WP Migration backups
+wp-content/ai1wm-backups/
+
+# Cache
+wp-content/cache/
+
+# Logs
+*.log
+
+# Environment
+wp-config.php
+.env
+
+# OS
+.DS_Store
+
+# Git
+.git
