@@ -85,7 +85,7 @@ class Admin {
 		}
 		
 		$auth = new \ETM\Includes\Auth();
-		return $auth->encrypt_password( sanitize_text_field( $input ) );
+		return $auth->encrypt_password( trim( $input ) );
 	}
 
 	/**

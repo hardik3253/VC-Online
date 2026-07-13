@@ -192,10 +192,11 @@ jQuery(document).ready(function($) {
 				$('#etm-test-time').text(data.time + ' ms');
 				$('#etm-test-method').text(data.method);
 			} else {
-				$('#etm-test-status-heading').html('<span style="color:#d63638;">✖ Authentication Failed</span>');
+				var errorMsg = data.message || (typeof data === 'string' ? data : 'Authentication Failed');
+				$('#etm-test-status-heading').html('<span style="color:#d63638;">✖ ' + errorMsg + '</span>');
 				$('#etm-test-http').text('Error');
 				$('#etm-test-time').text((data.time || 0) + ' ms');
-				$('#etm-test-method').text(data.message || data);
+				$('#etm-test-method').text('Failed');
 			}
 		}).fail(function() {
 			$btn.prop('disabled', false);
