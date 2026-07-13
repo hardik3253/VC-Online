@@ -28,19 +28,18 @@ class Auth {
 			return new \WP_Error( 'missing_credentials', __( 'Missing API credentials. Please check Settings.', 'edmingle-tutor-migration' ) );
 		}
 
-		// Example endpoint for Edmingle authentication (adjust as needed based on actual API)
-		$endpoint = rtrim( $base_url, '/' ) . '/api/v1/login';
+		// Use the correct Edmingle login endpoint from the Postman collection
+		$endpoint = rtrim( $base_url, '/' ) . '/tutor/login';
 
 		$args = array(
 			'method'  => 'POST',
-			'headers' => array(
-				'Content-Type' => 'application/json',
-				'Accept'       => 'application/json',
+			'body'    => array(
+				'JSONString' => wp_json_encode( array(
+					'username'         => $email,
+					'password'         => $password,
+					'persistent_login' => true,
+				) )
 			),
-			'body'    => wp_json_encode( array(
-				'email'    => $email,
-				'password' => $password,
-			) ),
 			'timeout' => 15,
 		);
 
@@ -54,17 +53,12 @@ class Auth {
 		$body        = wp_remote_retrieve_body( $response );
 		$data        = json_decode( $body, true );
 
-		if ( $status_code !== 200 ) {
+		if ( $status_code !== 200 || ! isset( $data['user']['apikey'] ) ) {
 			$msg = isset( $data['message'] ) ? $data['message'] : 'Authentication failed with status ' . $status_code;
 			return new \WP_Error( 'auth_failed', $msg );
 		}
 
-		$token = isset( $data['token'] ) ? $data['token'] : '';
-		
-		if ( empty( $token ) ) {
-			// Some APIs return it in an 'access_token' or 'data' array
-			$token = isset( $data['data']['token'] ) ? $data['data']['token'] : '';
-		}
+		$token = $data['user']['apikey'];
 
 		if ( ! empty( $token ) ) {
 			$this->store_token( $token );

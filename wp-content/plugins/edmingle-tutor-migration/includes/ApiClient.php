@@ -68,7 +68,7 @@ class ApiClient {
 		$headers = array(
 			'Content-Type'  => 'application/json',
 			'Accept'        => 'application/json',
-			'Authorization' => 'Bearer ' . $this->auth->get_token(),
+			'apikey'        => $this->auth->get_token(),
 		);
 
 		if ( ! empty( $custom_headers ) && is_array( $custom_headers ) ) {
