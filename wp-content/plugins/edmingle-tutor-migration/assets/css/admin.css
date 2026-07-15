@@ -120,3 +120,103 @@ input:checked + .etm-slider:before {
 .etm-slider.round:before {
   border-radius: 50%;
 }
+
+/* Data Explorer */
+.etm-data-explorer .etm-cards-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+.etm-data-explorer .etm-card {
+	background: #fff;
+	border: 1px solid #ccd0d4;
+	box-shadow: 0 1px 1px rgba(0,0,0,.04);
+	padding: 15px 20px;
+	width: calc(33.333% - 20px);
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+.etm-data-explorer .etm-card h2 {
+	margin-top: 0;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.etm-data-explorer .etm-card-stats p {
+	margin: 8px 0;
+}
+
+.etm-data-explorer .etm-card-actions {
+	margin-top: 15px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.etm-data-explorer .etm-card-notice {
+	margin-top: 10px;
+	padding: 10px;
+	border-left: 4px solid #fff;
+}
+.etm-data-explorer .notice-success {
+	background: #f0f6fc;
+	border-left-color: #00a32a;
+}
+.etm-data-explorer .notice-error {
+	background: #fcf0f1;
+	border-left-color: #d63638;
+}
+
+/* Modal */
+.etm-modal {
+	position: fixed;
+	z-index: 100000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.etm-modal-content {
+	background-color: #fefefe;
+	margin: 5% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	border-radius: 4px;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.etm-close-modal {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.etm-close-modal:hover,
+.etm-close-modal:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#etm-json-viewer {
+	background: #f4f4f4;
+	padding: 15px;
+	border-radius: 4px;
+	max-height: 60vh;
+	overflow-y: auto;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	font-family: monospace;
+	font-size: 13px;
+	border: 1px solid #ccc;
+}

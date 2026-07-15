@@ -36,6 +36,13 @@ $password = get_option( 'etm_admin_password', '' ) ? '************' : ''; // Do 
 				</td>
 			</tr>
 			<tr>
+				<th scope="row"><label for="etm_admin_orgid"><?php esc_html_e( 'Organization ID (ORGID)', 'edmingle-tutor-migration' ); ?></label></th>
+				<td>
+					<input type="text" id="etm_admin_orgid" name="etm_admin_orgid" value="<?php echo esc_attr( get_option( 'etm_admin_orgid', '' ) ); ?>" class="regular-text" required />
+					<p class="description"><?php esc_html_e( 'The organization ID to use in API requests.', 'edmingle-tutor-migration' ); ?></p>
+				</td>
+			</tr>
+			<tr>
 				<th scope="row"><label for="etm_admin_password"><?php esc_html_e( 'Admin Password', 'edmingle-tutor-migration' ); ?></label></th>
 				<td>
 					<input type="password" id="etm_admin_password" name="etm_admin_password" value="<?php echo esc_attr( $password ); ?>" class="regular-text" required />

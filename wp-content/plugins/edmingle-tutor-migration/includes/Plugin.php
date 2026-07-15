@@ -46,6 +46,10 @@ class Plugin {
 		add_action( 'wp_ajax_etm_execute_api', array( $plugin_admin, 'ajax_execute_api' ) );
 		add_action( 'wp_ajax_etm_delete_history', array( $plugin_admin, 'ajax_delete_history' ) );
 		add_action( 'wp_ajax_etm_toggle_debug', array( $plugin_admin, 'ajax_toggle_debug' ) );
+
+		// Data Explorer Registration
+		$data_explorer = new \ETM\Admin\Data_Explorer();
+		$data_explorer->register();
 	}
 
 	/**
