@@ -18,7 +18,7 @@ class Activator {
 	 */
 	public static function activate() {
 		// Flush rewrite rules, setup initial options, create custom database tables, etc.
-		require_once ETM_PLUGIN_DIR . 'includes/class-database.php';
+		require_once ETM_PLUGIN_DIR . 'includes/ETM_Database.php';
 		\ETM\Includes\ETM_Database::create_tables();
 	}
 }
