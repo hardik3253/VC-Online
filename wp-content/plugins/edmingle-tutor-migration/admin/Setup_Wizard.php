@@ -132,10 +132,10 @@ class Setup_Wizard {
 		if ( ! current_user_can( 'manage_options' ) ) wp_send_json_error( 'Permission denied.' );
 
 		$tests = array(
-			'students'    => 'users',
-			'enrollments' => 'enrollments',
-			'curriculum'  => 'curriculum',
-			'progress'    => 'progress'
+			'students'    => 'organization/students',
+			'enrollments' => 'short/masterbatch',
+			'curriculum'  => 'organization/courses',
+			'progress'    => 'reports/classprogress'
 		);
 
 		$results = array();
