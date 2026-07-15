@@ -39,13 +39,13 @@ class Data_Explorer {
 	private function get_endpoint_for_type( $type ) {
 		// These are placeholders/guesses and should be updated based on actual API
 		$endpoints = array(
-			'students'      => 'nuSource/api/v1/users',
-			'courses'       => 'nuSource/api/v1/courses',
-			'batches'       => 'nuSource/api/v1/batches',
-			'curriculum'    => 'nuSource/api/v1/curriculum',
-			'materials'     => 'nuSource/api/v1/materials',
-			'certificates'  => 'nuSource/api/v1/certificates',
-			'notifications' => 'nuSource/api/v1/notifications',
+			'students'      => 'organization/students',
+			'courses'       => 'organization/courses',
+			'batches'       => 'short/masterbatch',
+			'curriculum'    => 'curriculum',
+			'materials'     => 'materials',
+			'certificates'  => 'certificates/students?response_type=1',
+			'notifications' => 'notifications',
 		);
 		return isset( $endpoints[ $type ] ) ? $endpoints[ $type ] : '';
 	}
@@ -81,8 +81,13 @@ class Data_Explorer {
 		$items = array();
 		if ( isset( $data['data'] ) && is_array( $data['data'] ) ) {
 			$items = $data['data'];
+		} elseif ( isset( $data['students'] ) && is_array( $data['students'] ) ) {
+			$items = $data['students'];
+		} elseif ( isset( $data['courses'] ) && is_array( $data['courses'] ) ) {
+			$items = $data['courses'];
+		} elseif ( isset( $data['payload']['certificates'] ) && is_array( $data['payload']['certificates'] ) ) {
+			$items = $data['payload']['certificates'];
 		} elseif ( isset( $data['resources'] ) && is_array( $data['resources'] ) ) {
-			// e.g. meta details
 			$items = reset( $data['resources'] );
 		} else {
 			// Fallback: use the full array if it looks like a list
