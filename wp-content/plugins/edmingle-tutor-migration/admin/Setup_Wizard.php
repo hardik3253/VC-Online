@@ -113,11 +113,11 @@ class Setup_Wizard {
 
 		$data = $response['data'];
 
-		if ( isset( $data['data'] ) && is_array( $data['data'] ) && ! empty( $data['data'] ) ) {
-			$org = $data['data'][0];
-			if ( isset( $org['id'] ) ) {
-				update_option( 'etm_admin_orgid', $org['id'] );
-				wp_send_json_success( array( 'organization_id' => $org['id'] ) );
+		if ( isset( $data['institution'] ) && is_array( $data['institution'] ) && ! empty( $data['institution'] ) ) {
+			$org = $data['institution'][0];
+			if ( isset( $org['organization_id'] ) ) {
+				update_option( 'etm_admin_orgid', $org['organization_id'] );
+				wp_send_json_success( array( 'organization_id' => $org['organization_id'] ) );
 			}
 		}
 
