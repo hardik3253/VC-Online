@@ -44,12 +44,12 @@ class Setup_Wizard {
 		update_option( 'etm_api_base_url', $base_url );
 		update_option( 'etm_admin_email', $email );
 		
-		// Encrypt and save password (using Admin class instance to borrow encrypt_password logic or doing it directly)
-		$auth = new Auth();
+		// The sanitize_callback registered in Admin.php will automatically encrypt this
 		if ( $password !== '************' ) {
-			update_option( 'etm_admin_password', $auth->encrypt_password( $password ) );
+			update_option( 'etm_admin_password', $password );
 		}
 
+		$auth = new Auth();
 		// Call Auth login
 		$login = $auth->login();
 
