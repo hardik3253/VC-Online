@@ -31,19 +31,26 @@ class Auth {
 		// Use the correct Edmingle login endpoint from the Postman collection
 		$endpoint = rtrim( $base_url, '/' ) . '/tutor/login';
 
+		$json_string = wp_json_encode( array(
+			'username'         => $email,
+			'password'         => $password,
+			'persistent_login' => true,
+		) );
+
+		$boundary = wp_generate_password( 24, false );
+		$payload  = "--" . $boundary . "\r\n";
+		$payload .= "Content-Disposition: form-data; name=\"JSONString\"\r\n\r\n";
+		$payload .= $json_string . "\r\n";
+		$payload .= "--" . $boundary . "--\r\n";
+
 		$args = array(
 			'method'  => 'POST',
-			'body'    => array(
-				'JSONString' => wp_json_encode( array(
-					'username'         => $email,
-					'password'         => $password,
-					'persistent_login' => true,
-				) )
+			'headers' => array(
+				'Content-Type' => 'multipart/form-data; boundary=' . $boundary,
 			),
+			'body'    => $payload,
 			'timeout' => 15,
 		);
-
-		error_log('ETM Auth Payload: ' . print_r($args['body'], true));
 
 
 		$response = wp_remote_request( $endpoint, $args );
