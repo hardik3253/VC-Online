@@ -161,4 +161,16 @@ jQuery(document).ready(function($) {
 	$('.etm-btn-retry').on('click', function() {
 		$('#etm-btn-initialize').trigger('click');
 	});
+
+	// Toggle password visibility
+	$('#etm-toggle-password').on('click', function() {
+		var $pwd = $('#etm_admin_password');
+		if ($pwd.attr('type') === 'password') {
+			$pwd.attr('type', 'text');
+			$(this).removeClass('dashicons-visibility').addClass('dashicons-hidden');
+		} else {
+			$pwd.attr('type', 'password');
+			$(this).removeClass('dashicons-hidden').addClass('dashicons-visibility');
+		}
+	});
 });

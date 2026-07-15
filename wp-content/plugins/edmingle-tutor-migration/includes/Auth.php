@@ -43,6 +43,9 @@ class Auth {
 			'timeout' => 15,
 		);
 
+		error_log('ETM Auth Payload: ' . print_r($args['body'], true));
+
+
 		$response = wp_remote_request( $endpoint, $args );
 
 		if ( is_wp_error( $response ) ) {
@@ -140,6 +143,7 @@ class Auth {
 			return '';
 		}
 		$key    = defined( 'SECURE_AUTH_KEY' ) ? SECURE_AUTH_KEY : 'fallback-key-etm';
+		$key    = hash( 'sha256', $key, true ); // Ensure 32 bytes for aes-256-cbc
 		$iv     = openssl_random_pseudo_bytes( openssl_cipher_iv_length( 'aes-256-cbc' ) );
 		$cipher = openssl_encrypt( $plain_text, 'aes-256-cbc', $key, 0, $iv );
 		return base64_encode( $iv . $cipher );
@@ -155,12 +159,12 @@ class Auth {
 		if ( empty( $encrypted_text ) ) {
 			return '';
 		}
-		$key        = defined( 'SECURE_AUTH_KEY' ) ? SECURE_AUTH_KEY : 'fallback-key-etm';
-		$data       = base64_decode( $encrypted_text );
-		$iv_size    = openssl_cipher_iv_length( 'aes-256-cbc' );
-		$iv         = substr( $data, 0, $iv_size );
-		$cipher     = substr( $data, $iv_size );
-		$plain_text = openssl_decrypt( $cipher, 'aes-256-cbc', $key, 0, $iv );
-		return $plain_text;
+		$key       = defined( 'SECURE_AUTH_KEY' ) ? SECURE_AUTH_KEY : 'fallback-key-etm';
+		$key       = hash( 'sha256', $key, true ); // Ensure 32 bytes for aes-256-cbc
+		$data      = base64_decode( $encrypted_text );
+		$iv_length = openssl_cipher_iv_length( 'aes-256-cbc' );
+		$iv        = substr( $data, 0, $iv_length );
+		$cipher    = substr( $data, $iv_length );
+		return openssl_decrypt( $cipher, 'aes-256-cbc', $key, 0, $iv );
 	}
 }

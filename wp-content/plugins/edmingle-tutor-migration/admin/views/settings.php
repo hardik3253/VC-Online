@@ -48,7 +48,10 @@ $is_connected = ! empty( $api_key ) && ! empty( $org_id );
 					<tr>
 						<th scope="row"><label for="etm_admin_password"><?php esc_html_e( 'Admin Password', 'edmingle-tutor-migration' ); ?></label></th>
 						<td>
-							<input type="password" id="etm_admin_password" name="etm_admin_password" value="<?php echo esc_attr( $password ); ?>" class="regular-text" required />
+							<div style="position: relative; display: inline-block; width: 100%; max-width: 25em;">
+								<input type="password" id="etm_admin_password" name="etm_admin_password" value="<?php echo esc_attr( $password ); ?>" class="regular-text" style="width: 100%; padding-right: 30px;" required />
+								<span id="etm-toggle-password" class="dashicons dashicons-visibility" style="position: absolute; right: 5px; top: 5px; cursor: pointer; color: #888;"></span>
+							</div>
 							<p class="description"><?php esc_html_e( 'Password is encrypted before saving.', 'edmingle-tutor-migration' ); ?></p>
 						</td>
 					</tr>

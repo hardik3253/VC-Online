@@ -34,7 +34,7 @@ class Setup_Wizard {
 
 		$base_url = isset( $_POST['base_url'] ) ? esc_url_raw( $_POST['base_url'] ) : '';
 		$email    = isset( $_POST['email'] ) ? sanitize_email( $_POST['email'] ) : '';
-		$password = isset( $_POST['password'] ) ? sanitize_text_field( $_POST['password'] ) : '';
+		$password = isset( $_POST['password'] ) ? wp_unslash( $_POST['password'] ) : '';
 
 		if ( empty( $base_url ) || empty( $email ) || empty( $password ) ) {
 			wp_send_json_error( 'Please provide Base URL, Email, and Password.' );
