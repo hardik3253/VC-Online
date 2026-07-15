@@ -50,6 +50,10 @@ class Plugin {
 		// Data Explorer Registration
 		$data_explorer = new \ETM\Admin\Data_Explorer();
 		$data_explorer->register();
+
+		// Setup Wizard Registration
+		$setup_wizard = new \ETM\Admin\Setup_Wizard();
+		$setup_wizard->register();
 	}
 
 	/**

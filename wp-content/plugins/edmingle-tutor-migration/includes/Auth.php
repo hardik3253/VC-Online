@@ -58,11 +58,18 @@ class Auth {
 			return new \WP_Error( 'auth_failed', $msg );
 		}
 
-		$token = $data['user']['apikey'];
+		$token      = $data['user']['apikey'];
+		$user_id    = isset( $data['user']['user_id'] ) ? $data['user']['user_id'] : '';
+		$server_key = isset( $data['user']['server_key'] ) ? $data['user']['server_key'] : '';
 
 		if ( ! empty( $token ) ) {
-			$this->store_token( $token );
-			return array( 'success' => true, 'token' => $token );
+			$this->store_token( $token, $user_id, $server_key );
+			return array( 
+				'success'    => true, 
+				'token'      => $token,
+				'user_id'    => $user_id,
+				'server_key' => $server_key
+			);
 		}
 
 		return new \WP_Error( 'invalid_response', 'No token found in response' );
@@ -72,17 +79,26 @@ class Auth {
 	 * Log out (clear the stored token).
 	 */
 	public function logout() {
-		delete_transient( $this->token_option );
+		delete_option( 'etm_admin_token' );
+		delete_option( 'etm_admin_user_id' );
+		delete_option( 'etm_admin_server_key' );
 	}
 
 	/**
 	 * Store the access token securely.
 	 *
 	 * @param string $token
+	 * @param int|string $user_id
+	 * @param string $server_key
 	 */
-	private function store_token( $token ) {
-		// Store token in a transient, valid for 1 hour
-		set_transient( $this->token_option, $token, HOUR_IN_SECONDS );
+	private function store_token( $token, $user_id = '', $server_key = '' ) {
+		update_option( 'etm_admin_token', $token );
+		if ( ! empty( $user_id ) ) {
+			update_option( 'etm_admin_user_id', $user_id );
+		}
+		if ( ! empty( $server_key ) ) {
+			update_option( 'etm_admin_server_key', $server_key );
+		}
 	}
 
 	/**
@@ -91,7 +107,7 @@ class Auth {
 	 * @return string|false
 	 */
 	public function get_token() {
-		return get_transient( $this->token_option );
+		return get_option( 'etm_admin_token' );
 	}
 
 	/**

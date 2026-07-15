@@ -75,13 +75,22 @@ class Admin {
 	 * Register settings.
 	 */
 	public function register_settings() {
-		register_setting( 'etm_settings_group', 'etm_api_base_url', 'sanitize_text_field' );
-		register_setting( 'etm_settings_group', 'etm_admin_email', 'sanitize_email' );
-		register_setting( 'etm_settings_group', 'etm_admin_orgid', 'sanitize_text_field' );
-		
-		// Custom save for password to encrypt it
+		register_setting( 'etm_settings_group', 'etm_api_base_url', array(
+			'type'              => 'string',
+			'sanitize_callback' => 'esc_url_raw',
+			'default'           => '',
+		) );
+
+		register_setting( 'etm_settings_group', 'etm_admin_email', array(
+			'type'              => 'string',
+			'sanitize_callback' => 'sanitize_email',
+			'default'           => '',
+		) );
+
 		register_setting( 'etm_settings_group', 'etm_admin_password', array(
-			'sanitize_callback' => array( $this, 'sanitize_password' )
+			'type'              => 'string',
+			'sanitize_callback' => array( $this, 'sanitize_password' ),
+			'default'           => '',
 		) );
 	}
 
@@ -135,6 +144,21 @@ class Admin {
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
 			'nonce'    => wp_create_nonce( 'etm_admin_nonce' ),
 		) );
+
+		if ( strpos( $hook_suffix, 'edmingle-migration-settings' ) !== false ) {
+			wp_enqueue_script(
+				'etm-setup-wizard-js',
+				ETM_PLUGIN_URL . 'assets/js/setup-wizard.js',
+				array( 'jquery' ),
+				ETM_VERSION,
+				true
+			);
+
+			wp_localize_script( 'etm-setup-wizard-js', 'etm_setup', array(
+				'ajax_url' => admin_url( 'admin-ajax.php' ),
+				'nonce'    => wp_create_nonce( 'etm_admin_nonce' ),
+			) );
+		}
 
 		if ( strpos( $hook_suffix, 'edmingle-migration-data-explorer' ) !== false ) {
 			wp_enqueue_script(
