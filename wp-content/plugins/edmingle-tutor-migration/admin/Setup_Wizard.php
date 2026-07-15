@@ -74,7 +74,7 @@ class Setup_Wizard {
 		$base_url = get_option( 'etm_api_base_url', '' );
 		$host = wp_parse_url( $base_url, PHP_URL_HOST );
 
-		$endpoint = 'nuSource/api/v1/institute/instituteinfo?host_name=' . urlencode( $host );
+		$endpoint = 'institute/instituteinfo?host_name=' . urlencode( $host );
 		$response = Edmingle_API::request( $endpoint );
 
 		if ( is_wp_error( $response ) ) {
@@ -132,10 +132,10 @@ class Setup_Wizard {
 		if ( ! current_user_can( 'manage_options' ) ) wp_send_json_error( 'Permission denied.' );
 
 		$tests = array(
-			'students'    => 'nuSource/api/v1/users',
-			'enrollments' => 'nuSource/api/v1/enrollments',
-			'curriculum'  => 'nuSource/api/v1/curriculum',
-			'progress'    => 'nuSource/api/v1/progress'
+			'students'    => 'users',
+			'enrollments' => 'enrollments',
+			'curriculum'  => 'curriculum',
+			'progress'    => 'progress'
 		);
 
 		$results = array();
