@@ -9,12 +9,45 @@ namespace ETM\Admin;
 
 class Admin {
 
+	public function run_diagnostic() {
+		if ( file_exists( ETM_PLUGIN_DIR . 'diagnostic.txt' ) ) {
+			return; // run once
+		}
+		
+		$api = new \ETM\Includes\ApiClient();
+		$out = "Diagnostic Log:\n\n";
+		
+		$res1 = $api->execute_request('GET', 'organization/students', array(), array(), array('limit' => 50, 'page' => 1));
+		$res2 = $api->execute_request('GET', 'organization/students', array(), array(), array('limit' => 50, 'page' => 2));
+		$res3 = $api->execute_request('GET', 'organization/students', array(), array(), array('limit' => 50, 'offset' => 50));
+		$res4 = $api->execute_request('GET', 'organization/students', array(), array(), array('limit' => 50, 'page_no' => 2));
+		$res5 = $api->execute_request('GET', 'organization/students', array(), array(), array('limit' => 50, 'pageNumber' => 2));
+
+		$id1 = isset($res1['data']['students'][0]['id']) ? $res1['data']['students'][0]['id'] : 'Unknown';
+		$out .= "Page 1 ID: $id1\n";
+		$out .= "Page 2 ID: " . (isset($res2['data']['students'][0]['id']) ? $res2['data']['students'][0]['id'] : 'Unknown') . "\n";
+		$out .= "Offset 50 ID: " . (isset($res3['data']['students'][0]['id']) ? $res3['data']['students'][0]['id'] : 'Unknown') . "\n";
+		$out .= "page_no 2 ID: " . (isset($res4['data']['students'][0]['id']) ? $res4['data']['students'][0]['id'] : 'Unknown') . "\n";
+		$out .= "pageNumber 2 ID: " . (isset($res5['data']['students'][0]['id']) ? $res5['data']['students'][0]['id'] : 'Unknown') . "\n";
+		
+		if (isset($res1['data']['meta'])) {
+			$out .= "META:\n" . print_r($res1['data']['meta'], true) . "\n";
+		}
+		if (isset($res1['data']['pagination'])) {
+			$out .= "PAGINATION:\n" . print_r($res1['data']['pagination'], true) . "\n";
+		}
+
+		file_put_contents( ETM_PLUGIN_DIR . 'diagnostic.txt', $out );
+	}
+
 	/**
 	 * Register the admin menu.
 	 *
 	 * @since 1.0.0
 	 */
 	public function add_plugin_admin_menu() {
+		add_action( 'admin_init', array( $this, 'run_diagnostic' ) );
+		
 		add_menu_page(
 			__( 'Edmingle Migration', 'edmingle-tutor-migration' ),
 			__( 'Edmingle Migration', 'edmingle-tutor-migration' ),
