@@ -37,11 +37,25 @@ $types = array(
 			<div class="etm-card-stats">
 				<p><strong>Total Records:</strong> <span class="etm-stat-total"><?php echo intval( $total_records ); ?></span></p>
 				<p><strong>Last Sync:</strong> <span class="etm-stat-sync"><?php echo esc_html( $last_sync ); ?></span></p>
+				<div class="etm-sync-progress" style="display:none; margin-top: 10px;">
+					<p style="margin-bottom: 5px;"><strong>Progress:</strong> <span class="etm-progress-text">Page 1</span></p>
+					<p style="margin-bottom: 5px; font-size: 0.9em; color: #555;">
+						Imported: <span class="etm-stat-imported">0</span> | 
+						Updated: <span class="etm-stat-updated">0</span> | 
+						Skipped: <span class="etm-stat-skipped">0</span>
+					</p>
+					<p style="margin-bottom: 0; font-size: 0.9em; color: #555;">
+						Execution Time: <span class="etm-stat-time">0ms</span>
+					</p>
+				</div>
 			</div>
 
 			<div class="etm-card-actions">
-				<button type="button" class="button button-primary etm-btn-fetch" data-action="edmingle_fetch_<?php echo esc_attr( $type ); ?>">
-					<?php esc_html_e( 'Fetch', 'edmingle-tutor-migration' ); ?>
+				<button type="button" class="button button-primary etm-btn-fetch" data-action="edmingle_fetch_<?php echo esc_attr( $type ); ?>" data-resume="false">
+					<?php esc_html_e( 'Sync All', 'edmingle-tutor-migration' ); ?>
+				</button>
+				<button type="button" class="button button-primary etm-btn-resume" data-action="edmingle_fetch_<?php echo esc_attr( $type ); ?>" data-resume="true" style="display:none;">
+					<?php esc_html_e( 'Resume Sync', 'edmingle-tutor-migration' ); ?>
 				</button>
 				<button type="button" class="button button-secondary etm-btn-view" data-type="<?php echo esc_attr( $type ); ?>" <?php echo $total_records === 0 ? 'disabled' : ''; ?>>
 					<?php esc_html_e( 'View JSON', 'edmingle-tutor-migration' ); ?>
@@ -60,9 +74,10 @@ $types = array(
 			<tr>
 				<th><?php esc_html_e( 'Time', 'edmingle-tutor-migration' ); ?></th>
 				<th><?php esc_html_e( 'URL', 'edmingle-tutor-migration' ); ?></th>
+				<th><?php esc_html_e( 'Page', 'edmingle-tutor-migration' ); ?></th>
 				<th><?php esc_html_e( 'Status Code', 'edmingle-tutor-migration' ); ?></th>
 				<th><?php esc_html_e( 'Execution Time (ms)', 'edmingle-tutor-migration' ); ?></th>
-				<th><?php esc_html_e( 'Rows Saved', 'edmingle-tutor-migration' ); ?></th>
+				<th><?php esc_html_e( 'Imported / Updated / Skipped', 'edmingle-tutor-migration' ); ?></th>
 				<th><?php esc_html_e( 'Error Message', 'edmingle-tutor-migration' ); ?></th>
 			</tr>
 		</thead>
@@ -71,13 +86,14 @@ $types = array(
 			$logs = ETM_Database::get_recent_logs( 10 );
 			if ( empty( $logs ) ) : ?>
 				<tr>
-					<td colspan="6"><?php esc_html_e( 'No logs found.', 'edmingle-tutor-migration' ); ?></td>
+					<td colspan="7"><?php esc_html_e( 'No logs found.', 'edmingle-tutor-migration' ); ?></td>
 				</tr>
 			<?php else : 
 				foreach ( $logs as $log ) : ?>
 				<tr>
 					<td><?php echo esc_html( $log->created_at ); ?></td>
 					<td><?php echo esc_html( $log->url ); ?></td>
+					<td><?php echo isset( $log->page ) ? intval( $log->page ) : 1; ?></td>
 					<td>
 						<?php 
 						$status_color = $log->status_code >= 400 ? 'color: red;' : 'color: green;';
@@ -85,7 +101,7 @@ $types = array(
 						?>
 					</td>
 					<td><?php echo intval( $log->execution_time ); ?></td>
-					<td><?php echo intval( $log->rows_saved ); ?></td>
+					<td><?php echo intval( $log->rows_imported ?? 0 ) . ' / ' . intval( $log->rows_updated ?? 0 ) . ' / ' . intval( $log->rows_skipped ?? 0 ); ?></td>
 					<td><?php echo esc_html( $log->error_message ); ?></td>
 				</tr>
 			<?php 

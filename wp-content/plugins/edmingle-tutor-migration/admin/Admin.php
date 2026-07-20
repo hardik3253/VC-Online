@@ -69,6 +69,15 @@ class Admin {
 			'edmingle-migration-logs',
 			array( $this, 'display_plugin_logs_page' )
 		);
+
+		add_submenu_page(
+			'edmingle-migration-dashboard',
+			__( 'Migration', 'edmingle-tutor-migration' ),
+			__( 'Migration', 'edmingle-tutor-migration' ),
+			'manage_options',
+			'edmingle-migration-engine',
+			array( $this, 'display_plugin_migration_page' )
+		);
 	}
 
 	/**
@@ -173,6 +182,20 @@ class Admin {
 				'nonce' => wp_create_nonce( 'etm_admin_nonce' ),
 			) );
 		}
+
+		if ( strpos( $hook_suffix, 'edmingle-migration-engine' ) !== false ) {
+			wp_enqueue_script(
+				'etm-migration-js',
+				ETM_PLUGIN_URL . 'assets/js/migration.js',
+				array( 'jquery' ),
+				ETM_VERSION,
+				true
+			);
+
+			wp_localize_script( 'etm-migration-js', 'etm_admin', array(
+				'nonce' => wp_create_nonce( 'etm_admin_nonce' ),
+			) );
+		}
 	}
 
 	/**
@@ -198,6 +221,9 @@ class Admin {
 	}
 	public function display_plugin_logs_page() {
 		require_once ETM_PLUGIN_DIR . 'admin/views/logs.php';
+	}
+	public function display_plugin_migration_page() {
+		require_once ETM_PLUGIN_DIR . 'admin/views/migration.php';
 	}
 
 	/**

@@ -26,6 +26,7 @@ class Plugin {
 	 */
 	private function load_dependencies() {
 		require_once ETM_PLUGIN_DIR . 'admin/Admin.php';
+		require_once ETM_PLUGIN_DIR . 'admin/Migration_Engine.php';
 	}
 
 	/**
@@ -54,6 +55,10 @@ class Plugin {
 		// Setup Wizard Registration
 		$setup_wizard = new \ETM\Admin\Setup_Wizard();
 		$setup_wizard->register();
+
+		// Migration Engine Registration
+		$migration_engine = new \ETM\Admin\Migration_Engine();
+		$migration_engine->register();
 	}
 
 	/**
