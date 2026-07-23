@@ -75,7 +75,7 @@ class ExitIntentNotification extends Extension {
         }
         echo "<style id='nx-exit-intent-section-constraint'>\n";
         if ( '' !== $vars ) {
-            echo "body.single-nx_exit_intent{" . $vars . "}\n";
+            echo "body.single-nx_exit_intent{" . esc_html( $vars ) . "}\n";
         }
         echo ".nx-exit-intent-section{width:100%!important;max-width:var(--nx-exit-width,540px)!important;margin-left:auto!important;margin-right:auto!important;}\n";
         if ( is_singular( 'nx_exit_intent' ) ) {
@@ -105,6 +105,7 @@ class ExitIntentNotification extends Extension {
             return $settings;
         }
 
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         $resolved_id = apply_filters( 'wpml_object_id', $elementor_id, 'nx_exit_intent', true );
         $html = \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $resolved_id, false );
 
@@ -558,9 +559,11 @@ JS;
         if ( empty( $elementor_id ) ) {
             return;
         }
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         $languages = apply_filters( 'wpml_active_languages', null );
         if ( is_array( $languages ) ) {
             foreach ( $languages as $lang => $val ) {
+                // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
                 $translated_id = apply_filters( 'wpml_object_id', $elementor_id, 'nx_exit_intent', false, $lang );
                 if ( $translated_id ) {
                     wp_delete_post( $translated_id, true );
@@ -1093,6 +1096,36 @@ JS;
                     'name'    => 'is_confirmed',
                     'type'    => 'hidden',
                     'default' => false,
+                ],
+            ],
+        ];
+
+        // Build With AI tab — Pro feature. Free plugin only registers the tab
+        // shell + field type; the Pro plugin supplies the actual builder via
+        // the `nx_build_ai_render` filter (see PressBar's `nxbar_build_with_ai`
+        // for the same pattern already shipped for Notification Bar).
+        $tab[] = [
+            'label'  => __( 'Build With AI', 'notificationx' ),
+            'name'   => 'exit_intent_ai_tab',
+            'id'     => 'exit_intent_ai_tab',
+            'type'   => 'section',
+            'icon'   => NOTIFICATIONX_ADMIN_URL . 'images/icons/build-with-ai-icon.svg',
+            'rules'  => Rules::is( 'source', $this->id ),
+            'fields' => [
+                'exit_intent_ai_tab' => [
+                    'label'  => __( 'Build With AI', 'notificationx' ),
+                    'name'   => 'exit_intent_ai_tab',
+                    'id'     => 'exit_intent_ai_tab',
+                    'type'   => 'section',
+                    'icon'   => NOTIFICATIONX_ADMIN_URL . 'images/responsive/desktop.svg',
+                    'fields' => [
+                        'exit_intent_ai_tab_fields' => [
+                            'name'     => 'exit_intent_ai_tab_fields',
+                            'type'     => 'exit-intent-build_with_ai',
+                            'label'    => __( 'Exit Intent', 'notificationx' ),
+                            'priority' => 10,
+                        ],
+                    ],
                 ],
             ],
         ];
@@ -2240,6 +2273,7 @@ JS;
     }
 
     public function doc() {
+        /* translators: %1$s: documentation link URL */
         return sprintf(__('
         <p>Show a targeted message at the exact moment someone is about to close your tab & bring them back into the funnel. Need help? Check out our <a target="_blank" href="%1$s">documentation</a>.</p>', 
         'notificationx'),

@@ -354,7 +354,7 @@ class WooCommerce extends Extension {
                 $new_order['var_product_id'] = $item->get_variation_id();
             }
             $new_order['product_id'] = $item->get_product_id();
-            $new_order['title']      = strip_tags($product_data['title']);
+            $new_order['title']      = wp_strip_all_tags($product_data['title']);
             $new_order['link']       = $product_data['link'];
         }
         if($date && method_exists($date, 'getTimestamp')){
@@ -429,7 +429,7 @@ class WooCommerce extends Extension {
         if (empty($data) || !function_exists('wc_get_orders')) return null;
         $orders = [];
         $time   = Helper::generate_time_string($data);
-        $from   = strtotime(date('Y-m-d h:i', $time));
+        $from   = strtotime(gmdate('Y-m-d h:i', $time));
         $status = !empty($data['order_status']) ? $data['order_status'] : ['wc-completed', 'wc-processing'];
         $wc_orders = \wc_get_orders([
             'status'       => $status,
@@ -468,6 +468,7 @@ class WooCommerce extends Extension {
 
     public function wpml_translate($entry, $settings) {
         if(!empty($entry['product_id'])){
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
             $product_id = apply_filters( 'wpml_object_id', $entry['product_id'], 'product', false);
             $product = wc_get_product($product_id);
             if($product){
@@ -490,12 +491,14 @@ class WooCommerce extends Extension {
     }
 
     public function multiorder_combine($data, $settings) {
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         $should_combine = apply_filters('nx_should_combine', true, $data, $settings);
         if (!$should_combine || empty($settings['combine_multiorder']) || intval($settings['combine_multiorder']) != 1 )  {
             return $data;
         }
         $items = [];
         $item_counts = [];
+        $item_titles = [];
         foreach ($data as $key => $item) {
             $order_id = isset( $item['order_id'] ) ? $item['order_id'] : ( isset( $item['id'] ) ? $item['id'] : null );
             if( $order_id === null ) {
@@ -505,13 +508,50 @@ class WooCommerce extends Extension {
                 $items[$order_id] = $item;
             } else {
                 $item_counts[$order_id] = isset($item_counts[$order_id]) ? ++$item_counts[$order_id] : 1;
+                if ( isset( $item['title'] ) ) {
+                    $item_titles[$order_id][] = $item['title'];
+                }
             }
         }
 
-        $products_more_title = isset($settings['combine_multiorder_text']) && !empty($settings['combine_multiorder_text']) ? __($settings['combine_multiorder_text'], 'notificationx') : __('more products', 'notificationx');
+        $display = !empty($settings['combine_multiorder_display'])
+            ? $settings['combine_multiorder_display']
+            : 'count';
+
         foreach ($item_counts as $key => $item) {
-            // translators: %1$s: title, %2$s: number of product, %3$s: Combine Multi Order Text.
-            $items[$key]['title'] = sprintf(__('%1$s & %2$s %3$s', 'notificationx'), $items[$key]['title'], $item, $products_more_title);
+
+            if ( $display === 'list' && ! empty( $item_titles[$key] ) ) {
+                // List the actual product names, e.g. "Product A & Product B".
+                $products_more_title = implode(
+                    __(' & ', 'notificationx'),
+                    $item_titles[$key]
+                );
+            } else {
+                $singular = !empty($settings['combine_multiorder_text'])
+                    ? $settings['combine_multiorder_text']
+                    : __('more product', 'notificationx');
+
+                $plural = !empty($settings['combine_multiorder_text_plural'])
+                    ? $settings['combine_multiorder_text_plural']
+                    : __('more products', 'notificationx');
+
+                // Both forms are already resolved here - either a user-entered
+                // override or an already-translated default - so they are never
+                // catalogue msgids. _n() would find no entry and fall back to
+                // exactly this choice, so make it explicit.
+                $more_product_text = sprintf(
+                    1 == $item ? $singular : $plural,
+                    $item
+                );
+                $products_more_title = sprintf('%d %s', $item, $more_product_text);
+            }
+
+            $items[$key]['title'] = sprintf(
+                /* translators: %1$s: product title, %2$s: combined "and N more products" text */
+                __('%1$s & %2$s', 'notificationx'),
+                $items[$key]['title'],
+                $products_more_title
+            );
         }
 
         // @todo maybe sort
@@ -568,6 +608,7 @@ class WooCommerce extends Extension {
     }
 
     public function doc(){
+        /* translators: %1$s: WooCommerce installed & activated link URL, %2$s: documentation link URL, %3$s: Watch video tutorial link URL, %4$s: Best FOMO and Social Proof Plugin link URL, %5$s: boost WooCommerce Sales link URL */
         return sprintf(__('<p>Make sure that you have <a target="_blank" href="%1$s">WooCommerce installed & activated</a> to use this campaign. For further assistance, check out our step by step <a target="_blank" href="%2$s">documentation</a>.</p>
 		<p>🎦 <a href="%3$s" target="_blank">Watch video tutorial</a> to learn quickly</p>
 		<p>⭐ NotificationX Integration with WooCommerce</p>

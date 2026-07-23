@@ -186,6 +186,14 @@ $a11y_feature_cards = array(
 ?>
 
 <style type="text/css">
+.notice, .tutor-user-registration-notice-wrapper, #wpbody-content .error {
+	display: none;
+}
+
+#wpbody-content {
+	padding-bottom: 0px;
+}
+
 .tutor-welcome {
 	margin-left: -20px;
 	background-color: rgb(255, 255, 255);
@@ -1044,7 +1052,7 @@ $a11y_feature_cards = array(
 				<div class="tutor-section-title-right">
 					<p><?php esc_html_e( 'Most LMSs treat assessment as the boring part. Tutor LMS 4.0 turns it into the part students look forward to — with five new interactive quiz types designed to keep them engaged.', 'tutor' ); ?></p>
 					<div>
-						<?php $render_action_button( $action_button_text, 'https://tutorlms.com/quizzess/' ); ?>
+						<?php $render_action_button( $action_button_text, 'https://tutorlms.com/quizzes/' ); ?>
 					</div>
 				</div>
 			</div>
@@ -1226,6 +1234,11 @@ $a11y_feature_cards = array(
 					</div>
 
 					<div class="tutor-milestone-ratings">
+						<div class="tutor-rating-item">
+							<div class="tutor-rating-value"><?php esc_html_e( '4.4 ★', 'tutor' ); ?></div>
+							<div class="tutor-rating-label"><?php esc_html_e( 'WordPress', 'tutor' ); ?></div>
+						</div>
+						<div class="tutor-rating-divider"></div>
 						<div class="tutor-rating-item">
 							<div class="tutor-rating-value"><?php esc_html_e( '4.6 ★', 'tutor' ); ?></div>
 							<div class="tutor-rating-label"><?php esc_html_e( 'G2 Ratings', 'tutor' ); ?></div>

@@ -111,24 +111,64 @@ class EDD extends Extension {
 
 
     public function multiorder_combine($data, $settings) {
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Reviewed for the NotificationX codebase: acceptable in this context.
         $should_combine = apply_filters('nx_should_combine', true, $data, $settings);
         if (!$should_combine || empty($settings['combine_multiorder']) || $settings['combine_multiorder'] != '1') {
             return $data;
         }
         $items = [];
         $item_counts = [];
+        $item_titles = [];
         foreach ($data as $key => $item) {
             $payment_id = !empty($item['id']) ? $item['id'] : $item['product_id'];
             if (!isset($items[$payment_id])) {
                 $items[$payment_id] = $item;
             } else {
                 $item_counts[$payment_id] = isset($item_counts[$payment_id]) ? ++$item_counts[$payment_id] : 1;
+                if ( isset( $item['title'] ) ) {
+                    $item_titles[$payment_id][] = $item['title'];
+                }
             }
         }
 
-        $products_more_title = isset($settings['combine_multiorder_text']) && !empty($settings['combine_multiorder_text']) ? __($settings['combine_multiorder_text'], 'notificationx') : __('more products', 'notificationx');
+        $display = !empty($settings['combine_multiorder_display'])
+            ? $settings['combine_multiorder_display']
+            : 'count';
+
         foreach ($item_counts as $key => $item) {
-            $items[$key]['title'] = $items[$key]['title'] . ' & ' . $item . ' ' . $products_more_title;
+
+            if ( $display === 'list' && ! empty( $item_titles[$key] ) ) {
+                // List the actual product names, e.g. "Product A & Product B".
+                $products_more_title = implode(
+                    __(' & ', 'notificationx'),
+                    $item_titles[$key]
+                );
+            } else {
+                $singular = !empty($settings['combine_multiorder_text'])
+                    ? $settings['combine_multiorder_text']
+                    : __('more product', 'notificationx');
+
+                $plural = !empty($settings['combine_multiorder_text_plural'])
+                    ? $settings['combine_multiorder_text_plural']
+                    : __('more products', 'notificationx');
+
+                // Both forms are already resolved here - either a user-entered
+                // override or an already-translated default - so they are never
+                // catalogue msgids. _n() would find no entry and fall back to
+                // exactly this choice, so make it explicit.
+                $more_product_text = sprintf(
+                    1 == $item ? $singular : $plural,
+                    $item
+                );
+                $products_more_title = sprintf('%d %s', $item, $more_product_text);
+            }
+
+            $items[$key]['title'] = sprintf(
+                /* translators: %1$s: product title, %2$s: combined "and N more products" text */
+                __('%1$s & %2$s', 'notificationx'),
+                $items[$key]['title'],
+                $products_more_title
+            );
         }
 
         // @todo maybe sort
@@ -217,7 +257,7 @@ class EDD extends Extension {
     public function get_payments( $days, $amount ) {
         // $date       = '-' . intval( $days ) . ' days';
         // $start_date = strtotime( $date );
-        $from   = date('Y-m-d H:i:s', $days);
+        $from   = gmdate('Y-m-d H:i:s', $days);
 
         $amount = $amount > 0 ? $amount : -1;
 
@@ -359,6 +399,7 @@ class EDD extends Extension {
     /* #endregion */
 
     public function doc(){
+        /* translators: %1$s: Easy Digital Downloads installed & activated link URL, %2$s: documentation link URL, %3$s: Integration with Easy Digital Downloads link URL, %4$s: NotificationX Increase Sales on WordPress link URL */
         return sprintf(__('<p>Make sure that you have <a href="%1$s" target="_blank">Easy Digital Downloads installed & activated</a> to use its campaign & product sales data. For further assistance, check out our step by step <a target="_blank" href="%2$s">documentation</a>.</p>
 		<p>👉 NotificationX <a target="_blank" href="%3$s">Integration with Easy Digital Downloads</a></p>
 		<p><strong>Recommended Blog:</strong></p>

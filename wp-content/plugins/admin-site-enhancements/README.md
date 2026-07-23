@@ -5,7 +5,7 @@ Donate link: https://bowo.io/asenha-sp-rdm
 Tags: enhancements, tweaks, optimizations, tools  
 Requires at least: 4.6  
 Tested up to: 7.0  
-Stable tag: 8.8.7  
+Stable tag: 8.9.0  
 Requires PHP: 5.6  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -75,6 +75,7 @@ _"ASE is an amazing plugin! **Time and money saver**. Thank you!"_ ~[Iulian Baci
 * **[[ASE Pro](https://www.wpase.com/rdme-to-web)] Admin Logo**. Show custom logo in the admin bar or the (top of) admin menu.
 * **Wider Admin Menu**. Up to 300px wide.
 * **Admin Menu Editor / Organizer**. Customize order for the admin menu. Change menu item title or hide some items. [ASE Pro](https://www.wpase.com/rdme-to-web) allows always hiding menu items for some or all user roles, adding custom menu and submenu items, reordering submenu items and always allowing eligible users to view and access a menu item.
+* **Navigation Menu Duplicator**. Duplicate a navigation menu with one click from Appearance → Menus.
 * **[[ASE Pro](https://www.wpase.com/rdme-to-web)] Admin Columns Manager**. Organize columns in the admin list tables. Supports columns for ASE, ACF and Meta Box custom fields.
 * **Show Custom Taxonomy Filters**. Show additional filter(s) on list tables for hierarchical, custom taxonomies. [ASE Pro](https://www.wpase.com/rdme-to-web) allows showing additional filter(s) for non-hierarchical taxonomies.
 * **Enhance List Tables**. Improve the usefulness of listing pages of various post types by adding / removing columns and elements, e.g. featured image, excerpt, last modified, ID, media file size columns.
@@ -139,7 +140,7 @@ _"ASE is an amazing plugin! **Time and money saver**. Thank you!"_ ~[Iulian Baci
 
 * **[[ASE Pro](https://www.wpase.com/rdme-to-web)] Site Backup and Migration**. Backup files and database, restore from backups, and migrate or sync to another server.
 * **Email Delivery**. Set custom sender name and email. Optionally use external SMTP service to ensure notification and transactional emails from your site are being delivered to inboxes. [ASE Pro](https://www.wpase.com/rdme-to-web) adds the option to specify a custom reply-to name and email, Bcc address(es), disable authentication and the option to log email delivery.
-* **[[ASE Pro](https://www.wpase.com/rdme-to-web)] Form Builder**. Enable the drag-and-drop creation of various types of forms (contact, feedback, booking, application, proposal, admission, support, survey, etc.) on the frontend to collect information from site visitors or users or members. 33 field types are available, including Net Promoter Score (NPS), Likert, Matrix of Uniform and Variable Dropdowns and CAPTCHA fields. Support custom form styles, multi-columns layout, email notification, auto responder, entries management and webhooks for sending submission data to Zapier, n8n, etc.
+* **[[ASE Pro](https://www.wpase.com/rdme-to-web)] Form Builder**. Enable the drag-and-drop creation of various types of forms (contact, feedback, booking, application, proposal, admission, support, survey, etc.) on the frontend to collect information from site visitors or users or members. 33 field types are available, including Net Promoter Score (NPS), Likert, Matrix of Uniform and Variable Dropdowns and CAPTCHA fields. Support custom form styles, multi-columns layout, conditional logic, multi-step with saving progress, email notification, auto responder, entries management and webhooks for sending submission data to Zapier, n8n, etc.
 * **[[ASE Pro](https://www.wpase.com/rdme-to-web)] File Manager**. A comprehensive file manager with folder tree navigation, file and folder operations, and code editing capabilities.
 * **[[ASE Pro](https://www.wpase.com/rdme-to-web)] Local User Avatar**. Enable usage of any image from the media library as user avatars.
 * **Multiple User Roles**. Assign multiple roles during user account creation and editing.
@@ -205,32 +206,31 @@ ASE does not officially support multisite. Please use at your own risk. That sai
 
 ## Changelog
 
-**Admin and Site Enhancements (ASE) v1.0.0** was released on October 17, 2022. Since then, there have been **87 _major_ releases** (e.g. 1.1.0 ) and **201 _minor_ releases** (e.g. 4.9.1), for a **total of 288 releases**.
+**Admin and Site Enhancements (ASE) v1.0.0** was released on October 17, 2022. Since then, there have been **89 _major_ releases** (e.g. 1.1.0 ) and **202 _minor_ releases** (e.g. 4.9.1), for a **total of 291 releases**.
 
 Each **_major release_** usually corresponds with the addition of one new module/feature. Each module/feature usually is the equivalent of one (or more) single-purpose plugin. Each **_minor release_** usually contain one or more bugfix or improvements to existing modules/features.
 
 [**Upgrade to ASE Pro**](https://www.wpase.com/chnlg-to-web). Lifetime Deal (LTD) available.
 
-### 8.8.7 (2026.07.06) - ASE Free and Pro
+### 8.9.0 (2026.07.20) - ASE Free and Pro
 
-* **[FIXED and IMPROVED in Free and Pro] Utilities >> Email Delivery**: 
-  * Improved mechanism to (also) trigger the update of encryption version/method of SMTP password during ASE (plugin) update. This should help resolve an issure reported by Bas B. and @VisedFAQ. Please double check the Email Delivery module in your sites and try sending a test email. If test fails, re-enter and re-save the password to ensure proper encryption and delivery.
-  * Fixed a bug where password status under the password field is showing incorrect status. Props to [@VisedFAQ](https://wordpress.org/support/users/visedfaq/) for [reporting](https://wordpress.org/support/topic/smtp-module-bugs/) this.
+* **[ADDED in Free and Pro] Admin Interface >> Navigation Menu Duplicator**. Added a new module to duplicate a navigation menu with one click from Appearance → Menus.
 
-* **[IMPROVED in Pro] Admin Interface >> Admin Menu Organizer**: added mechanism to speed up the saving process of admin menu changes, which should help with timeout issues on sites where admin-ajax.php response is very slow, e.g. low-resource, shared hosting. Props to @SPARKS! W.T. for reporting the issue.
+* **[IMPROVED in Free and Pro] Log In/Out & Register >> Change Login URL**: Improved handling of a URL pattern that may reveal the custom login URL when ASE is installed on WordPress site hosted with NGINX that implements a certain pattern of NGINX URL mapping. Props to Bram for reporting the issue in great detail.
 
-* **[IMPROVED in Pro] Utilities >> Site Backup and Migration**: 
-  * In the "Backup" tab, the total storage will now be updated immediately after creating a new backup or deleting an existing one. Props to Stijn V. for prompting this improvement.
-  * When performing a restore from an encrypted backup archive, entering the wrong password now will re-open the restore popover with instructions to enter the correct password and allows to retry the restore operation without the need to reload the page. Props to Massimo V. for prompting this improvement.
+* **[IMPROVED in Pro] Content Management >> Content Order**: Added compatibility with WPML plugin so that reordering results in sequential menu_order of posts in the primary language while respecting WPML's post order syncing. Also added a new (checkbox) option to allow independent reordering of posts in each language, which will suppress WPML's post order syncing. Props to Stijn V. for prompting this improvement.
 
-* **[FIXED in Pro] Admin Interface >> Admin Bar Custom Elements (ABCE) & Admin Menu Organizer (AMO):** fixed a conflict with Gravity Forms that causes a javascript error on the ABCE & AMO admin pages.
+* **[IMPROVED in Pro] Content Management >> Terms Order**: add an 'Order' button on taxonomy terms listing page, linking to the custom terms ordering page for that taxonomy. Props to Stijn V. for prompting this improvement.
 
-* **[FIXED in Pro] Content Management >> Media Categories**: fixed a conflict on Download Monitor's add/edit download screen that prevents successful upload of files. Props to Jeroen Z. for reporting the issue in detail.
+* **[IMPROVED in Pro] Utilities >> Form Builder**: 
+  * Added two new "Layout" fields: Section Start and Section End, to group together multiple fields. Conditional logic can then be applied to the Section Start field to show / hide the grouped fields at once. Nesting sections is also supported. Props to Roland T. for prompting this improvement.
+  * Added **multi-step form** feature via a new "Layout" field called Page Break. In the "Form" tab, there's also a dedicated section to configure the multi-step behaviour, including step titles, progress indicator type (progress bar or clickable steps), steps styles (pills, circles, squares, tabs, chevrons), and whether to enable saving progress and emailing a URL to resume form-filling. Props to Fabio R. for prompting this improvement.
+
+* **[FIXED in Pro] Admin Interface >> Admin Columns Manager**: Fixed PHP warnings on posts listing page that occurs when a stale/deleted/non-existent taxonomy has a lingering admin column on the listing page. Props to Ignazio D.M. for reporting the issue in detail with a screen recording.
 
 * **[TRANSLATION in Free and Pro]** ASE is now being translated into [38 languages](https://translate.wpase.com/):
   * **Added new/improved translation** for:
-    * ASE Free: Updated Portuguese (Brazil), Polish, Persian, Dutch (Netherlands), Dutch (Belgium).
-    * ASE Pro: Updated Portuguese (Brazil).
+    * ASE Free: Updated Spanish (Spain), Portuguese (Brazil), Polish, Dutch (Netherlands).
   * **More strings have been internationalized**. @Translators, please visit the respective project pages for the Free and Pro versions to translate the new strings, if you havent' done so already.
   * **Interested to help translate or improve the translation?** Please go to [https://translate.wpase.com](https://translate.wpase.com) for more info.
   * **[Chinese (China)](https://translate.wordpress.org/locale/zh-cn/default/wp-plugins/admin-site-enhancements/)**: ASE Free and Pro (completed). Props to [@bricksvip](https://profiles.wordpress.org/bricksvip/) et al. Current status: [39 strings untranslated](https://translate.wordpress.org/projects/wp-plugins/admin-site-enhancements/stable/zh-cn/default/?filters%5Bstatus%5D=untranslated).
