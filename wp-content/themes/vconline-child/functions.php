@@ -349,6 +349,3 @@ function import_edmingle_to_tutor() {
 //     return site_url('/online/courses/');
 // }
 // add_filter('login_redirect', 'custom_tutor_login_redirect', 10, 3);
-
-// Load course badges customizations
-require_once get_stylesheet_directory() . '/inc/course-badges.php';
