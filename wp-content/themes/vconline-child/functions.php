@@ -352,3 +352,6 @@ function import_edmingle_to_tutor() {
 
 // Load course badges customizations
 require_once get_stylesheet_directory() . '/inc/course-badges.php';
+
+// Load course pricing countdown timer and discount badge customizations
+require_once get_stylesheet_directory() . '/inc/course-pricing.php';

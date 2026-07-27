@@ -1,0 +1,121 @@
+/**
+ * Custom Tutor LMS Pro Pricing Section Styling
+ */
+
+/* Discount Badge Styles */
+.vco-discount-badge {
+    display: inline-block;
+    background-color: #e6fcf5;
+    color: #0ca678;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid #c3fae8;
+    animation: pulseBadge 2s infinite ease-in-out;
+}
+
+@keyframes pulseBadge {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* Countdown Wrapper Card */
+.vco-countdown-wrapper {
+    background-color: #fff9db;
+    border: 1px solid #ffe066;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.vco-countdown-label {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: #8c8230;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.vco-countdown-label .tutor-icon-clock {
+    font-size: 15px;
+    margin-right: 6px;
+}
+
+.vco-countdown-timer {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 26px;
+    font-weight: 700;
+    color: #e8590c;
+    letter-spacing: 1px;
+}
+
+/* Coupon Notice UI */
+.vco-coupon-notice {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ebfbee;
+    border: 1px solid #b2f2bb;
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: #2b8a3e;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.vco-coupon-left {
+    display: flex;
+    align-items: center;
+}
+
+.vco-coupon-icon {
+    font-weight: bold;
+    font-size: 11px;
+    margin-right: 8px;
+    background-color: #2b8a3e;
+    color: #ffffff;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.vco-coupon-code {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    background-color: #ffffff;
+    color: #2b8a3e;
+    border: 1px dashed #2b8a3e;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+}
+
+.vco-coupon-applied-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Layout alignment tweak in entry box pricing area */
+.tutor-course-sidebar-card-pricing {
+    flex-wrap: wrap;
+    gap: 8px;
+}
