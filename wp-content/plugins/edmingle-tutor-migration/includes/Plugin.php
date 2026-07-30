@@ -59,6 +59,12 @@ class Plugin {
 		// Migration Engine Registration
 		$migration_engine = new \ETM\Admin\Migration_Engine();
 		$migration_engine->register();
+
+		// Tutor LMS customizations and overrides
+		add_action( 'plugins_loaded', function() {
+			$tutor_customizations = new \ETM\Includes\TutorCustomizations();
+			$tutor_customizations->register();
+		} );
 	}
 
 	/**
