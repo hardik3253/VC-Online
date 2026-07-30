@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Tutor LMS 4.0.2\n"
+"Project-Id-Version: Tutor LMS 4.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tutor\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-22T10:01:47+00:00\n"
+"POT-Creation-Date: 2026-07-24T08:10:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tutor\n"
@@ -4223,8 +4223,8 @@ msgstr ""
 #: assets/js/tutor-coupon.js:3403
 #: assets/js/tutor-coupon.js:3568
 #: assets/js/tutor-coupon.js:4067
-#: assets/js/tutor-coupon.js:11383
-#: assets/js/tutor-coupon.js:11389
+#: assets/js/tutor-coupon.js:11384
+#: assets/js/tutor-coupon.js:11390
 #: assets/js/tutor-course-builder.js:26197
 #: assets/js/tutor-course-builder.js:27045
 #: assets/js/tutor-course-builder.js:27335
@@ -5531,7 +5531,7 @@ msgstr ""
 #. translators: %d: number of days
 #: helpers/TimerHelper.php:141
 #: assets/js/tutor-addon-list.js:2125
-#: assets/js/tutor-coupon.js:11501
+#: assets/js/tutor-coupon.js:11502
 #: assets/js/tutor-course-builder.js:48668
 #: assets/js/tutor-import-export.js:2135
 #: assets/js/tutor-order-details.js:2128
@@ -5546,7 +5546,7 @@ msgstr[1] ""
 #. translators: %d: number of hours
 #: helpers/TimerHelper.php:149
 #: assets/js/tutor-addon-list.js:2117
-#: assets/js/tutor-coupon.js:11493
+#: assets/js/tutor-coupon.js:11494
 #: assets/js/tutor-course-builder.js:48660
 #: assets/js/tutor-import-export.js:2127
 #: assets/js/tutor-order-details.js:2120
@@ -5986,7 +5986,7 @@ msgstr ""
 
 #: includes/tutor-template-functions.php:1539
 #: assets/js/tutor-addon-list.js:2119
-#: assets/js/tutor-coupon.js:11495
+#: assets/js/tutor-coupon.js:11496
 #: assets/js/tutor-course-builder.js:15638
 #: assets/js/tutor-course-builder.js:48662
 #: assets/js/tutor-import-export.js:2129
@@ -6481,7 +6481,7 @@ msgstr ""
 #: templates/learning-area/quiz/attempt.php:311
 #: templates/learning-area/subpages/qna/single.php:44
 #: templates/shared/tour-content.php:71
-#: templates/single/quiz/parts/question.php:204
+#: templates/single/quiz/parts/question.php:205
 #: views/qna/qna-single.php:56
 #: views/quiz/header-context/backend-dashboard-students-attempts.php:20
 #: views/quiz/header-context/course-single-previous-attempts.php:21
@@ -8522,14 +8522,14 @@ msgid "Wrong Answer"
 msgstr ""
 
 #: templates/learning-area/quiz/attempt.php:297
-#: templates/single/quiz/parts/question.php:214
+#: templates/single/quiz/parts/question.php:215
 msgid "Skip Question"
 msgstr ""
 
 #: templates/learning-area/quiz/attempt.php:334
 #: templates/learning-area/quiz/attempt.php:350
-#: templates/single/quiz/parts/question.php:210
-#: templates/single/quiz/parts/question.php:228
+#: templates/single/quiz/parts/question.php:211
+#: templates/single/quiz/parts/question.php:229
 msgid "Submit Quiz"
 msgstr ""
 
@@ -9330,11 +9330,11 @@ msgstr ""
 msgid "Reattempt"
 msgstr ""
 
-#: templates/single/quiz/parts/question.php:122
+#: templates/single/quiz/parts/question.php:123
 msgid "Marks : "
 msgstr ""
 
-#: templates/single/quiz/parts/question.php:210
+#: templates/single/quiz/parts/question.php:211
 msgid "Submit &amp; Next"
 msgstr ""
 
@@ -11126,7 +11126,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1877
 #: assets/js/tutor-core.js:410
-#: assets/js/tutor-coupon.js:11253
+#: assets/js/tutor-coupon.js:11254
 #: assets/js/tutor-course-builder.js:48420
 #: assets/js/tutor-import-export.js:1887
 #: assets/js/tutor-order-details.js:1880
@@ -11137,7 +11137,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1882
 #: assets/js/tutor-core.js:415
-#: assets/js/tutor-coupon.js:11258
+#: assets/js/tutor-coupon.js:11259
 #: assets/js/tutor-course-builder.js:48425
 #: assets/js/tutor-import-export.js:1892
 #: assets/js/tutor-order-details.js:1885
@@ -11148,7 +11148,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1883
 #: assets/js/tutor-core.js:416
-#: assets/js/tutor-coupon.js:11259
+#: assets/js/tutor-coupon.js:11260
 #: assets/js/tutor-course-builder.js:48426
 #: assets/js/tutor-import-export.js:1893
 #: assets/js/tutor-order-details.js:1886
@@ -11159,7 +11159,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1884
 #: assets/js/tutor-core.js:417
-#: assets/js/tutor-coupon.js:11260
+#: assets/js/tutor-coupon.js:11261
 #: assets/js/tutor-course-builder.js:14735
 #: assets/js/tutor-course-builder.js:48427
 #: assets/js/tutor-import-export.js:1894
@@ -11171,7 +11171,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1885
 #: assets/js/tutor-core.js:418
-#: assets/js/tutor-coupon.js:11261
+#: assets/js/tutor-coupon.js:11262
 #: assets/js/tutor-course-builder.js:48428
 #: assets/js/tutor-import-export.js:1895
 #: assets/js/tutor-order-details.js:1888
@@ -11182,7 +11182,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1886
 #: assets/js/tutor-core.js:419
-#: assets/js/tutor-coupon.js:11262
+#: assets/js/tutor-coupon.js:11263
 #: assets/js/tutor-course-builder.js:48429
 #: assets/js/tutor-import-export.js:1896
 #: assets/js/tutor-order-details.js:1889
@@ -11193,7 +11193,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1887
 #: assets/js/tutor-core.js:420
-#: assets/js/tutor-coupon.js:11263
+#: assets/js/tutor-coupon.js:11264
 #: assets/js/tutor-course-builder.js:48430
 #: assets/js/tutor-import-export.js:1897
 #: assets/js/tutor-order-details.js:1890
@@ -11204,7 +11204,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1888
 #: assets/js/tutor-core.js:421
-#: assets/js/tutor-coupon.js:11264
+#: assets/js/tutor-coupon.js:11265
 #: assets/js/tutor-course-builder.js:48431
 #: assets/js/tutor-import-export.js:1898
 #: assets/js/tutor-order-details.js:1891
@@ -11215,7 +11215,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1889
 #: assets/js/tutor-core.js:422
-#: assets/js/tutor-coupon.js:11265
+#: assets/js/tutor-coupon.js:11266
 #: assets/js/tutor-course-builder.js:48432
 #: assets/js/tutor-import-export.js:1899
 #: assets/js/tutor-order-details.js:1892
@@ -11226,7 +11226,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1890
 #: assets/js/tutor-core.js:423
-#: assets/js/tutor-coupon.js:11266
+#: assets/js/tutor-coupon.js:11267
 #: assets/js/tutor-course-builder.js:48433
 #: assets/js/tutor-import-export.js:1900
 #: assets/js/tutor-order-details.js:1893
@@ -11236,7 +11236,7 @@ msgid "YB"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2109
-#: assets/js/tutor-coupon.js:11485
+#: assets/js/tutor-coupon.js:11486
 #: assets/js/tutor-course-builder.js:11552
 #: assets/js/tutor-course-builder.js:11580
 #: assets/js/tutor-course-builder.js:48652
@@ -11249,7 +11249,7 @@ msgstr ""
 
 #. translators: %d: number of hours
 #: assets/js/tutor-addon-list.js:2115
-#: assets/js/tutor-coupon.js:11491
+#: assets/js/tutor-coupon.js:11492
 #: assets/js/tutor-course-builder.js:48658
 #: assets/js/tutor-import-export.js:2125
 #: assets/js/tutor-order-details.js:2118
@@ -11260,7 +11260,7 @@ msgid "%d hours"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2118
-#: assets/js/tutor-coupon.js:11494
+#: assets/js/tutor-coupon.js:11495
 #: assets/js/tutor-course-builder.js:48661
 #: assets/js/tutor-import-export.js:2128
 #: assets/js/tutor-order-details.js:2121
@@ -11271,7 +11271,7 @@ msgstr ""
 
 #. translators: %d: number of days
 #: assets/js/tutor-addon-list.js:2123
-#: assets/js/tutor-coupon.js:11499
+#: assets/js/tutor-coupon.js:11500
 #: assets/js/tutor-course-builder.js:48666
 #: assets/js/tutor-import-export.js:2133
 #: assets/js/tutor-order-details.js:2126
@@ -11282,7 +11282,7 @@ msgid "%d days"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2126
-#: assets/js/tutor-coupon.js:11502
+#: assets/js/tutor-coupon.js:11503
 #: assets/js/tutor-course-builder.js:48669
 #: assets/js/tutor-import-export.js:2136
 #: assets/js/tutor-order-details.js:2129
@@ -11292,7 +11292,7 @@ msgid "daily"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2127
-#: assets/js/tutor-coupon.js:11503
+#: assets/js/tutor-coupon.js:11504
 #: assets/js/tutor-course-builder.js:48670
 #: assets/js/tutor-import-export.js:2137
 #: assets/js/tutor-order-details.js:2130
@@ -11303,7 +11303,7 @@ msgstr ""
 
 #. translators: %d is the number of weeks
 #: assets/js/tutor-addon-list.js:2131
-#: assets/js/tutor-coupon.js:11507
+#: assets/js/tutor-coupon.js:11508
 #: assets/js/tutor-course-builder.js:48674
 #: assets/js/tutor-import-export.js:2141
 #: assets/js/tutor-order-details.js:2134
@@ -11315,7 +11315,7 @@ msgstr ""
 
 #. translators: %d is the number of weeks
 #: assets/js/tutor-addon-list.js:2133
-#: assets/js/tutor-coupon.js:11509
+#: assets/js/tutor-coupon.js:11510
 #: assets/js/tutor-course-builder.js:48676
 #: assets/js/tutor-import-export.js:2143
 #: assets/js/tutor-order-details.js:2136
@@ -11326,7 +11326,7 @@ msgid "%d week"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2134
-#: assets/js/tutor-coupon.js:11510
+#: assets/js/tutor-coupon.js:11511
 #: assets/js/tutor-course-builder.js:48677
 #: assets/js/tutor-import-export.js:2144
 #: assets/js/tutor-order-details.js:2137
@@ -11336,7 +11336,7 @@ msgid "weekly"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2135
-#: assets/js/tutor-coupon.js:11511
+#: assets/js/tutor-coupon.js:11512
 #: assets/js/tutor-course-builder.js:48678
 #: assets/js/tutor-import-export.js:2145
 #: assets/js/tutor-order-details.js:2138
@@ -11347,7 +11347,7 @@ msgstr ""
 
 #. translators: %d is the number of months
 #: assets/js/tutor-addon-list.js:2139
-#: assets/js/tutor-coupon.js:11515
+#: assets/js/tutor-coupon.js:11516
 #: assets/js/tutor-course-builder.js:48682
 #: assets/js/tutor-import-export.js:2149
 #: assets/js/tutor-order-details.js:2142
@@ -11359,7 +11359,7 @@ msgstr ""
 
 #. translators: %d is the number of months
 #: assets/js/tutor-addon-list.js:2141
-#: assets/js/tutor-coupon.js:11517
+#: assets/js/tutor-coupon.js:11518
 #: assets/js/tutor-course-builder.js:48684
 #: assets/js/tutor-import-export.js:2151
 #: assets/js/tutor-order-details.js:2144
@@ -11370,7 +11370,7 @@ msgid "%d month"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2142
-#: assets/js/tutor-coupon.js:11518
+#: assets/js/tutor-coupon.js:11519
 #: assets/js/tutor-course-builder.js:48685
 #: assets/js/tutor-import-export.js:2152
 #: assets/js/tutor-order-details.js:2145
@@ -11380,7 +11380,7 @@ msgid "monthly"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2143
-#: assets/js/tutor-coupon.js:11519
+#: assets/js/tutor-coupon.js:11520
 #: assets/js/tutor-course-builder.js:48686
 #: assets/js/tutor-import-export.js:2153
 #: assets/js/tutor-order-details.js:2146
@@ -11391,7 +11391,7 @@ msgstr ""
 
 #. translators: %d is the number of years
 #: assets/js/tutor-addon-list.js:2147
-#: assets/js/tutor-coupon.js:11523
+#: assets/js/tutor-coupon.js:11524
 #: assets/js/tutor-course-builder.js:48690
 #: assets/js/tutor-import-export.js:2157
 #: assets/js/tutor-order-details.js:2150
@@ -11403,7 +11403,7 @@ msgstr ""
 
 #. translators: %d is the number of years
 #: assets/js/tutor-addon-list.js:2149
-#: assets/js/tutor-coupon.js:11525
+#: assets/js/tutor-coupon.js:11526
 #: assets/js/tutor-course-builder.js:48692
 #: assets/js/tutor-import-export.js:2159
 #: assets/js/tutor-order-details.js:2152
@@ -11414,7 +11414,7 @@ msgid "%d year"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2150
-#: assets/js/tutor-coupon.js:11526
+#: assets/js/tutor-coupon.js:11527
 #: assets/js/tutor-course-builder.js:48693
 #: assets/js/tutor-import-export.js:2160
 #: assets/js/tutor-order-details.js:2153
@@ -11424,7 +11424,7 @@ msgid "yearly"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2151
-#: assets/js/tutor-coupon.js:11527
+#: assets/js/tutor-coupon.js:11528
 #: assets/js/tutor-course-builder.js:48694
 #: assets/js/tutor-import-export.js:2161
 #: assets/js/tutor-order-details.js:2154

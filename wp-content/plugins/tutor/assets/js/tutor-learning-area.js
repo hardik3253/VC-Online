@@ -12,13 +12,13 @@ r.m=e;// webpack/runtime/define_property_getters
 r.e=e=>{return Promise.all(Object.keys(r.f).reduce((t,i)=>{r.f[i](e,t);return t},[]))}})();// webpack/runtime/get javascript chunk filename
 (()=>{// This function allow to reference chunks
 r.u=e=>{// return url for filenames not based on template
-if(e==="4")return"js/lazy-chunks/tutor-dnd-kit.js?ver=4.0.2";// return url for filenames based on template
+if(e==="4")return"js/lazy-chunks/tutor-dnd-kit.js?ver=4.0.3";// return url for filenames based on template
 return""+e+".javascript"}})();// webpack/runtime/get mini-css chunk filename
 (()=>{// This function allow to reference chunks
 r.miniCssF=e=>{// return url for filenames not based on template
 // return url for filenames based on template
 return""+e+".css"}})();// webpack/runtime/get_full_hash
-(()=>{r.h=()=>"693eaa31e63f6423"})();// webpack/runtime/global
+(()=>{r.h=()=>"86aeaf39900f57e4"})();// webpack/runtime/global
 (()=>{r.g=(()=>{if(typeof globalThis==="object")return globalThis;try{return this||new Function("return this")()}catch(e){if(typeof window==="object")return window}})()})();// webpack/runtime/has_own_property
 (()=>{r.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t)})();// webpack/runtime/load_script
 (()=>{var e={};var t="tutor:";// loadScript function to load a script via script tag
