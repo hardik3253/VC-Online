@@ -357,3 +357,6 @@ require_once get_stylesheet_directory() . '/inc/course-badges.php';
 
 // Load course pricing countdown timer and discount badge customizations
 require_once get_stylesheet_directory() . '/inc/course-pricing.php';
+
+// Load Tutor LMS Customizations and Overrides
+require_once get_stylesheet_directory() . '/inc/tutor-customizations.php';
