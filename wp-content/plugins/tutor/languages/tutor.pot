@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Tutor LMS 4.0.3\n"
+"Project-Id-Version: Tutor LMS 4.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tutor\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-24T08:10:58+00:00\n"
+"POT-Creation-Date: 2026-07-31T07:40:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tutor\n"
@@ -1474,6 +1474,7 @@ msgstr ""
 
 #: classes/Instructors_List.php:76
 #: classes/Options_V2.php:793
+#: classes/User.php:815
 msgid "Instructor"
 msgstr ""
 
@@ -3944,13 +3945,24 @@ msgstr ""
 msgid "User list fetched successfully!"
 msgstr ""
 
+#: classes/User.php:812
+#: templates/dashboard/account/reviews/review-card.php:201
+#: templates/dashboard/instructor/home.php:479
+#: templates/public-profile.php:137
+#: views/elements/search-filter.php:43
+#: views/qna/contexts.php:16
+#: views/quiz/header-context/frontend-dashboard-students-attempts.php:31
+#: assets/js/tutor-order-details.js:9547
+msgid "Student"
+msgstr ""
+
 #. translators:%s for switching mode.
-#: classes/User.php:818
+#: classes/User.php:821
 #, php-format
 msgid "Profile switched to %s!"
 msgstr ""
 
-#: classes/User.php:895
+#: classes/User.php:898
 msgid "Tour completed"
 msgstr ""
 
@@ -6588,6 +6600,7 @@ msgid "Invoice"
 msgstr ""
 
 #: templates/dashboard/account/billing/order-history.php:37
+#: templates/dashboard/account/billing/order-history.php:92
 msgid "No Orders Found!"
 msgstr ""
 
@@ -6670,16 +6683,6 @@ msgstr ""
 
 #: templates/dashboard/account/reviews/review-card.php:164
 msgid "Review Actions"
-msgstr ""
-
-#: templates/dashboard/account/reviews/review-card.php:201
-#: templates/dashboard/instructor/home.php:479
-#: templates/public-profile.php:137
-#: views/elements/search-filter.php:43
-#: views/qna/contexts.php:16
-#: views/quiz/header-context/frontend-dashboard-students-attempts.php:31
-#: assets/js/tutor-order-details.js:9547
-msgid "Student"
 msgstr ""
 
 #: templates/dashboard/account/reviews/review-card.php:238
@@ -7315,6 +7318,7 @@ msgid "Completed Courses"
 msgstr ""
 
 #: templates/dashboard/courses.php:118
+#: templates/dashboard/my-courses.php:158
 #: templates/dashboard/student/continue-learning.php:51
 #: templates/dashboard/wishlist.php:110
 msgid "No Courses Found"
@@ -7408,6 +7412,10 @@ msgstr ""
 #: templates/dashboard/discussions/comment-form.php:40
 #: templates/learning-area/lesson/comment-form.php:49
 msgid "Please enter a comment"
+msgstr ""
+
+#: templates/dashboard/discussions/comment-list.php:108
+msgid "No Comments Found!"
 msgstr ""
 
 #: templates/dashboard/discussions/comment-list.php:141
@@ -7526,6 +7534,11 @@ msgstr ""
 #: templates/dashboard/discussions/qna-form.php:60
 #: templates/learning-area/subpages/qna/form.php:60
 msgid "Please enter your response."
+msgstr ""
+
+#: templates/dashboard/discussions/qna-list.php:80
+#: templates/learning-area/subpages/qna.php:120
+msgid "No Questions Found!"
 msgstr ""
 
 #: templates/dashboard/discussions/qna-list.php:114
@@ -7703,6 +7716,22 @@ msgstr ""
 
 #: templates/dashboard/instructor/instructor-request-alert.php:30
 msgid "Your application has been approved. You can now create and publish courses."
+msgstr ""
+
+#: templates/dashboard/instructor/logged-in.php:21
+msgid "You have been rejected from being an instructor."
+msgstr ""
+
+#: templates/dashboard/instructor/logged-in.php:37
+msgid "Your application will be reviewed and the results will be sent to you by email."
+msgstr ""
+
+#: templates/dashboard/instructor/logged-in.php:39
+msgid "Your application has been accepted. Further necessary details have been sent to your registered email account."
+msgstr ""
+
+#: templates/dashboard/instructor/logged-in.php:41
+msgid "You have been blocked from being an instructor."
 msgstr ""
 
 #: templates/dashboard/instructor/logged-in.php:54
@@ -8471,6 +8500,14 @@ msgstr ""
 
 #: templates/learning-area/lesson/comments.php:93
 msgid "Be the first to ask a question about this lesson!"
+msgstr ""
+
+#: templates/learning-area/lesson/comments.php:108
+msgid "Delete This Item?"
+msgstr ""
+
+#: templates/learning-area/lesson/comments.php:109
+msgid "This action cannot be undone."
 msgstr ""
 
 #: templates/learning-area/lesson/footer.php:48
