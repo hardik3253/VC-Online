@@ -169,11 +169,11 @@ class Tutor_Custom_Utils_Extended extends \TUTOR\Utils {
             $date_query = "AND DATE(user.user_registered) = CAST('$date' AS DATE)";
         }
 
-        $order_query = 'ORDER BY user.ID DESC';
+        $order_query = 'ORDER BY user.user_registered DESC';
         if ( '' !== $order ) {
             $is_valid_sql = sanitize_sql_orderby( $order );
             if ( $is_valid_sql ) {
-                $order_query = "ORDER BY user.display_name {$order}";
+                $order_query = "ORDER BY user.user_registered {$order}";
             }
         }
         $search_term_raw = $search_term;

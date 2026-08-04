@@ -41,6 +41,10 @@ class Migration_Engine {
 			wp_send_json_error( 'Permission denied.' );
 		}
 
+		if ( ! defined( 'ETM_MIGRATION_IN_PROGRESS' ) ) {
+			define( 'ETM_MIGRATION_IN_PROGRESS', true );
+		}
+
 		$resume = isset( $_POST['resume'] ) && $_POST['resume'] === 'true';
 		$state_key = 'etm_migrate_state_students';
 		
@@ -171,6 +175,10 @@ class Migration_Engine {
 			wp_send_json_error( 'Permission denied.' );
 		}
 
+		if ( ! defined( 'ETM_MIGRATION_IN_PROGRESS' ) ) {
+			define( 'ETM_MIGRATION_IN_PROGRESS', true );
+		}
+
 		$resume = isset( $_POST['resume'] ) && $_POST['resume'] === 'true';
 		$state_key = 'etm_migrate_state_courses';
 		
@@ -279,6 +287,10 @@ class Migration_Engine {
 
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( 'Permission denied.' );
+		}
+
+		if ( ! defined( 'ETM_MIGRATION_IN_PROGRESS' ) ) {
+			define( 'ETM_MIGRATION_IN_PROGRESS', true );
 		}
 
 		$resume = isset( $_POST['resume'] ) && $_POST['resume'] === 'true';

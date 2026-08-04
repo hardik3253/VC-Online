@@ -17,6 +17,7 @@ class Plugin {
 	public function __construct() {
 		$this->load_dependencies();
 		$this->define_admin_hooks();
+		\ETM\Includes\Google_Sheet_Sync::init();
 	}
 
 	/**
@@ -47,6 +48,11 @@ class Plugin {
 		add_action( 'wp_ajax_etm_execute_api', array( $plugin_admin, 'ajax_execute_api' ) );
 		add_action( 'wp_ajax_etm_delete_history', array( $plugin_admin, 'ajax_delete_history' ) );
 		add_action( 'wp_ajax_etm_toggle_debug', array( $plugin_admin, 'ajax_toggle_debug' ) );
+		add_action( 'wp_ajax_etm_get_unsynced_users_count', array( $plugin_admin, 'ajax_get_unsynced_users_count' ) );
+		add_action( 'wp_ajax_etm_sync_existing_users_batch', array( $plugin_admin, 'ajax_sync_existing_users_batch' ) );
+
+		// Display newly registered users first by default on users list screen
+		add_action( 'pre_get_users', array( $this, 'sort_users_by_registration_date' ) );
 
 		// Data Explorer Registration
 		$data_explorer = new \ETM\Admin\Data_Explorer();
@@ -59,6 +65,21 @@ class Plugin {
 		// Migration Engine Registration
 		$migration_engine = new \ETM\Admin\Migration_Engine();
 		$migration_engine->register();
+	}
+
+	/**
+	 * Sort WordPress Users List by registration date descending by default.
+	 *
+	 * @param \WP_User_Query $query
+	 */
+	public function sort_users_by_registration_date( $query ) {
+		global $pagenow;
+		if ( is_admin() && 'users.php' === $pagenow ) {
+			if ( ! isset( $_GET['orderby'] ) ) {
+				$query->set( 'orderby', 'registered' );
+				$query->set( 'order', 'DESC' );
+			}
+		}
 	}
 
 	/**

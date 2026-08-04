@@ -134,6 +134,18 @@ class Admin {
 			'sanitize_callback' => array( $this, 'sanitize_password' ),
 			'default'           => '',
 		) );
+
+		register_setting( 'etm_gsheet_settings_group', 'etm_gsheet_sync_enabled', array(
+			'type'              => 'integer',
+			'sanitize_callback' => 'intval',
+			'default'           => 0,
+		) );
+
+		register_setting( 'etm_gsheet_settings_group', 'etm_gsheet_webhook_url', array(
+			'type'              => 'string',
+			'sanitize_callback' => 'esc_url_raw',
+			'default'           => '',
+		) );
 	}
 
 	/**
@@ -377,5 +389,99 @@ class Admin {
 		update_option( 'etm_debug_mode', $status );
 
 		wp_send_json_success( 'Debug mode toggled' );
+	}
+
+	/**
+	 * AJAX: Get unsynced users count
+	 */
+	public function ajax_get_unsynced_users_count() {
+		check_ajax_referer( 'etm_admin_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( 'Unauthorized' );
+		}
+
+		$args = array(
+			'role__not_in' => array( 'administrator', 'tutor_instructor' ),
+			'meta_query' => array(
+				array(
+					'key'     => '_etm_synced_to_gsheet',
+					'compare' => 'NOT EXISTS',
+				),
+			),
+			'fields' => 'ID',
+		);
+		$users = get_users( $args );
+		
+		wp_send_json_success( array(
+			'count' => count( $users )
+		) );
+	}
+
+	/**
+	 * AJAX: Sync existing users batch
+	 */
+	public function ajax_sync_existing_users_batch() {
+		check_ajax_referer( 'etm_admin_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( 'Unauthorized' );
+		}
+
+		$limit = isset( $_POST['limit'] ) ? intval( $_POST['limit'] ) : 20;
+
+		$args = array(
+			'role__not_in' => array( 'administrator', 'tutor_instructor' ),
+			'orderby'      => 'registered',
+			'order'        => 'DESC',
+			'meta_query' => array(
+				array(
+					'key'     => '_etm_synced_to_gsheet',
+					'compare' => 'NOT EXISTS',
+				),
+			),
+			'number' => $limit,
+			'fields' => 'ID',
+		);
+		$users = get_users( $args );
+
+		if ( empty( $users ) ) {
+			wp_send_json_success( array(
+				'synced'    => 0,
+				'failed'    => 0,
+				'remaining' => 0,
+			) );
+		}
+
+		$synced_count = 0;
+		$failed_count = 0;
+
+		foreach ( $users as $user_id ) {
+			$result = \ETM\Includes\Google_Sheet_Sync::sync_user( $user_id );
+			if ( is_wp_error( $result ) ) {
+				$failed_count++;
+			} else {
+				$synced_count++;
+			}
+		}
+
+		// Re-fetch remaining count
+		$remaining_args = array(
+			'role__not_in' => array( 'administrator', 'tutor_instructor' ),
+			'meta_query' => array(
+				array(
+					'key'     => '_etm_synced_to_gsheet',
+					'compare' => 'NOT EXISTS',
+				),
+			),
+			'fields' => 'ID',
+		);
+		$remaining_users = get_users( $remaining_args );
+
+		wp_send_json_success( array(
+			'synced'    => $synced_count,
+			'failed'    => $failed_count,
+			'remaining' => count( $remaining_users ),
+		) );
 	}
 }
