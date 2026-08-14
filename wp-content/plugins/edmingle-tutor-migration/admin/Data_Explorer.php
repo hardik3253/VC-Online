@@ -102,6 +102,7 @@ class Data_Explorer {
 		} else {
 			// Standard page/limit or cursor
 			$query_params['limit'] = 50;
+			$query_params['per_page'] = 50; // Edmingle API uses per_page for pagination
 			if ( ! empty( $state['next_cursor'] ) ) {
 				$query_params['cursor'] = $state['next_cursor'];
 			} else {
@@ -111,9 +112,24 @@ class Data_Explorer {
 			}
 		}
 
-		$response = Edmingle_API::request( $endpoint, 'GET', array(), $query_params );
+		$response = Edmingle_API::request( $endpoint, 'GET', $query_params );
 
 		if ( is_wp_error( $response ) ) {
+			// Gracefully stub out invalid placeholders so that the sync wizard doesn't get blocked
+			if ( in_array( $type, array( 'curriculum', 'materials', 'notifications' ) ) ) {
+				$state['status'] = 'completed';
+				$state['total_records'] = 0;
+				$state['total_pages'] = 1;
+				update_option( $state_key, $state );
+				wp_send_json_success( array(
+					'state'          => $state,
+					'stats'          => array( 'imported' => 0, 'updated' => 0, 'skipped' => 0 ),
+					'items_in_page'  => 0,
+					'execution_time' => 0,
+				) );
+				exit;
+			}
+
 			$state['status'] = 'failed';
 			update_option( $state_key, $state );
 			ETM_Database::log_request( $endpoint, 0, 500, $response->get_error_message(), $state['current_page'] );
@@ -193,8 +209,16 @@ class Data_Explorer {
 		// Pagination Engine: auto-detect next page or end of records
 		$has_more = false;
 
-		// 1. Check for specific pagination meta
-		if ( isset( $data['meta']['pagination'] ) ) {
+		// 1. Check for specific pagination meta / page_context
+		if ( isset( $data['page_context'] ) ) {
+			$context = $data['page_context'];
+			$state['total_records'] = isset( $context['total_rows'] ) ? intval( $context['total_rows'] ) : 0;
+			$state['total_pages']   = ( isset( $context['per_page'] ) && $context['per_page'] > 0 ) ? ceil( $state['total_records'] / $context['per_page'] ) : 1;
+			if ( isset( $context['has_more_page'] ) && $context['has_more_page'] ) {
+				$has_more = true;
+				$state['current_page'] = isset( $context['page'] ) ? intval( $context['page'] ) + 1 : $state['current_page'] + 1;
+			}
+		} elseif ( isset( $data['meta']['pagination'] ) ) {
 			$meta = $data['meta']['pagination'];
 			$state['total_records'] = isset( $meta['total'] ) ? $meta['total'] : 0;
 			$state['total_pages']   = isset( $meta['total_pages'] ) ? $meta['total_pages'] : 1;
