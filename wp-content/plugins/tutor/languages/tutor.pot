@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Tutor LMS 4.0.4\n"
+"Project-Id-Version: Tutor LMS 4.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tutor\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-31T07:40:26+00:00\n"
+"POT-Creation-Date: 2026-08-12T10:04:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tutor\n"
@@ -73,10 +73,10 @@ msgid "Manage subscription"
 msgstr ""
 
 #: classes/Addons.php:246
-#: assets/js/tutor-course-builder.js:27509
-#: assets/js/tutor-course-builder.js:28185
-#: assets/js/tutor-course-builder.js:31192
-#: assets/js/tutor-course-builder.js:31207
+#: assets/js/tutor-course-builder.js:27525
+#: assets/js/tutor-course-builder.js:28201
+#: assets/js/tutor-course-builder.js:31208
+#: assets/js/tutor-course-builder.js:31223
 #: assets/js/tutor-import-export.js:7381
 #: assets/js/tutor-import-export.js:7499
 msgid "Content Bank"
@@ -95,7 +95,7 @@ msgid "Let users register & login through social networks."
 msgstr ""
 
 #: classes/Addons.php:255
-#: assets/js/tutor-course-builder.js:13459
+#: assets/js/tutor-course-builder.js:13475
 msgid "Content Drip"
 msgstr ""
 
@@ -206,7 +206,7 @@ msgstr ""
 
 #: classes/Addons.php:307
 #: GDPR/Controllers/LegalConsent.php:167
-#: assets/js/tutor-course-builder.js:13469
+#: assets/js/tutor-course-builder.js:13485
 msgid "Enrollment"
 msgstr ""
 
@@ -239,7 +239,7 @@ msgid "Set course prerequisites to guide learning paths effectively."
 msgstr ""
 
 #: classes/Addons.php:323
-#: assets/js/tutor-course-builder.js:13478
+#: assets/js/tutor-course-builder.js:13494
 msgid "BuddyPress"
 msgstr ""
 
@@ -288,7 +288,7 @@ msgid "Create multilingual courses, lessons, dashboard and more."
 msgstr ""
 
 #: classes/Addons.php:347
-#: assets/js/tutor-course-builder.js:16534
+#: assets/js/tutor-course-builder.js:16550
 msgid "H5P"
 msgstr ""
 
@@ -341,12 +341,12 @@ msgstr ""
 #: assets/js/tutor-course-builder.js:8274
 #: assets/js/tutor-course-builder.js:8307
 #: assets/js/tutor-course-builder.js:8485
-#: assets/js/tutor-course-builder.js:10464
-#: assets/js/tutor-course-builder.js:15792
-#: assets/js/tutor-course-builder.js:25680
-#: assets/js/tutor-course-builder.js:31274
-#: assets/js/tutor-course-builder.js:31301
-#: assets/js/tutor-course-builder.js:31327
+#: assets/js/tutor-course-builder.js:10468
+#: assets/js/tutor-course-builder.js:15808
+#: assets/js/tutor-course-builder.js:25696
+#: assets/js/tutor-course-builder.js:31290
+#: assets/js/tutor-course-builder.js:31317
+#: assets/js/tutor-course-builder.js:31343
 #: assets/js/tutor-import-export.js:5954
 #: assets/js/tutor-import-export.js:5971
 msgid "Pro"
@@ -392,7 +392,7 @@ msgstr ""
 #: classes/Admin.php:269
 #: templates/learning-area/subpages/course-info.php:97
 #: views/pages/course-list.php:262
-#: assets/js/tutor-course-builder.js:12719
+#: assets/js/tutor-course-builder.js:12735
 msgid "Categories"
 msgstr ""
 
@@ -401,7 +401,7 @@ msgstr ""
 #: classes/Post_types.php:196
 #: templates/learning-area/subpages/course-info.php:150
 #: templates/single/course/tags.php:18
-#: assets/js/tutor-course-builder.js:12727
+#: assets/js/tutor-course-builder.js:12743
 msgid "Tags"
 msgstr ""
 
@@ -420,7 +420,7 @@ msgstr ""
 #: classes/Announcements.php:180
 #: classes/Options_V2.php:1576
 #: classes/Utils.php:2769
-#: classes/Utils.php:8524
+#: classes/Utils.php:8539
 #: templates/dashboard/announcements.php:90
 #: templates/learning-area/subpages/announcements.php:45
 #: views/fragments/announcement-list.php:253
@@ -442,11 +442,11 @@ msgstr ""
 #: classes/Admin.php:314
 #: classes/Options_V2.php:1465
 #: classes/Q_And_A.php:107
-#: classes/Utils.php:8519
+#: classes/Utils.php:8534
 #: templates/dashboard.php:92
 #: templates/dashboard/discussions.php:40
 #: templates/learning-area/subpages/qna.php:75
-#: assets/js/tutor-course-builder.js:13574
+#: assets/js/tutor-course-builder.js:13590
 msgid "Q&A"
 msgstr ""
 
@@ -457,7 +457,7 @@ msgstr ""
 #: classes/Admin.php:325
 #: classes/Admin.php:326
 #: templates/learning-area/subpages/course-info.php:67
-#: assets/js/tutor-course-builder.js:12764
+#: assets/js/tutor-course-builder.js:12780
 msgid "Instructors"
 msgstr ""
 
@@ -486,7 +486,7 @@ msgstr ""
 #: classes/Dashboard.php:161
 #: templates/dashboard/account/settings/header.php:52
 #: views/options/settings.php:21
-#: assets/js/tutor-course-builder.js:30010
+#: assets/js/tutor-course-builder.js:30026
 #: assets/js/tutor-import-export.js:7504
 #: assets/js/tutor-import-export.js:7835
 msgid "Settings"
@@ -513,9 +513,9 @@ msgstr ""
 #: assets/js/tutor-admin.js:2301
 #: assets/js/tutor-admin.js:2333
 #: assets/js/tutor-admin.js:2368
-#: assets/js/tutor-admin.js:3264
-#: assets/js/tutor-admin.js:3317
+#: assets/js/tutor-admin.js:3267
 #: assets/js/tutor-admin.js:3320
+#: assets/js/tutor-admin.js:3323
 #: assets/js/tutor-core.js:2407
 #: assets/js/tutor-front.js:1679
 #: assets/js/tutor-front.js:2171
@@ -586,12 +586,12 @@ msgstr ""
 #: classes/Ajax.php:157
 #: classes/Ajax.php:511
 #: classes/Ajax.php:591
-#: classes/Course.php:2037
-#: classes/Course.php:2357
+#: classes/Course.php:2069
+#: classes/Course.php:2389
 #: classes/Instructor.php:343
-#: classes/Quiz.php:1123
-#: classes/Quiz.php:1127
-#: classes/Quiz.php:1180
+#: classes/Quiz.php:1129
+#: classes/Quiz.php:1133
+#: classes/Quiz.php:1186
 msgid "Access Denied"
 msgstr ""
 
@@ -734,7 +734,7 @@ msgstr ""
 #: templates/dashboard/account/reviews/review-card.php:108
 #: templates/dashboard/my-courses.php:73
 #: templates/learning-area/subpages/reviews/review-card.php:61
-#: templates/shared/components/quiz/attempt-details/question-header.php:26
+#: templates/shared/components/quiz/attempt-details/question-header.php:27
 #: templates/shared/components/quiz/attempt-details/question.php:60
 #: templates/shared/components/quiz/attempt-details/summary.php:94
 #: templates/single/course/reviews-loop.php:44
@@ -760,7 +760,7 @@ msgid "Delete Permanently"
 msgstr ""
 
 #: classes/Backend_Page_Trait.php:145
-#: classes/Quiz.php:2038
+#: classes/Quiz.php:2047
 #: components/ConfirmationModal.php:417
 #: templates/dashboard/account/reviews.php:66
 #: templates/dashboard/account/reviews/review-card.php:258
@@ -797,7 +797,7 @@ msgstr ""
 #: assets/js/tutor-addon-list.js:4657
 #: assets/js/tutor-coupon.js:4160
 #: assets/js/tutor-coupon.js:6208
-#: assets/js/tutor-coupon.js:8126
+#: assets/js/tutor-coupon.js:8180
 #: assets/js/tutor-course-builder.js:931
 #: assets/js/tutor-course-builder.js:1318
 #: assets/js/tutor-course-builder.js:4697
@@ -806,27 +806,27 @@ msgstr ""
 #: assets/js/tutor-course-builder.js:7863
 #: assets/js/tutor-course-builder.js:8716
 #: assets/js/tutor-course-builder.js:9307
-#: assets/js/tutor-course-builder.js:10507
-#: assets/js/tutor-course-builder.js:11379
-#: assets/js/tutor-course-builder.js:14507
-#: assets/js/tutor-course-builder.js:15241
-#: assets/js/tutor-course-builder.js:15475
-#: assets/js/tutor-course-builder.js:18691
-#: assets/js/tutor-course-builder.js:18906
-#: assets/js/tutor-course-builder.js:21555
-#: assets/js/tutor-course-builder.js:22013
-#: assets/js/tutor-course-builder.js:22629
-#: assets/js/tutor-course-builder.js:23314
-#: assets/js/tutor-course-builder.js:27543
-#: assets/js/tutor-course-builder.js:30034
-#: assets/js/tutor-course-builder.js:30118
-#: assets/js/tutor-course-builder.js:30716
-#: assets/js/tutor-course-builder.js:31814
-#: assets/js/tutor-course-builder.js:31844
-#: assets/js/tutor-course-builder.js:41078
-#: assets/js/tutor-course-builder.js:43622
-#: assets/js/tutor-course-builder.js:44335
-#: assets/js/tutor-course-builder.js:46643
+#: assets/js/tutor-course-builder.js:10511
+#: assets/js/tutor-course-builder.js:11381
+#: assets/js/tutor-course-builder.js:14523
+#: assets/js/tutor-course-builder.js:15257
+#: assets/js/tutor-course-builder.js:15491
+#: assets/js/tutor-course-builder.js:18707
+#: assets/js/tutor-course-builder.js:18922
+#: assets/js/tutor-course-builder.js:21571
+#: assets/js/tutor-course-builder.js:22029
+#: assets/js/tutor-course-builder.js:22645
+#: assets/js/tutor-course-builder.js:23330
+#: assets/js/tutor-course-builder.js:27559
+#: assets/js/tutor-course-builder.js:30050
+#: assets/js/tutor-course-builder.js:30134
+#: assets/js/tutor-course-builder.js:30732
+#: assets/js/tutor-course-builder.js:31830
+#: assets/js/tutor-course-builder.js:31860
+#: assets/js/tutor-course-builder.js:41098
+#: assets/js/tutor-course-builder.js:43642
+#: assets/js/tutor-course-builder.js:44355
+#: assets/js/tutor-course-builder.js:46722
 #: assets/js/tutor-import-export.js:5635
 #: assets/js/tutor-import-export.js:7405
 #: assets/js/tutor-import-export.js:8789
@@ -901,49 +901,49 @@ msgstr ""
 msgid "Mark as unpaid"
 msgstr ""
 
-#: classes/Course.php:348
+#: classes/Course.php:353
 msgid "Invalid password"
 msgstr ""
 
-#: classes/Course.php:483
+#: classes/Course.php:488
 msgid "Video source is required"
 msgstr ""
 
-#: classes/Course.php:485
+#: classes/Course.php:490
 msgid "Invalid video source"
 msgstr ""
 
-#: classes/Course.php:517
+#: classes/Course.php:522
 msgid "The enrollment start date cannot be earlier than the course start date"
 msgstr ""
 
-#: classes/Course.php:536
+#: classes/Course.php:541
 msgid "Invalid course categories"
 msgstr ""
 
-#: classes/Course.php:544
+#: classes/Course.php:549
 msgid "Invalid course tags"
 msgstr ""
 
-#: classes/Course.php:598
-#: classes/Course.php:636
+#: classes/Course.php:603
+#: classes/Course.php:641
 msgid "Invalid price type"
 msgstr ""
 
-#: classes/Course.php:611
-#: classes/Course.php:651
+#: classes/Course.php:616
+#: classes/Course.php:656
 msgid "Product already linked with course"
 msgstr ""
 
-#: classes/Course.php:655
+#: classes/Course.php:660
 msgid "Invalid product"
 msgstr ""
 
-#: classes/Course.php:663
+#: classes/Course.php:668
 msgid "Price is required"
 msgstr ""
 
-#: classes/Course.php:902
+#: classes/Course.php:907
 #: classes/Post_types.php:98
 #: templates/dashboard/my-courses.php:108
 #: templates/dashboard/my-courses.php:127
@@ -951,69 +951,73 @@ msgstr ""
 msgid "New Course"
 msgstr ""
 
-#: classes/Course.php:925
+#: classes/Course.php:930
 msgid "Draft course created"
 msgstr ""
 
-#: classes/Course.php:984
+#: classes/Course.php:989
 msgid "Course list retrieved successfully!"
 msgstr ""
 
-#: classes/Course.php:1034
-#: classes/Course.php:1134
-#: classes/Course.php:1296
-#: classes/Course.php:1327
+#: classes/Course.php:1039
+#: classes/Course.php:1140
+#: classes/Course.php:1305
+#: classes/Course.php:1336
 msgid "Invalid input"
 msgstr ""
 
-#: classes/Course.php:1059
+#: classes/Course.php:1064
 msgid "Course created successfully"
 msgstr ""
 
-#: classes/Course.php:1106
-#: classes/Course.php:1200
-#: classes/Course.php:1290
-#: classes/Course.php:1321
+#: classes/Course.php:1112
+#: classes/Course.php:1206
+#: classes/Course.php:1299
+#: classes/Course.php:1330
 msgid "Invalid course id"
 msgstr ""
 
-#: classes/Course.php:1182
+#: classes/Course.php:1188
 msgid "Course updated successfully."
 msgstr ""
 
-#: classes/Course.php:1226
+#: classes/Course.php:1232
 msgid "Builder unlinked successfully."
 msgstr ""
 
-#: classes/Course.php:1302
+#: classes/Course.php:1311
 msgid "Course contents fetched successfully"
 msgstr ""
 
-#: classes/Course.php:1418
+#: classes/Course.php:1427
 msgid "Data retrieved successfully!"
 msgstr ""
 
-#: classes/Course.php:1453
+#: classes/Course.php:1462
 msgid "You cannot edit this course because it is in the Trash. Please restore it and try again"
 msgstr ""
 
-#: classes/Course.php:1685
+#: classes/Course.php:1694
 msgid "Products retrieved successfully!"
 msgstr ""
 
-#: classes/Course.php:1715
+#: classes/Course.php:1724
 msgid "One product can not be added to multiple course!"
 msgstr ""
 
-#: classes/Course.php:1727
+#: classes/Course.php:1736
 msgid "Product not found"
 msgstr ""
 
-#: classes/Course.php:1746
+#: classes/Course.php:1755
 msgid "Sorting order is required"
 msgstr ""
 
-#: classes/Course.php:1792
+#: classes/Course.php:1782
+msgid "Course content order updated successfully!"
+msgstr ""
+
+#: classes/Course.php:1801
 #: templates/loop/course-price-edd.php:80
 #: templates/loop/course-price-tutor.php:84
 #: templates/loop/course-price-woocommerce.php:77
@@ -1021,131 +1025,131 @@ msgstr ""
 msgid "Fully Booked"
 msgstr ""
 
-#: classes/Course.php:2020
+#: classes/Course.php:2052
 msgid "Topic title is required!"
 msgstr ""
 
-#: classes/Course.php:2022
+#: classes/Course.php:2054
 #: classes/Lesson.php:453
 #: ecommerce/BillingController.php:181
 msgid "Invalid inputs"
 msgstr ""
 
-#: classes/Course.php:2060
+#: classes/Course.php:2092
 msgid "Topic updated successfully!"
 msgstr ""
 
-#: classes/Course.php:2065
+#: classes/Course.php:2097
 msgid "Topic created successfully!"
 msgstr ""
 
-#: classes/Course.php:2111
+#: classes/Course.php:2143
 msgid "Topic deleted successfully!"
 msgstr ""
 
-#: classes/Course.php:2133
+#: classes/Course.php:2165
 msgid "Please Sign In first"
 msgstr ""
 
-#: classes/Course.php:2147
-#: classes/Course.php:3152
+#: classes/Course.php:2179
+#: classes/Course.php:3184
 msgid "You do not have permission to enroll in this course"
 msgstr ""
 
-#: classes/Course.php:2194
+#: classes/Course.php:2226
 #: classes/Lesson.php:596
 msgid "Please Sign-In"
 msgstr ""
 
-#: classes/Course.php:2198
+#: classes/Course.php:2230
 msgid "User is not enrolled in course"
 msgstr ""
 
-#: classes/Course.php:2211
-#: classes/Course.php:2256
+#: classes/Course.php:2243
+#: classes/Course.php:2288
 msgid "You do not have permission to complete this course."
 msgstr ""
 
-#: classes/Course.php:2238
+#: classes/Course.php:2270
 #: classes/Quiz.php:548
 msgid "Invalid course"
 msgstr ""
 
-#: classes/Course.php:2243
+#: classes/Course.php:2275
 msgid "You are not enrolled in this course"
 msgstr ""
 
-#: classes/Course.php:2262
+#: classes/Course.php:2294
 msgid "Course completed successfully"
 msgstr ""
 
-#: classes/Course.php:2366
+#: classes/Course.php:2398
 msgid "Only main instructor can delete this course"
 msgstr ""
 
-#: classes/Course.php:2387
+#: classes/Course.php:2419
 msgid "Course has been trashed successfully "
 msgstr ""
 
-#: classes/Course.php:2894
+#: classes/Course.php:2926
 msgid "Complete all lessons to mark this course as complete"
 msgstr ""
 
-#: classes/Course.php:2940
+#: classes/Course.php:2972
 msgid "quiz"
 msgid_plural "quizzes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: classes/Course.php:2941
+#: classes/Course.php:2973
 msgid "assignment"
 msgid_plural "assignments"
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %1$s: item count; %2$s: item label
-#: classes/Course.php:2946
-#: classes/Course.php:2955
+#: classes/Course.php:2978
+#: classes/Course.php:2987
 #, php-format
 msgid "You have to pass %1$s %2$s to complete this course."
 msgstr ""
 
 #. translators: %1$s: quiz count; %2$s: quiz label; %3$s: assignment count; %4$s: assignment label
-#: classes/Course.php:2963
+#: classes/Course.php:2995
 #, php-format
 msgid "You have to pass %1$s %2$s and %3$s %4$s to complete this course."
 msgstr ""
 
-#: classes/Course.php:3086
+#: classes/Course.php:3118
 msgid "You do not have permission to reset this course."
 msgstr ""
 
-#: classes/Course.php:3091
+#: classes/Course.php:3123
 msgid "You do not have permission to retake this course."
 msgstr ""
 
-#: classes/Course.php:3096
+#: classes/Course.php:3128
 msgid "Invalid Course ID or Access Denied."
 msgstr ""
 
-#: classes/Course.php:3146
+#: classes/Course.php:3178
 msgid "This course is password protected"
 msgstr ""
 
-#: classes/Course.php:3169
+#: classes/Course.php:3201
 msgid "Please purchase the course before enrolling"
 msgstr ""
 
-#: classes/Course.php:3175
+#: classes/Course.php:3207
 msgid "Enrollment successfully done!"
 msgstr ""
 
-#: classes/Course.php:3177
+#: classes/Course.php:3209
 msgid "Enrollment failed, please try again!"
 msgstr ""
 
-#: classes/Course.php:3403
-#: classes/Utils.php:6904
+#: classes/Course.php:3435
+#: classes/Utils.php:6919
 #: includes/translate-text.php:75
 #: models/OrderModel.php:300
 #: templates/dashboard/instructor/home.php:208
@@ -1155,27 +1159,27 @@ msgstr ""
 msgid "Completed"
 msgstr ""
 
-#: classes/Course.php:3414
+#: classes/Course.php:3446
 msgid "Resume"
 msgstr ""
 
-#: classes/Course.php:3414
+#: classes/Course.php:3446
 msgid "Start"
 msgstr ""
 
-#: classes/Course.php:3449
+#: classes/Course.php:3481
 msgid "You have not completed all required lessons and assessments. "
 msgstr ""
 
-#: classes/Course.php:3454
+#: classes/Course.php:3486
 msgid "Your Progress"
 msgstr ""
 
-#: classes/Course.php:3491
+#: classes/Course.php:3523
 msgid "Complete the Course"
 msgstr ""
 
-#: classes/Course.php:3535
+#: classes/Course.php:3567
 msgid "Retake this Course"
 msgstr ""
 
@@ -1191,7 +1195,7 @@ msgstr ""
 #: templates/dashboard/discussions/qna-list.php:42
 #: templates/dashboard/elements/filters.php:32
 #: assets/js/tutor-course-builder.js:12214
-#: assets/js/tutor-course-builder.js:26962
+#: assets/js/tutor-course-builder.js:26978
 msgid "All"
 msgstr ""
 
@@ -1216,9 +1220,9 @@ msgstr ""
 #: includes/translate-text.php:159
 #: views/pages/course-list.php:183
 #: assets/js/tutor-addon-list.js:880
-#: assets/js/tutor-coupon.js:9828
-#: assets/js/tutor-course-builder.js:12597
-#: assets/js/tutor-course-builder.js:44636
+#: assets/js/tutor-coupon.js:9882
+#: assets/js/tutor-course-builder.js:12601
+#: assets/js/tutor-course-builder.js:44656
 #: assets/js/tutor-import-export.js:884
 #: assets/js/tutor-order-details.js:882
 #: assets/js/tutor-payment-settings.js:884
@@ -1269,12 +1273,12 @@ msgstr ""
 #: views/pages/course-list.php:258
 #: assets/js/tutor-coupon.js:4966
 #: assets/js/tutor-coupon.js:6681
-#: assets/js/tutor-course-builder.js:13715
-#: assets/js/tutor-course-builder.js:14536
-#: assets/js/tutor-course-builder.js:15165
-#: assets/js/tutor-course-builder.js:26985
-#: assets/js/tutor-course-builder.js:27278
-#: assets/js/tutor-course-builder.js:44904
+#: assets/js/tutor-course-builder.js:13731
+#: assets/js/tutor-course-builder.js:14552
+#: assets/js/tutor-course-builder.js:15181
+#: assets/js/tutor-course-builder.js:27001
+#: assets/js/tutor-course-builder.js:27294
+#: assets/js/tutor-course-builder.js:44924
 #: assets/js/tutor-import-export.js:6217
 #: assets/js/tutor-import-export.js:7988
 #: assets/js/tutor-order-details.js:6357
@@ -1336,13 +1340,13 @@ msgid "Total results you like to show"
 msgstr ""
 
 #: classes/Dashboard.php:125
-#: templates/dashboard/components/sidebar-nav-mobile.php:91
+#: templates/dashboard/components/sidebar-nav-mobile.php:96
 msgid "Profile"
 msgstr ""
 
 #: classes/Dashboard.php:132
 #: classes/Reviews.php:186
-#: classes/Utils.php:8515
+#: classes/Utils.php:8530
 #: templates/learning-area/subpages/reviews.php:62
 msgid "Reviews"
 msgstr ""
@@ -1509,10 +1513,10 @@ msgstr ""
 
 #: classes/Lesson.php:533
 #: classes/Options_V2.php:921
-#: assets/js/tutor-course-builder.js:25940
-#: assets/js/tutor-course-builder.js:30365
-#: assets/js/tutor-course-builder.js:31013
-#: assets/js/tutor-course-builder.js:31023
+#: assets/js/tutor-course-builder.js:25956
+#: assets/js/tutor-course-builder.js:30381
+#: assets/js/tutor-course-builder.js:31029
+#: assets/js/tutor-course-builder.js:31039
 #: assets/js/tutor-import-export.js:6200
 #: assets/js/tutor-import-export.js:6938
 msgid "Lesson"
@@ -1520,11 +1524,11 @@ msgstr ""
 
 #: classes/Lesson.php:536
 #: models/CourseModel.php:1632
-#: assets/js/tutor-course-builder.js:25941
-#: assets/js/tutor-course-builder.js:30367
-#: assets/js/tutor-course-builder.js:31131
-#: assets/js/tutor-course-builder.js:31141
-#: assets/js/tutor-course-builder.js:31156
+#: assets/js/tutor-course-builder.js:25957
+#: assets/js/tutor-course-builder.js:30383
+#: assets/js/tutor-course-builder.js:31147
+#: assets/js/tutor-course-builder.js:31157
+#: assets/js/tutor-course-builder.js:31172
 #: assets/js/tutor-import-export.js:6202
 #: assets/js/tutor-import-export.js:6939
 msgid "Assignment"
@@ -1554,7 +1558,7 @@ msgstr ""
 #: classes/Lesson.php:1043
 #: templates/learning-area/lesson/exercise-files.php:25
 #: templates/single/lesson/parts/files.php:20
-#: assets/js/tutor-course-builder.js:15770
+#: assets/js/tutor-course-builder.js:15786
 msgid "Exercise Files"
 msgstr ""
 
@@ -1573,7 +1577,7 @@ msgstr ""
 #: classes/Lesson.php:1237
 #: classes/Options_V2.php:1004
 #: models/CourseModel.php:1675
-#: assets/js/tutor-course-builder.js:15607
+#: assets/js/tutor-course-builder.js:15623
 msgid "Video"
 msgstr ""
 
@@ -1618,7 +1622,7 @@ msgstr ""
 
 #: classes/Options_V2.php:722
 #: classes/TutorEDD.php:89
-#: assets/js/tutor-course-builder.js:13450
+#: assets/js/tutor-course-builder.js:13466
 msgid "General"
 msgstr ""
 
@@ -1627,7 +1631,7 @@ msgid "General Settings"
 msgstr ""
 
 #: classes/Options_V2.php:736
-#: classes/Utils.php:6949
+#: classes/Utils.php:6964
 msgid "Dashboard Page"
 msgstr ""
 
@@ -1841,15 +1845,15 @@ msgid "Enable this feature to allow students to post comments on lessons."
 msgstr ""
 
 #: classes/Options_V2.php:952
-#: classes/Quiz.php:2275
+#: classes/Quiz.php:2284
 #: models/CourseModel.php:1600
 #: templates/learning-area/quiz/progress-bar.php:135
 #: templates/single/quiz/top.php:46
 #: views/quiz/header-context/backend-dashboard-students-attempts.php:28
 #: views/quiz/header-context/course-single-previous-attempts.php:27
-#: assets/js/tutor-course-builder.js:30366
-#: assets/js/tutor-course-builder.js:31043
-#: assets/js/tutor-course-builder.js:31054
+#: assets/js/tutor-course-builder.js:30382
+#: assets/js/tutor-course-builder.js:31059
+#: assets/js/tutor-course-builder.js:31070
 #: assets/js/tutor-import-export.js:6201
 msgid "Quiz"
 msgstr ""
@@ -1953,7 +1957,7 @@ msgstr ""
 
 #: classes/Options_V2.php:1045
 #: classes/Options_V2.php:1690
-#: assets/js/tutor-course-builder.js:13503
+#: assets/js/tutor-course-builder.js:13519
 msgid "Options"
 msgstr ""
 
@@ -2232,10 +2236,10 @@ msgid "Tag"
 msgstr ""
 
 #: classes/Options_V2.php:1332
-#: assets/js/tutor-course-builder.js:13528
-#: assets/js/tutor-course-builder.js:24076
+#: assets/js/tutor-course-builder.js:13544
 #: assets/js/tutor-course-builder.js:24092
-#: assets/js/tutor-course-builder.js:25405
+#: assets/js/tutor-course-builder.js:24108
+#: assets/js/tutor-course-builder.js:25421
 msgid "Difficulty Level"
 msgstr ""
 
@@ -2256,7 +2260,7 @@ msgid "If enabled, the courses will be sortable by Course Name or Creation Date 
 msgstr ""
 
 #: classes/Options_V2.php:1348
-#: assets/js/tutor-course-builder.js:28929
+#: assets/js/tutor-course-builder.js:28945
 msgid "Layout"
 msgstr ""
 
@@ -2349,7 +2353,7 @@ msgstr ""
 
 #: classes/Options_V2.php:1472
 #: views/pages/course-list.php:271
-#: assets/js/tutor-course-builder.js:12739
+#: assets/js/tutor-course-builder.js:12755
 msgid "Author"
 msgstr ""
 
@@ -2458,7 +2462,7 @@ msgstr ""
 #: views/fragments/announcement-list.php:78
 #: views/pages/tools/manage-tokens.php:119
 #: views/pages/tools/manage-tokens.php:185
-#: assets/js/tutor-course-builder.js:13750
+#: assets/js/tutor-course-builder.js:13766
 msgid "Description"
 msgstr ""
 
@@ -2543,7 +2547,7 @@ msgid "This page will be used to list all the published courses."
 msgstr ""
 
 #: classes/Options_V2.php:1633
-#: classes/Utils.php:6950
+#: classes/Utils.php:6965
 msgid "Instructor Registration Page"
 msgstr ""
 
@@ -2552,7 +2556,7 @@ msgid "Choose the page for instructor registration."
 msgstr ""
 
 #: classes/Options_V2.php:1642
-#: classes/Utils.php:6951
+#: classes/Utils.php:6966
 msgid "Student Registration Page"
 msgstr ""
 
@@ -2852,7 +2856,7 @@ msgid "View Lesson"
 msgstr ""
 
 #: classes/Post_types.php:234
-#: assets/js/tutor-course-builder.js:26966
+#: assets/js/tutor-course-builder.js:26982
 #: assets/js/tutor-import-export.js:7475
 msgid "Lessons"
 msgstr ""
@@ -2978,7 +2982,7 @@ msgstr ""
 
 #: classes/Post_types.php:380
 #: views/pages/welcome.php:142
-#: assets/js/tutor-course-builder.js:26971
+#: assets/js/tutor-course-builder.js:26987
 #: assets/js/tutor-import-export.js:7483
 msgid "Assignments"
 msgstr ""
@@ -3066,7 +3070,7 @@ msgstr ""
 #: templates/single/quiz/top.php:78
 #: assets/js/tutor-course-builder.js:1229
 #: assets/js/tutor-course-builder.js:11542
-#: assets/js/tutor-course-builder.js:14383
+#: assets/js/tutor-course-builder.js:14399
 msgid "Hours"
 msgstr ""
 
@@ -3074,16 +3078,16 @@ msgstr ""
 #: includes/translate-text.php:176
 #: templates/single/quiz/top.php:79
 #: assets/js/tutor-course-builder.js:11544
-#: assets/js/tutor-course-builder.js:14379
-#: assets/js/tutor-course-builder.js:28823
+#: assets/js/tutor-course-builder.js:14395
+#: assets/js/tutor-course-builder.js:28839
 msgid "Days"
 msgstr ""
 
 #: classes/Quiz.php:231
 #: templates/single/quiz/top.php:80
 #: assets/js/tutor-course-builder.js:11546
-#: assets/js/tutor-course-builder.js:14375
-#: assets/js/tutor-course-builder.js:28827
+#: assets/js/tutor-course-builder.js:14391
+#: assets/js/tutor-course-builder.js:28843
 msgid "Weeks"
 msgstr ""
 
@@ -3118,7 +3122,7 @@ msgid "Set question layout view"
 msgstr ""
 
 #: classes/Quiz.php:436
-#: assets/js/tutor-course-builder.js:28933
+#: assets/js/tutor-course-builder.js:28949
 msgid "Single Question"
 msgstr ""
 
@@ -3131,22 +3135,22 @@ msgid "Question below each other"
 msgstr ""
 
 #: classes/Quiz.php:453
-#: assets/js/tutor-course-builder.js:28645
+#: assets/js/tutor-course-builder.js:28661
 msgid "Random"
 msgstr ""
 
 #: classes/Quiz.php:454
-#: assets/js/tutor-course-builder.js:28649
+#: assets/js/tutor-course-builder.js:28665
 msgid "Sorting"
 msgstr ""
 
 #: classes/Quiz.php:455
-#: assets/js/tutor-course-builder.js:28653
+#: assets/js/tutor-course-builder.js:28669
 msgid "Ascending"
 msgstr ""
 
 #: classes/Quiz.php:456
-#: assets/js/tutor-course-builder.js:28657
+#: assets/js/tutor-course-builder.js:28673
 msgid "Descending"
 msgstr ""
 
@@ -3158,52 +3162,56 @@ msgstr ""
 msgid "Please sign in to do this operation"
 msgstr ""
 
-#: classes/Quiz.php:1102
+#: classes/Quiz.php:1034
+msgid "No active quiz attempt found"
+msgstr ""
+
+#: classes/Quiz.php:1108
 msgid "Quiz has been timeout already"
 msgstr ""
 
-#: classes/Quiz.php:1134
+#: classes/Quiz.php:1140
 msgid "Review update failed"
 msgstr ""
 
-#: classes/Quiz.php:1219
+#: classes/Quiz.php:1225
 msgid "Review updated successfully"
 msgstr ""
 
-#: classes/Quiz.php:1486
+#: classes/Quiz.php:1495
 msgid "Quiz data fetched successfully"
 msgstr ""
 
-#: classes/Quiz.php:1518
+#: classes/Quiz.php:1527
 msgid "Invalid quiz"
 msgstr ""
 
-#: classes/Quiz.php:1578
+#: classes/Quiz.php:1587
 msgid "Quiz deleted successfully"
 msgstr ""
 
-#: classes/Quiz.php:1628
+#: classes/Quiz.php:1637
 msgid "Access Denied."
 msgstr ""
 
-#: classes/Quiz.php:1701
+#: classes/Quiz.php:1710
 msgid "Invalid attempt ID"
 msgstr ""
 
-#: classes/Quiz.php:1709
+#: classes/Quiz.php:1718
 msgid "Attempt deleted successfully!"
 msgstr ""
 
-#: classes/Quiz.php:1821
+#: classes/Quiz.php:1830
 #: templates/learning-area/subpages/qna.php:111
 #: templates/single/quiz/top.php:63
 #: views/quiz/contexts.php:97
 #: views/quiz/header-context/course-single-previous-attempts.php:36
-#: assets/js/tutor-course-builder.js:27894
+#: assets/js/tutor-course-builder.js:27910
 msgid "Questions"
 msgstr ""
 
-#: classes/Quiz.php:1834
+#: classes/Quiz.php:1843
 #: templates/single/quiz/top.php:84
 #: views/quiz/contexts.php:68
 #: views/quiz/header-context/course-single-previous-attempts.php:42
@@ -3212,50 +3220,50 @@ msgstr ""
 msgid "Quiz Time"
 msgstr ""
 
-#: classes/Quiz.php:1846
+#: classes/Quiz.php:1855
 #: views/quiz/contexts.php:20
 #: views/quiz/contexts.php:70
 #: views/quiz/header-context/course-single-previous-attempts.php:48
 msgid "Total Marks"
 msgstr ""
 
-#: classes/Quiz.php:1857
+#: classes/Quiz.php:1866
 #: templates/single/quiz/top.php:113
-#: assets/js/tutor-course-builder.js:28626
+#: assets/js/tutor-course-builder.js:28642
 msgid "Passing Grade"
 msgstr ""
 
-#: classes/Quiz.php:1869
+#: classes/Quiz.php:1878
 msgid "Earned Grade"
 msgstr ""
 
-#: classes/Quiz.php:1882
+#: classes/Quiz.php:1891
 msgid "Total Attempts"
 msgstr ""
 
-#: classes/Quiz.php:1885
+#: classes/Quiz.php:1894
 #: assets/js/tutor-front.js:393
 msgid "No Limit"
 msgstr ""
 
-#: classes/Quiz.php:1928
+#: classes/Quiz.php:1937
 msgid "Attempts"
 msgstr ""
 
-#: classes/Quiz.php:1931
+#: classes/Quiz.php:1940
 #: templates/dashboard/my-quiz-attempts.php:97
 #: templates/dashboard/quiz-attempts.php:141
 msgid "Marks"
 msgstr ""
 
-#: classes/Quiz.php:1934
+#: classes/Quiz.php:1943
 #: templates/dashboard/my-quiz-attempts.php:98
 #: templates/dashboard/quiz-attempts.php:142
 #: assets/js/tutor.js:1651
 msgid "Time"
 msgstr ""
 
-#: classes/Quiz.php:1937
+#: classes/Quiz.php:1946
 #: templates/dashboard/my-quiz-attempts.php:99
 #: templates/dashboard/quiz-attempts.php:143
 #: views/quiz/contexts.php:24
@@ -3264,112 +3272,122 @@ msgstr ""
 msgid "Result"
 msgstr ""
 
-#: classes/Quiz.php:2024
+#: classes/Quiz.php:2033
 #: templates/single/quiz/top.php:137
 msgid "Skip Quiz"
 msgstr ""
 
-#: classes/Quiz.php:2031
+#: classes/Quiz.php:2040
 #: templates/single/quiz/top.php:149
 msgid "Yes, Skip This"
 msgstr ""
 
-#: classes/Quiz.php:2047
+#: classes/Quiz.php:2056
 #: templates/single/quiz/top.php:146
 msgid "Do You Want to Skip This Quiz?"
 msgstr ""
 
-#: classes/Quiz.php:2048
+#: classes/Quiz.php:2057
 #: templates/single/quiz/top.php:147
 msgid "Are you sure you want to skip this quiz? Please confirm your choice."
 msgstr ""
 
-#: classes/Quiz.php:2059
-#: classes/Quiz.php:2118
+#: classes/Quiz.php:2068
+#: classes/Quiz.php:2127
 #: templates/dashboard/my-quiz-attempts.php:190
 #: templates/shared/components/quiz/attempt-details/summary.php:231
 #: templates/shared/components/quiz/attempt-details/summary.php:305
 msgid "Retry Quiz"
 msgstr ""
 
-#: classes/Quiz.php:2089
+#: classes/Quiz.php:2098
 #: templates/single/quiz/previous-attempts.php:63
 #: templates/single/quiz/top.php:132
 msgid "Start Quiz"
 msgstr ""
 
-#: classes/Quiz.php:2102
+#: classes/Quiz.php:2111
 #: templates/shared/components/quiz/attempt-details.php:156
 msgid "Continue Lesson"
 msgstr ""
 
-#: classes/Quiz.php:2114
+#: classes/Quiz.php:2123
 msgid "Retry Quiz?"
 msgstr ""
 
-#: classes/Quiz.php:2116
+#: classes/Quiz.php:2125
 #: templates/dashboard/my-quiz-attempts.php:188
 #: templates/shared/components/quiz/attempt-details/summary.php:303
 msgid "Retrying this quiz will reset your current attempt. Your answers and score from this attempt will be lost."
 msgstr ""
 
-#: classes/QuizBuilder.php:262
+#: classes/QuizBuilder.php:291
 msgid "Image Marking questions are not available when Legacy learning mode is enabled."
 msgstr ""
 
-#: classes/QuizBuilder.php:265
+#: classes/QuizBuilder.php:294
 msgid "Pin questions are not available when Legacy learning mode is enabled."
 msgstr ""
 
-#: classes/QuizBuilder.php:268
+#: classes/QuizBuilder.php:297
 msgid "Range questions are not available when Legacy learning mode is enabled."
 msgstr ""
 
-#: classes/QuizBuilder.php:271
+#: classes/QuizBuilder.php:300
 msgid "Puzzle questions are not available when Legacy learning mode is enabled."
 msgstr ""
 
-#: classes/QuizBuilder.php:329
+#: classes/QuizBuilder.php:360
 msgid "Invalid payload"
 msgstr ""
 
-#: classes/QuizBuilder.php:351
-msgid "You do not have permission to edit this quiz"
-msgstr ""
-
-#: classes/QuizBuilder.php:356
+#: classes/QuizBuilder.php:369
 msgid "Invalid quiz id provided"
 msgstr ""
 
+#: classes/QuizBuilder.php:374
+msgid "You do not have permission to edit this quiz"
+msgstr ""
+
+#: classes/QuizBuilder.php:419
+#: classes/QuizBuilder.php:423
+msgid "Invalid deleted question id found"
+msgstr ""
+
+#: classes/QuizBuilder.php:433
+#: classes/QuizBuilder.php:437
+msgid "Invalid deleted answer id found"
+msgstr ""
+
 #. translators: %s is the tracking key required for each question.
-#: classes/QuizBuilder.php:365
+#: classes/QuizBuilder.php:445
 #, php-format
 msgid "%s is required for each question"
 msgstr ""
 
 #. translators: %s is the tracking key for which the value is invalid.
-#: classes/QuizBuilder.php:372
+#: classes/QuizBuilder.php:452
 #, php-format
 msgid "Invalid value for %s"
 msgstr ""
 
-#: classes/QuizBuilder.php:378
+#: classes/QuizBuilder.php:458
 msgid "Question settings is required with array data"
 msgstr ""
 
-#: classes/QuizBuilder.php:799
+#: classes/QuizBuilder.php:880
 msgid "Quiz saved successfully"
 msgstr ""
 
-#: classes/QuizBuilder.php:801
+#: classes/QuizBuilder.php:882
 #: assets/js/tutor-addon-list.js:533
 #: assets/js/tutor-admin.js:359
 #: assets/js/tutor-admin.js:369
 #: assets/js/tutor-admin.js:867
 #: assets/js/tutor-admin.js:2637
 #: assets/js/tutor-core.js:2408
-#: assets/js/tutor-coupon.js:9283
-#: assets/js/tutor-course-builder.js:36698
+#: assets/js/tutor-coupon.js:9337
+#: assets/js/tutor-course-builder.js:36715
 #: assets/js/tutor-front.js:905
 #: assets/js/tutor-front.js:1685
 #: assets/js/tutor-front.js:2421
@@ -3380,6 +3398,14 @@ msgstr ""
 #: assets/js/tutor.js:2830
 #: assets/js/tutor.js:2835
 msgid "Error"
+msgstr ""
+
+#: classes/QuizBuilder.php:945
+msgid "Invalid question id found"
+msgstr ""
+
+#: classes/QuizBuilder.php:952
+msgid "Invalid answer id found"
 msgstr ""
 
 #: classes/Quiz_Attempts_List.php:214
@@ -3417,9 +3443,9 @@ msgstr ""
 #: assets/js/tutor-admin.js:2338
 #: assets/js/tutor-admin.js:2370
 #: assets/js/tutor-admin.js:2373
-#: assets/js/tutor-admin.js:2980
-#: assets/js/tutor-admin.js:2996
-#: assets/js/tutor-admin.js:3324
+#: assets/js/tutor-admin.js:2983
+#: assets/js/tutor-admin.js:2999
+#: assets/js/tutor-admin.js:3327
 #: assets/js/tutor-front.js:973
 #: assets/js/tutor-front.js:1277
 #: assets/js/tutor-front.js:1380
@@ -3513,16 +3539,16 @@ msgstr ""
 #: assets/js/tutor-course-builder.js:7615
 #: assets/js/tutor-course-builder.js:7858
 #: assets/js/tutor-course-builder.js:11829
-#: assets/js/tutor-course-builder.js:19930
-#: assets/js/tutor-course-builder.js:21871
-#: assets/js/tutor-course-builder.js:22475
-#: assets/js/tutor-course-builder.js:23204
-#: assets/js/tutor-course-builder.js:25698
-#: assets/js/tutor-course-builder.js:30650
-#: assets/js/tutor-course-builder.js:30711
-#: assets/js/tutor-course-builder.js:31726
-#: assets/js/tutor-course-builder.js:31839
-#: assets/js/tutor-course-builder.js:43637
+#: assets/js/tutor-course-builder.js:19946
+#: assets/js/tutor-course-builder.js:21887
+#: assets/js/tutor-course-builder.js:22491
+#: assets/js/tutor-course-builder.js:23220
+#: assets/js/tutor-course-builder.js:25714
+#: assets/js/tutor-course-builder.js:30666
+#: assets/js/tutor-course-builder.js:30727
+#: assets/js/tutor-course-builder.js:31742
+#: assets/js/tutor-course-builder.js:31855
+#: assets/js/tutor-course-builder.js:43657
 #: assets/js/tutor-front.js:1377
 #: assets/js/tutor-front.js:1382
 #: assets/js/tutor-import-export.js:8042
@@ -3555,7 +3581,7 @@ msgstr ""
 #: assets/js/tutor-admin.js:2183
 #: assets/js/tutor-admin.js:2186
 #: assets/js/tutor-admin.js:2600
-#: assets/js/tutor-admin.js:3324
+#: assets/js/tutor-admin.js:3327
 #: assets/js/tutor-setup.js:212
 msgid "Something went wrong!"
 msgstr ""
@@ -3647,7 +3673,7 @@ msgid "Use image"
 msgstr ""
 
 #: classes/Taxonomies.php:236
-#: assets/js/tutor-course-builder.js:23258
+#: assets/js/tutor-course-builder.js:23274
 msgid "Image"
 msgstr ""
 
@@ -3656,7 +3682,7 @@ msgid "Profile Page"
 msgstr ""
 
 #: classes/Template.php:579
-#: classes/Utils.php:8511
+#: classes/Utils.php:8526
 #: assets/js/tutor-course-builder.js:4285
 msgid "Course Info"
 msgstr ""
@@ -3694,7 +3720,7 @@ msgstr ""
 #: classes/Tools_V2.php:254
 #: views/pages/tools/status.php:116
 #: assets/js/tutor-coupon.js:5014
-#: assets/js/tutor-course-builder.js:41569
+#: assets/js/tutor-course-builder.js:41589
 #: assets/js/tutor-order-details.js:6405
 #: assets/js/tutor-payment-settings.js:8290
 #: assets/js/tutor-tax-settings.js:6144
@@ -3881,21 +3907,21 @@ msgstr ""
 msgid "Your server does not support the %s functions - this is required for better character encoding. Some fallbacks will be used instead for it."
 msgstr ""
 
-#: classes/Tutor.php:1071
+#: classes/Tutor.php:1072
 msgid "Tutor Instructor"
 msgstr ""
 
-#: classes/Tutor.php:1171
+#: classes/Tutor.php:1168
 #: templates/dashboard.php:46
 #: templates/dashboard.php:86
 msgid "Dashboard"
 msgstr ""
 
-#: classes/Tutor.php:1180
+#: classes/Tutor.php:1177
 msgid "Student Registration"
 msgstr ""
 
-#: classes/Tutor.php:1189
+#: classes/Tutor.php:1186
 msgid "Instructor Registration"
 msgstr ""
 
@@ -4119,112 +4145,112 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: classes/Utils.php:6908
+#: classes/Utils.php:6923
 #: templates/dashboard/instructor/home.php:212
 msgid "In Progress"
 msgstr ""
 
-#: classes/Utils.php:6910
+#: classes/Utils.php:6925
 msgid "Not Taken"
 msgstr ""
 
-#: classes/Utils.php:6952
+#: classes/Utils.php:6967
 msgid "Cart"
 msgstr ""
 
-#: classes/Utils.php:6953
+#: classes/Utils.php:6968
 #: ecommerce/Settings.php:217
 #: GDPR/Controllers/LegalConsent.php:165
 msgid "Checkout"
 msgstr ""
 
-#: classes/Utils.php:7146
+#: classes/Utils.php:7161
 msgid "Set Your Profile Photo"
 msgstr ""
 
-#: classes/Utils.php:7147
+#: classes/Utils.php:7162
 msgid "Add Your Social Links"
 msgstr ""
 
-#: classes/Utils.php:7148
+#: classes/Utils.php:7163
 msgid "Set Your Bio"
 msgstr ""
 
-#: classes/Utils.php:7153
+#: classes/Utils.php:7168
 msgid "Set Withdraw Method"
 msgstr ""
 
-#: classes/Utils.php:8245
+#: classes/Utils.php:8260
 msgid "Try adjusting your filters."
 msgstr ""
 
-#: classes/Utils.php:8259
+#: classes/Utils.php:8274
 msgid "Try using different keywords."
 msgstr ""
 
-#: classes/Utils.php:8395
+#: classes/Utils.php:8410
 #: components/DateFilter.php:392
 #: assets/js/lazy-chunks/tutor-calendar.js:41
 msgid "All Time"
 msgstr ""
 
-#: classes/Utils.php:8396
+#: classes/Utils.php:8411
 #: components/DateFilter.php:396
 #: templates/dashboard/instructor/home/upcoming-task-item.php:32
 msgid "Today"
 msgstr ""
 
-#: classes/Utils.php:8397
+#: classes/Utils.php:8412
 #: components/DateFilter.php:400
 msgid "Last 30 Days"
 msgstr ""
 
-#: classes/Utils.php:8398
+#: classes/Utils.php:8413
 msgid "Last 90 Days"
 msgstr ""
 
-#: classes/Utils.php:8399
+#: classes/Utils.php:8414
 msgid "Last 365 Days"
 msgstr ""
 
-#: classes/Utils.php:8400
+#: classes/Utils.php:8415
 msgid "Custom"
 msgstr ""
 
-#: classes/Utils.php:8744
+#: classes/Utils.php:8759
 #: templates/single/lesson/sidebar_question_and_answer.php:43
 msgid "No Data Available in this Section"
 msgstr ""
 
-#: classes/Utils.php:8745
+#: classes/Utils.php:8760
 msgid "No Data Found from your Search/Filter"
 msgstr ""
 
-#: classes/Utils.php:8843
+#: classes/Utils.php:8858
 msgid "HTML 5 (mp4)"
 msgstr ""
 
-#: classes/Utils.php:8847
+#: classes/Utils.php:8862
 msgid "External URL"
 msgstr ""
 
-#: classes/Utils.php:8851
+#: classes/Utils.php:8866
 msgid "YouTube"
 msgstr ""
 
-#: classes/Utils.php:8855
+#: classes/Utils.php:8870
 msgid "Vimeo"
 msgstr ""
 
-#: classes/Utils.php:8859
+#: classes/Utils.php:8874
 msgid "Embedded"
 msgstr ""
 
-#: classes/Utils.php:8863
+#: classes/Utils.php:8878
 msgid "Shortcode"
 msgstr ""
 
-#: classes/Utils.php:9787
+#: classes/Utils.php:9802
 #: models/QuizModel.php:1743
 #: assets/js/tutor-addon-list.js:2007
 #: assets/js/tutor-addon-list.js:2013
@@ -4235,13 +4261,13 @@ msgstr ""
 #: assets/js/tutor-coupon.js:3403
 #: assets/js/tutor-coupon.js:3568
 #: assets/js/tutor-coupon.js:4067
-#: assets/js/tutor-coupon.js:11384
-#: assets/js/tutor-coupon.js:11390
-#: assets/js/tutor-course-builder.js:26197
-#: assets/js/tutor-course-builder.js:27045
-#: assets/js/tutor-course-builder.js:27335
-#: assets/js/tutor-course-builder.js:48550
-#: assets/js/tutor-course-builder.js:48556
+#: assets/js/tutor-coupon.js:11438
+#: assets/js/tutor-coupon.js:11444
+#: assets/js/tutor-course-builder.js:26213
+#: assets/js/tutor-course-builder.js:27061
+#: assets/js/tutor-course-builder.js:27351
+#: assets/js/tutor-course-builder.js:48629
+#: assets/js/tutor-course-builder.js:48635
 #: assets/js/tutor-front.js:774
 #: assets/js/tutor-front.js:778
 #: assets/js/tutor-front.js:905
@@ -4260,88 +4286,88 @@ msgstr ""
 msgid "Something went wrong"
 msgstr ""
 
-#: classes/Utils.php:9792
+#: classes/Utils.php:9807
 msgid "You are not authorzied to perform this action"
 msgstr ""
 
-#: classes/Utils.php:9793
+#: classes/Utils.php:9808
 msgid "Nonce not matched. Action failed!"
 msgstr ""
 
-#: classes/Utils.php:9794
+#: classes/Utils.php:9809
 msgid "Invalid request"
 msgstr ""
 
-#: classes/Utils.php:9795
+#: classes/Utils.php:9810
 msgid "Authentication failed"
 msgstr ""
 
-#: classes/Utils.php:9796
+#: classes/Utils.php:9811
 msgid "Authorization required"
 msgstr ""
 
-#: classes/Utils.php:9797
+#: classes/Utils.php:9812
 msgid "Requested resource not found"
 msgstr ""
 
-#: classes/Utils.php:9798
+#: classes/Utils.php:9813
 msgid "Internal server error"
 msgstr ""
 
-#: classes/Utils.php:9799
+#: classes/Utils.php:9814
 msgid "Request timed out"
 msgstr ""
 
-#: classes/Utils.php:9800
+#: classes/Utils.php:9815
 msgid "Access to this resource is forbidden"
 msgstr ""
 
-#: classes/Utils.php:9801
+#: classes/Utils.php:9816
 msgid "HTTP method not allowed"
 msgstr ""
 
-#: classes/Utils.php:9802
+#: classes/Utils.php:9817
 msgid "Too many requests"
 msgstr ""
 
-#: classes/Utils.php:9803
+#: classes/Utils.php:9818
 #: GDPR/Controllers/LegalConsent.php:442
 #: assets/js/lazy-chunks/tutor-form.js:123
 msgid "Validation error"
 msgstr ""
 
-#: classes/Utils.php:9804
+#: classes/Utils.php:9819
 msgid "Database operation failed"
 msgstr ""
 
-#: classes/Utils.php:9805
+#: classes/Utils.php:9820
 msgid "Requested file not found"
 msgstr ""
 
-#: classes/Utils.php:9806
+#: classes/Utils.php:9821
 msgid "Unsupported media type"
 msgstr ""
 
-#: classes/Utils.php:9916
+#: classes/Utils.php:9931
 msgid "Gutenberg"
 msgstr ""
 
-#: classes/Utils.php:9931
+#: classes/Utils.php:9946
 msgid "Droip"
 msgstr ""
 
-#: classes/Utils.php:9949
+#: classes/Utils.php:9964
 msgid "Elementor"
 msgstr ""
 
-#: classes/Utils.php:9977
-#: assets/js/tutor-course-builder.js:13778
-#: assets/js/tutor-course-builder.js:33259
+#: classes/Utils.php:9992
+#: assets/js/tutor-course-builder.js:13794
+#: assets/js/tutor-course-builder.js:33276
 msgid "Classic Editor"
 msgstr ""
 
 #. translators: %s: timestamp
-#: classes/Utils.php:10074
+#: classes/Utils.php:10089
 #, php-format
 msgid "%s left"
 msgstr ""
@@ -4518,6 +4544,7 @@ msgid "Close"
 msgstr ""
 
 #: components/ConfirmationModal.php:513
+#: assets/js/tutor-course-builder.js:12628
 msgid "Are you sure?"
 msgstr ""
 
@@ -4570,7 +4597,7 @@ msgstr ""
 #: views/elements/list-filters.php:155
 #: assets/js/tutor-addon-list.js:5271
 #: assets/js/tutor-coupon.js:3296
-#: assets/js/tutor-course-builder.js:25984
+#: assets/js/tutor-course-builder.js:26000
 #: assets/js/tutor-import-export.js:4415
 #: assets/js/tutor-import-export.js:6979
 #: assets/js/tutor-import-export.js:8703
@@ -4619,7 +4646,7 @@ msgstr ""
 #: templates/dashboard/elements/pagination.php:55
 #: views/elements/pagination.php:16
 #: assets/js/tutor-coupon.js:2867
-#: assets/js/tutor-course-builder.js:25817
+#: assets/js/tutor-course-builder.js:25833
 #: assets/js/tutor-import-export.js:4506
 msgid "Page"
 msgstr ""
@@ -4628,7 +4655,7 @@ msgstr ""
 #: templates/dashboard/elements/pagination.php:59
 #: views/elements/pagination.php:20
 #: assets/js/tutor-coupon.js:2887
-#: assets/js/tutor-course-builder.js:25837
+#: assets/js/tutor-course-builder.js:25853
 #: assets/js/tutor-import-export.js:4526
 msgid "of"
 msgstr ""
@@ -5543,8 +5570,8 @@ msgstr ""
 #. translators: %d: number of days
 #: helpers/TimerHelper.php:141
 #: assets/js/tutor-addon-list.js:2125
-#: assets/js/tutor-coupon.js:11502
-#: assets/js/tutor-course-builder.js:48668
+#: assets/js/tutor-coupon.js:11556
+#: assets/js/tutor-course-builder.js:48747
 #: assets/js/tutor-import-export.js:2135
 #: assets/js/tutor-order-details.js:2128
 #: assets/js/tutor-payment-settings.js:2135
@@ -5558,8 +5585,8 @@ msgstr[1] ""
 #. translators: %d: number of hours
 #: helpers/TimerHelper.php:149
 #: assets/js/tutor-addon-list.js:2117
-#: assets/js/tutor-coupon.js:11494
-#: assets/js/tutor-course-builder.js:48660
+#: assets/js/tutor-coupon.js:11548
+#: assets/js/tutor-course-builder.js:48739
 #: assets/js/tutor-import-export.js:2127
 #: assets/js/tutor-order-details.js:2120
 #: assets/js/tutor-payment-settings.js:2127
@@ -5750,7 +5777,7 @@ msgid "Archived"
 msgstr ""
 
 #: includes/translate-text.php:51
-#: templates/shared/components/quiz/attempt-details/question-header.php:27
+#: templates/shared/components/quiz/attempt-details/question-header.php:28
 #: templates/shared/components/quiz/attempt-details/question.php:55
 #: views/quiz/attempt-details.php:797
 msgid "Correct"
@@ -5834,7 +5861,7 @@ msgstr ""
 #: includes/translate-text.php:185
 #: templates/single/quiz/top.php:78
 #: assets/js/tutor-course-builder.js:11542
-#: assets/js/tutor-course-builder.js:28819
+#: assets/js/tutor-course-builder.js:28835
 msgid "Hour"
 msgstr ""
 
@@ -5998,9 +6025,9 @@ msgstr ""
 
 #: includes/tutor-template-functions.php:1539
 #: assets/js/tutor-addon-list.js:2119
-#: assets/js/tutor-coupon.js:11496
-#: assets/js/tutor-course-builder.js:15638
-#: assets/js/tutor-course-builder.js:48662
+#: assets/js/tutor-coupon.js:11550
+#: assets/js/tutor-course-builder.js:15654
+#: assets/js/tutor-course-builder.js:48741
 #: assets/js/tutor-import-export.js:2129
 #: assets/js/tutor-order-details.js:2122
 #: assets/js/tutor-payment-settings.js:2129
@@ -6246,36 +6273,36 @@ msgstr ""
 
 #: models/QuizModel.php:89
 #: views/pages/welcome.php:113
-#: assets/js/tutor-course-builder.js:16499
+#: assets/js/tutor-course-builder.js:16515
 msgid "Image Marking"
 msgstr ""
 
 #: models/QuizModel.php:94
 #: views/pages/welcome.php:123
-#: assets/js/tutor-course-builder.js:16506
+#: assets/js/tutor-course-builder.js:16522
 msgid "Range"
 msgstr ""
 
 #: models/QuizModel.php:99
 #: views/pages/welcome.php:128
-#: assets/js/tutor-course-builder.js:16513
+#: assets/js/tutor-course-builder.js:16529
 msgid "Pin"
 msgstr ""
 
 #: models/QuizModel.php:104
 #: views/pages/welcome.php:118
-#: assets/js/tutor-course-builder.js:16520
+#: assets/js/tutor-course-builder.js:16536
 msgid "Graph"
 msgstr ""
 
 #: models/QuizModel.php:109
 #: views/pages/welcome.php:108
-#: assets/js/tutor-course-builder.js:16527
+#: assets/js/tutor-course-builder.js:16543
 msgid "Puzzle"
 msgstr ""
 
 #: models/QuizModel.php:128
-#: assets/js/tutor-course-builder.js:16444
+#: assets/js/tutor-course-builder.js:16460
 msgid "True/False"
 msgstr ""
 
@@ -6284,7 +6311,7 @@ msgid "Single Choice"
 msgstr ""
 
 #: models/QuizModel.php:138
-#: assets/js/tutor-course-builder.js:16451
+#: assets/js/tutor-course-builder.js:16467
 msgid "Multiple Choice"
 msgstr ""
 
@@ -6297,28 +6324,28 @@ msgid "Fill In The Blanks"
 msgstr ""
 
 #: models/QuizModel.php:153
-#: assets/js/tutor-course-builder.js:16472
-#: assets/js/tutor-course-builder.js:29133
+#: assets/js/tutor-course-builder.js:16488
+#: assets/js/tutor-course-builder.js:29149
 msgid "Short Answer"
 msgstr ""
 
 #: models/QuizModel.php:158
-#: assets/js/tutor-course-builder.js:16479
+#: assets/js/tutor-course-builder.js:16495
 msgid "Matching"
 msgstr ""
 
 #: models/QuizModel.php:163
-#: assets/js/tutor-course-builder.js:18466
+#: assets/js/tutor-course-builder.js:18482
 msgid "Image Matching"
 msgstr ""
 
 #: models/QuizModel.php:168
-#: assets/js/tutor-course-builder.js:16486
+#: assets/js/tutor-course-builder.js:16502
 msgid "Image Answering"
 msgstr ""
 
 #: models/QuizModel.php:173
-#: assets/js/tutor-course-builder.js:16493
+#: assets/js/tutor-course-builder.js:16509
 msgid "Ordering"
 msgstr ""
 
@@ -6365,12 +6392,12 @@ msgstr ""
 #: views/pages/ecommerce/order-list.php:224
 #: views/pages/instructors.php:242
 #: assets/js/tutor-course-builder.js:11808
-#: assets/js/tutor-course-builder.js:21378
-#: assets/js/tutor-course-builder.js:21820
-#: assets/js/tutor-course-builder.js:22423
-#: assets/js/tutor-course-builder.js:23153
-#: assets/js/tutor-course-builder.js:30589
-#: assets/js/tutor-course-builder.js:31660
+#: assets/js/tutor-course-builder.js:21394
+#: assets/js/tutor-course-builder.js:21836
+#: assets/js/tutor-course-builder.js:22439
+#: assets/js/tutor-course-builder.js:23169
+#: assets/js/tutor-course-builder.js:30605
+#: assets/js/tutor-course-builder.js:31676
 #: assets/js/tutor-tax-settings.js:9600
 msgid "Edit"
 msgstr ""
@@ -6567,7 +6594,7 @@ msgstr ""
 #: views/pages/course-list.php:267
 #: assets/js/tutor-coupon.js:3540
 #: assets/js/tutor-coupon.js:4032
-#: assets/js/tutor-course-builder.js:11181
+#: assets/js/tutor-course-builder.js:11183
 msgid "Price"
 msgstr ""
 
@@ -6885,8 +6912,8 @@ msgstr ""
 
 #: templates/dashboard/account/settings/header.php:70
 #: views/options/template/legal_consents.php:182
-#: assets/js/tutor-course-builder.js:30034
-#: assets/js/tutor-course-builder.js:30204
+#: assets/js/tutor-course-builder.js:30050
+#: assets/js/tutor-course-builder.js:30220
 msgid "Discard"
 msgstr ""
 
@@ -6900,13 +6927,13 @@ msgstr ""
 #: templates/learning-area/subpages/qna/card.php:149
 #: templates/learning-area/subpages/qna/single.php:123
 #: assets/js/tutor-coupon.js:6214
-#: assets/js/tutor-coupon.js:8133
+#: assets/js/tutor-coupon.js:8187
 #: assets/js/tutor-course-builder.js:8706
-#: assets/js/tutor-course-builder.js:11387
-#: assets/js/tutor-course-builder.js:14515
-#: assets/js/tutor-course-builder.js:15483
-#: assets/js/tutor-course-builder.js:30051
-#: assets/js/tutor-course-builder.js:44341
+#: assets/js/tutor-course-builder.js:11389
+#: assets/js/tutor-course-builder.js:14531
+#: assets/js/tutor-course-builder.js:15499
+#: assets/js/tutor-course-builder.js:30067
+#: assets/js/tutor-course-builder.js:44361
 #: assets/js/tutor-order-details.js:7751
 #: assets/js/tutor-payment-settings.js:9446
 #: assets/js/tutor-payment-settings.js:10459
@@ -7287,16 +7314,20 @@ msgstr ""
 msgid "%d incorrect"
 msgstr ""
 
-#: templates/dashboard/components/sidebar-nav-mobile.php:29
+#: templates/dashboard/components/sidebar-nav-mobile.php:32
 msgid "Explore"
 msgstr ""
 
-#: templates/dashboard/components/sidebar-nav-mobile.php:108
+#: templates/dashboard/components/sidebar-nav-mobile.php:113
 #: templates/learning-area/components/sidebar.php:271
 #: templates/single/course/enrolled/nav.php:34
 #: views/elements/navbar.php:68
 #: views/options/template/tab.php:42
 msgid "More"
+msgstr ""
+
+#: templates/dashboard/components/sidebar-nav-mobile.php:171
+msgid "Back to Site"
 msgstr ""
 
 #: templates/dashboard/components/sidebar.php:102
@@ -7402,9 +7433,9 @@ msgstr ""
 #: views/quiz/instructor-feedback.php:38
 #: assets/js/tutor-course-builder.js:2564
 #: assets/js/tutor-course-builder.js:2569
-#: assets/js/tutor-course-builder.js:11387
-#: assets/js/tutor-course-builder.js:14515
-#: assets/js/tutor-course-builder.js:15483
+#: assets/js/tutor-course-builder.js:11389
+#: assets/js/tutor-course-builder.js:14531
+#: assets/js/tutor-course-builder.js:15499
 #: assets/js/tutor-dashboard.js:838
 msgid "Update"
 msgstr ""
@@ -7813,7 +7844,7 @@ msgstr ""
 #: views/pages/add_new_instructor.php:113
 #: views/pages/instructors.php:350
 #: assets/js/tutor-course-builder.js:7774
-#: assets/js/tutor-course-builder.js:12672
+#: assets/js/tutor-course-builder.js:12688
 msgid "Password"
 msgstr ""
 
@@ -7851,7 +7882,7 @@ msgstr ""
 #: views/pages/course-list.php:192
 #: assets/js/tutor-course-builder.js:2557
 #: assets/js/tutor-course-builder.js:2564
-#: assets/js/tutor-course-builder.js:10366
+#: assets/js/tutor-course-builder.js:10370
 msgid "Schedule"
 msgstr ""
 
@@ -7884,13 +7915,13 @@ msgstr ""
 
 #: templates/dashboard/my-courses.php:329
 #: assets/js/tutor-course-builder.js:11820
-#: assets/js/tutor-course-builder.js:19907
-#: assets/js/tutor-course-builder.js:21837
-#: assets/js/tutor-course-builder.js:22441
-#: assets/js/tutor-course-builder.js:23170
-#: assets/js/tutor-course-builder.js:25677
-#: assets/js/tutor-course-builder.js:30616
-#: assets/js/tutor-course-builder.js:31689
+#: assets/js/tutor-course-builder.js:19923
+#: assets/js/tutor-course-builder.js:21853
+#: assets/js/tutor-course-builder.js:22457
+#: assets/js/tutor-course-builder.js:23186
+#: assets/js/tutor-course-builder.js:25693
+#: assets/js/tutor-course-builder.js:30632
+#: assets/js/tutor-course-builder.js:31705
 msgid "Duplicate"
 msgstr ""
 
@@ -8189,8 +8220,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: templates/ecommerce/cart.php:97
-#: assets/js/tutor-course-builder.js:13315
-#: assets/js/tutor-course-builder.js:35010
+#: assets/js/tutor-course-builder.js:13331
+#: assets/js/tutor-course-builder.js:35027
 #: assets/js/tutor-payment-settings.js:4332
 #: assets/js/tutor-payment-settings.js:11237
 msgid "Remove"
@@ -8240,7 +8271,7 @@ msgid "Select Country"
 msgstr ""
 
 #: templates/ecommerce/checkout-billing-form-fields.php:84
-#: assets/js/tutor-course-builder.js:29364
+#: assets/js/tutor-course-builder.js:29380
 #: assets/js/tutor-front.js:2141
 msgid "N/A"
 msgstr ""
@@ -8372,7 +8403,7 @@ msgstr ""
 
 #: templates/global/attachments.php:30
 #: views/fragments/attachments.php:30
-#: assets/js/tutor-course-builder.js:37764
+#: assets/js/tutor-course-builder.js:37784
 msgid "Size"
 msgstr ""
 
@@ -8528,7 +8559,7 @@ msgstr ""
 #: templates/single/next-previous-pagination.php:23
 #: views/onboarding.php:99
 #: assets/js/tutor-course-builder.js:1573
-#: assets/js/tutor-course-builder.js:30043
+#: assets/js/tutor-course-builder.js:30059
 msgid "Next"
 msgstr ""
 
@@ -8618,8 +8649,8 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: templates/learning-area/quiz/question-header.php:55
-#: assets/js/tutor-course-builder.js:18135
+#: templates/learning-area/quiz/question-header.php:57
+#: assets/js/tutor-course-builder.js:18151
 msgid "Points: "
 msgstr ""
 
@@ -8631,61 +8662,61 @@ msgstr ""
 msgid "The answer for this question is required"
 msgstr ""
 
-#: templates/learning-area/quiz/questions/fill-in-the-blank.php:47
-#: templates/learning-area/quiz/questions/open-ended.php:51
-#: assets/js/tutor-course-builder.js:16848
-#: assets/js/tutor-course-builder.js:17248
+#: templates/learning-area/quiz/questions/fill-in-the-blank.php:53
+#: templates/learning-area/quiz/questions/open-ended.php:53
+#: assets/js/tutor-course-builder.js:16864
+#: assets/js/tutor-course-builder.js:17264
 msgid "Type your answer here"
 msgstr ""
 
-#: templates/learning-area/quiz/questions/image-answering.php:40
+#: templates/learning-area/quiz/questions/image-answering.php:48
 #: templates/single/quiz/parts/image-answer.php:36
-#: assets/js/tutor-course-builder.js:16912
+#: assets/js/tutor-course-builder.js:16928
 msgid "Write your answer here"
 msgstr ""
 
-#: templates/learning-area/quiz/questions/matching.php:59
-#: templates/learning-area/quiz/questions/matching.php:67
-#: assets/js/tutor-course-builder.js:17044
-#: assets/js/tutor-course-builder.js:17052
+#: templates/learning-area/quiz/questions/matching.php:64
+#: templates/learning-area/quiz/questions/matching.php:72
+#: assets/js/tutor-course-builder.js:17060
+#: assets/js/tutor-course-builder.js:17068
 #: assets/js/tutor-learning-area.js:2537
 msgid "Drop here"
 msgstr ""
 
-#: templates/learning-area/quiz/questions/matching.php:79
+#: templates/learning-area/quiz/questions/matching.php:84
 msgid "Clear matched option"
 msgstr ""
 
-#: templates/learning-area/quiz/questions/matching.php:98
-#: assets/js/tutor-course-builder.js:17096
+#: templates/learning-area/quiz/questions/matching.php:104
+#: assets/js/tutor-course-builder.js:17112
 msgid "Drag from here"
 msgstr ""
 
-#: templates/learning-area/quiz/questions/matching.php:114
+#: templates/learning-area/quiz/questions/matching.php:120
 msgid "Drag matching option"
 msgstr ""
 
-#: templates/learning-area/quiz/questions/multiple-choice.php:25
+#: templates/learning-area/quiz/questions/multiple-choice.php:29
 #: assets/js/tutor-front.js:539
 msgid "Please select an option to answer"
 msgstr ""
 
-#: templates/learning-area/quiz/questions/multiple-choice.php:26
+#: templates/learning-area/quiz/questions/multiple-choice.php:30
 #: assets/js/tutor-front.js:544
 msgid "Please select at least one option to answer."
 msgstr ""
 
-#: templates/learning-area/quiz/questions/open-ended.php:27
+#: templates/learning-area/quiz/questions/open-ended.php:29
 msgid "The answer exceeds the allowed character limit"
 msgstr ""
 
-#: templates/learning-area/quiz/questions/open-ended.php:57
+#: templates/learning-area/quiz/questions/open-ended.php:59
 #: templates/single/quiz/parts/open-ended.php:24
 #: templates/single/quiz/parts/short-answer.php:24
 msgid "Character Remaining: "
 msgstr ""
 
-#: templates/learning-area/quiz/questions/ordering.php:55
+#: templates/learning-area/quiz/questions/ordering.php:60
 msgid "Reorder item"
 msgstr ""
 
@@ -8895,17 +8926,17 @@ msgstr ""
 #: templates/modal/alert.php:37
 #: assets/js/tutor-course-builder.js:1829
 #: assets/js/tutor-course-builder.js:9314
-#: assets/js/tutor-course-builder.js:10514
-#: assets/js/tutor-course-builder.js:18702
-#: assets/js/tutor-course-builder.js:18913
-#: assets/js/tutor-course-builder.js:21580
-#: assets/js/tutor-course-builder.js:22036
-#: assets/js/tutor-course-builder.js:22652
-#: assets/js/tutor-course-builder.js:23337
-#: assets/js/tutor-course-builder.js:30133
-#: assets/js/tutor-course-builder.js:31822
-#: assets/js/tutor-course-builder.js:41085
-#: assets/js/tutor-course-builder.js:46654
+#: assets/js/tutor-course-builder.js:10518
+#: assets/js/tutor-course-builder.js:18718
+#: assets/js/tutor-course-builder.js:18929
+#: assets/js/tutor-course-builder.js:21596
+#: assets/js/tutor-course-builder.js:22052
+#: assets/js/tutor-course-builder.js:22668
+#: assets/js/tutor-course-builder.js:23353
+#: assets/js/tutor-course-builder.js:30149
+#: assets/js/tutor-course-builder.js:31838
+#: assets/js/tutor-course-builder.js:41105
+#: assets/js/tutor-course-builder.js:46733
 msgid "Ok"
 msgstr ""
 
@@ -8957,18 +8988,18 @@ msgstr ""
 msgid "Review your answers"
 msgstr ""
 
-#: templates/shared/components/quiz/attempt-details/question-header.php:28
+#: templates/shared/components/quiz/attempt-details/question-header.php:29
 #: templates/shared/components/quiz/attempt-details/question.php:65
 #: views/quiz/attempt-details.php:805
 msgid "Incorrect"
 msgstr ""
 
-#: templates/shared/components/quiz/attempt-details/question-header.php:132
+#: templates/shared/components/quiz/attempt-details/question-header.php:133
 #: views/quiz/attempt-details.php:821
 msgid "Mark as correct"
 msgstr ""
 
-#: templates/shared/components/quiz/attempt-details/question-header.php:150
+#: templates/shared/components/quiz/attempt-details/question-header.php:151
 msgid "Mark as incorrect"
 msgstr ""
 
@@ -8976,18 +9007,18 @@ msgstr ""
 msgid "Skipped"
 msgstr ""
 
-#: templates/shared/components/quiz/attempt-details/questions-sidebar.php:66
+#: templates/shared/components/quiz/attempt-details/questions-sidebar.php:67
 msgid "Quiz questions"
 msgstr ""
 
-#: templates/shared/components/quiz/attempt-details/questions/fill-in-the-blank.php:106
-#: templates/shared/components/quiz/attempt-details/questions/review-answer-dnd.php:107
+#: templates/shared/components/quiz/attempt-details/questions/fill-in-the-blank.php:107
+#: templates/shared/components/quiz/attempt-details/questions/review-answer-dnd.php:108
 #: views/quiz/contexts.php:98
 msgid "Given Answer"
 msgstr ""
 
-#: templates/shared/components/quiz/attempt-details/questions/fill-in-the-blank.php:112
-#: templates/shared/components/quiz/attempt-details/questions/review-answer-dnd.php:108
+#: templates/shared/components/quiz/attempt-details/questions/fill-in-the-blank.php:113
+#: templates/shared/components/quiz/attempt-details/questions/review-answer-dnd.php:109
 #: views/quiz/contexts.php:21
 #: views/quiz/contexts.php:72
 #: views/quiz/contexts.php:99
@@ -9118,24 +9149,24 @@ msgstr ""
 #: templates/shortcode/instructor-filter.php:44
 #: views/elements/list-filters.php:76
 #: views/elements/list-filters.php:85
-#: assets/js/tutor-course-builder.js:26712
+#: assets/js/tutor-course-builder.js:26728
 msgid "Filters"
 msgstr ""
 
 #: templates/shortcode/instructor-filter.php:50
 #: assets/js/tutor-coupon.js:2286
 #: assets/js/tutor-coupon.js:6442
-#: assets/js/tutor-coupon.js:7420
-#: assets/js/tutor-coupon.js:7609
-#: assets/js/tutor-course-builder.js:16667
-#: assets/js/tutor-course-builder.js:16780
-#: assets/js/tutor-course-builder.js:21123
-#: assets/js/tutor-course-builder.js:23815
-#: assets/js/tutor-course-builder.js:26584
-#: assets/js/tutor-course-builder.js:37099
-#: assets/js/tutor-course-builder.js:38287
-#: assets/js/tutor-course-builder.js:39704
-#: assets/js/tutor-course-builder.js:40088
+#: assets/js/tutor-coupon.js:7474
+#: assets/js/tutor-coupon.js:7663
+#: assets/js/tutor-course-builder.js:16683
+#: assets/js/tutor-course-builder.js:16796
+#: assets/js/tutor-course-builder.js:21139
+#: assets/js/tutor-course-builder.js:23831
+#: assets/js/tutor-course-builder.js:26600
+#: assets/js/tutor-course-builder.js:37119
+#: assets/js/tutor-course-builder.js:38307
+#: assets/js/tutor-course-builder.js:39724
+#: assets/js/tutor-course-builder.js:40108
 #: assets/js/tutor-import-export.js:6054
 #: assets/js/tutor-order-details.js:6114
 #: assets/js/tutor-order-details.js:7979
@@ -9543,12 +9574,12 @@ msgid "Date"
 msgstr ""
 
 #: views/elements/list-filters.php:137
-#: assets/js/tutor-course-builder.js:26810
+#: assets/js/tutor-course-builder.js:26826
 msgid "Apply Filters"
 msgstr ""
 
 #: views/elements/list-filters.php:163
-#: assets/js/tutor-course-builder.js:26692
+#: assets/js/tutor-course-builder.js:26708
 msgid "Clear All"
 msgstr ""
 
@@ -9623,11 +9654,11 @@ msgstr ""
 
 #: views/fragments/thumbnail-uploader.php:61
 #: views/options/field-types/upload_half.php:42
-#: assets/js/tutor-course-builder.js:15598
-#: assets/js/tutor-course-builder.js:21076
-#: assets/js/tutor-course-builder.js:21933
-#: assets/js/tutor-course-builder.js:23260
-#: assets/js/tutor-course-builder.js:23768
+#: assets/js/tutor-course-builder.js:15614
+#: assets/js/tutor-course-builder.js:21092
+#: assets/js/tutor-course-builder.js:21949
+#: assets/js/tutor-course-builder.js:23276
+#: assets/js/tutor-course-builder.js:23784
 #: assets/js/tutor-payment-settings.js:10415
 #: assets/js/tutor-payment-settings.js:11206
 msgid "Upload Image"
@@ -10014,7 +10045,7 @@ msgstr ""
 #: views/pages/ecommerce/coupon-list.php:126
 #: views/pages/ecommerce/order-list.php:130
 #: views/pages/instructors.php:144
-#: assets/js/tutor-course-builder.js:15508
+#: assets/js/tutor-course-builder.js:15524
 #: assets/js/tutor-import-export.js:5470
 msgid "Name"
 msgstr ""
@@ -10034,7 +10065,7 @@ msgstr ""
 #: views/pages/ecommerce/coupon-list.php:135
 #: views/quiz/contexts.php:96
 #: assets/js/tutor-coupon.js:7214
-#: assets/js/tutor-course-builder.js:27024
+#: assets/js/tutor-course-builder.js:27040
 #: assets/js/tutor-import-export.js:8000
 msgid "Type"
 msgstr ""
@@ -10262,7 +10293,7 @@ msgid "WARNING! This will overwrite all existing settings, please proceed with c
 msgstr ""
 
 #: views/pages/tools/settings-log.php:75
-#: assets/js/tutor-course-builder.js:42382
+#: assets/js/tutor-course-builder.js:42402
 #: assets/js/tutor-import-export.js:6555
 #: assets/js/tutor-payment-settings.js:6022
 msgid "Download"
@@ -10803,8 +10834,8 @@ msgstr ""
 #: views/qna/contexts.php:17
 #: views/quiz/contexts.php:19
 #: views/quiz/contexts.php:67
-#: assets/js/tutor-course-builder.js:22559
-#: assets/js/tutor-course-builder.js:25942
+#: assets/js/tutor-course-builder.js:22575
+#: assets/js/tutor-course-builder.js:25958
 #: assets/js/tutor-import-export.js:6940
 msgid "Question"
 msgstr ""
@@ -10961,7 +10992,7 @@ msgstr ""
 #. translators: %d is the maximum number of files allowed.
 #: assets/js/lazy-chunks/tutor-file-uploader.js:186
 #: assets/js/tutor-core.js:4661
-#: assets/js/tutor-course-builder.js:46534
+#: assets/js/tutor-course-builder.js:46613
 #: assets/js/tutor-payment-settings.js:9562
 #, js-format
 msgid "Cannot select more than %d files"
@@ -10987,7 +11018,7 @@ msgstr ""
 
 #: assets/js/lazy-chunks/tutor-form.js:32
 #: assets/js/tutor-coupon.js:2400
-#: assets/js/tutor-course-builder.js:48744
+#: assets/js/tutor-course-builder.js:48823
 #: assets/js/tutor-order-details.js:3864
 #: assets/js/tutor-payment-settings.js:9224
 #: assets/js/tutor-tax-settings.js:7407
@@ -11024,7 +11055,7 @@ msgstr ""
 
 #: assets/js/lazy-chunks/tutor-form.js:104
 #: assets/js/tutor-coupon.js:2438
-#: assets/js/tutor-course-builder.js:48782
+#: assets/js/tutor-course-builder.js:48861
 #: assets/js/tutor-order-details.js:3902
 #: assets/js/tutor-payment-settings.js:9262
 #: assets/js/tutor-tax-settings.js:7445
@@ -11040,8 +11071,8 @@ msgid "Select time"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:537
-#: assets/js/tutor-coupon.js:9287
-#: assets/js/tutor-course-builder.js:36702
+#: assets/js/tutor-coupon.js:9341
+#: assets/js/tutor-course-builder.js:36719
 #: assets/js/tutor-import-export.js:537
 #: assets/js/tutor-order-details.js:537
 #: assets/js/tutor-payment-settings.js:537
@@ -11050,8 +11081,8 @@ msgid "Oops! Something went wrong"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:543
-#: assets/js/tutor-coupon.js:9293
-#: assets/js/tutor-course-builder.js:36708
+#: assets/js/tutor-coupon.js:9347
+#: assets/js/tutor-course-builder.js:36725
 #: assets/js/tutor-import-export.js:543
 #: assets/js/tutor-order-details.js:543
 #: assets/js/tutor-payment-settings.js:543
@@ -11060,8 +11091,8 @@ msgid "Try the following steps to resolve the issue:"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:548
-#: assets/js/tutor-coupon.js:9298
-#: assets/js/tutor-course-builder.js:36713
+#: assets/js/tutor-coupon.js:9352
+#: assets/js/tutor-course-builder.js:36730
 #: assets/js/tutor-import-export.js:548
 #: assets/js/tutor-order-details.js:548
 #: assets/js/tutor-payment-settings.js:548
@@ -11070,8 +11101,8 @@ msgid "Refresh the page."
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:551
-#: assets/js/tutor-coupon.js:9301
-#: assets/js/tutor-course-builder.js:36716
+#: assets/js/tutor-coupon.js:9355
+#: assets/js/tutor-course-builder.js:36733
 #: assets/js/tutor-import-export.js:551
 #: assets/js/tutor-order-details.js:551
 #: assets/js/tutor-payment-settings.js:551
@@ -11080,8 +11111,8 @@ msgid "Clear your browser cache."
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:556
-#: assets/js/tutor-coupon.js:9306
-#: assets/js/tutor-course-builder.js:36721
+#: assets/js/tutor-coupon.js:9360
+#: assets/js/tutor-course-builder.js:36738
 #: assets/js/tutor-import-export.js:556
 #: assets/js/tutor-order-details.js:556
 #: assets/js/tutor-payment-settings.js:556
@@ -11090,8 +11121,8 @@ msgid "Ensure the Free and Pro plugins are on the same version."
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:577
-#: assets/js/tutor-coupon.js:9327
-#: assets/js/tutor-course-builder.js:36742
+#: assets/js/tutor-coupon.js:9381
+#: assets/js/tutor-course-builder.js:36759
 #: assets/js/tutor-import-export.js:577
 #: assets/js/tutor-order-details.js:577
 #: assets/js/tutor-payment-settings.js:577
@@ -11100,8 +11131,8 @@ msgid "Reload"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:584
-#: assets/js/tutor-coupon.js:9334
-#: assets/js/tutor-course-builder.js:36749
+#: assets/js/tutor-coupon.js:9388
+#: assets/js/tutor-course-builder.js:36766
 #: assets/js/tutor-import-export.js:584
 #: assets/js/tutor-order-details.js:584
 #: assets/js/tutor-payment-settings.js:584
@@ -11110,8 +11141,8 @@ msgid "Still having trouble?"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:587
-#: assets/js/tutor-coupon.js:9337
-#: assets/js/tutor-course-builder.js:36752
+#: assets/js/tutor-coupon.js:9391
+#: assets/js/tutor-course-builder.js:36769
 #: assets/js/tutor-import-export.js:587
 #: assets/js/tutor-order-details.js:587
 #: assets/js/tutor-payment-settings.js:587
@@ -11120,8 +11151,8 @@ msgid "Contact"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:591
-#: assets/js/tutor-coupon.js:9341
-#: assets/js/tutor-course-builder.js:36756
+#: assets/js/tutor-coupon.js:9395
+#: assets/js/tutor-course-builder.js:36773
 #: assets/js/tutor-import-export.js:591
 #: assets/js/tutor-order-details.js:591
 #: assets/js/tutor-payment-settings.js:591
@@ -11130,8 +11161,8 @@ msgid "Support"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:594
-#: assets/js/tutor-coupon.js:9344
-#: assets/js/tutor-course-builder.js:36759
+#: assets/js/tutor-coupon.js:9398
+#: assets/js/tutor-course-builder.js:36776
 #: assets/js/tutor-import-export.js:594
 #: assets/js/tutor-order-details.js:594
 #: assets/js/tutor-payment-settings.js:594
@@ -11140,9 +11171,9 @@ msgid "for assistance."
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:872
-#: assets/js/tutor-coupon.js:9820
-#: assets/js/tutor-course-builder.js:12589
-#: assets/js/tutor-course-builder.js:44628
+#: assets/js/tutor-coupon.js:9874
+#: assets/js/tutor-course-builder.js:12593
+#: assets/js/tutor-course-builder.js:44648
 #: assets/js/tutor-import-export.js:876
 #: assets/js/tutor-order-details.js:874
 #: assets/js/tutor-payment-settings.js:876
@@ -11151,9 +11182,9 @@ msgid "Public"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:876
-#: assets/js/tutor-coupon.js:9824
-#: assets/js/tutor-course-builder.js:12593
-#: assets/js/tutor-course-builder.js:44632
+#: assets/js/tutor-coupon.js:9878
+#: assets/js/tutor-course-builder.js:12597
+#: assets/js/tutor-course-builder.js:44652
 #: assets/js/tutor-import-export.js:880
 #: assets/js/tutor-order-details.js:878
 #: assets/js/tutor-payment-settings.js:880
@@ -11163,8 +11194,8 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1877
 #: assets/js/tutor-core.js:410
-#: assets/js/tutor-coupon.js:11254
-#: assets/js/tutor-course-builder.js:48420
+#: assets/js/tutor-coupon.js:11308
+#: assets/js/tutor-course-builder.js:48499
 #: assets/js/tutor-import-export.js:1887
 #: assets/js/tutor-order-details.js:1880
 #: assets/js/tutor-payment-settings.js:1887
@@ -11174,8 +11205,8 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1882
 #: assets/js/tutor-core.js:415
-#: assets/js/tutor-coupon.js:11259
-#: assets/js/tutor-course-builder.js:48425
+#: assets/js/tutor-coupon.js:11313
+#: assets/js/tutor-course-builder.js:48504
 #: assets/js/tutor-import-export.js:1892
 #: assets/js/tutor-order-details.js:1885
 #: assets/js/tutor-payment-settings.js:1892
@@ -11185,8 +11216,8 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1883
 #: assets/js/tutor-core.js:416
-#: assets/js/tutor-coupon.js:11260
-#: assets/js/tutor-course-builder.js:48426
+#: assets/js/tutor-coupon.js:11314
+#: assets/js/tutor-course-builder.js:48505
 #: assets/js/tutor-import-export.js:1893
 #: assets/js/tutor-order-details.js:1886
 #: assets/js/tutor-payment-settings.js:1893
@@ -11196,9 +11227,9 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1884
 #: assets/js/tutor-core.js:417
-#: assets/js/tutor-coupon.js:11261
-#: assets/js/tutor-course-builder.js:14735
-#: assets/js/tutor-course-builder.js:48427
+#: assets/js/tutor-coupon.js:11315
+#: assets/js/tutor-course-builder.js:14751
+#: assets/js/tutor-course-builder.js:48506
 #: assets/js/tutor-import-export.js:1894
 #: assets/js/tutor-order-details.js:1887
 #: assets/js/tutor-payment-settings.js:1894
@@ -11208,8 +11239,8 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1885
 #: assets/js/tutor-core.js:418
-#: assets/js/tutor-coupon.js:11262
-#: assets/js/tutor-course-builder.js:48428
+#: assets/js/tutor-coupon.js:11316
+#: assets/js/tutor-course-builder.js:48507
 #: assets/js/tutor-import-export.js:1895
 #: assets/js/tutor-order-details.js:1888
 #: assets/js/tutor-payment-settings.js:1895
@@ -11219,8 +11250,8 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1886
 #: assets/js/tutor-core.js:419
-#: assets/js/tutor-coupon.js:11263
-#: assets/js/tutor-course-builder.js:48429
+#: assets/js/tutor-coupon.js:11317
+#: assets/js/tutor-course-builder.js:48508
 #: assets/js/tutor-import-export.js:1896
 #: assets/js/tutor-order-details.js:1889
 #: assets/js/tutor-payment-settings.js:1896
@@ -11230,8 +11261,8 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1887
 #: assets/js/tutor-core.js:420
-#: assets/js/tutor-coupon.js:11264
-#: assets/js/tutor-course-builder.js:48430
+#: assets/js/tutor-coupon.js:11318
+#: assets/js/tutor-course-builder.js:48509
 #: assets/js/tutor-import-export.js:1897
 #: assets/js/tutor-order-details.js:1890
 #: assets/js/tutor-payment-settings.js:1897
@@ -11241,8 +11272,8 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1888
 #: assets/js/tutor-core.js:421
-#: assets/js/tutor-coupon.js:11265
-#: assets/js/tutor-course-builder.js:48431
+#: assets/js/tutor-coupon.js:11319
+#: assets/js/tutor-course-builder.js:48510
 #: assets/js/tutor-import-export.js:1898
 #: assets/js/tutor-order-details.js:1891
 #: assets/js/tutor-payment-settings.js:1898
@@ -11252,8 +11283,8 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1889
 #: assets/js/tutor-core.js:422
-#: assets/js/tutor-coupon.js:11266
-#: assets/js/tutor-course-builder.js:48432
+#: assets/js/tutor-coupon.js:11320
+#: assets/js/tutor-course-builder.js:48511
 #: assets/js/tutor-import-export.js:1899
 #: assets/js/tutor-order-details.js:1892
 #: assets/js/tutor-payment-settings.js:1899
@@ -11263,8 +11294,8 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1890
 #: assets/js/tutor-core.js:423
-#: assets/js/tutor-coupon.js:11267
-#: assets/js/tutor-course-builder.js:48433
+#: assets/js/tutor-coupon.js:11321
+#: assets/js/tutor-course-builder.js:48512
 #: assets/js/tutor-import-export.js:1900
 #: assets/js/tutor-order-details.js:1893
 #: assets/js/tutor-payment-settings.js:1900
@@ -11273,10 +11304,10 @@ msgid "YB"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2109
-#: assets/js/tutor-coupon.js:11486
+#: assets/js/tutor-coupon.js:11540
 #: assets/js/tutor-course-builder.js:11552
 #: assets/js/tutor-course-builder.js:11580
-#: assets/js/tutor-course-builder.js:48652
+#: assets/js/tutor-course-builder.js:48731
 #: assets/js/tutor-import-export.js:2119
 #: assets/js/tutor-order-details.js:2112
 #: assets/js/tutor-payment-settings.js:2119
@@ -11286,8 +11317,8 @@ msgstr ""
 
 #. translators: %d: number of hours
 #: assets/js/tutor-addon-list.js:2115
-#: assets/js/tutor-coupon.js:11492
-#: assets/js/tutor-course-builder.js:48658
+#: assets/js/tutor-coupon.js:11546
+#: assets/js/tutor-course-builder.js:48737
 #: assets/js/tutor-import-export.js:2125
 #: assets/js/tutor-order-details.js:2118
 #: assets/js/tutor-payment-settings.js:2125
@@ -11297,8 +11328,8 @@ msgid "%d hours"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2118
-#: assets/js/tutor-coupon.js:11495
-#: assets/js/tutor-course-builder.js:48661
+#: assets/js/tutor-coupon.js:11549
+#: assets/js/tutor-course-builder.js:48740
 #: assets/js/tutor-import-export.js:2128
 #: assets/js/tutor-order-details.js:2121
 #: assets/js/tutor-payment-settings.js:2128
@@ -11308,8 +11339,8 @@ msgstr ""
 
 #. translators: %d: number of days
 #: assets/js/tutor-addon-list.js:2123
-#: assets/js/tutor-coupon.js:11500
-#: assets/js/tutor-course-builder.js:48666
+#: assets/js/tutor-coupon.js:11554
+#: assets/js/tutor-course-builder.js:48745
 #: assets/js/tutor-import-export.js:2133
 #: assets/js/tutor-order-details.js:2126
 #: assets/js/tutor-payment-settings.js:2133
@@ -11319,8 +11350,8 @@ msgid "%d days"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2126
-#: assets/js/tutor-coupon.js:11503
-#: assets/js/tutor-course-builder.js:48669
+#: assets/js/tutor-coupon.js:11557
+#: assets/js/tutor-course-builder.js:48748
 #: assets/js/tutor-import-export.js:2136
 #: assets/js/tutor-order-details.js:2129
 #: assets/js/tutor-payment-settings.js:2136
@@ -11329,8 +11360,8 @@ msgid "daily"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2127
-#: assets/js/tutor-coupon.js:11504
-#: assets/js/tutor-course-builder.js:48670
+#: assets/js/tutor-coupon.js:11558
+#: assets/js/tutor-course-builder.js:48749
 #: assets/js/tutor-import-export.js:2137
 #: assets/js/tutor-order-details.js:2130
 #: assets/js/tutor-payment-settings.js:2137
@@ -11340,8 +11371,8 @@ msgstr ""
 
 #. translators: %d is the number of weeks
 #: assets/js/tutor-addon-list.js:2131
-#: assets/js/tutor-coupon.js:11508
-#: assets/js/tutor-course-builder.js:48674
+#: assets/js/tutor-coupon.js:11562
+#: assets/js/tutor-course-builder.js:48753
 #: assets/js/tutor-import-export.js:2141
 #: assets/js/tutor-order-details.js:2134
 #: assets/js/tutor-payment-settings.js:2141
@@ -11352,8 +11383,8 @@ msgstr ""
 
 #. translators: %d is the number of weeks
 #: assets/js/tutor-addon-list.js:2133
-#: assets/js/tutor-coupon.js:11510
-#: assets/js/tutor-course-builder.js:48676
+#: assets/js/tutor-coupon.js:11564
+#: assets/js/tutor-course-builder.js:48755
 #: assets/js/tutor-import-export.js:2143
 #: assets/js/tutor-order-details.js:2136
 #: assets/js/tutor-payment-settings.js:2143
@@ -11363,8 +11394,8 @@ msgid "%d week"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2134
-#: assets/js/tutor-coupon.js:11511
-#: assets/js/tutor-course-builder.js:48677
+#: assets/js/tutor-coupon.js:11565
+#: assets/js/tutor-course-builder.js:48756
 #: assets/js/tutor-import-export.js:2144
 #: assets/js/tutor-order-details.js:2137
 #: assets/js/tutor-payment-settings.js:2144
@@ -11373,8 +11404,8 @@ msgid "weekly"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2135
-#: assets/js/tutor-coupon.js:11512
-#: assets/js/tutor-course-builder.js:48678
+#: assets/js/tutor-coupon.js:11566
+#: assets/js/tutor-course-builder.js:48757
 #: assets/js/tutor-import-export.js:2145
 #: assets/js/tutor-order-details.js:2138
 #: assets/js/tutor-payment-settings.js:2145
@@ -11384,8 +11415,8 @@ msgstr ""
 
 #. translators: %d is the number of months
 #: assets/js/tutor-addon-list.js:2139
-#: assets/js/tutor-coupon.js:11516
-#: assets/js/tutor-course-builder.js:48682
+#: assets/js/tutor-coupon.js:11570
+#: assets/js/tutor-course-builder.js:48761
 #: assets/js/tutor-import-export.js:2149
 #: assets/js/tutor-order-details.js:2142
 #: assets/js/tutor-payment-settings.js:2149
@@ -11396,8 +11427,8 @@ msgstr ""
 
 #. translators: %d is the number of months
 #: assets/js/tutor-addon-list.js:2141
-#: assets/js/tutor-coupon.js:11518
-#: assets/js/tutor-course-builder.js:48684
+#: assets/js/tutor-coupon.js:11572
+#: assets/js/tutor-course-builder.js:48763
 #: assets/js/tutor-import-export.js:2151
 #: assets/js/tutor-order-details.js:2144
 #: assets/js/tutor-payment-settings.js:2151
@@ -11407,8 +11438,8 @@ msgid "%d month"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2142
-#: assets/js/tutor-coupon.js:11519
-#: assets/js/tutor-course-builder.js:48685
+#: assets/js/tutor-coupon.js:11573
+#: assets/js/tutor-course-builder.js:48764
 #: assets/js/tutor-import-export.js:2152
 #: assets/js/tutor-order-details.js:2145
 #: assets/js/tutor-payment-settings.js:2152
@@ -11417,8 +11448,8 @@ msgid "monthly"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2143
-#: assets/js/tutor-coupon.js:11520
-#: assets/js/tutor-course-builder.js:48686
+#: assets/js/tutor-coupon.js:11574
+#: assets/js/tutor-course-builder.js:48765
 #: assets/js/tutor-import-export.js:2153
 #: assets/js/tutor-order-details.js:2146
 #: assets/js/tutor-payment-settings.js:2153
@@ -11428,8 +11459,8 @@ msgstr ""
 
 #. translators: %d is the number of years
 #: assets/js/tutor-addon-list.js:2147
-#: assets/js/tutor-coupon.js:11524
-#: assets/js/tutor-course-builder.js:48690
+#: assets/js/tutor-coupon.js:11578
+#: assets/js/tutor-course-builder.js:48769
 #: assets/js/tutor-import-export.js:2157
 #: assets/js/tutor-order-details.js:2150
 #: assets/js/tutor-payment-settings.js:2157
@@ -11440,8 +11471,8 @@ msgstr ""
 
 #. translators: %d is the number of years
 #: assets/js/tutor-addon-list.js:2149
-#: assets/js/tutor-coupon.js:11526
-#: assets/js/tutor-course-builder.js:48692
+#: assets/js/tutor-coupon.js:11580
+#: assets/js/tutor-course-builder.js:48771
 #: assets/js/tutor-import-export.js:2159
 #: assets/js/tutor-order-details.js:2152
 #: assets/js/tutor-payment-settings.js:2159
@@ -11451,8 +11482,8 @@ msgid "%d year"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2150
-#: assets/js/tutor-coupon.js:11527
-#: assets/js/tutor-course-builder.js:48693
+#: assets/js/tutor-coupon.js:11581
+#: assets/js/tutor-course-builder.js:48772
 #: assets/js/tutor-import-export.js:2160
 #: assets/js/tutor-order-details.js:2153
 #: assets/js/tutor-payment-settings.js:2160
@@ -11461,8 +11492,8 @@ msgid "yearly"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2151
-#: assets/js/tutor-coupon.js:11528
-#: assets/js/tutor-course-builder.js:48694
+#: assets/js/tutor-coupon.js:11582
+#: assets/js/tutor-course-builder.js:48773
 #: assets/js/tutor-import-export.js:2161
 #: assets/js/tutor-order-details.js:2154
 #: assets/js/tutor-payment-settings.js:2161
@@ -11611,10 +11642,10 @@ msgid "Search ..."
 msgstr ""
 
 #: assets/js/tutor-admin.js:1740
-#: assets/js/tutor-admin.js:3029
-#: assets/js/tutor-admin.js:3328
-#: assets/js/tutor-admin.js:3535
+#: assets/js/tutor-admin.js:3032
+#: assets/js/tutor-admin.js:3331
 #: assets/js/tutor-admin.js:3538
+#: assets/js/tutor-admin.js:3541
 #: assets/js/tutor-front.js:1116
 #: assets/js/tutor.js:2004
 msgid "Operation failed"
@@ -11696,46 +11727,46 @@ msgid "Error!"
 msgstr ""
 
 #. translators: %1$s is the Account name and %2$s is the Amount
-#: assets/js/tutor-admin.js:2949
+#: assets/js/tutor-admin.js:2952
 #, js-format
 msgid "You are approving %1$s withdrawal request for %2$s. Are you sure you want to approve?"
 msgstr ""
 
 #. translators: %1$s is the Account name and %2$s is the Amount
-#: assets/js/tutor-admin.js:2961
+#: assets/js/tutor-admin.js:2964
 #, js-format
 msgid "You are rejecting %1$s withdrawal request for %2$s. Are you sure you want to reject?"
 msgstr ""
 
-#: assets/js/tutor-admin.js:2980
-#: assets/js/tutor-admin.js:2996
+#: assets/js/tutor-admin.js:2983
+#: assets/js/tutor-admin.js:2999
 #: assets/js/tutor-front.js:1656
 msgid "Something went wrong, please try again!"
 msgstr ""
 
-#: assets/js/tutor-admin.js:3007
+#: assets/js/tutor-admin.js:3010
 msgid "Withdraw Reject Reason"
 msgstr ""
 
-#: assets/js/tutor-admin.js:3066
+#: assets/js/tutor-admin.js:3069
 msgid "Copied"
 msgstr ""
 
-#: assets/js/tutor-admin.js:3189
-#: assets/js/tutor-admin.js:3395
+#: assets/js/tutor-admin.js:3192
+#: assets/js/tutor-admin.js:3398
 msgid "Select or Upload Media Of Your Choice"
 msgstr ""
 
-#: assets/js/tutor-admin.js:3191
-#: assets/js/tutor-admin.js:3397
+#: assets/js/tutor-admin.js:3194
+#: assets/js/tutor-admin.js:3400
 msgid "Upload media"
 msgstr ""
 
-#: assets/js/tutor-admin.js:3264
+#: assets/js/tutor-admin.js:3267
 msgid "New Instructor Added"
 msgstr ""
 
-#: assets/js/tutor-admin.js:3440
+#: assets/js/tutor-admin.js:3443
 msgid "Do you want to save without any category?"
 msgstr ""
 
@@ -11764,9 +11795,9 @@ msgid "Weak"
 msgstr ""
 
 #: assets/js/tutor-core.js:1461
-#: assets/js/tutor-course-builder.js:23982
-#: assets/js/tutor-course-builder.js:23986
-#: assets/js/tutor-course-builder.js:25064
+#: assets/js/tutor-course-builder.js:23998
+#: assets/js/tutor-course-builder.js:24002
+#: assets/js/tutor-course-builder.js:25080
 msgid "Medium"
 msgstr ""
 
@@ -11801,7 +11832,7 @@ msgid "%s exceeds the maximum allowed file size"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:761
-#: assets/js/tutor-course-builder.js:37443
+#: assets/js/tutor-course-builder.js:37463
 #: assets/js/tutor-import-export.js:4063
 #: assets/js/tutor-order-details.js:3682
 #: assets/js/tutor-payment-settings.js:4869
@@ -11810,7 +11841,7 @@ msgid "Limit exceeded"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:2228
-#: assets/js/tutor-course-builder.js:39646
+#: assets/js/tutor-course-builder.js:39666
 #: assets/js/tutor-order-details.js:6056
 #: assets/js/tutor-payment-settings.js:7941
 #: assets/js/tutor-tax-settings.js:5795
@@ -11818,7 +11849,7 @@ msgid "No options available"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:2415
-#: assets/js/tutor-course-builder.js:48759
+#: assets/js/tutor-course-builder.js:48838
 #: assets/js/tutor-order-details.js:3879
 #: assets/js/tutor-payment-settings.js:9239
 #: assets/js/tutor-tax-settings.js:7422
@@ -11826,7 +11857,7 @@ msgid "The field is required"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:2422
-#: assets/js/tutor-course-builder.js:48766
+#: assets/js/tutor-course-builder.js:48845
 #: assets/js/tutor-order-details.js:3886
 #: assets/js/tutor-payment-settings.js:9246
 #: assets/js/tutor-tax-settings.js:7429
@@ -11852,13 +11883,13 @@ msgstr ""
 
 #: assets/js/tutor-coupon.js:3642
 #: assets/js/tutor-coupon.js:3662
-#: assets/js/tutor-course-builder.js:10826
-#: assets/js/tutor-course-builder.js:10846
+#: assets/js/tutor-course-builder.js:10828
+#: assets/js/tutor-course-builder.js:10848
 msgid "Until cancelled"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:3643
-#: assets/js/tutor-course-builder.js:10827
+#: assets/js/tutor-course-builder.js:10829
 #: assets/js/tutor-course-builder.js:11583
 msgid "No Renewal"
 msgstr ""
@@ -11870,8 +11901,8 @@ msgstr ""
 #: assets/js/tutor-coupon.js:4167
 #: assets/js/tutor-course-builder.js:9262
 #: assets/js/tutor-course-builder.js:10120
-#: assets/js/tutor-course-builder.js:15254
-#: assets/js/tutor-course-builder.js:27552
+#: assets/js/tutor-course-builder.js:15270
+#: assets/js/tutor-course-builder.js:27568
 #: assets/js/tutor-import-export.js:5643
 #: assets/js/tutor-import-export.js:7412
 msgid "Add"
@@ -11904,7 +11935,7 @@ msgid "Add Items"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:4940
-#: assets/js/tutor-course-builder.js:44878
+#: assets/js/tutor-course-builder.js:44898
 #: assets/js/tutor-order-details.js:6331
 #: assets/js/tutor-payment-settings.js:8216
 #: assets/js/tutor-tax-settings.js:6070
@@ -11912,7 +11943,7 @@ msgid "Formal"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:4944
-#: assets/js/tutor-course-builder.js:44882
+#: assets/js/tutor-course-builder.js:44902
 #: assets/js/tutor-order-details.js:6335
 #: assets/js/tutor-payment-settings.js:8220
 #: assets/js/tutor-tax-settings.js:6074
@@ -11920,7 +11951,7 @@ msgid "Casual"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:4948
-#: assets/js/tutor-course-builder.js:44886
+#: assets/js/tutor-course-builder.js:44906
 #: assets/js/tutor-order-details.js:6339
 #: assets/js/tutor-payment-settings.js:8224
 #: assets/js/tutor-tax-settings.js:6078
@@ -11928,7 +11959,7 @@ msgid "Professional"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:4952
-#: assets/js/tutor-course-builder.js:44890
+#: assets/js/tutor-course-builder.js:44910
 #: assets/js/tutor-order-details.js:6343
 #: assets/js/tutor-payment-settings.js:8228
 #: assets/js/tutor-tax-settings.js:6082
@@ -11936,7 +11967,7 @@ msgid "Enthusiastic"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:4956
-#: assets/js/tutor-course-builder.js:44894
+#: assets/js/tutor-course-builder.js:44914
 #: assets/js/tutor-order-details.js:6347
 #: assets/js/tutor-payment-settings.js:8232
 #: assets/js/tutor-tax-settings.js:6086
@@ -11944,7 +11975,7 @@ msgid "Informational"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:4960
-#: assets/js/tutor-course-builder.js:44898
+#: assets/js/tutor-course-builder.js:44918
 #: assets/js/tutor-order-details.js:6351
 #: assets/js/tutor-payment-settings.js:8236
 #: assets/js/tutor-tax-settings.js:6090
@@ -11952,7 +11983,7 @@ msgid "Funny"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:4970
-#: assets/js/tutor-course-builder.js:44908
+#: assets/js/tutor-course-builder.js:44928
 #: assets/js/tutor-order-details.js:6361
 #: assets/js/tutor-payment-settings.js:8246
 #: assets/js/tutor-tax-settings.js:6100
@@ -11960,7 +11991,7 @@ msgid "Essay"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:4974
-#: assets/js/tutor-course-builder.js:44912
+#: assets/js/tutor-course-builder.js:44932
 #: assets/js/tutor-order-details.js:6365
 #: assets/js/tutor-payment-settings.js:8250
 #: assets/js/tutor-tax-settings.js:6104
@@ -11968,7 +11999,7 @@ msgid "Paragraph"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:4978
-#: assets/js/tutor-course-builder.js:44916
+#: assets/js/tutor-course-builder.js:44936
 #: assets/js/tutor-order-details.js:6369
 #: assets/js/tutor-payment-settings.js:8254
 #: assets/js/tutor-tax-settings.js:6108
@@ -11976,7 +12007,7 @@ msgid "Outline"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5005
-#: assets/js/tutor-course-builder.js:41560
+#: assets/js/tutor-course-builder.js:41580
 #: assets/js/tutor-order-details.js:6396
 #: assets/js/tutor-payment-settings.js:8281
 #: assets/js/tutor-tax-settings.js:6135
@@ -11984,7 +12015,7 @@ msgid "Character Limit"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5024
-#: assets/js/tutor-course-builder.js:41579
+#: assets/js/tutor-course-builder.js:41599
 #: assets/js/tutor-order-details.js:6415
 #: assets/js/tutor-payment-settings.js:8300
 #: assets/js/tutor-tax-settings.js:6154
@@ -11992,7 +12023,7 @@ msgid "Tone"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5032
-#: assets/js/tutor-course-builder.js:41587
+#: assets/js/tutor-course-builder.js:41607
 #: assets/js/tutor-order-details.js:6423
 #: assets/js/tutor-payment-settings.js:8308
 #: assets/js/tutor-tax-settings.js:6162
@@ -12000,7 +12031,7 @@ msgid "Format"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5351
-#: assets/js/tutor-course-builder.js:42978
+#: assets/js/tutor-course-builder.js:42998
 #: assets/js/tutor-order-details.js:6954
 #: assets/js/tutor-payment-settings.js:8472
 #: assets/js/tutor-tax-settings.js:6693
@@ -12008,7 +12039,7 @@ msgid "Mastering Digital Marketing: A Complete Guide"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5352
-#: assets/js/tutor-course-builder.js:42979
+#: assets/js/tutor-course-builder.js:42999
 #: assets/js/tutor-order-details.js:6955
 #: assets/js/tutor-payment-settings.js:8473
 #: assets/js/tutor-tax-settings.js:6694
@@ -12016,7 +12047,7 @@ msgid "The Ultimate Photoshop Course for Beginners"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5353
-#: assets/js/tutor-course-builder.js:42980
+#: assets/js/tutor-course-builder.js:43000
 #: assets/js/tutor-order-details.js:6956
 #: assets/js/tutor-payment-settings.js:8474
 #: assets/js/tutor-tax-settings.js:6695
@@ -12024,7 +12055,7 @@ msgid "Python Programming: From Zero to Hero"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5354
-#: assets/js/tutor-course-builder.js:42981
+#: assets/js/tutor-course-builder.js:43001
 #: assets/js/tutor-order-details.js:6957
 #: assets/js/tutor-payment-settings.js:8475
 #: assets/js/tutor-tax-settings.js:6696
@@ -12032,7 +12063,7 @@ msgid "Creative Writing Essentials: Unlock Your Storytelling Potential"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5355
-#: assets/js/tutor-course-builder.js:42982
+#: assets/js/tutor-course-builder.js:43002
 #: assets/js/tutor-order-details.js:6958
 #: assets/js/tutor-payment-settings.js:8476
 #: assets/js/tutor-tax-settings.js:6697
@@ -12040,7 +12071,7 @@ msgid "The Complete Guide to Web Development with React"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5356
-#: assets/js/tutor-course-builder.js:42983
+#: assets/js/tutor-course-builder.js:43003
 #: assets/js/tutor-order-details.js:6959
 #: assets/js/tutor-payment-settings.js:8477
 #: assets/js/tutor-tax-settings.js:6698
@@ -12048,7 +12079,7 @@ msgid "Master Public Speaking: Deliver Powerful Presentations"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5357
-#: assets/js/tutor-course-builder.js:42984
+#: assets/js/tutor-course-builder.js:43004
 #: assets/js/tutor-order-details.js:6960
 #: assets/js/tutor-payment-settings.js:8478
 #: assets/js/tutor-tax-settings.js:6699
@@ -12056,7 +12087,7 @@ msgid "Excel for Business: From Basics to Advanced Analytics"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5358
-#: assets/js/tutor-course-builder.js:42985
+#: assets/js/tutor-course-builder.js:43005
 #: assets/js/tutor-order-details.js:6961
 #: assets/js/tutor-payment-settings.js:8479
 #: assets/js/tutor-tax-settings.js:6700
@@ -12064,7 +12095,7 @@ msgid "Fitness Fundamentals: Build Strength and Confidence"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5359
-#: assets/js/tutor-course-builder.js:42986
+#: assets/js/tutor-course-builder.js:43006
 #: assets/js/tutor-order-details.js:6962
 #: assets/js/tutor-payment-settings.js:8480
 #: assets/js/tutor-tax-settings.js:6701
@@ -12072,7 +12103,7 @@ msgid "Photography Made Simple: Capture Stunning Shots"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5360
-#: assets/js/tutor-course-builder.js:42987
+#: assets/js/tutor-course-builder.js:43007
 #: assets/js/tutor-order-details.js:6963
 #: assets/js/tutor-payment-settings.js:8481
 #: assets/js/tutor-tax-settings.js:6702
@@ -12080,7 +12111,7 @@ msgid "Financial Freedom: Learn the Basics of Investing"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5464
-#: assets/js/tutor-course-builder.js:43091
+#: assets/js/tutor-course-builder.js:43111
 #: assets/js/tutor-order-details.js:7067
 #: assets/js/tutor-payment-settings.js:8585
 #: assets/js/tutor-tax-settings.js:6806
@@ -12088,7 +12119,7 @@ msgid "Craft Your Course Description"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5465
-#: assets/js/tutor-course-builder.js:43092
+#: assets/js/tutor-course-builder.js:43112
 #: assets/js/tutor-order-details.js:7068
 #: assets/js/tutor-payment-settings.js:8586
 #: assets/js/tutor-tax-settings.js:6807
@@ -12096,8 +12127,8 @@ msgid "Provide a brief overview of your course topic, target audience, and key t
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5484
-#: assets/js/tutor-course-builder.js:42223
-#: assets/js/tutor-course-builder.js:43111
+#: assets/js/tutor-course-builder.js:42243
+#: assets/js/tutor-course-builder.js:43131
 #: assets/js/tutor-order-details.js:7087
 #: assets/js/tutor-payment-settings.js:6416
 #: assets/js/tutor-payment-settings.js:8605
@@ -12106,7 +12137,7 @@ msgid "Inspire Me"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5586
-#: assets/js/tutor-course-builder.js:43213
+#: assets/js/tutor-course-builder.js:43233
 #: assets/js/tutor-order-details.js:7189
 #: assets/js/tutor-payment-settings.js:8707
 #: assets/js/tutor-tax-settings.js:6928
@@ -12114,7 +12145,7 @@ msgid "Rephrase"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5592
-#: assets/js/tutor-course-builder.js:43219
+#: assets/js/tutor-course-builder.js:43239
 #: assets/js/tutor-order-details.js:7195
 #: assets/js/tutor-payment-settings.js:8713
 #: assets/js/tutor-tax-settings.js:6934
@@ -12122,7 +12153,7 @@ msgid "Make Shorter"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5600
-#: assets/js/tutor-course-builder.js:43227
+#: assets/js/tutor-course-builder.js:43247
 #: assets/js/tutor-order-details.js:7203
 #: assets/js/tutor-payment-settings.js:8721
 #: assets/js/tutor-tax-settings.js:6942
@@ -12130,7 +12161,7 @@ msgid "Change Tone"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5614
-#: assets/js/tutor-course-builder.js:43241
+#: assets/js/tutor-course-builder.js:43261
 #: assets/js/tutor-order-details.js:7217
 #: assets/js/tutor-payment-settings.js:8735
 #: assets/js/tutor-tax-settings.js:6956
@@ -12138,7 +12169,7 @@ msgid "Translate to"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5626
-#: assets/js/tutor-course-builder.js:43253
+#: assets/js/tutor-course-builder.js:43273
 #: assets/js/tutor-order-details.js:7229
 #: assets/js/tutor-payment-settings.js:8747
 #: assets/js/tutor-tax-settings.js:6968
@@ -12146,7 +12177,7 @@ msgid "Write as Bullets"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5632
-#: assets/js/tutor-course-builder.js:43259
+#: assets/js/tutor-course-builder.js:43279
 #: assets/js/tutor-order-details.js:7235
 #: assets/js/tutor-payment-settings.js:8753
 #: assets/js/tutor-tax-settings.js:6974
@@ -12154,7 +12185,7 @@ msgid "Make Longer"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5638
-#: assets/js/tutor-course-builder.js:43265
+#: assets/js/tutor-course-builder.js:43285
 #: assets/js/tutor-order-details.js:7241
 #: assets/js/tutor-payment-settings.js:8759
 #: assets/js/tutor-tax-settings.js:6980
@@ -12164,9 +12195,9 @@ msgstr ""
 #: assets/js/tutor-coupon.js:5689
 #: assets/js/tutor-course-builder.js:3450
 #: assets/js/tutor-course-builder.js:4708
-#: assets/js/tutor-course-builder.js:25443
-#: assets/js/tutor-course-builder.js:42250
-#: assets/js/tutor-course-builder.js:43316
+#: assets/js/tutor-course-builder.js:25459
+#: assets/js/tutor-course-builder.js:42270
+#: assets/js/tutor-course-builder.js:43336
 #: assets/js/tutor-order-details.js:7292
 #: assets/js/tutor-payment-settings.js:6443
 #: assets/js/tutor-payment-settings.js:8810
@@ -12175,8 +12206,8 @@ msgid "Generate Now"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5697
-#: assets/js/tutor-course-builder.js:42250
-#: assets/js/tutor-course-builder.js:43324
+#: assets/js/tutor-course-builder.js:42270
+#: assets/js/tutor-course-builder.js:43344
 #: assets/js/tutor-order-details.js:7300
 #: assets/js/tutor-payment-settings.js:6443
 #: assets/js/tutor-payment-settings.js:8818
@@ -12185,8 +12216,8 @@ msgid "Generate Again"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5706
-#: assets/js/tutor-course-builder.js:42440
-#: assets/js/tutor-course-builder.js:43333
+#: assets/js/tutor-course-builder.js:42460
+#: assets/js/tutor-course-builder.js:43353
 #: assets/js/tutor-order-details.js:7309
 #: assets/js/tutor-payment-settings.js:6080
 #: assets/js/tutor-payment-settings.js:8827
@@ -12195,7 +12226,7 @@ msgid "Use This"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5744
-#: assets/js/tutor-course-builder.js:44044
+#: assets/js/tutor-course-builder.js:44064
 #: assets/js/tutor-order-details.js:7347
 #: assets/js/tutor-payment-settings.js:7205
 #: assets/js/tutor-tax-settings.js:7086
@@ -12205,10 +12236,10 @@ msgstr ""
 #: assets/js/tutor-coupon.js:5747
 #: assets/js/tutor-coupon.js:6332
 #: assets/js/tutor-course-builder.js:3408
-#: assets/js/tutor-course-builder.js:37932
-#: assets/js/tutor-course-builder.js:38177
-#: assets/js/tutor-course-builder.js:41318
-#: assets/js/tutor-course-builder.js:44047
+#: assets/js/tutor-course-builder.js:37952
+#: assets/js/tutor-course-builder.js:38197
+#: assets/js/tutor-course-builder.js:41338
+#: assets/js/tutor-course-builder.js:44067
 #: assets/js/tutor-order-details.js:7350
 #: assets/js/tutor-order-details.js:7869
 #: assets/js/tutor-payment-settings.js:7208
@@ -12221,7 +12252,7 @@ msgid "AI Studio"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5751
-#: assets/js/tutor-course-builder.js:44051
+#: assets/js/tutor-course-builder.js:44071
 #: assets/js/tutor-order-details.js:7354
 #: assets/js/tutor-payment-settings.js:7212
 #: assets/js/tutor-tax-settings.js:7093
@@ -12229,7 +12260,7 @@ msgid "Upgrade your plan to access the AI feature"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5752
-#: assets/js/tutor-course-builder.js:44052
+#: assets/js/tutor-course-builder.js:44072
 #: assets/js/tutor-order-details.js:7355
 #: assets/js/tutor-payment-settings.js:7213
 #: assets/js/tutor-tax-settings.js:7094
@@ -12237,7 +12268,7 @@ msgid "Don’t miss out on this game-changing feature!"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5754
-#: assets/js/tutor-course-builder.js:44054
+#: assets/js/tutor-course-builder.js:44074
 #: assets/js/tutor-order-details.js:7357
 #: assets/js/tutor-payment-settings.js:7215
 #: assets/js/tutor-tax-settings.js:7096
@@ -12245,7 +12276,7 @@ msgid "Generate a complete course outline in seconds!"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5755
-#: assets/js/tutor-course-builder.js:44055
+#: assets/js/tutor-course-builder.js:44075
 #: assets/js/tutor-order-details.js:7358
 #: assets/js/tutor-payment-settings.js:7216
 #: assets/js/tutor-tax-settings.js:7097
@@ -12253,7 +12284,7 @@ msgid "Let the AI Studio create Quizzes on your behalf and give your brain a wel
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5756
-#: assets/js/tutor-course-builder.js:44056
+#: assets/js/tutor-course-builder.js:44076
 #: assets/js/tutor-order-details.js:7359
 #: assets/js/tutor-payment-settings.js:7217
 #: assets/js/tutor-tax-settings.js:7098
@@ -12261,7 +12292,7 @@ msgid "Generate images, customize backgrounds, and even remove unwanted objects 
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5757
-#: assets/js/tutor-course-builder.js:44057
+#: assets/js/tutor-course-builder.js:44077
 #: assets/js/tutor-order-details.js:7360
 #: assets/js/tutor-payment-settings.js:7218
 #: assets/js/tutor-tax-settings.js:7099
@@ -12271,8 +12302,8 @@ msgstr ""
 #: assets/js/tutor-coupon.js:5766
 #: assets/js/tutor-course-builder.js:6688
 #: assets/js/tutor-course-builder.js:8005
-#: assets/js/tutor-course-builder.js:12993
-#: assets/js/tutor-course-builder.js:44066
+#: assets/js/tutor-course-builder.js:13009
+#: assets/js/tutor-course-builder.js:44086
 #: assets/js/tutor-order-details.js:7369
 #: assets/js/tutor-payment-settings.js:7227
 #: assets/js/tutor-tax-settings.js:7108
@@ -12280,8 +12311,8 @@ msgid "Get Tutor LMS Pro"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:5793
-#: assets/js/tutor-course-builder.js:42049
-#: assets/js/tutor-course-builder.js:44093
+#: assets/js/tutor-course-builder.js:42069
+#: assets/js/tutor-course-builder.js:44113
 #: assets/js/tutor-order-details.js:7396
 #: assets/js/tutor-payment-settings.js:6242
 #: assets/js/tutor-payment-settings.js:7254
@@ -12290,7 +12321,7 @@ msgid "Illustration"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:6125
-#: assets/js/tutor-course-builder.js:44252
+#: assets/js/tutor-course-builder.js:44272
 #: assets/js/tutor-order-details.js:7662
 #: assets/js/tutor-payment-settings.js:9357
 #: assets/js/tutor-tax-settings.js:7540
@@ -12298,7 +12329,7 @@ msgid "Set OpenAI API key"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:6142
-#: assets/js/tutor-course-builder.js:44269
+#: assets/js/tutor-course-builder.js:44289
 #: assets/js/tutor-order-details.js:7679
 #: assets/js/tutor-payment-settings.js:9374
 #: assets/js/tutor-tax-settings.js:7557
@@ -12306,7 +12337,7 @@ msgid "Connect API KEY"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:6148
-#: assets/js/tutor-course-builder.js:44275
+#: assets/js/tutor-course-builder.js:44295
 #: assets/js/tutor-order-details.js:7685
 #: assets/js/tutor-payment-settings.js:9380
 #: assets/js/tutor-tax-settings.js:7563
@@ -12314,7 +12345,7 @@ msgid "API is not connected"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:6152
-#: assets/js/tutor-course-builder.js:44279
+#: assets/js/tutor-course-builder.js:44299
 #: assets/js/tutor-order-details.js:7689
 #: assets/js/tutor-payment-settings.js:9384
 #: assets/js/tutor-tax-settings.js:7567
@@ -12323,7 +12354,7 @@ msgstr ""
 
 #. translators: %1$s and %2$s are opening and closing anchor tags for the "OpenAI User settings" link
 #: assets/js/tutor-coupon.js:6169
-#: assets/js/tutor-course-builder.js:44296
+#: assets/js/tutor-course-builder.js:44316
 #: assets/js/tutor-order-details.js:7706
 #: assets/js/tutor-payment-settings.js:9401
 #: assets/js/tutor-tax-settings.js:7584
@@ -12332,7 +12363,7 @@ msgid "Find your Secret API key in your %1$sOpenAI User settings%2$s and paste i
 msgstr ""
 
 #: assets/js/tutor-coupon.js:6175
-#: assets/js/tutor-course-builder.js:44302
+#: assets/js/tutor-course-builder.js:44322
 #: assets/js/tutor-order-details.js:7712
 #: assets/js/tutor-payment-settings.js:9407
 #: assets/js/tutor-tax-settings.js:7590
@@ -12340,7 +12371,7 @@ msgid "The page will reload after submission. Make sure to save the course infor
 msgstr ""
 
 #: assets/js/tutor-coupon.js:6186
-#: assets/js/tutor-course-builder.js:44313
+#: assets/js/tutor-course-builder.js:44333
 #: assets/js/tutor-order-details.js:7723
 #: assets/js/tutor-payment-settings.js:9418
 #: assets/js/tutor-tax-settings.js:7601
@@ -12348,7 +12379,7 @@ msgid "OpenAI API key"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:6187
-#: assets/js/tutor-course-builder.js:44314
+#: assets/js/tutor-course-builder.js:44334
 #: assets/js/tutor-order-details.js:7724
 #: assets/js/tutor-payment-settings.js:9419
 #: assets/js/tutor-tax-settings.js:7602
@@ -12356,7 +12387,7 @@ msgid "Enter your OpenAI API key"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:6194
-#: assets/js/tutor-course-builder.js:44321
+#: assets/js/tutor-course-builder.js:44341
 #: assets/js/tutor-order-details.js:7731
 #: assets/js/tutor-payment-settings.js:9426
 #: assets/js/tutor-tax-settings.js:7609
@@ -12364,7 +12395,7 @@ msgid "Enable OpenAI"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:6343
-#: assets/js/tutor-course-builder.js:38188
+#: assets/js/tutor-course-builder.js:38208
 #: assets/js/tutor-order-details.js:7880
 #: assets/js/tutor-payment-settings.js:8954
 #: assets/js/tutor-tax-settings.js:7758
@@ -12372,7 +12403,7 @@ msgid "Create a Compelling Title"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:6344
-#: assets/js/tutor-course-builder.js:38189
+#: assets/js/tutor-course-builder.js:38209
 #: assets/js/tutor-order-details.js:7881
 #: assets/js/tutor-payment-settings.js:8955
 #: assets/js/tutor-tax-settings.js:7759
@@ -12380,7 +12411,7 @@ msgid "Describe the main focus of your course in a few words"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:6423
-#: assets/js/tutor-course-builder.js:38268
+#: assets/js/tutor-course-builder.js:38288
 #: assets/js/tutor-order-details.js:7960
 #: assets/js/tutor-payment-settings.js:9034
 #: assets/js/tutor-tax-settings.js:7838
@@ -12427,7 +12458,7 @@ msgstr ""
 
 #: assets/js/tutor-coupon.js:6847
 #: assets/js/tutor-coupon.js:6878
-#: assets/js/tutor-coupon.js:7875
+#: assets/js/tutor-coupon.js:7929
 #: assets/js/tutor-course-builder.js:12418
 #: assets/js/tutor-course-builder.js:12443
 msgid "0"
@@ -12535,65 +12566,65 @@ msgstr ""
 msgid "Not active yet"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7694
+#: assets/js/tutor-coupon.js:7748
 msgid "Validity"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7705
+#: assets/js/tutor-coupon.js:7759
 msgid "Starts from"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7732
+#: assets/js/tutor-coupon.js:7786
 msgid "Set end date"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7733
+#: assets/js/tutor-coupon.js:7787
 msgid "Leaving the end date blank will make the coupon valid indefinitely."
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7750
+#: assets/js/tutor-coupon.js:7804
 msgid "Ends in"
 msgstr ""
 
 #. translators: %s is the currency symbol, e.g. $, €, ¥
-#: assets/js/tutor-coupon.js:7813
+#: assets/js/tutor-coupon.js:7867
 #, js-format
 msgid "Minimum purchase amount (%s)"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7816
+#: assets/js/tutor-coupon.js:7870
 msgid "No minimum requirements"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7824
+#: assets/js/tutor-coupon.js:7878
 msgid "Minimum quantity of courses"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7835
+#: assets/js/tutor-coupon.js:7889
 msgid "Minimum Purchase Requirements"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7860
+#: assets/js/tutor-coupon.js:7914
 msgid "0.00"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:8097
+#: assets/js/tutor-coupon.js:8151
 msgid "Update Coupon"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:8097
+#: assets/js/tutor-coupon.js:8151
 msgid "Create Coupon"
 msgstr ""
 
 #. translators: %1$s is author's name and %2$s is creation date/time
-#: assets/js/tutor-coupon.js:8109
+#: assets/js/tutor-coupon.js:8163
 #: assets/js/tutor-order-details.js:10046
 #, js-format
 msgid "Created by %1$s at %2$s"
 msgstr ""
 
 #. translators: %1$s is author's name and %2$s is update date/time
-#: assets/js/tutor-coupon.js:8113
+#: assets/js/tutor-coupon.js:8167
 #: assets/js/tutor-order-details.js:10050
 #, js-format
 msgid "Updated by %1$s at %2$s"
@@ -12757,7 +12788,7 @@ msgid "Cloud"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:1282
-#: assets/js/tutor-course-builder.js:12669
+#: assets/js/tutor-course-builder.js:12685
 msgid "Password is required"
 msgstr ""
 
@@ -12797,7 +12828,7 @@ msgstr ""
 #: assets/js/tutor-course-builder.js:2583
 #: assets/js/tutor-course-builder.js:2701
 #: assets/js/tutor-course-builder.js:6552
-#: assets/js/tutor-course-builder.js:18421
+#: assets/js/tutor-course-builder.js:18437
 msgid "Preview"
 msgstr ""
 
@@ -13019,7 +13050,7 @@ msgid "Basics"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:6049
-#: assets/js/tutor-course-builder.js:32397
+#: assets/js/tutor-course-builder.js:32413
 msgid "Curriculum"
 msgstr ""
 
@@ -13039,8 +13070,8 @@ msgstr ""
 
 #: assets/js/tutor-course-builder.js:6527
 #: assets/js/tutor-course-builder.js:6902
-#: assets/js/tutor-course-builder.js:12963
-#: assets/js/tutor-course-builder.js:42014
+#: assets/js/tutor-course-builder.js:12979
+#: assets/js/tutor-course-builder.js:42034
 #: assets/js/tutor-payment-settings.js:6207
 msgid "None"
 msgstr ""
@@ -13091,7 +13122,7 @@ msgid "You didn’t create any certificate yet!"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:7163
-#: assets/js/tutor-course-builder.js:14147
+#: assets/js/tutor-course-builder.js:14163
 msgid "Illustration of a no course selected"
 msgstr ""
 
@@ -13128,7 +13159,7 @@ msgstr ""
 #: assets/js/tutor-course-builder.js:7610
 #: assets/js/tutor-course-builder.js:7853
 #: assets/js/tutor-course-builder.js:11696
-#: assets/js/tutor-course-builder.js:30707
+#: assets/js/tutor-course-builder.js:30723
 #, js-format
 msgid "Delete \"%s\""
 msgstr ""
@@ -13171,7 +13202,7 @@ msgid "Search courses for prerequisites"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:8305
-#: assets/js/tutor-course-builder.js:14565
+#: assets/js/tutor-course-builder.js:14581
 #: assets/js/tutor-import-export.js:7487
 msgid "Attachments"
 msgstr ""
@@ -13181,8 +13212,8 @@ msgid "Provide additional resources like downloadable files and reference materi
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:8328
-#: assets/js/tutor-course-builder.js:14566
-#: assets/js/tutor-course-builder.js:15771
+#: assets/js/tutor-course-builder.js:14582
+#: assets/js/tutor-course-builder.js:15787
 msgid "Upload Attachment"
 msgstr ""
 
@@ -13270,236 +13301,236 @@ msgstr ""
 msgid "No tag created yet."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10386
+#: assets/js/tutor-course-builder.js:10390
 msgid "Schedule date is required."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10391
+#: assets/js/tutor-course-builder.js:10395
 msgid "Schedule date should be in the future."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10397
+#: assets/js/tutor-course-builder.js:10401
 msgid "Schedule date should be before enrollment start date."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10410
+#: assets/js/tutor-course-builder.js:10414
 msgid "Select date"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10422
+#: assets/js/tutor-course-builder.js:10426
 msgid "Schedule time is required."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10427
+#: assets/js/tutor-course-builder.js:10431
 msgid "Schedule time should be in the future."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10433
+#: assets/js/tutor-course-builder.js:10437
 msgid "Schedule time should be before enrollment start date."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10458
+#: assets/js/tutor-course-builder.js:10462
 msgid "Show coming soon in course list & details page"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10484
+#: assets/js/tutor-course-builder.js:10488
 msgid "Coming Soon Thumbnail"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10485
-#: assets/js/tutor-course-builder.js:12688
-#: assets/js/tutor-course-builder.js:40996
+#: assets/js/tutor-course-builder.js:10489
+#: assets/js/tutor-course-builder.js:12704
+#: assets/js/tutor-course-builder.js:41016
 msgid "Upload Thumbnail"
 msgstr ""
 
 #. translators: %s is the maximum allowed upload file size (e.g., "2MB")
-#: assets/js/tutor-course-builder.js:10486
-#: assets/js/tutor-course-builder.js:12690
-#: assets/js/tutor-course-builder.js:15599
+#: assets/js/tutor-course-builder.js:10490
+#: assets/js/tutor-course-builder.js:12706
+#: assets/js/tutor-course-builder.js:15615
 #, js-format
 msgid "JPEG, PNG, GIF, and WebP formats, up to %s"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10493
+#: assets/js/tutor-course-builder.js:10497
 msgid "Preview Course Curriculum"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10528
+#: assets/js/tutor-course-builder.js:10532
 msgid "Scheduled for"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10528
+#: assets/js/tutor-course-builder.js:10532
 msgid "Scheduled with coming soon"
 msgstr ""
 
 #. translators: %1$s is the date and %2$s is the time
-#: assets/js/tutor-course-builder.js:10566
+#: assets/js/tutor-course-builder.js:10570
 #, js-format
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10649
+#: assets/js/tutor-course-builder.js:10651
 msgid "Offer sale price"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10664
+#: assets/js/tutor-course-builder.js:10666
 msgid "Sale price should be less than regular price"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10667
+#: assets/js/tutor-course-builder.js:10669
 msgid "Sale price should be greater than 0"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10674
+#: assets/js/tutor-course-builder.js:10676
 #: assets/js/tutor-course-builder.js:12441
 msgid "Sale Price"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10684
+#: assets/js/tutor-course-builder.js:10686
 msgid "Schedule the sale price"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10694
+#: assets/js/tutor-course-builder.js:10696
 msgid "Sale starts from"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10703
-#: assets/js/tutor-course-builder.js:10740
+#: assets/js/tutor-course-builder.js:10705
+#: assets/js/tutor-course-builder.js:10742
 msgid "Schedule date is required"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10715
-#: assets/js/tutor-course-builder.js:10765
+#: assets/js/tutor-course-builder.js:10717
+#: assets/js/tutor-course-builder.js:10767
 msgid "Schedule time is required"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10731
+#: assets/js/tutor-course-builder.js:10733
 msgid "Sale ends to"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10746
+#: assets/js/tutor-course-builder.js:10748
 msgid "Sales End date should be greater than start date"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:10773
+#: assets/js/tutor-course-builder.js:10775
 msgid "Sales End time should be greater than start time"
 msgstr ""
 
 #. translators: %s: number of times.
-#: assets/js/tutor-course-builder.js:11143
+#: assets/js/tutor-course-builder.js:11145
 #, js-format
 msgid "%s times"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11163
+#: assets/js/tutor-course-builder.js:11165
 msgid "Enter plan name"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11164
+#: assets/js/tutor-course-builder.js:11166
 msgid "Plan Name"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11176
+#: assets/js/tutor-course-builder.js:11178
 #: assets/js/tutor-course-builder.js:12410
 msgid "Price must be greater than 0"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11183
+#: assets/js/tutor-course-builder.js:11185
 msgid "Plan price"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11195
+#: assets/js/tutor-course-builder.js:11197
 msgid "This value must be equal to or greater than 1"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11200
+#: assets/js/tutor-course-builder.js:11202
 msgid "Billing Interval"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11201
+#: assets/js/tutor-course-builder.js:11203
 msgid "12"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11215
+#: assets/js/tutor-course-builder.js:11217
 msgid "Day(s)"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11219
+#: assets/js/tutor-course-builder.js:11221
 msgid "Week(s)"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11223
+#: assets/js/tutor-course-builder.js:11225
 msgid "Month(s)"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11227
+#: assets/js/tutor-course-builder.js:11229
 msgid "Year(s)"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11243
+#: assets/js/tutor-course-builder.js:11245
 msgid "Renew plan must be greater than 0"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11251
+#: assets/js/tutor-course-builder.js:11253
 #: assets/js/tutor-course-builder.js:11578
 msgid "Billing Cycles"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11252
+#: assets/js/tutor-course-builder.js:11254
 msgid "Select or type times to renewing the plan"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11253
+#: assets/js/tutor-course-builder.js:11255
 msgid "Times"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11267
+#: assets/js/tutor-course-builder.js:11269
 msgid "Charge enrollment fee"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11278
+#: assets/js/tutor-course-builder.js:11280
 msgid "Enrollment fee must be greater than 0"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11284
+#: assets/js/tutor-course-builder.js:11286
 msgid "Enrollment fee"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11286
+#: assets/js/tutor-course-builder.js:11288
 msgid "Enter enrollment fee"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11297
+#: assets/js/tutor-course-builder.js:11299
 msgid "Do not provide certificate"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11304
+#: assets/js/tutor-course-builder.js:11306
 msgid "Mark as featured"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11368
-#: assets/js/tutor-course-builder.js:14490
-#: assets/js/tutor-course-builder.js:15458
-#: assets/js/tutor-course-builder.js:29993
+#: assets/js/tutor-course-builder.js:11370
+#: assets/js/tutor-course-builder.js:14506
+#: assets/js/tutor-course-builder.js:15474
+#: assets/js/tutor-course-builder.js:30009
 msgid "Unsaved Changes"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11368
+#: assets/js/tutor-course-builder.js:11370
 msgid "Subscription Plan"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11369
+#: assets/js/tutor-course-builder.js:11371
 msgid "Update plan"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11369
+#: assets/js/tutor-course-builder.js:11371
 msgid "Create plan"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:11379
-#: assets/js/tutor-course-builder.js:14507
-#: assets/js/tutor-course-builder.js:15475
-#: assets/js/tutor-course-builder.js:30034
+#: assets/js/tutor-course-builder.js:11381
+#: assets/js/tutor-course-builder.js:14523
+#: assets/js/tutor-course-builder.js:15491
+#: assets/js/tutor-course-builder.js:30050
 msgid "Discard Changes"
 msgstr ""
 
@@ -13633,1031 +13664,1039 @@ msgstr ""
 msgid "Charge tax on subscription"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12640
+#: assets/js/tutor-course-builder.js:12629
+msgid "Changing the course author will assign all the updates and course data to the selected author."
+msgstr ""
+
+#: assets/js/tutor-course-builder.js:12630
+msgid "Yes, change author"
+msgstr ""
+
+#: assets/js/tutor-course-builder.js:12656
 msgid "Visibility"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12641
+#: assets/js/tutor-course-builder.js:12657
 msgid "Select visibility status"
 msgstr ""
 
 #. translators: %s is the last updated date
-#: assets/js/tutor-course-builder.js:12658
+#: assets/js/tutor-course-builder.js:12674
 #, js-format
 msgid "Last updated on %s"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12673
+#: assets/js/tutor-course-builder.js:12689
 msgid "Enter password"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12687
-#: assets/js/tutor-course-builder.js:15597
+#: assets/js/tutor-course-builder.js:12703
+#: assets/js/tutor-course-builder.js:15613
 msgid "Featured Image"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12700
+#: assets/js/tutor-course-builder.js:12716
 msgid "Intro Video"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12701
-#: assets/js/tutor-course-builder.js:15608
+#: assets/js/tutor-course-builder.js:12717
+#: assets/js/tutor-course-builder.js:15624
 msgid "Upload Video"
 msgstr ""
 
 #. translators: %s is the maximum allowed file size
-#: assets/js/tutor-course-builder.js:12703
-#: assets/js/tutor-course-builder.js:15610
+#: assets/js/tutor-course-builder.js:12719
+#: assets/js/tutor-course-builder.js:15626
 #, js-format
 msgid "MP4, and WebM formats, up to %s"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12728
+#: assets/js/tutor-course-builder.js:12744
 msgid "Add tags"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12746
+#: assets/js/tutor-course-builder.js:12762
 msgid "Search to add author"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12766
+#: assets/js/tutor-course-builder.js:12782
 msgid "Search to add instructor"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12770
+#: assets/js/tutor-course-builder.js:12786
 msgid "No instructors added."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12890
+#: assets/js/tutor-course-builder.js:12906
 msgid "No option available."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12946
+#: assets/js/tutor-course-builder.js:12962
 msgid "Schedule course content by date"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12950
+#: assets/js/tutor-course-builder.js:12966
 msgid "Content available after X days from enrollment"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12954
+#: assets/js/tutor-course-builder.js:12970
 msgid "Course content available sequentially"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12958
+#: assets/js/tutor-course-builder.js:12974
 msgid "Course content unlocked after finishing prerequisites"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12978
+#: assets/js/tutor-course-builder.js:12994
 msgid "Content Drip is a pro feature"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:12982
+#: assets/js/tutor-course-builder.js:12998
 msgid "You can schedule your course content using  content drip options"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13010
+#: assets/js/tutor-course-builder.js:13026
 msgid "Activate the “Content Drip” addon to use this feature."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13014
+#: assets/js/tutor-course-builder.js:13030
 msgid "Control when students can access lessons and quizzes using the Content Drip feature."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13026
+#: assets/js/tutor-course-builder.js:13042
 msgid "Enable Content Drip Addon"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13036
+#: assets/js/tutor-course-builder.js:13052
 msgid "Content Drip Type"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13040
+#: assets/js/tutor-course-builder.js:13056
 msgid "You can schedule your course content using one of the following Content Drip options"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13150
+#: assets/js/tutor-course-builder.js:13166
 msgid "Maximum Student"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13151
+#: assets/js/tutor-course-builder.js:13167
 msgid "Number of students that can enrol in this course. Set 0 for no limits."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13168
+#: assets/js/tutor-course-builder.js:13184
 msgid "Enrollment Expiration"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13170
+#: assets/js/tutor-course-builder.js:13186
 msgid "Student's enrollment will be removed after this number of days. Set 0 for lifetime enrollment."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13202
+#: assets/js/tutor-course-builder.js:13218
 msgid "Course Enrollment Period"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13226
-#: assets/js/tutor-course-builder.js:13254
+#: assets/js/tutor-course-builder.js:13242
+#: assets/js/tutor-course-builder.js:13270
 msgid "Start Date"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13240
+#: assets/js/tutor-course-builder.js:13256
 msgid "Start date should be after the schedule date"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13266
+#: assets/js/tutor-course-builder.js:13282
 msgid "Start time should be after the schedule time"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13279
-#: assets/js/tutor-course-builder.js:13368
+#: assets/js/tutor-course-builder.js:13295
+#: assets/js/tutor-course-builder.js:13384
 msgid "hh:mm a"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13294
+#: assets/js/tutor-course-builder.js:13310
 msgid "Add End Date"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13304
-#: assets/js/tutor-course-builder.js:13343
+#: assets/js/tutor-course-builder.js:13320
+#: assets/js/tutor-course-builder.js:13359
 msgid "End Date"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13331
+#: assets/js/tutor-course-builder.js:13347
 msgid "End date should be after the start date"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13356
+#: assets/js/tutor-course-builder.js:13372
 msgid "End time should be after the start time"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13385
+#: assets/js/tutor-course-builder.js:13401
 msgid "Pause Enrollment"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13387
+#: assets/js/tutor-course-builder.js:13403
 msgid "If you pause enrolment, students will no longer be able to enroll in the course."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13529
+#: assets/js/tutor-course-builder.js:13545
 msgid "Select Difficulty Level"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13530
+#: assets/js/tutor-course-builder.js:13546
 msgid "Course difficulty level"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13545
-#: assets/js/tutor-course-builder.js:13562
+#: assets/js/tutor-course-builder.js:13561
+#: assets/js/tutor-course-builder.js:13578
 msgid "Paid courses cannot be public."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13554
+#: assets/js/tutor-course-builder.js:13570
 msgid "Public Course"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13555
+#: assets/js/tutor-course-builder.js:13571
 msgid "Make This Course Public. No Enrollment Required."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13575
+#: assets/js/tutor-course-builder.js:13591
 msgid "Enable Q&A section for your course"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13593
+#: assets/js/tutor-course-builder.js:13609
 msgid "Enable BuddyPress group activity feeds"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13600
+#: assets/js/tutor-course-builder.js:13616
 msgid "BuddyPress Groups"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13601
+#: assets/js/tutor-course-builder.js:13617
 msgid "Assign this course to BuddyPress Groups"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13602
+#: assets/js/tutor-course-builder.js:13618
 msgid "Search BuddyPress Groups"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13716
+#: assets/js/tutor-course-builder.js:13732
 msgid "ex. Learn Photoshop CS6 from scratch"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:13736
+#: assets/js/tutor-course-builder.js:13752
 msgid "Course URL"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14148
+#: assets/js/tutor-course-builder.js:14164
 msgid "No topic content selected"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14149
+#: assets/js/tutor-course-builder.js:14165
 msgid "Select a topic content to add as a prerequisite"
 msgstr ""
 
 #. translators: %d is the number of questions
-#: assets/js/tutor-course-builder.js:14184
-#: assets/js/tutor-course-builder.js:14280
+#: assets/js/tutor-course-builder.js:14200
+#: assets/js/tutor-course-builder.js:14296
 #, js-format
 msgid "(%d questions)"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14226
+#: assets/js/tutor-course-builder.js:14242
 msgid "No topics content found"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14533
+#: assets/js/tutor-course-builder.js:14549
 msgid "Assignment title is required"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14537
+#: assets/js/tutor-course-builder.js:14553
 msgid "Enter Assignment Title"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14546
-#: assets/js/tutor-course-builder.js:15524
+#: assets/js/tutor-course-builder.js:14562
+#: assets/js/tutor-course-builder.js:15540
 msgid "Content"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14547
+#: assets/js/tutor-course-builder.js:14563
 msgid "Enter Assignment Content"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14588
-#: assets/js/tutor-course-builder.js:15699
-#: assets/js/tutor-course-builder.js:29233
+#: assets/js/tutor-course-builder.js:14604
+#: assets/js/tutor-course-builder.js:15715
+#: assets/js/tutor-course-builder.js:29249
 msgid "Available after days"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14591
+#: assets/js/tutor-course-builder.js:14607
 msgid "This assignment will be available after the given number of days."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14611
-#: assets/js/tutor-course-builder.js:15722
-#: assets/js/tutor-course-builder.js:29158
+#: assets/js/tutor-course-builder.js:14627
+#: assets/js/tutor-course-builder.js:15738
+#: assets/js/tutor-course-builder.js:29174
 msgid "Unlock Date"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14614
-#: assets/js/tutor-course-builder.js:15725
-#: assets/js/tutor-course-builder.js:29175
+#: assets/js/tutor-course-builder.js:14630
+#: assets/js/tutor-course-builder.js:15741
+#: assets/js/tutor-course-builder.js:29191
 msgid "Select Unlock Date"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14616
+#: assets/js/tutor-course-builder.js:14632
 msgid "This assignment will be available from the given date. Leave empty to make it available immediately."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14634
-#: assets/js/tutor-course-builder.js:15745
-#: assets/js/tutor-course-builder.js:29192
+#: assets/js/tutor-course-builder.js:14650
+#: assets/js/tutor-course-builder.js:15761
+#: assets/js/tutor-course-builder.js:29208
 msgid "Prerequisites"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14637
-#: assets/js/tutor-course-builder.js:15748
-#: assets/js/tutor-course-builder.js:29209
+#: assets/js/tutor-course-builder.js:14653
+#: assets/js/tutor-course-builder.js:15764
+#: assets/js/tutor-course-builder.js:29225
 msgid "Select Prerequisite"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14649
-#: assets/js/tutor-course-builder.js:15760
-#: assets/js/tutor-course-builder.js:29194
+#: assets/js/tutor-course-builder.js:14665
+#: assets/js/tutor-course-builder.js:15776
+#: assets/js/tutor-course-builder.js:29210
 msgid "Select items that should be complete before this item"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14663
+#: assets/js/tutor-course-builder.js:14679
 msgid "Time Limit"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14684
+#: assets/js/tutor-course-builder.js:14700
 msgid "Set Deadline From Assignment Start Time"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14685
+#: assets/js/tutor-course-builder.js:14701
 msgid "Each student will get their own deadline based on when they start the assignment."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14693
+#: assets/js/tutor-course-builder.js:14709
 msgid "Total Points"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14704
+#: assets/js/tutor-course-builder.js:14720
 msgid "Pass mark cannot be greater than total mark"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14711
+#: assets/js/tutor-course-builder.js:14727
 msgid "Minimum Pass Points"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14722
+#: assets/js/tutor-course-builder.js:14738
 msgid "File Upload Limit"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14724
+#: assets/js/tutor-course-builder.js:14740
 msgid "Define the number of files that a student can upload in this assignment. Input 0 to disable the option to upload."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14733
+#: assets/js/tutor-course-builder.js:14749
 msgid "Maximum File Size Limit"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14743
+#: assets/js/tutor-course-builder.js:14759
 msgid "Allow Assignment Resubmission"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14756
+#: assets/js/tutor-course-builder.js:14772
 msgid "Allowed attempts must be between 1 and 20"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14761
+#: assets/js/tutor-course-builder.js:14777
 msgid "Maximum Resubmission Attempts"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:14762
+#: assets/js/tutor-course-builder.js:14778
 msgid "Set how many times students can resubmit even after the deadline."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15177
+#: assets/js/tutor-course-builder.js:15193
 msgid "Content Type"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15189
+#: assets/js/tutor-course-builder.js:15205
 msgid "Created At"
 msgstr ""
 
 #. translators: %s is the number of selected items
-#: assets/js/tutor-course-builder.js:15200
+#: assets/js/tutor-course-builder.js:15216
 #: assets/js/tutor-import-export.js:5618
 #, js-format
 msgid "%s selected"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15212
+#: assets/js/tutor-course-builder.js:15228
 msgid "Search by title"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15442
-#: assets/js/tutor-course-builder.js:27920
+#: assets/js/tutor-course-builder.js:15458
+#: assets/js/tutor-course-builder.js:27936
 msgid "Select H5P Content"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15505
+#: assets/js/tutor-course-builder.js:15521
 msgid "Lesson title is required."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15509
+#: assets/js/tutor-course-builder.js:15525
 msgid "Enter Lesson Name"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15528
+#: assets/js/tutor-course-builder.js:15544
 msgid "Save the lesson first to use the WP Editor."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15544
+#: assets/js/tutor-course-builder.js:15560
 msgid "WP Editor"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15550
+#: assets/js/tutor-course-builder.js:15566
 msgid "Enter Lesson Description"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15568
-#: assets/js/tutor-course-builder.js:15578
+#: assets/js/tutor-course-builder.js:15584
+#: assets/js/tutor-course-builder.js:15594
 msgid "Add H5P Content"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15626
+#: assets/js/tutor-course-builder.js:15642
 msgid "Video Playback Time"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15653
+#: assets/js/tutor-course-builder.js:15669
 msgid "min"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15668
+#: assets/js/tutor-course-builder.js:15684
 msgid "sec"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15702
+#: assets/js/tutor-course-builder.js:15718
 msgid "This lesson will be available after the given number of days."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15727
+#: assets/js/tutor-course-builder.js:15743
 msgid "This lesson will be available from the given date. Leave empty to make it available immediately."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15789
+#: assets/js/tutor-course-builder.js:15805
 msgid "Lesson Preview"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15797
+#: assets/js/tutor-course-builder.js:15813
 msgid "If checked, any user/guest can view this lesson without enrolling in the course."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:15806
+#: assets/js/tutor-course-builder.js:15822
 msgid "This lesson is now available for preview. Users and guests can view it without enrolling in the course."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16019
+#: assets/js/tutor-course-builder.js:16035
 msgid "Question title field"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16094
+#: assets/js/tutor-course-builder.js:16110
 msgid "Edit question title"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16112
+#: assets/js/tutor-course-builder.js:16128
 msgid "Save question title"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16127
+#: assets/js/tutor-course-builder.js:16143
 msgid "Cancel question title"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16196
+#: assets/js/tutor-course-builder.js:16212
 msgid "Please add an option."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16202
+#: assets/js/tutor-course-builder.js:16218
 msgid "Please finish editing all newly created options."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16211
+#: assets/js/tutor-course-builder.js:16227
 msgid "Please select a correct answer."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16220
+#: assets/js/tutor-course-builder.js:16236
 msgid "Please add titles to all options."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16228
+#: assets/js/tutor-course-builder.js:16244
 msgid "Please add images to all options."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16236
+#: assets/js/tutor-course-builder.js:16252
 msgid "Please add matched text to all options."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16254
-#: assets/js/tutor-course-builder.js:24220
+#: assets/js/tutor-course-builder.js:16270
+#: assets/js/tutor-course-builder.js:24236
 msgid "The maximum value must be greater than the minimum value."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16261
-#: assets/js/tutor-course-builder.js:24221
+#: assets/js/tutor-course-builder.js:16277
+#: assets/js/tutor-course-builder.js:24237
 msgid "The correct value must be between the minimum and maximum values."
 msgstr ""
 
 #. translators: 1: minimum coordinate value, 2: maximum coordinate value.
-#: assets/js/tutor-course-builder.js:16288
-#: assets/js/tutor-course-builder.js:16294
+#: assets/js/tutor-course-builder.js:16304
+#: assets/js/tutor-course-builder.js:16310
 #, js-format
 msgid "Please add valid coordinates in the range %1$d to %2$d."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16303
+#: assets/js/tutor-course-builder.js:16319
 msgid "Please mark a valid area on the image."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16312
+#: assets/js/tutor-course-builder.js:16328
 msgid "Please upload a valid puzzle image."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16459
+#: assets/js/tutor-course-builder.js:16475
 msgid "Open Ended/Essay"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16466
+#: assets/js/tutor-course-builder.js:16482
 msgid "Fill in the Blanks"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16659
+#: assets/js/tutor-course-builder.js:16675
 msgid "Clear last point"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16681
+#: assets/js/tutor-course-builder.js:16697
 msgid "Coordinate grid: click or use arrow keys and Enter to select grid points."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16687
+#: assets/js/tutor-course-builder.js:16703
 msgid "Use arrow keys to move the active grid point, Enter to add it, and Backspace or Delete to remove the last point."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16756
+#: assets/js/tutor-course-builder.js:16772
 msgid "No background image configured for this Image Marking question."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16772
+#: assets/js/tutor-course-builder.js:16788
 msgid "Clear drawing"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16790
+#: assets/js/tutor-course-builder.js:16806
 msgid "Draw on image question"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16798
+#: assets/js/tutor-course-builder.js:16814
 msgid "Draw on image: use pointer or keyboard to mark your selection area."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:16805
-#: assets/js/tutor-course-builder.js:21132
-#: assets/js/tutor-course-builder.js:23824
+#: assets/js/tutor-course-builder.js:16821
+#: assets/js/tutor-course-builder.js:21148
+#: assets/js/tutor-course-builder.js:23840
 msgid "Use arrow keys to move the drawing pointer. Press Space or Enter to start a freehand stroke, trace with arrow keys, then press Space or Enter again to finish and fill the selection. Escape cancels an in-progress stroke. C clears the saved selection."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17063
+#: assets/js/tutor-course-builder.js:17079
 msgid "Clear matched answer"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17248
+#: assets/js/tutor-course-builder.js:17264
 msgid "Type your short answer here"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17410
+#: assets/js/tutor-course-builder.js:17426
 msgid "No background image configured for this Pin question."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17426
+#: assets/js/tutor-course-builder.js:17442
 msgid "Pin on image: click or use keyboard to place and move your pin."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17431
+#: assets/js/tutor-course-builder.js:17447
 msgid "Pin on image question"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17442
+#: assets/js/tutor-course-builder.js:17458
 msgid "Press Enter to place the pin. Use arrow keys to nudge the position, Shift with arrow keys for larger steps, and C to clear the pin."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17523
+#: assets/js/tutor-course-builder.js:17539
 msgid "No source image configured for this Puzzle question."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17532
+#: assets/js/tutor-course-builder.js:17548
 msgid "Puzzle preview requires Tutor LMS Pro."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17555
+#: assets/js/tutor-course-builder.js:17571
 msgid "Puzzle board: use arrow keys to choose a slot, then press Enter to place the selected piece."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17560
+#: assets/js/tutor-course-builder.js:17576
 msgid "Puzzle reference image"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17576
+#: assets/js/tutor-course-builder.js:17592
 msgid "Puzzle pieces: use arrow keys to choose a piece, then Tab to the board and press Enter to place it."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17581
+#: assets/js/tutor-course-builder.js:17597
 msgid "In the piece pool, use arrow keys to select a piece. Tab to the puzzle board, use arrow keys to select a slot, and press Enter to place the piece at that slot. Pieces snap only when correct; wrong placements stay on the board like drag-and-drop. Press Backspace or Delete on the board to return a piece to the pool. Progress counts locked pieces only."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17695
+#: assets/js/tutor-course-builder.js:17711
 msgid "Interactive scale: drag or use arrow keys to select your answer value."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17729
+#: assets/js/tutor-course-builder.js:17745
 msgid "Move the scale left or right to set the correct value"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17790
-#: assets/js/tutor-course-builder.js:27662
+#: assets/js/tutor-course-builder.js:17806
+#: assets/js/tutor-course-builder.js:27678
 msgid "True"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:17810
+#: assets/js/tutor-course-builder.js:17826
 msgid "Preview is not available for this question type yet."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:18039
+#: assets/js/tutor-course-builder.js:18055
 msgid "Question preview"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:18380
+#: assets/js/tutor-course-builder.js:18396
 msgid "Create/Select a question to view details"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:18391
+#: assets/js/tutor-course-builder.js:18407
 msgid "Question Type"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:18410
+#: assets/js/tutor-course-builder.js:18426
 msgid "Preview (Option/Alt + P)"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:18432
+#: assets/js/tutor-course-builder.js:18448
 msgid "Conditions:"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:18443
+#: assets/js/tutor-course-builder.js:18459
 msgid "Multiple Correct Answer"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:18482
+#: assets/js/tutor-course-builder.js:18498
 msgid "Answer Required"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:18496
+#: assets/js/tutor-course-builder.js:18512
 msgid "Randomize Choice"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:18512
+#: assets/js/tutor-course-builder.js:18528
 msgid "Point For This Question"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:18528
+#: assets/js/tutor-course-builder.js:18544
 msgid "Display Points"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:18926
+#: assets/js/tutor-course-builder.js:18942
 msgid "Edit description"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:18926
+#: assets/js/tutor-course-builder.js:18942
 msgid "Add description"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:19282
+#: assets/js/tutor-course-builder.js:19298
 msgid "Unit"
 msgstr ""
 
 #. translators: %1$d is the minimum axis range, %2$d is the maximum axis range
-#: assets/js/tutor-course-builder.js:19366
+#: assets/js/tutor-course-builder.js:19382
 #, js-format
 msgid "Range is from -%1$d to %2$d"
 msgstr ""
 
 #. translators: %1$d is the x coordinate, %2$d is the y coordinate
-#: assets/js/tutor-course-builder.js:19700
+#: assets/js/tutor-course-builder.js:19716
 #, js-format
 msgid "Coordinate (%1$d, %2$d) selected."
 msgstr ""
 
 #. translators: %1$d is the x coordinate, %2$d is the y coordinate
-#: assets/js/tutor-course-builder.js:19710
+#: assets/js/tutor-course-builder.js:19726
 #, js-format
 msgid "Coordinate set to (%1$d, %2$d)."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:19785
+#: assets/js/tutor-course-builder.js:19801
 msgid "At least one coordinate is required."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:19791
+#: assets/js/tutor-course-builder.js:19807
 msgid "Coordinate removed."
 msgstr ""
 
 #. translators: %1$d is the x coordinate, %2$d is the y coordinate
-#: assets/js/tutor-course-builder.js:19815
+#: assets/js/tutor-course-builder.js:19831
 #, js-format
 msgid "Grid position (%1$d, %2$d). Press Enter to set the active coordinate."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:19866
+#: assets/js/tutor-course-builder.js:19882
 msgid "Coordinates"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:19921
+#: assets/js/tutor-course-builder.js:19937
 msgid "Copy coordinate"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:19948
+#: assets/js/tutor-course-builder.js:19964
 msgid "Delete coordinate"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:19991
+#: assets/js/tutor-course-builder.js:20007
 msgid "x,y"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:20022
+#: assets/js/tutor-course-builder.js:20038
 msgid "Add Coordinates"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:20027
+#: assets/js/tutor-course-builder.js:20043
 msgid "Use arrow keys to move the active grid point, Enter to set it, and Backspace or Delete to remove the active coordinate."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:20059
+#: assets/js/tutor-course-builder.js:20075
 msgid "Coordinate grid: click or use arrow keys and Enter to set the correct answer point."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:20748
+#: assets/js/tutor-course-builder.js:20764
 msgid "Selection completed."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:20754
+#: assets/js/tutor-course-builder.js:20770
 msgid "Drawing started. Use arrow keys to trace, then Space or Enter to finish."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:20837
-#: assets/js/tutor-course-builder.js:20849
+#: assets/js/tutor-course-builder.js:20853
+#: assets/js/tutor-course-builder.js:20865
 msgid "Drawing cancelled."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:20842
+#: assets/js/tutor-course-builder.js:20858
 msgid "Nothing to cancel."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:20860
+#: assets/js/tutor-course-builder.js:20876
 msgid "Selection cleared."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21042
+#: assets/js/tutor-course-builder.js:21058
 msgid "Correct area cleared."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21077
+#: assets/js/tutor-course-builder.js:21093
 msgid "Upload the base image students will draw on."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21105
-#: assets/js/tutor-course-builder.js:23797
+#: assets/js/tutor-course-builder.js:21121
+#: assets/js/tutor-course-builder.js:23813
 msgid "Mark the correct area"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21152
+#: assets/js/tutor-course-builder.js:21168
 msgid "Background image for marking correct area"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21167
+#: assets/js/tutor-course-builder.js:21183
 msgid "Draw on image: use pointer or keyboard to mark the correct answer area."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21173
+#: assets/js/tutor-course-builder.js:21189
 msgid "Precision Level"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21175
+#: assets/js/tutor-course-builder.js:21191
 msgid "Minimum overlap score between student and instructor markings. Larger or smaller marked areas lower the score."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21190
+#: assets/js/tutor-course-builder.js:21206
 msgid "Answer zone saved. Students will be graded against this area."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21200
+#: assets/js/tutor-course-builder.js:21216
 msgid "First, upload your base image above. Then, proceed to the next step to draw the correct target zone."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21371
+#: assets/js/tutor-course-builder.js:21387
 msgid "Fill in the blanks"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21410
-#: assets/js/tutor-course-builder.js:21442
+#: assets/js/tutor-course-builder.js:21426
+#: assets/js/tutor-course-builder.js:21458
 msgid "Question title..."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21429
-#: assets/js/tutor-course-builder.js:21485
+#: assets/js/tutor-course-builder.js:21445
+#: assets/js/tutor-course-builder.js:21501
 msgid "Correct Answer(s)..."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21474
+#: assets/js/tutor-course-builder.js:21490
 msgid "Please make sure to use the variable {dash} in your question title to show the blanks in your question. You can use multiple {dash} variables in one question."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21521
+#: assets/js/tutor-course-builder.js:21537
 msgid "Match the number of answers to the number of blanks {dash} in your question."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21536
+#: assets/js/tutor-course-builder.js:21552
 msgid "Separate multiple answers by a vertical bar |. 1 answer per {dash} variable is defined in the question. Example: Apple | Banana | Orange"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21920
-#: assets/js/tutor-course-builder.js:23245
+#: assets/js/tutor-course-builder.js:21936
+#: assets/js/tutor-course-builder.js:23261
 msgid "Write answer option..."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21934
-#: assets/js/tutor-course-builder.js:22549
+#: assets/js/tutor-course-builder.js:21950
+#: assets/js/tutor-course-builder.js:22565
 msgid "Standard Size: 700x430 pixels"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21946
+#: assets/js/tutor-course-builder.js:21962
 msgid "Input answer here"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21982
+#: assets/js/tutor-course-builder.js:21998
 msgid "Students need to type their answers exactly as you write them here. Use "
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21987
+#: assets/js/tutor-course-builder.js:22003
 msgid "small caps"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:21989
+#: assets/js/tutor-course-builder.js:22005
 msgid " when writing the answer."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:22231
-#: assets/js/tutor-course-builder.js:22857
-#: assets/js/tutor-course-builder.js:23602
+#: assets/js/tutor-course-builder.js:22247
+#: assets/js/tutor-course-builder.js:22873
+#: assets/js/tutor-course-builder.js:23618
 msgid "Add Option"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:22511
+#: assets/js/tutor-course-builder.js:22527
 msgid "Answer title..."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:22559
+#: assets/js/tutor-course-builder.js:22575
 msgid "Image matched text.."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:22585
+#: assets/js/tutor-course-builder.js:22601
 msgid "Matched option.."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:23113
+#: assets/js/tutor-course-builder.js:23129
 msgid "Remove Image"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:23127
+#: assets/js/tutor-course-builder.js:23143
 msgid "Add Image"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:23261
+#: assets/js/tutor-course-builder.js:23277
 msgid "Size: 700x430 pixels"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:23270
+#: assets/js/tutor-course-builder.js:23286
 msgid "Write option..."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:23632
+#: assets/js/tutor-course-builder.js:23648
 msgid "No options are necessary for this question type"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:23734
+#: assets/js/tutor-course-builder.js:23750
 msgid "Valid pin area cleared."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:23769
+#: assets/js/tutor-course-builder.js:23785
 msgid "Upload the base image students will pin on."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:23844
+#: assets/js/tutor-course-builder.js:23860
 msgid "Background image for pin area"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:23859
+#: assets/js/tutor-course-builder.js:23875
 msgid "Mark the valid pin area: use pointer or keyboard to draw the accepted region."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:23868
+#: assets/js/tutor-course-builder.js:23884
 msgid "Pin area saved. Students will be graded against this region."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:23878
+#: assets/js/tutor-course-builder.js:23894
 msgid "Upload an image to define where students must drop a pin. Then mark the valid area in the next section."
-msgstr ""
-
-#: assets/js/tutor-course-builder.js:23974
-#: assets/js/tutor-course-builder.js:23978
-#: assets/js/tutor-course-builder.js:25059
-msgid "Easy"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:23990
 #: assets/js/tutor-course-builder.js:23994
-#: assets/js/tutor-course-builder.js:25069
+#: assets/js/tutor-course-builder.js:25075
+msgid "Easy"
+msgstr ""
+
+#: assets/js/tutor-course-builder.js:24006
+#: assets/js/tutor-course-builder.js:24010
+#: assets/js/tutor-course-builder.js:25085
 msgid "Hard"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:23999
+#: assets/js/tutor-course-builder.js:24015
 msgid "pieces"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:24062
+#: assets/js/tutor-course-builder.js:24078
 msgid "Upload Puzzle Image"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:24063
+#: assets/js/tutor-course-builder.js:24079
 msgid "Upload the source image that will be split into puzzle pieces."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:24080
 #: assets/js/tutor-course-builder.js:24096
+#: assets/js/tutor-course-builder.js:24112
 msgid "Larger grids create more pieces and a harder puzzle for learners."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:24111
+#: assets/js/tutor-course-builder.js:24127
 msgid "Upload an image first, then configure the grid size for the puzzle."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:24354
+#: assets/js/tutor-course-builder.js:24370
 msgid "Scale range"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:24365
+#: assets/js/tutor-course-builder.js:24381
 msgid "Min value"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:24375
+#: assets/js/tutor-course-builder.js:24391
 msgid "Max value"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:24385
+#: assets/js/tutor-course-builder.js:24401
 msgid "Label entry"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:24404
+#: assets/js/tutor-course-builder.js:24420
 msgid "Correct Value"
 msgstr ""
 
 #. translators: %1$s is the minimum scale value, %2$s is the maximum scale value
-#: assets/js/tutor-course-builder.js:24410
+#: assets/js/tutor-course-builder.js:24426
 #, js-format
 msgid "Between %1$s and %2$s"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:24880
+#: assets/js/tutor-course-builder.js:24896
 msgid "Enter a quiz title to begin. Choose from a variety of question types to keep things interesting!"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:24904
+#: assets/js/tutor-course-builder.js:24920
 msgid "Question title is required"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:24910
+#: assets/js/tutor-course-builder.js:24926
 msgid "Write your question here.."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:24933
+#: assets/js/tutor-course-builder.js:24949
 msgid "Description (optional)"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:24973
+#: assets/js/tutor-course-builder.js:24989
 msgid "Answer Explanation"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:24974
+#: assets/js/tutor-course-builder.js:24990
 msgid "Write answer explanation..."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:25119
+#: assets/js/tutor-course-builder.js:25135
 msgid "Current Topic"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:25210
+#: assets/js/tutor-course-builder.js:25226
 msgid "Questions generated successfully"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:25261
+#: assets/js/tutor-course-builder.js:25277
 msgid "Generate quiz using AI"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:25289
+#: assets/js/tutor-course-builder.js:25305
 msgid "Generate Quiz Component"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:25303
+#: assets/js/tutor-course-builder.js:25319
 msgid "Close Popover"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:25320
+#: assets/js/tutor-course-builder.js:25336
 msgid "Select Topics"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:25322
+#: assets/js/tutor-course-builder.js:25338
 msgid "Search topics..."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:25373
+#: assets/js/tutor-course-builder.js:25389
 msgid "Question Types"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:25409
+#: assets/js/tutor-course-builder.js:25425
 msgid "Select difficulty level"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:25418
+#: assets/js/tutor-course-builder.js:25434
 msgid "Number of questions must be greater than 0"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:25423
+#: assets/js/tutor-course-builder.js:25439
 msgid "Number of Questions"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:25424
+#: assets/js/tutor-course-builder.js:25440
 msgid "Number of questions"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:25443
+#: assets/js/tutor-course-builder.js:25459
 msgid "Generating..."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:25448
+#: assets/js/tutor-course-builder.js:25464
 msgid "AI will generate questions based on your selected topics and types."
 msgstr ""
 
 #. translators: %s is the collection title
-#: assets/js/tutor-course-builder.js:26114
+#: assets/js/tutor-course-builder.js:26130
 #: assets/js/tutor-import-export.js:7197
 #: assets/js/tutor-import-export.js:7208
 #, js-format
@@ -14665,9 +14704,9 @@ msgid "Select collection: %s"
 msgstr ""
 
 #. translators: %d is the total number of contents
-#: assets/js/tutor-course-builder.js:26129
-#: assets/js/tutor-course-builder.js:27079
-#: assets/js/tutor-course-builder.js:27370
+#: assets/js/tutor-course-builder.js:26145
+#: assets/js/tutor-course-builder.js:27095
+#: assets/js/tutor-course-builder.js:27386
 #: assets/js/tutor-import-export.js:7220
 #, js-format
 msgid "%d Item"
@@ -14675,12 +14714,12 @@ msgid_plural "%d Items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: assets/js/tutor-course-builder.js:26139
+#: assets/js/tutor-course-builder.js:26155
 msgid "No Items"
 msgstr ""
 
 #. translators: %d is the number of lessons
-#: assets/js/tutor-course-builder.js:26153
+#: assets/js/tutor-course-builder.js:26169
 #: assets/js/tutor-import-export.js:7238
 #, js-format
 msgid "%d Lesson"
@@ -14689,7 +14728,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d is the number of assignments
-#: assets/js/tutor-course-builder.js:26162
+#: assets/js/tutor-course-builder.js:26178
 #: assets/js/tutor-import-export.js:7247
 #, js-format
 msgid "%d Assignment"
@@ -14698,7 +14737,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d is the number of questions
-#: assets/js/tutor-course-builder.js:26173
+#: assets/js/tutor-course-builder.js:26189
 #: assets/js/tutor-import-export.js:7256
 #, js-format
 msgid "%d Question"
@@ -14706,765 +14745,765 @@ msgid_plural "%d Questions"
 msgstr[0] ""
 msgstr[1] ""
 
-#: assets/js/tutor-course-builder.js:26189
+#: assets/js/tutor-course-builder.js:26205
 #: assets/js/tutor-import-export.js:5521
 #: assets/js/tutor-import-export.js:7280
 msgid "Loading"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:26748
+#: assets/js/tutor-course-builder.js:26764
 msgid "Order by"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:26767
+#: assets/js/tutor-course-builder.js:26783
 msgid "Filter by"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:26919
-#: assets/js/tutor-course-builder.js:27230
+#: assets/js/tutor-course-builder.js:26935
+#: assets/js/tutor-course-builder.js:27246
 msgid "All Contents"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:26988
+#: assets/js/tutor-course-builder.js:27004
 msgid "Select all contents"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:26990
-#: assets/js/tutor-course-builder.js:27283
+#: assets/js/tutor-course-builder.js:27006
+#: assets/js/tutor-course-builder.js:27299
 msgid "# Title"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:27058
-#: assets/js/tutor-course-builder.js:27348
+#: assets/js/tutor-course-builder.js:27074
+#: assets/js/tutor-course-builder.js:27364
 msgid "Go back to collection list"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:27098
+#: assets/js/tutor-course-builder.js:27114
 msgid "Select content type"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:27281
+#: assets/js/tutor-course-builder.js:27297
 msgid "Select all questions"
 msgstr ""
 
 #. translators: %d is the question number
-#: assets/js/tutor-course-builder.js:27654
+#: assets/js/tutor-course-builder.js:27670
 #, js-format
 msgid "Question %d"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:27674
+#: assets/js/tutor-course-builder.js:27690
 msgid "False"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:27908
+#: assets/js/tutor-course-builder.js:27924
 msgid "Add question"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:27945
+#: assets/js/tutor-course-builder.js:27961
 msgid "No questions added yet."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28013
+#: assets/js/tutor-course-builder.js:28029
 msgid "Interactive"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28042
-#: assets/js/tutor-course-builder.js:28123
+#: assets/js/tutor-course-builder.js:28058
+#: assets/js/tutor-course-builder.js:28139
 msgid "Not available in legacy learning mode"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28094
+#: assets/js/tutor-course-builder.js:28110
 msgid "Basic"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28200
-#: assets/js/tutor-course-builder.js:28218
+#: assets/js/tutor-course-builder.js:28216
+#: assets/js/tutor-course-builder.js:28234
 msgid "Add from Content Bank"
 msgstr ""
 
 #. translators: %s is a second count.
-#: assets/js/tutor-course-builder.js:28507
+#: assets/js/tutor-course-builder.js:28523
 #, js-format
 msgid "%ss per question"
 msgstr ""
 
 #. translators: %s is a minute count.
-#: assets/js/tutor-course-builder.js:28511
+#: assets/js/tutor-course-builder.js:28527
 #, js-format
 msgid "%sm per question"
 msgstr ""
 
 #. translators: %s is an hour count.
-#: assets/js/tutor-course-builder.js:28514
+#: assets/js/tutor-course-builder.js:28530
 #, js-format
 msgid "%sh per question"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28603
+#: assets/js/tutor-course-builder.js:28619
 msgid "Quiz scope"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28614
+#: assets/js/tutor-course-builder.js:28630
 msgid "Passing grade cannot be greater than 100"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28617
+#: assets/js/tutor-course-builder.js:28633
 msgid "Passing grade cannot be less than 0"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28627
+#: assets/js/tutor-course-builder.js:28643
 msgid "Set the minimum score percentage required to pass this quiz"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28641
+#: assets/js/tutor-course-builder.js:28657
 msgid "Question Order"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28642
+#: assets/js/tutor-course-builder.js:28658
 msgid "Select an option"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28673
+#: assets/js/tutor-course-builder.js:28689
 msgid "Allow multiple attempts"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28674
+#: assets/js/tutor-course-builder.js:28690
 msgid "Set the number of attempts allowed for this quiz. 0 means unlimited."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28687
+#: assets/js/tutor-course-builder.js:28703
 msgid "Allowed attempts must be greater than or equal to 0"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28715
+#: assets/js/tutor-course-builder.js:28731
 msgid "Set maximum questions per quiz"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28716
+#: assets/js/tutor-course-builder.js:28732
 msgid "Set the number of quiz questions randomly from your question pool. If the set number exceeds available questions, all questions will be included"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28726
+#: assets/js/tutor-course-builder.js:28742
 msgid "Question limit must be greater than 0"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28751
+#: assets/js/tutor-course-builder.js:28767
 msgid "Pass is required"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28760
+#: assets/js/tutor-course-builder.js:28776
 msgid "Timing"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28777
+#: assets/js/tutor-course-builder.js:28793
 msgid "Set time limit"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28791
+#: assets/js/tutor-course-builder.js:28807
 msgid "Time limit must be greater than 0"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28811
+#: assets/js/tutor-course-builder.js:28827
 msgid "Sec"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28815
+#: assets/js/tutor-course-builder.js:28831
 msgid "Min"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28844
+#: assets/js/tutor-course-builder.js:28860
 msgid "Hide countdown timer"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28860
+#: assets/js/tutor-course-builder.js:28876
 msgid "Auto start quiz"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28872
+#: assets/js/tutor-course-builder.js:28888
 msgid "After"
-msgstr ""
-
-#: assets/js/tutor-course-builder.js:28879
-#: assets/js/tutor-course-builder.js:29032
-msgid "secs"
-msgstr ""
-
-#: assets/js/tutor-course-builder.js:28887
-#: assets/js/tutor-course-builder.js:29040
-msgid "2"
-msgstr ""
-
-#: assets/js/tutor-course-builder.js:28891
-#: assets/js/tutor-course-builder.js:29044
-msgid "5"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:28895
 #: assets/js/tutor-course-builder.js:29048
+msgid "secs"
+msgstr ""
+
+#: assets/js/tutor-course-builder.js:28903
+#: assets/js/tutor-course-builder.js:29056
+msgid "2"
+msgstr ""
+
+#: assets/js/tutor-course-builder.js:28907
+#: assets/js/tutor-course-builder.js:29060
+msgid "5"
+msgstr ""
+
+#: assets/js/tutor-course-builder.js:28911
+#: assets/js/tutor-course-builder.js:29064
 msgid "7"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28899
-#: assets/js/tutor-course-builder.js:29052
+#: assets/js/tutor-course-builder.js:28915
+#: assets/js/tutor-course-builder.js:29068
 msgid "10"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28920
+#: assets/js/tutor-course-builder.js:28936
 msgid "Navigation & Display"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28930
+#: assets/js/tutor-course-builder.js:28946
 msgid "Choose how students will answer the questions."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28941
+#: assets/js/tutor-course-builder.js:28957
 msgid "Full Page"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28964
+#: assets/js/tutor-course-builder.js:28980
 msgid "Show pagination"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28965
+#: assets/js/tutor-course-builder.js:28981
 msgid "Pagination style is unavailable while learning mode is set to Legacy."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28988
+#: assets/js/tutor-course-builder.js:29004
 msgid "Shapes"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28992
+#: assets/js/tutor-course-builder.js:29008
 msgid "Numbers"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:28996
+#: assets/js/tutor-course-builder.js:29012
 msgid "Radio"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29013
+#: assets/js/tutor-course-builder.js:29029
 msgid "Reveal answers after submission"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29025
+#: assets/js/tutor-course-builder.js:29041
 msgid "For"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29070
+#: assets/js/tutor-course-builder.js:29086
 msgid "Hide \"Previous\" button"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29078
+#: assets/js/tutor-course-builder.js:29094
 msgid "Hide question number"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29097
+#: assets/js/tutor-course-builder.js:29113
 msgid "Character Limits"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29114
+#: assets/js/tutor-course-builder.js:29130
 msgid "Open-Ended/Essay Answer"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29115
+#: assets/js/tutor-course-builder.js:29131
 msgid "Set the number of characters allowed for open-ended/essay answers. Leave empty to disable."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29134
+#: assets/js/tutor-course-builder.js:29150
 msgid "Set the number of characters allowed for short answers. Leave empty to disable."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29160
+#: assets/js/tutor-course-builder.js:29176
 msgid "Set the date when the quiz will be available."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29235
+#: assets/js/tutor-course-builder.js:29251
 msgid "This quiz will be available after the given number of days."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29281
+#: assets/js/tutor-course-builder.js:29297
 msgid "Total questions in pool"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29290
-#: assets/js/tutor-course-builder.js:29316
+#: assets/js/tutor-course-builder.js:29306
+#: assets/js/tutor-course-builder.js:29332
 msgid "Q"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29306
+#: assets/js/tutor-course-builder.js:29322
 msgid "Available to answer"
 msgstr ""
 
 #. translators: %1$s is the number of available questions, %2$s is the total number of questions.
-#: assets/js/tutor-course-builder.js:29332
+#: assets/js/tutor-course-builder.js:29348
 #, js-format
 msgid "Students will have %1$s out of %2$s questions available to answer."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29354
+#: assets/js/tutor-course-builder.js:29370
 msgid "Time limit"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29377
+#: assets/js/tutor-course-builder.js:29393
 msgid "%"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29382
+#: assets/js/tutor-course-builder.js:29398
 msgid "Passing grade"
 msgstr ""
 
 #. translators: %1$s is the number of required correct answers, %2$s is total available questions.
-#: assets/js/tutor-course-builder.js:29393
+#: assets/js/tutor-course-builder.js:29409
 #, js-format
 msgid "%1$s of %2$s correct"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29638
+#: assets/js/tutor-course-builder.js:29654
 msgid "Quiz imported successfully"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29668
+#: assets/js/tutor-course-builder.js:29684
 #: assets/js/tutor.js:2709
 msgid "Something went wrong."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:29937
+#: assets/js/tutor-course-builder.js:29953
 msgid "Please add a question"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:30001
+#: assets/js/tutor-course-builder.js:30017
 msgid "Question Details"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:30082
+#: assets/js/tutor-course-builder.js:30098
 msgid "Quiz title is required"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:30085
+#: assets/js/tutor-course-builder.js:30101
 msgid "Add quiz title"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:30101
-#: assets/js/tutor-course-builder.js:31791
+#: assets/js/tutor-course-builder.js:30117
+#: assets/js/tutor-course-builder.js:31807
 msgid "Add a summary"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:30188
+#: assets/js/tutor-course-builder.js:30204
 msgid "Discard changes?"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:30200
+#: assets/js/tutor-course-builder.js:30216
 msgid "Keep Editing"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:30352
+#: assets/js/tutor-course-builder.js:30368
 msgid "Are you sure you want to delete this assignment? All existing assignment submissions will be permanently deleted."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:30354
+#: assets/js/tutor-course-builder.js:30370
 msgid "Are you sure you want to delete this quiz? All existing quiz attempts will be permanently deleted."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:30356
+#: assets/js/tutor-course-builder.js:30372
 msgid "Are you sure you want to delete this interactive quiz? All existing quiz attempts will be permanently deleted."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:30368
-#: assets/js/tutor-course-builder.js:31078
-#: assets/js/tutor-course-builder.js:31090
-#: assets/js/tutor-course-builder.js:31105
+#: assets/js/tutor-course-builder.js:30384
+#: assets/js/tutor-course-builder.js:31094
+#: assets/js/tutor-course-builder.js:31106
+#: assets/js/tutor-course-builder.js:31121
 msgid "Interactive Quiz"
 msgstr ""
 
 #. translators: %s is the topic title
-#: assets/js/tutor-course-builder.js:30424
-#: assets/js/tutor-course-builder.js:31019
-#: assets/js/tutor-course-builder.js:31049
-#: assets/js/tutor-course-builder.js:31084
-#: assets/js/tutor-course-builder.js:31137
+#: assets/js/tutor-course-builder.js:30440
+#: assets/js/tutor-course-builder.js:31035
+#: assets/js/tutor-course-builder.js:31065
+#: assets/js/tutor-course-builder.js:31100
+#: assets/js/tutor-course-builder.js:31153
 #, js-format
 msgid "Topic: %s"
 msgstr ""
 
 #. translators: %s is the total number of questions
-#: assets/js/tutor-course-builder.js:30534
+#: assets/js/tutor-course-builder.js:30550
 #, js-format
 msgid "%s Questions"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:30550
+#: assets/js/tutor-course-builder.js:30566
 msgid "Export Quiz"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:30708
-#: assets/js/tutor-course-builder.js:31836
+#: assets/js/tutor-course-builder.js:30724
+#: assets/js/tutor-course-builder.js:31852
 msgid "Are you sure you want to delete this content from your course? This cannot be undone."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:30805
+#: assets/js/tutor-course-builder.js:30821
 #: assets/js/tutor-import-export.js:8111
 msgid "No files selected"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:30815
+#: assets/js/tutor-course-builder.js:30831
 #: assets/js/tutor-import-export.js:8121
 msgid "Invalid file type"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:30817
+#: assets/js/tutor-course-builder.js:30833
 #: assets/js/tutor-import-export.js:8123
 msgid "Maximum upload size exceeded"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:31227
-#: assets/js/tutor-course-builder.js:31247
-#: assets/js/tutor-course-builder.js:31322
+#: assets/js/tutor-course-builder.js:31243
+#: assets/js/tutor-course-builder.js:31263
+#: assets/js/tutor-course-builder.js:31338
 msgid "Import Quiz"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:31269
+#: assets/js/tutor-course-builder.js:31285
 msgid "Meet live lesson"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:31296
+#: assets/js/tutor-course-builder.js:31312
 msgid "Zoom live lesson"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:31642
+#: assets/js/tutor-course-builder.js:31658
 msgid "Title is required"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:31645
+#: assets/js/tutor-course-builder.js:31661
 msgid "Add a title"
 msgstr ""
 
 #. translators: %s is the topic title
-#: assets/js/tutor-course-builder.js:31835
+#: assets/js/tutor-course-builder.js:31851
 #, js-format
 msgid "Delete topic \"%s\""
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:32406
+#: assets/js/tutor-course-builder.js:32422
 msgid "Expand All"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:32406
+#: assets/js/tutor-course-builder.js:32422
 msgid "Collapse All"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:32417
+#: assets/js/tutor-course-builder.js:32433
 msgid "Empty State Illustration"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:32418
+#: assets/js/tutor-course-builder.js:32434
 msgid "Start building your course!"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:32419
+#: assets/js/tutor-course-builder.js:32435
 msgid "Add Topics, Lessons, and Quizzes to get started."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:32442
-#: assets/js/tutor-course-builder.js:32557
+#: assets/js/tutor-course-builder.js:32458
+#: assets/js/tutor-course-builder.js:32573
 msgid "Add Topic"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:33918
+#: assets/js/tutor-course-builder.js:33935
 msgid "Topic saved successfully"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:34017
+#: assets/js/tutor-course-builder.js:34034
 msgid "Lesson saved successfully"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:34907
-#: assets/js/tutor-course-builder.js:37664
-#: assets/js/tutor-course-builder.js:37872
-#: assets/js/tutor-course-builder.js:40533
+#: assets/js/tutor-course-builder.js:34924
+#: assets/js/tutor-course-builder.js:37684
+#: assets/js/tutor-course-builder.js:37892
+#: assets/js/tutor-course-builder.js:40553
 #: assets/js/tutor-payment-settings.js:4229
 #: assets/js/tutor-payment-settings.js:9616
 msgid "Upload Media"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:34997
+#: assets/js/tutor-course-builder.js:35014
 #: assets/js/tutor-payment-settings.js:4319
 msgid "Replace Image"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40241
+#: assets/js/tutor-course-builder.js:40261
 msgid "Failed to fetch the video data"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40328
+#: assets/js/tutor-course-builder.js:40348
 msgid "Failed to get canvas context"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40336
+#: assets/js/tutor-course-builder.js:40356
 msgid "Unknown error occurred"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40368
+#: assets/js/tutor-course-builder.js:40388
 msgid "Thumbnail generation timed out"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40381
+#: assets/js/tutor-course-builder.js:40401
 msgid "Unsupported video source"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40452
+#: assets/js/tutor-course-builder.js:40472
 msgid "Paste YouTube Video URL"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40453
+#: assets/js/tutor-course-builder.js:40473
 msgid "Paste Vimeo Video URL"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40454
+#: assets/js/tutor-course-builder.js:40474
 msgid "Paste External Video URL"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40455
+#: assets/js/tutor-course-builder.js:40475
 msgid "Paste Video Shortcode"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40456
+#: assets/js/tutor-course-builder.js:40476
 msgid "Paste Embedded Video Code"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40716
+#: assets/js/tutor-course-builder.js:40736
 msgid "No video source selected"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40731
+#: assets/js/tutor-course-builder.js:40751
 msgid "Select from settings"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40814
+#: assets/js/tutor-course-builder.js:40834
 msgid "Invalid Shortcode"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40817
+#: assets/js/tutor-course-builder.js:40837
 msgid "Invalid URL"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40820
+#: assets/js/tutor-course-builder.js:40840
 msgid "Invalid YouTube URL"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40823
+#: assets/js/tutor-course-builder.js:40843
 msgid "Invalid Vimeo URL"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40880
-#: assets/js/tutor-course-builder.js:40894
+#: assets/js/tutor-course-builder.js:40900
+#: assets/js/tutor-course-builder.js:40914
 msgid "Add from URL"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:40997
+#: assets/js/tutor-course-builder.js:41017
 msgid "Upload a thumbnail image for your video"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41001
+#: assets/js/tutor-course-builder.js:41021
 msgid "Replace Thumbnail"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41050
+#: assets/js/tutor-course-builder.js:41070
 msgid "Select source"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41065
+#: assets/js/tutor-course-builder.js:41085
 msgid "Paste Here"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41233
-#: assets/js/tutor-course-builder.js:41254
+#: assets/js/tutor-course-builder.js:41253
+#: assets/js/tutor-course-builder.js:41274
 #: assets/js/tutor-payment-settings.js:10079
 #: assets/js/tutor-payment-settings.js:10100
 msgid "Back to WordPress Editor"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41238
+#: assets/js/tutor-course-builder.js:41258
 #: assets/js/tutor-payment-settings.js:10084
 msgid "Warning: Switching to the WordPress default editor may cause issues with your current layout, design, and content."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41240
+#: assets/js/tutor-course-builder.js:41260
 #: assets/js/tutor-payment-settings.js:10086
 msgid "Confirm"
 msgstr ""
 
 #. translators: %s is the editor name
-#: assets/js/tutor-course-builder.js:41276
+#: assets/js/tutor-course-builder.js:41296
 #: assets/js/tutor-payment-settings.js:10122
 #, js-format
 msgid "Edit with %s"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41359
+#: assets/js/tutor-course-builder.js:41379
 #: assets/js/tutor-payment-settings.js:10205
 msgid "Edit with"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41871
+#: assets/js/tutor-course-builder.js:41891
 #: assets/js/tutor-payment-settings.js:4368
 msgid "A serene classroom setting with books and a chalkboard"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41872
+#: assets/js/tutor-course-builder.js:41892
 #: assets/js/tutor-payment-settings.js:4369
 msgid "An abstract representation of innovation and creativity"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41873
+#: assets/js/tutor-course-builder.js:41893
 #: assets/js/tutor-payment-settings.js:4370
 msgid "A vibrant workspace with a laptop and coffee cup"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41874
+#: assets/js/tutor-course-builder.js:41894
 #: assets/js/tutor-payment-settings.js:4371
 msgid "A modern design with digital learning icons"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41875
+#: assets/js/tutor-course-builder.js:41895
 #: assets/js/tutor-payment-settings.js:4372
 msgid "A futuristic cityscape with a glowing pathway"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41876
+#: assets/js/tutor-course-builder.js:41896
 #: assets/js/tutor-payment-settings.js:4373
 msgid "A peaceful nature scene with soft colors"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41877
+#: assets/js/tutor-course-builder.js:41897
 #: assets/js/tutor-payment-settings.js:4374
 msgid "A professional boardroom with sleek visuals"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41878
+#: assets/js/tutor-course-builder.js:41898
 #: assets/js/tutor-payment-settings.js:4375
 msgid "A stack of books with warm, inviting lighting"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41879
+#: assets/js/tutor-course-builder.js:41899
 #: assets/js/tutor-payment-settings.js:4376
 msgid "A dynamic collage of technology and education themes"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:41880
+#: assets/js/tutor-course-builder.js:41900
 #: assets/js/tutor-payment-settings.js:4377
 msgid "A bold and minimalistic design with striking colors"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42019
+#: assets/js/tutor-course-builder.js:42039
 #: assets/js/tutor-payment-settings.js:6212
 msgid "Photo"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42024
+#: assets/js/tutor-course-builder.js:42044
 #: assets/js/tutor-payment-settings.js:6217
 msgid "Neon"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42029
+#: assets/js/tutor-course-builder.js:42049
 #: assets/js/tutor-payment-settings.js:6222
 msgid "3D"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42034
+#: assets/js/tutor-course-builder.js:42054
 #: assets/js/tutor-payment-settings.js:6227
 msgid "Painting"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42039
+#: assets/js/tutor-course-builder.js:42059
 #: assets/js/tutor-payment-settings.js:6232
 msgid "Sketch"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42044
+#: assets/js/tutor-course-builder.js:42064
 #: assets/js/tutor-payment-settings.js:6237
 msgid "Concept"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42054
+#: assets/js/tutor-course-builder.js:42074
 #: assets/js/tutor-payment-settings.js:6247
 msgid "Dreamy"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42059
+#: assets/js/tutor-course-builder.js:42079
 #: assets/js/tutor-payment-settings.js:6252
 msgid "Filmic"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42064
+#: assets/js/tutor-course-builder.js:42084
 #: assets/js/tutor-payment-settings.js:6257
 msgid "Retro"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42069
+#: assets/js/tutor-course-builder.js:42089
 #: assets/js/tutor-payment-settings.js:6262
 msgid "Black & White"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42200
+#: assets/js/tutor-course-builder.js:42220
 #: assets/js/tutor-payment-settings.js:6393
 msgid "Visualize Your Course"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42201
+#: assets/js/tutor-course-builder.js:42221
 #: assets/js/tutor-payment-settings.js:6394
 msgid "Describe the image you want for your course thumbnail"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42232
+#: assets/js/tutor-course-builder.js:42252
 #: assets/js/tutor-payment-settings.js:6425
 msgid "Styles"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42362
-#: assets/js/tutor-course-builder.js:42692
+#: assets/js/tutor-course-builder.js:42382
+#: assets/js/tutor-course-builder.js:42712
 #: assets/js/tutor-payment-settings.js:6002
 #: assets/js/tutor-payment-settings.js:6956
 msgid "Magic Fill"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42411
+#: assets/js/tutor-course-builder.js:42431
 #: assets/js/tutor-payment-settings.js:6051
 msgid "Generated Image"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42706
+#: assets/js/tutor-course-builder.js:42726
 #: assets/js/tutor-payment-settings.js:6970
 msgid "Revert to Original"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42815
+#: assets/js/tutor-course-builder.js:42835
 #: assets/js/tutor-payment-settings.js:7079
 msgid "Describe the Fill"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42816
+#: assets/js/tutor-course-builder.js:42836
 #: assets/js/tutor-payment-settings.js:7080
 msgid "Write 5 words to describe..."
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42840
+#: assets/js/tutor-course-builder.js:42860
 #: assets/js/tutor-payment-settings.js:7104
 msgid "Generative Erase"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:42858
+#: assets/js/tutor-course-builder.js:42878
 #: assets/js/tutor-payment-settings.js:7122
 msgid "Use Image"
 msgstr ""
 
-#: assets/js/tutor-course-builder.js:43611
+#: assets/js/tutor-course-builder.js:43631
 #: assets/js/tutor-payment-settings.js:4137
 #: assets/js/tutor-tax-settings.js:9325
 msgid "Once you perform this action this can’t be undone."
 msgstr ""
 
 #. translators: %s is the file title
-#: assets/js/tutor-course-builder.js:46510
+#: assets/js/tutor-course-builder.js:46589
 #: assets/js/tutor-payment-settings.js:9538
 #, js-format
 msgid "%s size exceeds the maximum allowed size"
