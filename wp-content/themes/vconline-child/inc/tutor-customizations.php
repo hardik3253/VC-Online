@@ -30,6 +30,14 @@ class Tutor_LMS_Customizations {
 
         // 4. Inject Mobile Number column on the TutorLMS Students admin page
         add_action( 'admin_footer', array( $this, 'add_mobile_to_tutor_students_page' ) );
+
+        // 5. Add custom meta box for static total enrolled override
+        add_action( 'add_meta_boxes', array( $this, 'register_static_enrolled_meta_box' ) );
+        add_action( 'save_post_courses', array( $this, 'save_static_enrolled_meta' ), 10, 2 );
+
+        // 6. AJAX handlers for frontend/course builder static enrolled
+        add_action( 'wp_ajax_vca_get_static_enrolled', array( $this, 'ajax_get_static_enrolled' ) );
+        add_action( 'wp_ajax_vca_save_static_enrolled', array( $this, 'ajax_save_static_enrolled' ) );
     }
 
     /**
@@ -132,6 +140,99 @@ class Tutor_LMS_Customizations {
             });
         </script>
         <?php
+    }
+
+    /**
+     * Register static enrolled override meta box for course post type
+     */
+    public function register_static_enrolled_meta_box() {
+        add_meta_box(
+            'vca_static_enrolled_meta_box',
+            __( 'Total Enrolled Settings', 'tutor' ),
+            array( $this, 'render_static_enrolled_meta_box' ),
+            'courses',
+            'side',
+            'default'
+        );
+    }
+
+    /**
+     * Render the static enrolled meta box
+     */
+    public function render_static_enrolled_meta_box( $post ) {
+        wp_nonce_field( 'vca_static_enrolled_save', 'vca_static_enrolled_nonce' );
+        $value = get_post_meta( $post->ID, '_vca_static_enrolled_count', true );
+        ?>
+        <p>
+            <label for="vca_static_enrolled_count"><?php _e( 'Manually enter total enrolled number:', 'tutor' ); ?></label>
+            <input type="number" id="vca_static_enrolled_count" name="vca_static_enrolled_count" value="<?php echo esc_attr( $value ); ?>" class="components-text-control__input" style="width:100%; margin-top:5px;" min="0" placeholder="<?php _e( 'e.g. 500', 'tutor' ); ?>" />
+        </p>
+        <p class="description">
+            <?php _e( 'If set, this number will be displayed as the "Total Enrolled" count on the frontend details page instead of the dynamically calculated enrolled student count.', 'tutor' ); ?>
+        </p>
+        <?php
+    }
+
+    /**
+     * Save the static enrolled meta field
+     */
+    public function save_static_enrolled_meta( $post_id, $post ) {
+        if ( ! isset( $_POST['vca_static_enrolled_nonce'] ) || ! wp_verify_nonce( $_POST['vca_static_enrolled_nonce'], 'vca_static_enrolled_save' ) ) {
+            return;
+        }
+        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+            return;
+        }
+        if ( ! current_user_can( 'edit_post', $post_id ) ) {
+            return;
+        }
+        if ( isset( $_POST['vca_static_enrolled_count'] ) ) {
+            $val = sanitize_text_field( $_POST['vca_static_enrolled_count'] );
+            if ( $val === '' ) {
+                delete_post_meta( $post_id, '_vca_static_enrolled_count' );
+            } else {
+                update_post_meta( $post_id, '_vca_static_enrolled_count', intval( $val ) );
+            }
+        }
+    }
+
+    /**
+     * AJAX Handler to get static enrolled settings
+     */
+    public function ajax_get_static_enrolled() {
+        check_ajax_referer( 'vco_badge_nonce', 'nonce' );
+
+        $course_id = isset( $_POST['course_id'] ) ? intval( $_POST['course_id'] ) : 0;
+        if ( ! $course_id || ! current_user_can( 'edit_post', $course_id ) ) {
+            wp_send_json_error( 'Invalid course ID.' );
+        }
+
+        $value = get_post_meta( $course_id, '_vca_static_enrolled_count', true );
+        wp_send_json_success( array(
+            'static_enrolled' => $value,
+        ) );
+    }
+
+    /**
+     * AJAX Handler to save static enrolled settings
+     */
+    public function ajax_save_static_enrolled() {
+        check_ajax_referer( 'vco_badge_nonce', 'nonce' );
+
+        $course_id = isset( $_POST['course_id'] ) ? intval( $_POST['course_id'] ) : 0;
+        if ( ! $course_id || ! current_user_can( 'edit_post', $course_id ) ) {
+            wp_send_json_error( 'Invalid course ID.' );
+        }
+
+        $static_enrolled = isset( $_POST['static_enrolled'] ) ? sanitize_text_field( wp_unslash( $_POST['static_enrolled'] ) ) : '';
+        
+        if ( $static_enrolled === '' ) {
+            delete_post_meta( $course_id, '_vca_static_enrolled_count' );
+        } else {
+            update_post_meta( $course_id, '_vca_static_enrolled_count', intval( $static_enrolled ) );
+        }
+
+        wp_send_json_success();
     }
 }
 

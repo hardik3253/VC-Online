@@ -9,10 +9,6 @@ jQuery(document).ready(function($) {
 
     // Polling interval to inject fields when the options/General section renders
     setInterval(function() {
-        if ($('#vco-badge-builder-settings').length > 0) {
-            return; // Already injected
-        }
-
         // Target the Q&A field wrapper
         const $qnaWrapper = $('input[name="enable_qna"]').closest('[data-cy="form-field-wrapper"]');
         let $parent = null;
@@ -30,8 +26,12 @@ jQuery(document).ready(function($) {
             }
         }
 
-        if ($parent && $parent.length > 0) {
-            // Construct the 3rd form-field-wrapper div dynamically using the exact classes
+        if (!$parent || $parent.length === 0) {
+            return;
+        }
+
+        // 1. Inject Badge Builder Settings
+        if ($('#vco-badge-builder-settings').length === 0) {
             const html = `
                 <div data-cy="form-field-wrapper" class="${classes}" id="vco-badge-builder-settings" style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #e2e8f0; width: 100%;">
                     <div class="css-1itza76" style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
@@ -66,7 +66,6 @@ jQuery(document).ready(function($) {
                 </div>
             `;
 
-            // Append as the last child of the parent container holding the field wrappers
             $parent.append(html);
 
             // Fetch current badge settings
@@ -119,6 +118,76 @@ jQuery(document).ready(function($) {
             $('#vco_builder_badge_text').on('keyup input', function() {
                 clearTimeout(typingTimer);
                 typingTimer = setTimeout(saveBadgeSettings, 600);
+            });
+        }
+
+        // 2. Inject Static Total Enrolled Settings
+        if ($('#vca-static-enrolled-builder-settings').length === 0) {
+            const html = `
+                <div data-cy="form-field-wrapper" class="${classes}" id="vca-static-enrolled-builder-settings" style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #e2e8f0; width: 100%;">
+                    <div class="css-1itza76" style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
+                        <h4 style="font-size: 15px; font-weight: bold; margin: 0 0 5px 0; color: #1e293b; clear: both;">Total Enrolled Settings</h4>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 5px; width: 100%;">
+                            <label style="display: block; font-weight: 500; font-size: 14px; color: #334155; margin: 0;">Manually Enter Total Enrolled Number</label>
+                            <input type="number" id="vca_builder_static_enrolled" style="width: 100%; max-width: 300px; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 14px; outline: none; background: #fff;" placeholder="e.g. 500" min="0" />
+                        </div>
+                        
+                        <div id="vca_builder_static_enrolled_status" style="font-size: 12px; color: #64748b; height: 15px; margin: 0;"></div>
+                    </div>
+                </div>
+            `;
+
+            // Append after badge settings if it exists, otherwise to parent
+            const $badgeSettings = $('#vco-badge-builder-settings');
+            if ($badgeSettings.length > 0) {
+                $badgeSettings.after(html);
+            } else {
+                $parent.append(html);
+            }
+
+            // Fetch current static enrollment settings
+            $.post(ajaxurl, {
+                action: 'vca_get_static_enrolled',
+                course_id: courseId,
+                nonce: nonce
+            }, function(response) {
+                if (response.success && response.data) {
+                    $('#vca_builder_static_enrolled').val(response.data.static_enrolled);
+                }
+            });
+
+            // Save on changes
+            function saveStaticEnrolledSettings() {
+                const val = $('#vca_builder_static_enrolled').val();
+                
+                $('#vca_builder_static_enrolled_status').text('Saving total enrolled...').css('color', '#64748b');
+
+                $.post(ajaxurl, {
+                    action: 'vca_save_static_enrolled',
+                    course_id: courseId,
+                    static_enrolled: val,
+                    nonce: nonce
+                }, function(response) {
+                    if (response.success) {
+                        $('#vca_builder_static_enrolled_status').text('Total enrolled saved successfully.').css('color', '#10b981');
+                        setTimeout(function() {
+                            $('#vca_builder_static_enrolled_status').text('');
+                        }, 2000);
+                    } else {
+                        $('#vca_builder_static_enrolled_status').text('Error saving total enrolled.').css('color', '#ef4444');
+                    }
+                });
+            }
+
+            // Save on change/blur
+            $('#vca_builder_static_enrolled').on('change', saveStaticEnrolledSettings);
+            
+            // Debounce typing to save
+            let enrolledTypingTimer;
+            $('#vca_builder_static_enrolled').on('keyup input', function() {
+                clearTimeout(enrolledTypingTimer);
+                enrolledTypingTimer = setTimeout(saveStaticEnrolledSettings, 800);
             });
         }
     }, 1000);

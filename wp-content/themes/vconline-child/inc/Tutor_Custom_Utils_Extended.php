@@ -247,4 +247,18 @@ class Tutor_Custom_Utils_Extended extends \TUTOR\Utils {
 
         return (int) $count;
     }
+
+    /**
+     * Override total enrolled students by course id to support manually entered static numbers.
+     */
+    public function count_enrolled_users_by_course( $course_id = 0, $period = '' ) {
+        $course_id = $this->get_post_id( $course_id );
+        
+        $static_enrolled = get_post_meta( $course_id, '_vca_static_enrolled_count', true );
+        if ( $static_enrolled !== '' && $static_enrolled !== false ) {
+            return (int) $static_enrolled;
+        }
+
+        return parent::count_enrolled_users_by_course( $course_id, $period );
+    }
 }
