@@ -98,6 +98,7 @@ class Edmingle_API {
 		return array(
 			'data'           => $data,
 			'execution_time' => $execution_time,
+			'status_code'    => $status_code,
 		);
 	}
 }

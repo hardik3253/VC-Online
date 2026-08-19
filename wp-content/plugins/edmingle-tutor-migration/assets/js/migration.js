@@ -69,7 +69,15 @@ jQuery(document).ready(function($) {
 				handleMigrationError(action, $card, retries, response.data.message || response.data || 'Unknown error');
 			}
 		}).fail(function(jqXHR, textStatus, errorThrown) {
-			handleMigrationError(action, $card, retries, 'Server request failed: ' + textStatus);
+			var errMsg = textStatus;
+			if (jqXHR.status) {
+				errMsg += ' (' + jqXHR.status + ' ' + errorThrown + ')';
+			}
+			if (jqXHR.responseText && jqXHR.responseText.indexOf('wp-admin') === -1) {
+				var responseClean = jqXHR.responseText.substring(0, 100);
+				errMsg += ': ' + responseClean;
+			}
+			handleMigrationError(action, $card, retries, 'Server request failed: ' + errMsg);
 		});
 	}
 
