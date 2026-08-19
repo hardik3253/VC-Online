@@ -78,7 +78,7 @@ class ApiClient {
 		$args = array(
 			'method'  => strtoupper( $method ),
 			'headers' => $headers,
-			'timeout' => 15,
+			'timeout' => 5,
 		);
 
 		if ( ! empty( $body ) && in_array( $args['method'], array( 'POST', 'PUT', 'PATCH' ) ) ) {
