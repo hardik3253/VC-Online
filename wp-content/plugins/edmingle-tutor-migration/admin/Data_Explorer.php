@@ -70,6 +70,10 @@ class Data_Explorer {
 				wp_send_json_error( 'Endpoint not configured for ' . $type );
 			}
 
+			// Define debug file
+			$debug_log = dirname(__FILE__) . '/../debug_step.log';
+			file_put_contents( $debug_log, "[" . date('Y-m-d H:i:s') . "] START sync for type: $type\n", FILE_APPEND );
+
 			$state_key = 'etm_sync_state_' . $type;
 			$state = get_option( $state_key, array(
 				'current_page'    => 1,
@@ -113,7 +117,9 @@ class Data_Explorer {
 				}
 			}
 
+			file_put_contents( $debug_log, "[" . date('Y-m-d H:i:s') . "] BEFORE API request to: $endpoint with page " . $state['current_page'] . "\n", FILE_APPEND );
 			$response = Edmingle_API::request( $endpoint, 'GET', $query_params );
+			file_put_contents( $debug_log, "[" . date('Y-m-d H:i:s') . "] AFTER API request. Status: " . (is_wp_error($response) ? "WP_Error: " . $response->get_error_message() : "Success") . "\n", FILE_APPEND );
 
 			if ( is_wp_error( $response ) ) {
 				// Gracefully stub out invalid placeholders so that the sync wizard doesn't get blocked
@@ -202,11 +208,15 @@ class Data_Explorer {
 
 				$state['last_first_id'] = $first_id;
 
+				file_put_contents( $debug_log, "[" . date('Y-m-d H:i:s') . "] BEFORE DB write (save_data) for " . count($items) . " items\n", FILE_APPEND );
 				$stats = ETM_Database::save_data( $table_name, $items, $id_key );
+				file_put_contents( $debug_log, "[" . date('Y-m-d H:i:s') . "] AFTER DB write (save_data). Stats: " . json_encode($stats) . "\n", FILE_APPEND );
 				$state['records_fetched'] += ( $stats['imported'] + $stats['updated'] + $stats['skipped'] );
 			}
 
+			file_put_contents( $debug_log, "[" . date('Y-m-d H:i:s') . "] BEFORE DB log_request\n", FILE_APPEND );
 			ETM_Database::log_request( $endpoint, $execution_time, $response['status_code'], '', $state['current_page'], $stats );
+			file_put_contents( $debug_log, "[" . date('Y-m-d H:i:s') . "] AFTER DB log_request\n", FILE_APPEND );
 
 			// Pagination Engine: auto-detect next page or end of records
 			$has_more = false;

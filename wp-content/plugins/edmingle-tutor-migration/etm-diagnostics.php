@@ -126,6 +126,16 @@ foreach ( $log_files as $label => $file_path ) {
 	}
 }
 
+// 4. Read custom ETM debug step log
+$diagnostics['debug_step_log'] = array();
+$debug_log_path = dirname(__FILE__) . '/debug_step.log';
+if ( file_exists( $debug_log_path ) && is_readable( $debug_log_path ) ) {
+	$diagnostics['debug_step_log']['path'] = $debug_log_path;
+	$diagnostics['debug_step_log']['lines'] = explode( "\n", trim( file_get_contents( $debug_log_path ) ) );
+} else {
+	$diagnostics['debug_step_log']['status'] = 'no debug_step.log found yet';
+}
+
 echo json_encode( array( 'diagnostics_info' => $diagnostics ), JSON_PRETTY_PRINT );
 echo "\n\n--- AJAX SIMULATION START ---\n\n";
 
