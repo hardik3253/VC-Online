@@ -74,7 +74,22 @@ if ( is_wp_error( $response ) ) {
 } else {
 	$diagnostics['api_connection']['status'] = 'success';
 	$diagnostics['api_connection']['status_code'] = isset( $response['status_code'] ) ? $response['status_code'] : 'unknown';
-	$diagnostics['api_connection']['records_count'] = isset( $response['data']['data'] ) ? count( $response['data']['data'] ) : ( isset( $response['data']['students'] ) ? count( $response['data']['students'] ) : 0 );
+	$items = isset( $response['data']['data'] ) ? $response['data']['data'] : ( isset( $response['data']['students'] ) ? $response['data']['students'] : array() );
+	$diagnostics['api_connection']['records_count'] = count( $items );
+	
+	// Test save to DB
+	$diagnostics['db_write_test'] = array();
+	try {
+		$db_start_time = microtime( true );
+		$stats = \ETM\Includes\ETM_Database::save_data( 'edmingle_students', $items, 'id' );
+		$db_end_time = microtime( true );
+		$diagnostics['db_write_test']['status'] = 'success';
+		$diagnostics['db_write_test']['time_taken_ms'] = round( ( $db_end_time - $db_start_time ) * 1000 );
+		$diagnostics['db_write_test']['stats'] = $stats;
+	} catch ( \Exception $e ) {
+		$diagnostics['db_write_test']['status'] = 'failed';
+		$diagnostics['db_write_test']['error'] = $e->getMessage();
+	}
 }
 
 // 3. Check error logs
