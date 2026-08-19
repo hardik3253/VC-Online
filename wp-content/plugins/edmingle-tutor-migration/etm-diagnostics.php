@@ -132,6 +132,7 @@ echo "\n\n--- AJAX SIMULATION START ---\n\n";
 $_POST['action'] = 'edmingle_fetch_students';
 $_POST['resume'] = 'false';
 $_POST['nonce'] = wp_create_nonce( 'etm_admin_nonce' );
+$_SERVER['HTTP_REFERER'] = admin_url();
 
 $explorer = new \ETM\Admin\Data_Explorer();
 $explorer->ajax_fetch_data();
