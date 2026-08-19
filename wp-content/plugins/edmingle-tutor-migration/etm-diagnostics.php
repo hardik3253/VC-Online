@@ -77,5 +77,39 @@ if ( is_wp_error( $response ) ) {
 	$diagnostics['api_connection']['records_count'] = isset( $response['data']['data'] ) ? count( $response['data']['data'] ) : ( isset( $response['data']['students'] ) ? count( $response['data']['students'] ) : 0 );
 }
 
+// 3. Check error logs
+$diagnostics['error_logs'] = array();
+$log_files = array(
+	'wp-content/debug.log' => WP_CONTENT_DIR . '/debug.log',
+	'root error_log'       => ABSPATH . 'error_log',
+	'wp-admin error_log'   => ABSPATH . 'wp-admin/error_log',
+);
+
+foreach ( $log_files as $label => $file_path ) {
+	if ( file_exists( $file_path ) && is_readable( $file_path ) ) {
+		$diagnostics['error_logs'][$label] = array(
+			'path' => $file_path,
+			'size' => size_format( filesize( $file_path ) ),
+			'last_lines' => array(),
+		);
+		
+		// Read last 30 lines
+		$file = new SplFileObject( $file_path, 'r' );
+		$file->seek( PHP_INT_MAX );
+		$total_lines = $file->key();
+		
+		$start_line = max( 0, $total_lines - 30 );
+		$file->seek( $start_line );
+		
+		while ( ! $file->eof() ) {
+			$line = trim( $file->current() );
+			if ( ! empty( $line ) ) {
+				$diagnostics['error_logs'][$label]['last_lines'][] = $line;
+			}
+			$file->next();
+		}
+	}
+}
+
 echo json_encode( $diagnostics, JSON_PRETTY_PRINT );
 exit;
