@@ -156,13 +156,13 @@ r.t=function(a,n){if(n&1)a=this(a);if(n&8)return a;if(typeof a==="object"&&a){if
 r.e=t=>{return Promise.all(Object.keys(r.f).reduce((e,a)=>{r.f[a](t,e);return e},[]))}})();// webpack/runtime/get javascript chunk filename
 (()=>{// This function allow to reference chunks
 r.u=t=>{// return url for filenames not based on template
-if(t==="187")return"js/lazy-chunks/tutor-react-datepicker.js?ver=4.0.5";// return url for filenames based on template
+if(t==="187")return"js/lazy-chunks/tutor-react-datepicker.js?ver=4.0.6";// return url for filenames based on template
 return""+t+".javascript"}})();// webpack/runtime/get mini-css chunk filename
 (()=>{// This function allow to reference chunks
 r.miniCssF=t=>{// return url for filenames not based on template
 // return url for filenames based on template
 return""+t+".css"}})();// webpack/runtime/get_full_hash
-(()=>{r.h=()=>"e9a5a61b5e44d1e8"})();// webpack/runtime/global
+(()=>{r.h=()=>"1e7a16f891b29e29"})();// webpack/runtime/global
 (()=>{r.g=(()=>{if(typeof globalThis==="object")return globalThis;try{return this||new Function("return this")()}catch(t){if(typeof window==="object")return window}})()})();// webpack/runtime/has_own_property
 (()=>{r.o=(t,e)=>Object.prototype.hasOwnProperty.call(t,e)})();// webpack/runtime/load_script
 (()=>{var t={};var e="tutor:";// loadScript function to load a script via script tag
@@ -280,7 +280,7 @@ r.insertRule(t,r.cssRules.length)}catch(t){}}else{e.appendChild(document.createT
  * @param {function} callback
  * @return {string}
  */function S(t,e){return t.map(e).join("")};// CONCATENATED MODULE: ./node_modules/.pnpm/stylis@4.2.0/node_modules/stylis/src/Tokenizer.js
-var C=1;var x=1;var L=0;var E=0;var q=0;var j="";/**
+var C=1;var x=1;var L=0;var E=0;var j=0;var q="";/**
  * @param {string} value
  * @param {object | null} root
  * @param {object | null} parent
@@ -294,19 +294,19 @@ var C=1;var x=1;var L=0;var E=0;var q=0;var j="";/**
  * @return {object}
  */function O(t,e){return v(A("",null,null,"",null,null,0),t,{length:-t.length},e)}/**
  * @return {number}
- */function D(){return q}/**
+ */function D(){return j}/**
  * @return {number}
- */function P(){q=E>0?y(j,--E):0;if(x--,q===10)x=1,C--;return q}/**
+ */function P(){j=E>0?y(q,--E):0;if(x--,j===10)x=1,C--;return j}/**
  * @return {number}
- */function T(){q=E<L?y(j,E++):0;if(x++,q===10)x=1,C++;return q}/**
+ */function T(){j=E<L?y(q,E++):0;if(x++,j===10)x=1,C++;return j}/**
  * @return {number}
- */function N(){return y(j,E)}/**
+ */function N(){return y(q,E)}/**
  * @return {number}
  */function M(){return E}/**
  * @param {number} begin
  * @param {number} end
  * @return {string}
- */function R(t,e){return b(j,t,e)}/**
+ */function R(t,e){return b(q,t,e)}/**
  * @param {number} type
  * @return {number}
  */function F(t){switch(t){// \0 \t \n \r \s whitespace token
@@ -318,10 +318,10 @@ case 34:case 39:case 40:case 91:return 2;// ) ] closing delimit token
 case 41:case 93:return 1}return 0}/**
  * @param {string} value
  * @return {any[]}
- */function z(t){return C=x=1,L=_(j=t),E=0,[]}/**
+ */function z(t){return C=x=1,L=_(q=t),E=0,[]}/**
  * @param {any} value
  * @return {any}
- */function I(t){return j="",t}/**
+ */function I(t){return q="",t}/**
  * @param {number} type
  * @return {string}
  */function W(t){return p(R(E-1,H(t===91?t+2:t===40?t+1:t)))}/**
@@ -330,27 +330,27 @@ case 41:case 93:return 1}return 0}/**
  */function U(t){return I(Q(z(t)))}/**
  * @param {number} type
  * @return {string}
- */function B(t){while(q=N())if(q<33)T();else break;return F(t)>2||F(q)>3?"":" "}/**
+ */function B(t){while(j=N())if(j<33)T();else break;return F(t)>2||F(j)>3?"":" "}/**
  * @param {string[]} children
  * @return {string[]}
- */function Q(t){while(T())switch(F(q)){case 0:append(J(E-1),t);break;case 2:append(W(q),t);break;default:append(from(q),t)}return t}/**
+ */function Q(t){while(T())switch(F(j)){case 0:append(J(E-1),t);break;case 2:append(W(j),t);break;default:append(from(j),t)}return t}/**
  * @param {number} index
  * @param {number} count
  * @return {string}
  */function Y(t,e){while(--e&&T())// not 0-9 A-F a-f
-if(q<48||q>102||q>57&&q<65||q>70&&q<97)break;return R(t,M()+(e<6&&N()==32&&T()==32))}/**
+if(j<48||j>102||j>57&&j<65||j>70&&j<97)break;return R(t,M()+(e<6&&N()==32&&T()==32))}/**
  * @param {number} type
  * @return {number}
- */function H(t){while(T())switch(q){// ] ) " '
+ */function H(t){while(T())switch(j){// ] ) " '
 case t:return E;// " '
-case 34:case 39:if(t!==34&&t!==39)H(q);break;// (
+case 34:case 39:if(t!==34&&t!==39)H(j);break;// (
 case 40:if(t===41)H(t);break;// \
 case 92:T();break}return E}/**
  * @param {number} type
  * @param {number} index
  * @return {number}
  */function G(t,e){while(T())// //
-if(t+q===47+10)break;else if(t+q===42+42&&N()===47)break;return"/*"+R(e,E-1)+"*"+d(t===47?t:T())}/**
+if(t+j===47+10)break;else if(t+j===42+42&&N()===47)break;return"/*"+R(e,E-1)+"*"+d(t===47?t:T())}/**
  * @param {number} index
  * @return {string}
  */function J(t){while(!F(N()))T();return R(t,E)};// CONCATENATED MODULE: ./node_modules/.pnpm/stylis@4.2.0/node_modules/stylis/src/Enum.js
@@ -402,25 +402,25 @@ case 32:return r===1?"":e;default:switch(r){case 0:t=e;return sizeof(a)>1?"":e;c
  * @param {number[]} points
  * @param {string[]} declarations
  * @return {object}
- */function tk(t,e,r,a,n,o,i,s,c){var u=0;var l=0;var v=i;var f=0;var p=0;var m=0;var b=1;var w=1;var S=1;var C=0;var x="";var L=n;var E=o;var q=a;var j=x;while(w)switch(m=C,C=T()){// (
-case 40:if(m!=108&&y(j,v-1)==58){if(g(j+=h(W(C),"&","&\f"),"&\f")!=-1)S=-1;break}// " ' [
-case 34:case 39:case 91:j+=W(C);break;// \t \n \r \s
-case 9:case 10:case 13:case 32:j+=B(m);break;// \
-case 92:j+=Y(M()-1,7);continue;// /
-case 47:switch(N()){case 42:case 47:k(tC(G(T(),M()),e,r),c);break;default:j+="/"}break;// {
-case 123*b:s[u++]=_(j)*S;// } ; \0
+ */function tk(t,e,r,a,n,o,i,s,c){var u=0;var l=0;var v=i;var f=0;var p=0;var m=0;var b=1;var w=1;var S=1;var C=0;var x="";var L=n;var E=o;var j=a;var q=x;while(w)switch(m=C,C=T()){// (
+case 40:if(m!=108&&y(q,v-1)==58){if(g(q+=h(W(C),"&","&\f"),"&\f")!=-1)S=-1;break}// " ' [
+case 34:case 39:case 91:q+=W(C);break;// \t \n \r \s
+case 9:case 10:case 13:case 32:q+=B(m);break;// \
+case 92:q+=Y(M()-1,7);continue;// /
+case 47:switch(N()){case 42:case 47:k(tC(G(T(),M()),e,r),c);break;default:q+="/"}break;// {
+case 123*b:s[u++]=_(q)*S;// } ; \0
 case 125*b:case 59:case 0:switch(C){// \0 }
 case 0:case 125:w=0;// ;
-case 59+l:if(S==-1)j=h(j,/\f/g,"");if(p>0&&_(j)-v)k(p>32?tx(j+";",a,r,v-1):tx(h(j," ","")+";",a,r,v-2),c);break;// @ ;
-case 59:j+=";";// { rule/at-rule
-default:k(q=tS(j,e,r,u,l,n,s,x,L=[],E=[],v),o);if(C===123)if(l===0)tk(j,e,q,q,L,o,v,s,E);else switch(f===99&&y(j,3)===110?100:f){// d l m s
-case 100:case 108:case 109:case 115:tk(t,q,q,a&&k(tS(t,q,q,0,0,n,s,x,n,L=[],v),E),n,E,v,s,a?L:E);break;default:tk(j,q,q,q,[""],E,0,s,E)}}u=l=p=0,b=S=1,x=j="",v=i;break;// :
-case 58:v=1+_(j),p=m;default:if(b<1){if(C==123)--b;else if(C==125&&b++==0&&P()==125)continue}switch(j+=d(C),C*b){// &
-case 38:S=l>0?1:(j+="\f",-1);break;// ,
-case 44:s[u++]=(_(j)-1)*S,S=1;break;// @
+case 59+l:if(S==-1)q=h(q,/\f/g,"");if(p>0&&_(q)-v)k(p>32?tx(q+";",a,r,v-1):tx(h(q," ","")+";",a,r,v-2),c);break;// @ ;
+case 59:q+=";";// { rule/at-rule
+default:k(j=tS(q,e,r,u,l,n,s,x,L=[],E=[],v),o);if(C===123)if(l===0)tk(q,e,j,j,L,o,v,s,E);else switch(f===99&&y(q,3)===110?100:f){// d l m s
+case 100:case 108:case 109:case 115:tk(t,j,j,a&&k(tS(t,j,j,0,0,n,s,x,n,L=[],v),E),n,E,v,s,a?L:E);break;default:tk(q,j,j,j,[""],E,0,s,E)}}u=l=p=0,b=S=1,x=q="",v=i;break;// :
+case 58:v=1+_(q),p=m;default:if(b<1){if(C==123)--b;else if(C==125&&b++==0&&P()==125)continue}switch(q+=d(C),C*b){// &
+case 38:S=l>0?1:(q+="\f",-1);break;// ,
+case 44:s[u++]=(_(q)-1)*S,S=1;break;// @
 case 64:// -
-if(N()===45)j+=W(T());f=N(),l=v=_(x=j+=J(M())),C++;break;// -
-case 45:if(m===45&&_(j)==2)b=0}}return o}/**
+if(N()===45)q+=W(T());f=N(),l=v=_(x=q+=J(M())),C++;break;// -
+case 45:if(m===45&&_(q)==2)b=0}}return o}/**
  * @param {string} value
  * @param {object} root
  * @param {object?} parent
@@ -455,13 +455,13 @@ if(a===38&&N()===12){// this is not 100% correct, we don't account for literal s
 e[r]=1}t[r]+=tL(E-1,e,r);break;case 2:t[r]+=W(a);break;case 4:// comma
 if(a===44){// colon
 t[++r]=N()===58?"&\f":"";e[r]=t[r].length;break}// fallthrough
-default:t[r]+=d(a)}}while(a=T())return t};var tq=function t(t,e){return I(tE(z(t),e))};// WeakSet would be more appropriate, but only WeakMap is supported in IE11
-var tj=/* #__PURE__ */new WeakMap;var tA=function t(t){if(t.type!=="rule"||!t.parent||// positive .length indicates that this rule contains pseudo
+default:t[r]+=d(a)}}while(a=T())return t};var tj=function t(t,e){return I(tE(z(t),e))};// WeakSet would be more appropriate, but only WeakMap is supported in IE11
+var tq=/* #__PURE__ */new WeakMap;var tA=function t(t){if(t.type!=="rule"||!t.parent||// positive .length indicates that this rule contains pseudo
 // negative .length indicates that this rule has been already prefixed
 t.length<1){return}var e=t.value;var r=t.parent;var a=t.column===r.column&&t.line===r.line;while(r.type!=="rule"){r=r.parent;if(!r)return}// short-circuit for the simplest case
-if(t.props.length===1&&e.charCodeAt(0)!==58&&!tj.get(r)){return}// if this is an implicitly inserted rule (the one eagerly inserted at the each new nested level)
+if(t.props.length===1&&e.charCodeAt(0)!==58&&!tq.get(r)){return}// if this is an implicitly inserted rule (the one eagerly inserted at the each new nested level)
 // then the props has already been manipulated beforehand as they that array is shared between it and its "rule parent"
-if(a){return}tj.set(t,true);var n=[];var o=tq(e,n);var i=r.props;for(var s=0,c=0;s<o.length;s++){for(var u=0;u<i.length;u++,c++){t.props[c]=n[s]?o[s].replace(/&\f/g,i[u]):i[u]+" "+o[s]}}};var tO=function t(t){if(t.type==="decl"){var e=t.value;if(e.charCodeAt(0)===108&&// charcode for b
+if(a){return}tq.set(t,true);var n=[];var o=tj(e,n);var i=r.props;for(var s=0,c=0;s<o.length;s++){for(var u=0;u<i.length;u++,c++){t.props[c]=n[s]?o[s].replace(/&\f/g,i[u]):i[u]+" "+o[s]}}};var tO=function t(t){if(t.type==="decl"){var e=t.value;if(e.charCodeAt(0)===108&&// charcode for b
 e.charCodeAt(2)===98){// this ignores label
 t["return"]="";t.value=""}}};/* eslint-disable no-fallthrough */function tD(t,e){switch(f(t,e)){// color-adjust
 case 5103:return V+"print-"+t+t;// animation, animation-(delay|direction|duration|fill-mode|iteration-count|name|play-state|timing-function)
@@ -631,11 +631,11 @@ const e_=wp.i18n;// CONCATENATED MODULE: ./node_modules/.pnpm/date-fns@4.1.0/nod
  * @constant
  * @name millisecondsInHour
  * @summary Milliseconds in 1 hour
- */const eq=36e5;/**
+ */const ej=36e5;/**
  * @constant
  * @name millisecondsInSecond
  * @summary Milliseconds in 1 second
- */const ej=1e3;/**
+ */const eq=1e3;/**
  * @constant
  * @name minutesInYear
  * @summary Minutes in 1 year.
@@ -987,8 +987,8 @@ var rL=function(t){var e=arguments.length>1&&arguments[1]!==void 0?arguments[1]:
  * Toggle disabled .tutor-clipboard-input-field .tutor-btn
  * .tutor-clipboard-input-field .tutor-btn
  */var rE=document.querySelector(".tutor-clipboard-input-field .tutor-btn");if(rE){document.querySelector(".tutor-clipboard-input-field .tutor-form-control").addEventListener("input",t=>{t.target.value?rE.removeAttribute("disabled"):rE.setAttribute("disabled","")})}// EXTERNAL MODULE: ./v2-library/src/js/offcanvas.js
-var rq=r(47725);// EXTERNAL MODULE: ./v2-library/src/js/notificationTab.js
-var rj=r(96666);// EXTERNAL MODULE: ./v2-library/src/js/defaultTab.js
+var rj=r(47725);// EXTERNAL MODULE: ./v2-library/src/js/notificationTab.js
+var rq=r(96666);// EXTERNAL MODULE: ./v2-library/src/js/defaultTab.js
 var rA=r(40434);// EXTERNAL MODULE: ./v2-library/src/js/nav.js
 var rO=r(76345);// EXTERNAL MODULE: ./v2-library/src/js/passwordStrengthChecker.js
 var rD=r(35387);// EXTERNAL MODULE: ./v2-library/src/js/general.js
@@ -1084,8 +1084,8 @@ var r=i.data(e==1?"state-class-0":"state-class-1");var o=i.data(e==1?"state-clas
 s[e==1?"addClass":"removeClass"]("active")}if(i.data("state-text-0")){// Get toggle text
 var c=i.data(e==1?"state-text-1":"state-text-0");var u=i.data("state-text-selector")?i.find(i.data("state-text-selector")):i;u.text(c)}// Update read unread
 if(n=="archived"){location.reload()}if(n=="read"){var l=e==0?"removeClass":"addClass";a.find(".tutor-qna-question-col")[l]("is-read")}},complete:()=>{r.removeClass("is-loading")}})});t(document).on("click","#sidebar-qna-tab-content .tutor-qa-new a.sidebar-ask-new-qna-btn",function(e){t(".tutor-quesanswer-askquestion").addClass("tutor-quesanswer-askquestion-expand");t("#sidebar-qna-tab-content").css({"height":"calc(100% - 140px)"})});t(document).on("click","#sidebar-qna-tab-content .tutor-qa-new .sidebar-ask-new-qna-cancel-btn",function(e){t(".tutor-quesanswer-askquestion").removeClass("tutor-quesanswer-askquestion-expand");t("#sidebar-qna-tab-content").css({"height":"calc(100% - 60px)"})});// Save/update question/reply
-t(document).on("click",".tutor-qa-reply button.tutor-btn, .tutor-qa-new button.sidebar-ask-new-qna-submit-btn",function(e){var r=t(this);var a="";var n=e.target.closest(".tutor-qna-reply-editor");if(_tutorobject.tutor_pro_url&&tinymce){// Current editor id
-a=n.querySelector(".tmce-active").getAttribute("id").split("-")[1]}var o=r.closest("[data-question_id]");var i=r.closest("[data-question_id]").data("question_id");var s=r.closest("[data-course_id]").data("course_id");var c=r.closest("[data-context]").data("context");var u=""!==a?tinymce.get(a).getContent():o.find("textarea").val();var l=t(this).data("back_url");var d=r.html().trim();/**
+t(document).on("click",".tutor-qa-reply button.tutor-btn, .tutor-qa-new button.sidebar-ask-new-qna-submit-btn",function(e){var r=t(this);var a="";var n=r.closest(".tutor-qna-reply-editor");if(_tutorobject.tutor_pro_url&&tinymce){// Current editor id
+a=n.find(".tmce-active").attr("id").split("-")[1]}var o=r.closest("[data-question_id]");var i=r.closest("[data-question_id]").data("question_id");var s=r.closest("[data-course_id]").data("course_id");var c=r.closest("[data-context]").data("context");var u=""!==a?tinymce.get(a).getContent():o.find("textarea").val();var l=t(this).data("back_url");var d=r.html().trim();/**
          * Warning alert
          * 
          * @since v2.1.0
