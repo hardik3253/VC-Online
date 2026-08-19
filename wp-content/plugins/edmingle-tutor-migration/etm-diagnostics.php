@@ -126,5 +126,13 @@ foreach ( $log_files as $label => $file_path ) {
 	}
 }
 
-echo json_encode( $diagnostics, JSON_PRETTY_PRINT );
+echo json_encode( array( 'diagnostics_info' => $diagnostics ), JSON_PRETTY_PRINT );
+echo "\n\n--- AJAX SIMULATION START ---\n\n";
+
+$_POST['action'] = 'edmingle_fetch_students';
+$_POST['resume'] = 'false';
+$_POST['nonce'] = wp_create_nonce( 'etm_admin_nonce' );
+
+$explorer = new \ETM\Admin\Data_Explorer();
+$explorer->ajax_fetch_data();
 exit;
