@@ -56,7 +56,7 @@ class Edmingle_API {
 		$args = array(
 			'method'  => $method,
 			'headers' => $headers,
-			'timeout' => 45, // Increase timeout for potentially large responses
+			'timeout' => 15, // Lower timeout to prevent 502 gateway errors on slow connections
 		);
 
 		if ( 'GET' !== $method && ! empty( $params ) ) {
