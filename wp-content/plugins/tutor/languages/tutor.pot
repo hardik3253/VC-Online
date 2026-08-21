@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Tutor LMS 4.0.6\n"
+"Project-Id-Version: Tutor LMS 4.0.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tutor\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-18T09:24:14+00:00\n"
+"POT-Creation-Date: 2026-08-20T10:42:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tutor\n"
@@ -586,8 +586,8 @@ msgstr ""
 #: classes/Ajax.php:159
 #: classes/Ajax.php:513
 #: classes/Ajax.php:593
-#: classes/Course.php:2070
-#: classes/Course.php:2390
+#: classes/Course.php:2080
+#: classes/Course.php:2400
 #: classes/Instructor.php:343
 #: classes/Quiz.php:1129
 #: classes/Quiz.php:1133
@@ -989,35 +989,35 @@ msgstr ""
 msgid "Course contents fetched successfully"
 msgstr ""
 
-#: classes/Course.php:1427
+#: classes/Course.php:1437
 msgid "Data retrieved successfully!"
 msgstr ""
 
-#: classes/Course.php:1462
+#: classes/Course.php:1472
 msgid "You cannot edit this course because it is in the Trash. Please restore it and try again"
 msgstr ""
 
-#: classes/Course.php:1694
+#: classes/Course.php:1704
 msgid "Products retrieved successfully!"
 msgstr ""
 
-#: classes/Course.php:1724
+#: classes/Course.php:1734
 msgid "One product can not be added to multiple course!"
 msgstr ""
 
-#: classes/Course.php:1736
+#: classes/Course.php:1746
 msgid "Product not found"
 msgstr ""
 
-#: classes/Course.php:1755
+#: classes/Course.php:1765
 msgid "Sorting order is required"
 msgstr ""
 
-#: classes/Course.php:1782
+#: classes/Course.php:1792
 msgid "Course content order updated successfully!"
 msgstr ""
 
-#: classes/Course.php:1801
+#: classes/Course.php:1811
 #: templates/loop/course-price-edd.php:80
 #: templates/loop/course-price-tutor.php:84
 #: templates/loop/course-price-woocommerce.php:77
@@ -1025,130 +1025,130 @@ msgstr ""
 msgid "Fully Booked"
 msgstr ""
 
-#: classes/Course.php:2053
+#: classes/Course.php:2063
 msgid "Topic title is required!"
 msgstr ""
 
-#: classes/Course.php:2055
+#: classes/Course.php:2065
 #: classes/Lesson.php:453
 #: ecommerce/BillingController.php:181
 msgid "Invalid inputs"
 msgstr ""
 
-#: classes/Course.php:2093
+#: classes/Course.php:2103
 msgid "Topic updated successfully!"
 msgstr ""
 
-#: classes/Course.php:2098
+#: classes/Course.php:2108
 msgid "Topic created successfully!"
 msgstr ""
 
-#: classes/Course.php:2144
+#: classes/Course.php:2154
 msgid "Topic deleted successfully!"
 msgstr ""
 
-#: classes/Course.php:2166
+#: classes/Course.php:2176
 msgid "Please Sign In first"
 msgstr ""
 
-#: classes/Course.php:2180
-#: classes/Course.php:3185
+#: classes/Course.php:2190
+#: classes/Course.php:3195
 msgid "You do not have permission to enroll in this course"
 msgstr ""
 
-#: classes/Course.php:2227
+#: classes/Course.php:2237
 #: classes/Lesson.php:596
 msgid "Please Sign-In"
 msgstr ""
 
-#: classes/Course.php:2231
+#: classes/Course.php:2241
 msgid "User is not enrolled in course"
 msgstr ""
 
-#: classes/Course.php:2244
-#: classes/Course.php:2289
+#: classes/Course.php:2254
+#: classes/Course.php:2299
 msgid "You do not have permission to complete this course."
 msgstr ""
 
-#: classes/Course.php:2271
+#: classes/Course.php:2281
 #: classes/Quiz.php:548
 msgid "Invalid course"
 msgstr ""
 
-#: classes/Course.php:2276
+#: classes/Course.php:2286
 msgid "You are not enrolled in this course"
 msgstr ""
 
-#: classes/Course.php:2295
+#: classes/Course.php:2305
 msgid "Course completed successfully"
 msgstr ""
 
-#: classes/Course.php:2399
+#: classes/Course.php:2409
 msgid "Only main instructor can delete this course"
 msgstr ""
 
-#: classes/Course.php:2420
+#: classes/Course.php:2430
 msgid "Course has been trashed successfully "
 msgstr ""
 
-#: classes/Course.php:2927
+#: classes/Course.php:2937
 msgid "Complete all lessons to mark this course as complete"
 msgstr ""
 
-#: classes/Course.php:2973
+#: classes/Course.php:2983
 msgid "quiz"
 msgid_plural "quizzes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: classes/Course.php:2974
+#: classes/Course.php:2984
 msgid "assignment"
 msgid_plural "assignments"
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %1$s: item count; %2$s: item label
-#: classes/Course.php:2979
-#: classes/Course.php:2988
+#: classes/Course.php:2989
+#: classes/Course.php:2998
 #, php-format
 msgid "You have to pass %1$s %2$s to complete this course."
 msgstr ""
 
 #. translators: %1$s: quiz count; %2$s: quiz label; %3$s: assignment count; %4$s: assignment label
-#: classes/Course.php:2996
+#: classes/Course.php:3006
 #, php-format
 msgid "You have to pass %1$s %2$s and %3$s %4$s to complete this course."
 msgstr ""
 
-#: classes/Course.php:3119
+#: classes/Course.php:3129
 msgid "You do not have permission to reset this course."
 msgstr ""
 
-#: classes/Course.php:3124
+#: classes/Course.php:3134
 msgid "You do not have permission to retake this course."
 msgstr ""
 
-#: classes/Course.php:3129
+#: classes/Course.php:3139
 msgid "Invalid Course ID or Access Denied."
 msgstr ""
 
-#: classes/Course.php:3179
+#: classes/Course.php:3189
 msgid "This course is password protected"
 msgstr ""
 
-#: classes/Course.php:3202
+#: classes/Course.php:3212
 msgid "Please purchase the course before enrolling"
 msgstr ""
 
-#: classes/Course.php:3208
+#: classes/Course.php:3218
 msgid "Enrollment successfully done!"
 msgstr ""
 
-#: classes/Course.php:3210
+#: classes/Course.php:3220
 msgid "Enrollment failed, please try again!"
 msgstr ""
 
-#: classes/Course.php:3436
+#: classes/Course.php:3446
 #: classes/Utils.php:7027
 #: includes/translate-text.php:75
 #: models/OrderModel.php:300
@@ -1159,27 +1159,27 @@ msgstr ""
 msgid "Completed"
 msgstr ""
 
-#: classes/Course.php:3447
+#: classes/Course.php:3457
 msgid "Resume"
 msgstr ""
 
-#: classes/Course.php:3447
+#: classes/Course.php:3457
 msgid "Start"
 msgstr ""
 
-#: classes/Course.php:3482
+#: classes/Course.php:3492
 msgid "You have not completed all required lessons and assessments. "
 msgstr ""
 
-#: classes/Course.php:3487
+#: classes/Course.php:3497
 msgid "Your Progress"
 msgstr ""
 
-#: classes/Course.php:3524
+#: classes/Course.php:3534
 msgid "Complete the Course"
 msgstr ""
 
-#: classes/Course.php:3568
+#: classes/Course.php:3578
 msgid "Retake this Course"
 msgstr ""
 

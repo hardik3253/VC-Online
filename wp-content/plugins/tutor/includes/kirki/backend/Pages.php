@@ -38,7 +38,7 @@ class Pages
         add_action('wp_ajax_tde_get_apis', [$this, 'tde_get_apis']);
 
         // add_action('template_redirect', [$this, 'control_pages_content']);
-        add_action('template_include', [$this, 'may_be_change_template'], PHP_INT_MAX);
+        add_filter('template_include', [$this, 'may_be_change_template'], 99999);
 
         add_filter('kirki_assets_should_load', [$this, 'load_kirki_assets']);
 
@@ -79,6 +79,12 @@ class Pages
     {
         $action   = Input::get('action');
         $load_for = Input::get('load_for');
+        $is_learning_area   = tutor_utils()->is_learning_area();
+        
+        if ($is_learning_area) {
+            return tutor_get_template_path('learning-area.index');
+        }
+
         if ($this->is_course_page() && ($action !== 'kirki' || $load_for === 'kirki-iframe')) {
             $template_path = $this->generate_page_using_full_canvas_template($template_path);
         }

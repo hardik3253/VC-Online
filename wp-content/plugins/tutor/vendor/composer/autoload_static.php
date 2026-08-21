@@ -4,10 +4,10 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit393f7dbca26c39b6641c0f30851cde2c
+class ComposerStaticInitd0949eb7e3cad503bc63ec4df319bcce
 {
     public static $prefixLengthsPsr4 = array (
-        'T' =>
+        'T' => 
         array (
             'Tutor\\Traits\\' => 13,
             'Tutor\\PaymentGateways\\' => 22,
@@ -23,43 +23,43 @@ class ComposerStaticInit393f7dbca26c39b6641c0f30851cde2c
     );
 
     public static $prefixDirsPsr4 = array (
-        'Tutor\\Traits\\' =>
+        'Tutor\\Traits\\' => 
         array (
             0 => __DIR__ . '/../..' . '/traits',
         ),
-        'Tutor\\PaymentGateways\\' =>
+        'Tutor\\PaymentGateways\\' => 
         array (
             0 => __DIR__ . '/../..' . '/ecommerce/PaymentGateways',
         ),
-        'Tutor\\Models\\' =>
+        'Tutor\\Models\\' => 
         array (
             0 => __DIR__ . '/../..' . '/models',
         ),
-        'Tutor\\Migrations\\' =>
+        'Tutor\\Migrations\\' => 
         array (
             0 => __DIR__ . '/../..' . '/migrations',
         ),
-        'Tutor\\Helpers\\' =>
+        'Tutor\\Helpers\\' => 
         array (
             0 => __DIR__ . '/../..' . '/helpers',
         ),
-        'Tutor\\GDPR\\' =>
+        'Tutor\\GDPR\\' => 
         array (
             0 => __DIR__ . '/../..' . '/GDPR',
         ),
-        'Tutor\\Ecommerce\\' =>
+        'Tutor\\Ecommerce\\' => 
         array (
             0 => __DIR__ . '/../..' . '/ecommerce',
         ),
-        'Tutor\\Components\\' =>
+        'Tutor\\Components\\' => 
         array (
             0 => __DIR__ . '/../..' . '/components',
         ),
-        'Tutor\\Cache\\' =>
+        'Tutor\\Cache\\' => 
         array (
             0 => __DIR__ . '/../..' . '/cache',
         ),
-        'TUTOR\\' =>
+        'TUTOR\\' => 
         array (
             0 => __DIR__ . '/../..' . '/classes',
         ),
@@ -72,9 +72,9 @@ class ComposerStaticInit393f7dbca26c39b6641c0f30851cde2c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit393f7dbca26c39b6641c0f30851cde2c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit393f7dbca26c39b6641c0f30851cde2c::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit393f7dbca26c39b6641c0f30851cde2c::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd0949eb7e3cad503bc63ec4df319bcce::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd0949eb7e3cad503bc63ec4df319bcce::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitd0949eb7e3cad503bc63ec4df319bcce::$classMap;
 
         }, null, ClassLoader::class);
     }

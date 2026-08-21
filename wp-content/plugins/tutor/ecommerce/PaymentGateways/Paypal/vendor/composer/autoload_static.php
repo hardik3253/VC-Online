@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit782d4c9085c0db1d1581d526ad727646
+class ComposerStaticInit86572f8b51a733076897be18d7189279
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -14,26 +14,26 @@ class ComposerStaticInit782d4c9085c0db1d1581d526ad727646
     );
 
     public static $prefixLengthsPsr4 = array (
-        'S' =>
+        'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
         ),
-        'P' =>
+        'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
         ),
-        'O' =>
+        'O' => 
         array (
             'Ollyo\\PaymentHub\\' => 17,
         ),
-        'G' =>
+        'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
         ),
-        'B' =>
+        'B' => 
         array (
             'Brick\\Money\\' => 12,
             'Brick\\Math\\' => 11,
@@ -41,40 +41,40 @@ class ComposerStaticInit782d4c9085c0db1d1581d526ad727646
     );
 
     public static $prefixDirsPsr4 = array (
-        'Symfony\\Polyfill\\Php80\\' =>
+        'Symfony\\Polyfill\\Php80\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
         ),
-        'Psr\\Http\\Message\\' =>
+        'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-factory/src',
             1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
-        'Psr\\Http\\Client\\' =>
+        'Psr\\Http\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
-        'Ollyo\\PaymentHub\\' =>
+        'Ollyo\\PaymentHub\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
-        'GuzzleHttp\\Psr7\\' =>
+        'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
-        'GuzzleHttp\\Promise\\' =>
+        'GuzzleHttp\\Promise\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
         ),
-        'GuzzleHttp\\' =>
+        'GuzzleHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
-        'Brick\\Money\\' =>
+        'Brick\\Money\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/money/src',
         ),
-        'Brick\\Math\\' =>
+        'Brick\\Math\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
@@ -92,9 +92,9 @@ class ComposerStaticInit782d4c9085c0db1d1581d526ad727646
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit782d4c9085c0db1d1581d526ad727646::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit782d4c9085c0db1d1581d526ad727646::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit782d4c9085c0db1d1581d526ad727646::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit86572f8b51a733076897be18d7189279::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit86572f8b51a733076897be18d7189279::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit86572f8b51a733076897be18d7189279::$classMap;
 
         }, null, ClassLoader::class);
     }
