@@ -65,6 +65,29 @@ class Plugin {
 		// Migration Engine Registration
 		$migration_engine = new \ETM\Admin\Migration_Engine();
 		$migration_engine->register();
+
+		// Custom filter to render migrated progress percentage correctly in Tutor LMS
+		add_filter( 'tutor_course_completed_percent', array( $this, 'filter_course_completed_percent' ), 10, 4 );
+	}
+
+	/**
+	 * Render migrated progress percent values correctly inside Tutor LMS.
+	 */
+	public function filter_course_completed_percent( $result, $course_id, $user_id, $get_stats ) {
+		$progress = (int) get_user_meta( $user_id, '_tutor_course_progress_' . $course_id, true );
+		if ( $progress > 0 ) {
+			if ( $get_stats ) {
+				$total_lessons = count( tutor_utils()->get_course_content_ids_by( 'lesson', 'courses', $course_id ) );
+				$completed_lessons = round( ( $progress / 100 ) * $total_lessons );
+				return array(
+					'completed_percent' => $progress,
+					'completed_count'   => $completed_lessons,
+					'total_count'       => $total_lessons
+				);
+			}
+			return $progress;
+		}
+		return $result;
 	}
 
 	/**

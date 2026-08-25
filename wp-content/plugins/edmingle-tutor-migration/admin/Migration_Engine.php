@@ -434,6 +434,16 @@ class Migration_Engine {
 				}
 
 				// Enroll student in Tutor LMS
+				// Use mb_start_date if available (timestamp format), falling back to user's registered date
+				$enrollment_timestamp = 0;
+				if ( ! empty( $batch['mb_start_date'] ) && $batch['mb_start_date'] > 0 ) {
+					$enrollment_timestamp = intval( $batch['mb_start_date'] );
+				} elseif ( ! empty( $reg_date ) ) {
+					$enrollment_timestamp = strtotime( $reg_date );
+				}
+
+				$enroll_date_mysql = $enrollment_timestamp > 0 ? date( 'Y-m-d H:i:s', $enrollment_timestamp ) : current_time('mysql');
+
 				$is_enrolled = tutor_utils()->is_enrolled( $tutor_course_id, $wp_user_id );
 				if ( ! $is_enrolled ) {
 					$enroll_post = array(
@@ -442,7 +452,8 @@ class Migration_Engine {
 						'post_author' => $wp_user_id,
 						'post_parent' => $tutor_course_id,
 						'post_title'  => 'Enrollment',
-						'post_date'   => current_time('mysql'),
+						'post_date'   => $enroll_date_mysql,
+						'post_date_gmt' => get_gmt_from_date( $enroll_date_mysql ),
 					);
 
 					$enroll_id = wp_insert_post( $enroll_post );
@@ -454,7 +465,7 @@ class Migration_Engine {
 						update_post_meta( $enroll_id, 'user_id', $wp_user_id );
 						update_post_meta( $enroll_id, 'enrol_status', 'completed');
 						update_post_meta( $enroll_id, '_is_manual_enrollment', 'no' );
-						update_post_meta( $enroll_id, 'enrollment_date', current_time('mysql') );
+						update_post_meta( $enroll_id, 'enrollment_date', $enroll_date_mysql );
 
 						wp_update_post( array( 'ID' => $enroll_id, 'post_status' => 'completed' ) );
 						
@@ -466,18 +477,32 @@ class Migration_Engine {
 					}
 				} else {
 					$stats['skipped']++;
+					// Update date for existing enrollment if it doesn't match
+					$existing_enroll_post = $wpdb->get_row( $wpdb->prepare(
+						"SELECT ID FROM {$wpdb->posts} WHERE post_type = 'tutor_enrolled' AND post_author = %d AND post_parent = %d LIMIT 1",
+						$wp_user_id, $tutor_course_id
+					) );
+					if ( $existing_enroll_post ) {
+						$enroll_id = $existing_enroll_post->ID;
+						$wpdb->update(
+							$wpdb->posts,
+							array(
+								'post_date' => $enroll_date_mysql,
+								'post_date_gmt' => get_gmt_from_date( $enroll_date_mysql ),
+							),
+							array( 'ID' => $enroll_id )
+						);
+						update_post_meta( $enroll_id, 'enrollment_date', $enroll_date_mysql );
+					}
 				}
 
 				// Expiry & Access
-				// Check 1-Year subscription expiration from student registration date
+				// Check 1-Year subscription expiration from enrollment date
 				$is_expired = false;
-				if ( ! empty( $reg_date ) ) {
-					$reg_time = strtotime( $reg_date );
-					if ( $reg_time > 0 ) {
-						$expiry_time = strtotime( '+1 year', $reg_time );
-						if ( $expiry_time < time() ) {
-							$is_expired = true;
-						}
+				if ( $enrollment_timestamp > 0 ) {
+					$expiry_time = strtotime( '+1 year', $enrollment_timestamp );
+					if ( $expiry_time < time() ) {
+						$is_expired = true;
 					}
 				}
 
@@ -496,19 +521,27 @@ class Migration_Engine {
 					$order_amount = floatval( $batch['order_amount'] );
 				}
 
-				if ( $order_amount > 0 || ! empty( $order_id ) ) {
+				// Determine price if not present (Paid Course defaults)
+				$is_paid_course = get_post_meta( $tutor_course_id, '_tutor_course_price_type', true ) === 'paid';
+				if ( $order_amount <= 0 && $is_paid_course ) {
+					$price = get_post_meta( $tutor_course_id, 'tutor_course_price', true );
+					if ( $price > 0 ) {
+						$order_amount = floatval( $price );
+					}
+				}
+
+				if ( $order_amount > 0 || ! empty( $order_id ) || $is_paid_course ) {
+					if ( empty( $order_id ) ) {
+						$order_id = 'MIGRATED-' . $wp_user_id . '-' . $tutor_course_id;
+					}
+
 					$existing_order_id = $wpdb->get_var( $wpdb->prepare(
 						"SELECT id FROM {$wpdb->prefix}tutor_orders WHERE transaction_id = %s OR (user_id = %d AND total_price = %f AND note LIKE %s)",
 						$order_id, $wp_user_id, $order_amount, '%' . $course_name . '%'
 					) );
 
 					if ( ! $existing_order_id ) {
-						$order_date = current_time('mysql');
-						if ( ! empty( $batch['purchase_date'] ) ) {
-							$order_date = date( 'Y-m-d H:i:s', is_numeric( $batch['purchase_date'] ) ? $batch['purchase_date'] : strtotime( $batch['purchase_date'] ) );
-						} elseif ( ! empty( $batch['enroll_date'] ) ) {
-							$order_date = date( 'Y-m-d H:i:s', is_numeric( $batch['enroll_date'] ) ? $batch['enroll_date'] : strtotime( $batch['enroll_date'] ) );
-						}
+						$order_date = $enroll_date_mysql;
 
 						$wpdb->insert(
 							$wpdb->prefix . 'tutor_orders',
@@ -544,7 +577,7 @@ class Migration_Engine {
 								)
 							);
 							
-							if ( isset( $enroll_id ) ) {
+							if ( isset( $enroll_id ) && $enroll_id ) {
 								update_post_meta( $enroll_id, '_enrolled_by_order_id', $new_order_id );
 								update_post_meta( $enroll_id, 'order_amount', $order_amount );
 							}
