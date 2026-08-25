@@ -1026,6 +1026,7 @@ class OrderController {
 
 		$list_order    = 'DESC';
 		$list_order_by = 'o.id';
+		
 
 		return $this->model->get_orders( $where_clause, $search_term, $limit, $offset, $list_order_by, $list_order );
 	}
