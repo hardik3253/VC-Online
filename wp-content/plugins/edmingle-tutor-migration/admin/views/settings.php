@@ -140,18 +140,20 @@ function doPost(e) {
     
     // Add headers if sheet is empty
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(["Full Name", "Email Address", "Mobile Number", "Registration Date & Time"]);
+      sheet.appendRow(["Full Name", "Email Address", "Mobile Number", "Registration Date & Time", "Course Name", "Course Type"]);
     }
     
     // Insert a new row at row 2 (just under the header row)
     sheet.insertRowBefore(2);
     
     // Set the values of the new row
-    sheet.getRange(2, 1, 1, 4).setValues([[
+    sheet.getRange(2, 1, 1, 6).setValues([[
       data.full_name,
       data.email,
       data.mobile,
-      data.registration_date
+      data.registration_date,
+      data.course_name,
+      data.course_type
     ]]);
     
     return ContentService.createTextOutput(JSON.stringify({status: "success"}))

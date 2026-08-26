@@ -112,38 +112,62 @@ class Google_Sheet_Sync {
 		// Format Registration Date (local time)
 		$reg_date = get_date_from_gmt( $user->user_registered, 'Y-m-d H:i:s' );
 
+		// Retrieve latest course enrollment details
+		$course_name = '—';
+		$course_type = '—';
+		$enrollment_args = array(
+			'post_type'      => 'tutor_enrolled',
+			'post_status'    => 'completed',
+			'posts_per_page' => 1,
+			'author'         => $user_id,
+			'orderby'        => 'ID',
+			'order'          => 'DESC',
+		);
+		$enrollments = get_posts( $enrollment_args );
+		if ( ! empty( $enrollments ) ) {
+			$latest_enrollment = $enrollments[0];
+			$course_post = get_post( $latest_enrollment->post_parent );
+			if ( $course_post ) {
+				$course_name = $course_post->post_title;
+				$price_type = get_post_meta( $course_post->ID, '_tutor_course_price_type', true );
+				$course_type = ( $price_type === 'paid' ) ? 'Paid' : 'Free';
+			}
+		}
+
 		$payload = array(
 			'full_name'         => $full_name,
 			'email'             => $user->user_email,
 			'mobile'            => $mobile ? $mobile : '—',
 			'registration_date' => $reg_date,
+			'course_name'       => $course_name,
+			'course_type'       => $course_type,
 		);
 
-		$response = wp_remote_post( $webhook_url, array(
-			'method'      => 'POST',
-			'timeout'     => 15,
-			'redirection' => 5,
-			'httpversion' => '1.0',
-			'blocking'    => true,
-			'headers'     => array(
-				'Content-Type' => 'application/json',
-			),
-			'body'        => wp_json_encode( $payload ),
-		) );
+		// Execute via Native cURL to ensure Google Apps Script redirect tracking resolves (status 200)
+		$ch = curl_init( $webhook_url );
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+		curl_setopt( $ch, CURLOPT_POST, true );
+		curl_setopt( $ch, CURLOPT_POSTFIELDS, wp_json_encode( $payload ) );
+		curl_setopt( $ch, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json' ) );
+		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
+		curl_setopt( $ch, CURLOPT_TIMEOUT, 30 );
+		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false ); // Bypass SSL validation checks for local testing/XAMPP
+		
+		$res = curl_exec( $ch );
+		$status_code = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
+		$curl_error = curl_error( $ch );
+		curl_close( $ch );
 
-		if ( is_wp_error( $response ) ) {
-			error_log( 'ETM Google Sheets Sync Failed for User ID ' . $user_id . ': ' . $response->get_error_message() );
-			return $response;
+		if ( $status_code === 0 && ! empty( $curl_error ) ) {
+			error_log( 'ETM Google Sheets Sync Failed for User ID ' . $user_id . ': ' . $curl_error );
+			return new \WP_Error( 'curl_error', $curl_error );
 		} else {
-			$status_code = wp_remote_retrieve_response_code( $response );
-			// If we got 200, 201, or 302, it is a success. Google Script returns 302/200 on Web App deployment redirects.
 			if ( in_array( $status_code, array( 200, 201, 302 ), true ) ) {
 				// Successfully synced
 				update_user_meta( $user_id, '_etm_synced_to_gsheet', '1' );
 				return true;
 			} else {
-				$body = wp_remote_retrieve_body( $response );
-				$msg = 'ETM Google Sheets Sync Failed for User ID ' . $user_id . ' with status ' . $status_code . '. Response: ' . $body;
+				$msg = 'ETM Google Sheets Sync Failed for User ID ' . $user_id . ' with status ' . $status_code . '. Response: ' . $res;
 				error_log( $msg );
 				return new \WP_Error( 'sync_failed', $msg );
 			}
