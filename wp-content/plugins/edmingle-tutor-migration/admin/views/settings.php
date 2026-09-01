@@ -121,6 +121,9 @@ $is_connected = ! empty( $api_key ) && ! empty( $org_id );
 					<button type="button" id="etm-btn-sync-existing" class="button button-secondary" <?php echo $has_webhook ? '' : 'disabled'; ?>>
 						<?php esc_html_e( 'Sync Existing Users Now', 'edmingle-tutor-migration' ); ?>
 					</button>
+					<button type="button" id="etm-btn-reset-sync" class="button button-link-delete" style="margin-left: 10px; vertical-align: middle;" <?php echo $has_webhook ? '' : 'disabled'; ?>>
+						<?php esc_html_e( 'Reset & Re-sync All Users', 'edmingle-tutor-migration' ); ?>
+					</button>
 					<span class="spinner" id="etm-bulk-sync-spinner" style="float: none; margin-top: 4px;"></span>
 				</div>
 
@@ -134,26 +137,47 @@ $is_connected = ! empty( $api_key ) && ! empty( $org_id );
 					</ol>
 					<pre style="background: #f6f6f6; padding: 10px; overflow-x: auto; font-size: 11px; border: 1px solid #e5e5e5; border-radius: 3px;">
 function doPost(e) {
+  var lock = LockService.getScriptLock();
   try {
+    // Acquire lock for up to 30 seconds to prevent concurrent write collisions
+    lock.waitLock(30000);
+
     var data = JSON.parse(e.postData.contents);
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     
     // Add headers if sheet is empty
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(["Full Name", "Email Address", "Mobile Number", "Registration Date & Time", "Course Name", "Course Type"]);
+      sheet.appendRow(["Full Name", "Email Address", "Mobile Number", "Registration / Enrollment Date", "Course Name", "Course Type"]);
     }
     
-    // Insert a new row at row 2 (just under the header row)
+    var emailToMatch = (data.email || '').toString().trim().toLowerCase();
+    var lastRow = sheet.getLastRow();
+    
+    // Search for existing row with the same email (Column B) and remove duplicate
+    if (emailToMatch !== '' && lastRow > 1) {
+      var emailValues = sheet.getRange(2, 2, lastRow - 1, 1).getValues();
+      for (var i = emailValues.length - 1; i >= 0; i--) {
+        var cellEmail = (emailValues[i][0] || '').toString().trim().toLowerCase();
+        if (cellEmail === emailToMatch) {
+          sheet.deleteRow(i + 2);
+        }
+      }
+    }
+    
+    // Insert new row at row 2 (at the very top, directly below the header row)
     sheet.insertRowBefore(2);
     
-    // Set the values of the new row
+    // Determine the date to display: enrollment/purchase date if available, fallback to registration date
+    var displayDate = (data.enrollment_date && data.enrollment_date !== '—') ? data.enrollment_date : (data.date || data.registration_date || '');
+    
+    // Set the values of the updated row
     sheet.getRange(2, 1, 1, 6).setValues([[
-      data.full_name,
-      data.email,
-      data.mobile,
-      data.registration_date,
-      data.course_name,
-      data.course_type
+      data.full_name || '',
+      data.email || '',
+      data.mobile || '—',
+      displayDate,
+      data.course_name || '—',
+      data.course_type || '—'
     ]]);
     
     return ContentService.createTextOutput(JSON.stringify({status: "success"}))
@@ -161,6 +185,8 @@ function doPost(e) {
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({status: "error", message: error.toString()}))
       .setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
   }
 }
 					</pre>

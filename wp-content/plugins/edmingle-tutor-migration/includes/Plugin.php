@@ -50,6 +50,7 @@ class Plugin {
 		add_action( 'wp_ajax_etm_toggle_debug', array( $plugin_admin, 'ajax_toggle_debug' ) );
 		add_action( 'wp_ajax_etm_get_unsynced_users_count', array( $plugin_admin, 'ajax_get_unsynced_users_count' ) );
 		add_action( 'wp_ajax_etm_sync_existing_users_batch', array( $plugin_admin, 'ajax_sync_existing_users_batch' ) );
+		add_action( 'wp_ajax_etm_reset_gsheet_sync', array( $plugin_admin, 'ajax_reset_gsheet_sync' ) );
 
 		// Display newly registered users first by default on users list screen
 		add_action( 'pre_get_users', array( $this, 'sort_users_by_registration_date' ) );

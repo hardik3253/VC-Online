@@ -240,6 +240,34 @@ jQuery(document).ready(function ($) {
 			}
 		});
 
+		$('#etm-btn-reset-sync').on('click', function (e) {
+			e.preventDefault();
+			if (!confirm('This will reset all user sync flags and allow you to re-sync all existing users to Google Sheets. The sheet script will update existing records and avoid duplicates. Continue?')) {
+				return;
+			}
+			var $btn = $(this);
+			$btn.prop('disabled', true);
+			$.ajax({
+				url: etm_setup.ajax_url,
+				method: 'POST',
+				data: {
+					action: 'etm_reset_gsheet_sync',
+					nonce: etm_setup.nonce
+				}
+			}).done(function (response) {
+				$btn.prop('disabled', false);
+				if (response.success) {
+					fetchUnsyncedCount();
+					alert(response.data.message);
+				} else {
+					alert('Error resetting sync: ' + (response.data || 'Unknown error'));
+				}
+			}).fail(function () {
+				$btn.prop('disabled', false);
+				alert('Request failed. Please try again.');
+			});
+		});
+
 		function fetchUnsyncedCount() {
 			$.ajax({
 				url: etm_setup.ajax_url,

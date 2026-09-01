@@ -484,4 +484,30 @@ class Admin {
 			'remaining' => count( $remaining_users ),
 		) );
 	}
+
+	/**
+	 * AJAX: Reset Google Sheets Sync flags so admin can re-sync all existing users
+	 */
+	public function ajax_reset_gsheet_sync() {
+		check_ajax_referer( 'etm_admin_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( 'Unauthorized' );
+		}
+
+		global $wpdb;
+		$wpdb->query( "DELETE FROM {$wpdb->usermeta} WHERE meta_key = '_etm_synced_to_gsheet'" );
+
+		$args = array(
+			'role__not_in' => array( 'administrator', 'tutor_instructor' ),
+			'fields'       => 'ID',
+		);
+		$users = get_users( $args );
+
+		wp_send_json_success( array(
+			'count'   => count( $users ),
+			'message' => 'Sync flags reset successfully. You can now re-sync all users.'
+		) );
+	}
 }
+
