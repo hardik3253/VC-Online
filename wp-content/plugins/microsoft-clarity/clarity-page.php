@@ -70,6 +70,9 @@ function brandagent_handle_remove_from_waitlist_success_callback() {
         delete_option( 'BAWebhooksCreated' );
         delete_option( 'BAWebhooksBackfillDone' );
         delete_option( 'clarity_ba_eligible_triggered' );
+        delete_option( 'brandagent_wp_connect_optin' );
+        delete_option( 'brandagent_wp_connect_attempts' );
+        delete_transient( 'brandagent_wp_connect_throttle' );
         brandagent_delete_hmac_secret();
 
         // Try to delete webhooks immediately if WooCommerce is available
@@ -143,7 +146,7 @@ function brandagent_handle_oauth_callback() {
                 if ( json_last_error() !== JSON_ERROR_NONE ) {
                     brandagent_log( 'BrandAgent OAuth: ERROR - JSON parse failed: ' . json_last_error_msg() );
                 } elseif ( isset( $body['success'] ) && $body['success'] === true && ! empty( $body['hmac_secret'] ) ) {
-                    $hmac_secret_stored = brandagent_store_hmac_secret( $body['hmac_secret'] );
+                    $hmac_secret_stored = brandagent_store_hmac_secret( $body['hmac_secret'], 'woocommerce' );
                     update_option( 'BAOauthSuccess', true );
                     $success = true;
                     brandagent_log( 'BrandAgent OAuth: SUCCESS - HMAC secret handled, BAOauthSuccess set.', array( 'hmac_stored' => $hmac_secret_stored ) );
@@ -237,7 +240,7 @@ function brandagent_handle_refresh_credentials_callback() {
                 if ( json_last_error() !== JSON_ERROR_NONE ) {
                     brandagent_log( 'BrandAgent Refresh: ERROR - JSON parse failed: ' . json_last_error_msg() );
                 } elseif ( isset( $body['success'] ) && $body['success'] === true && ! empty( $body['hmac_secret'] ) ) {
-                    $hmac_secret_stored = brandagent_store_hmac_secret( $body['hmac_secret'] );
+                    $hmac_secret_stored = brandagent_store_hmac_secret( $body['hmac_secret'], 'woocommerce' );
                     $success = true;
                     brandagent_log( 'BrandAgent Refresh: SUCCESS - New HMAC secret handled.', array( 'hmac_stored' => $hmac_secret_stored ) );
                 } else {
@@ -309,7 +312,7 @@ function clarity_section_iframe_callback()
     $site_url = home_url();
     $hosting_type = clarity_is_wordpress_com_hosted() ? 'wpcom' : 'selfhosted';
 
-    $clarity_domain = "https://clarity.microsoft.com/embed";
+    $clarity_domain = clarity_get_embed_base_url();
 
     $query_params = "?nonce=$nonce&integration=Wordpress&wpsite=$clarity_wp_site&siteurl=$site_url&hostingtype=$hosting_type";
 
@@ -331,6 +334,11 @@ function clarity_section_iframe_callback()
     // Add flag to indicate Brand Agent integration is supported (0.10.21+)
     // If this flag is missing, iframe knows user is on an older version
     $query_params = $query_params . "&BrandAgentSupported=1";
+
+    // Plain WordPress Brand Agent requires the 0.10.28+ connect bridge, WordPress HMAC
+    // runtime proxying, and content sync contract. Keep this separate from the legacy
+    // BrandAgentSupported marker, which is also emitted by WooCommerce-capable 0.10.27.
+    $query_params = $query_params . "&WordPressBrandAgentSupported=1";
 
     // initially set iframe src to the new users path
     $iframe_src = $clarity_domain . $query_params;
@@ -475,6 +483,59 @@ function add_event_listeners($hook)
         /* ver  */
         /* in_footer */
     );
+
+    // Inject the trusted Clarity dashboard origin (derived from the embed iframe URL) so the
+    // postMessage listeners accept and reply to the actual iframe origin in every environment
+    // (local dev host during testing, https://clarity.microsoft.com in production).
+    $embed_origin = clarity_get_embed_origin();
+    if (!empty($embed_origin)) {
+        wp_localize_script(
+            'window_listeners_js',
+            'clarityBrandAgentConfig',
+            array('trustedOrigin' => $embed_origin)
+        );
+    }
+}
+
+/**
+ * Base URL (origin + "/embed" path) of the embedded Clarity dashboard.
+ *
+ * Single source of truth for the wp-admin iframe src and the postMessage origin allow-list so
+ * they never drift apart across environments.
+ *
+ * @return string Embed base URL.
+ */
+function clarity_get_embed_base_url()
+{
+    // Local/dev override: define CLARITY_EMBED_BASE_URL in wp-config.php to point the admin iframe
+    // at a local dashboard build. The shipped default must stay production - this single value
+    // feeds both the iframe src and, via clarity_get_embed_origin() -> wp_localize_script(), the
+    // TRUSTED_CLARITY_ORIGIN postMessage allow-list in js/add_window_listeners.js, so a dev host
+    // baked in here would break the iframe and stop the listeners trusting clarity.microsoft.com
+    // on every merchant site.
+    if (defined('CLARITY_EMBED_BASE_URL') && CLARITY_EMBED_BASE_URL) {
+        return untrailingslashit(CLARITY_EMBED_BASE_URL);
+    }
+
+    return "https://clarity.microsoft.com/embed";
+}
+
+/**
+ * Origin (scheme://host[:port]) of the embedded Clarity dashboard, derived from the embed base URL.
+ *
+ * @return string Embed origin, or empty string if it cannot be parsed.
+ */
+function clarity_get_embed_origin()
+{
+    $parts = wp_parse_url(clarity_get_embed_base_url());
+    if (empty($parts['scheme']) || empty($parts['host'])) {
+        return "";
+    }
+    $origin = $parts['scheme'] . '://' . $parts['host'];
+    if (!empty($parts['port'])) {
+        $origin .= ':' . $parts['port'];
+    }
+    return $origin;
 }
 
 /**
@@ -717,5 +778,3 @@ function plugin_admin_notices()
         </div>';
     }
 }
-
-

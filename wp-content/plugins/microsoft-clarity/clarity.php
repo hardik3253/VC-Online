@@ -4,7 +4,7 @@
  * Plugin Name:       Microsoft Clarity
  * Plugin URI:        https://clarity.microsoft.com/
  * Description:       With data and session replay from Clarity, you'll see how people are using your site — where they get stuck and what they love.
- * Version:           0.10.27
+ * Version:           0.10.28
  * Author:            Microsoft
  * Author URI:        https://www.microsoft.com/en-us/
  * License:           MIT
@@ -16,6 +16,7 @@ require_once plugin_dir_path(__FILE__) . '/includes/brandagent-webhooks.php';
 require_once plugin_dir_path(__FILE__) . '/includes/brandagent-custom-webhooks.php';
 require_once plugin_dir_path(__FILE__) . '/includes/brandagent-rest-api.php';
 require_once plugin_dir_path(__FILE__) . '/includes/brandagent-wordpress.php';
+require_once plugin_dir_path(__FILE__) . '/includes/brandagent-content-webhooks.php';
 require_once plugin_dir_path(__FILE__) . '/clarity-page.php';
 require_once plugin_dir_path(__FILE__) . '/clarity-hooks.php';
 require_once plugin_dir_path(__FILE__) . '/clarity-server-analytics.php';
@@ -25,6 +26,64 @@ require_once plugin_dir_path(__FILE__) . '/clarity-server-analytics.php';
  */
 register_activation_hook(__FILE__, 'clarity_on_activation');
 add_action('admin_init', 'clarity_activation_redirect');
+
+/**
+ * Whether WooCommerce is active for the blog that is currently switched in.
+ *
+ * class_exists( 'WooCommerce' ) cannot answer this inside a switch_to_blog() loop: switching swaps
+ * DB and global context but never loads or unloads plugin code, so the class is present or absent
+ * for the whole request based on whichever blog bootstrapped it, and every iteration would get the
+ * same answer. The active_plugins option is per-blog and is re-read after each switch, and
+ * is_plugin_active() also covers a network-activated WooCommerce.
+ *
+ * @return bool True when WooCommerce is active for the current blog.
+ */
+function clarity_is_woocommerce_active_for_current_blog()
+{
+	if ( ! function_exists( 'is_plugin_active' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	}
+
+	return is_plugin_active( 'woocommerce/woocommerce.php' );
+}
+
+/**
+ * Fire a non-blocking Brand Agent lifecycle notification, retrying once on transport failure.
+ *
+ * Even with blocking=false, wp_remote_post() can fail immediately (e.g. invalid URL, transport
+ * error), so every lifecycle call shares the same single retry and the same log shape.
+ *
+ * @param string $endpoint     Absolute endpoint URL.
+ * @param array  $request_args Arguments passed straight to wp_remote_post().
+ * @param string $log_label    Endpoint name used in the log message.
+ * @return array|WP_Error Response from the final attempt.
+ */
+function brandagent_notify_lifecycle_endpoint( $endpoint, $request_args, $log_label )
+{
+	$response = wp_remote_post( $endpoint, $request_args );
+	if ( is_wp_error( $response ) ) {
+		brandagent_log(
+			'BrandAgent Lifecycle: ' . $log_label . ' call failed; retrying once',
+			array(
+				'endpoint' => $endpoint,
+				'error'    => $response->get_error_message(),
+			)
+		);
+
+		$response = wp_remote_post( $endpoint, $request_args );
+		if ( is_wp_error( $response ) ) {
+			brandagent_log(
+				'BrandAgent Lifecycle: ' . $log_label . ' call failed after retry',
+				array(
+					'endpoint' => $endpoint,
+					'error'    => $response->get_error_message(),
+				)
+			);
+		}
+	}
+
+	return $response;
+}
 
 /**
  * Plugin activation callback. Registers option to redirect on next admin load.
@@ -43,23 +102,35 @@ function clarity_on_activation($network_wide)
 	// so backend state is consistent for each subsite's home_url().
 	$clarity_server_url = BrandAgent_Config::get_clarity_server_url();
 	if ( ! empty( $clarity_server_url ) ) {
+		// WooCommerce activation is per-site on multisite, so the check has to happen inside the
+		// switch_to_blog() loop rather than once globally - otherwise a network activation would
+		// route every subsite down whichever branch the current blog happens to match. The check
+		// reads the per-blog active-plugins option because class_exists() is not switch-aware.
 		$store_urls = array();
 
 		if ( is_multisite() && $network_wide ) {
 			foreach ( get_sites() as $site ) {
 				switch_to_blog( (int) $site->blog_id );
-				$store_urls[] = home_url();
+				$store_urls[] = array(
+					'url'     => home_url(),
+					'has_woo' => clarity_is_woocommerce_active_for_current_blog(),
+				);
 				restore_current_blog();
 			}
 		} else {
-			$store_urls[] = home_url();
+			$store_urls[] = array(
+				'url'     => home_url(),
+				'has_woo' => clarity_is_woocommerce_active_for_current_blog(),
+			);
 		}
 
-		$base_url                  = trailingslashit( $clarity_server_url );
-		$plugin_installed_endpoint = $base_url . 'woocommerce/plugin-installed';
-		$upsell_ingest_endpoint    = $base_url . 'woocommerce/upsell-ingest';
+		$base_url                            = trailingslashit( $clarity_server_url );
+		$plugin_installed_endpoint           = $base_url . 'woocommerce/plugin-installed';
+		$upsell_ingest_endpoint              = $base_url . 'woocommerce/upsell-ingest';
+		$wordpress_plugin_installed_endpoint = $base_url . 'wordpress/plugin-installed';
 
-		foreach ( $store_urls as $store_url ) {
+		foreach ( $store_urls as $store ) {
+			$store_url    = $store['url'];
 			$request_args = array(
 				'blocking' => false,
 				'timeout'  => 3,
@@ -67,50 +138,19 @@ function clarity_on_activation($network_wide)
 				'body'     => wp_json_encode( array( 'storeUrl' => $store_url ) ),
 			);
 
-			// plugin-installed: BA server creates AdvertiserMetadata for this store.
-			// Even with blocking=false, wp_remote_post() can fail immediately (e.g., invalid URL, transport error).
-			$response = wp_remote_post( $plugin_installed_endpoint, $request_args );
-			if ( is_wp_error( $response ) ) {
-				brandagent_log(
-					'BrandAgent Lifecycle: plugin-installed call failed; retrying once',
-					array(
-						'endpoint' => $plugin_installed_endpoint,
-						'error'    => $response->get_error_message(),
-					)
-				);
-				$response = wp_remote_post( $plugin_installed_endpoint, $request_args );
-				if ( is_wp_error( $response ) ) {
-					brandagent_log(
-						'BrandAgent Lifecycle: plugin-installed call failed after retry',
-						array(
-							'endpoint' => $plugin_installed_endpoint,
-							'error'    => $response->get_error_message(),
-						)
-					);
-				}
+			if ( ! $store['has_woo'] ) {
+				// Plain WordPress: create AdvertiserMetadata stamped platform=WordPress. There is no
+				// companion upsell-ingest call because a content site has no catalogue to pre-index.
+				brandagent_notify_lifecycle_endpoint( $wordpress_plugin_installed_endpoint, $request_args, 'wordpress plugin-installed' );
+
+				continue;
 			}
 
+			// plugin-installed: BA server creates AdvertiserMetadata for this store.
+			brandagent_notify_lifecycle_endpoint( $plugin_installed_endpoint, $request_args, 'plugin-installed' );
+
 			// upsell-ingest: pre-index products so they are ready before the merchant reaches publish.
-			$response = wp_remote_post( $upsell_ingest_endpoint, $request_args );
-			if ( is_wp_error( $response ) ) {
-				brandagent_log(
-					'BrandAgent Lifecycle: upsell-ingest call failed; retrying once',
-					array(
-						'endpoint' => $upsell_ingest_endpoint,
-						'error'    => $response->get_error_message(),
-					)
-				);
-				$response = wp_remote_post( $upsell_ingest_endpoint, $request_args );
-				if ( is_wp_error( $response ) ) {
-					brandagent_log(
-						'BrandAgent Lifecycle: upsell-ingest call failed after retry',
-						array(
-							'endpoint' => $upsell_ingest_endpoint,
-							'error'    => $response->get_error_message(),
-						)
-					);
-				}
-			}
+			brandagent_notify_lifecycle_endpoint( $upsell_ingest_endpoint, $request_args, 'upsell-ingest' );
 		}
 	}
 
@@ -200,6 +240,11 @@ function clrt_update_clarity_options_handler($action, $network_wide)
 			// Clear the cached version flag so a reinstall re-evaluates instead of inheriting a stale banner.
 			delete_transient('clarity_is_latest_plugin_version');
 
+			// Drop the cached BrandAgent backend URL (24h TTL). Content webhooks post to it on the hot path
+			// and read it from this cache, so a plugin update/reactivate is the recovery lever when the
+			// backend moves — without this the store keeps posting to the old host until the TTL lapses.
+			BrandAgent_Config::clear_cache();
+
 			// Initialize BAInjectFrontendScript with default value
 			if ( get_option( 'BAInjectFrontendScript' ) === false ) {
 				add_option( 'BAInjectFrontendScript', 'false' );
@@ -249,6 +294,13 @@ function clrt_update_clarity_options_handler($action, $network_wide)
 			delete_option( 'BAWebhooksCreated' );
 			delete_option( 'BAWebhooksBackfillDone' );
 			delete_option( 'clarity_ba_eligible_triggered' );
+			// Plain-WordPress connect bookkeeping. Without this a reinstall still looks opted in, and
+			// brandagent_wordpress_maybe_resume_connect() silently reconnects a site the merchant just
+			// removed the plugin from.
+			delete_option( 'brandagent_wp_connect_optin' );
+			delete_option( 'brandagent_wp_connect_attempts' );
+			delete_transient( 'brandagent_wp_connect_throttle' );
+			delete_transient( 'brandagent_connect_nonce' );
 			// Cleanup for the option used up to version 0.10.16. Should remove this after users migrate to 0.10.17+ where this option is no longer used.
 			delete_option('clarity_collect_batch');
 			// Remove the cached banner flag so it can't linger and resurface on reinstall.
@@ -521,6 +573,11 @@ function clarity_invalidate_latest_version_transient_on_update($upgrader_object,
 	}
 
 	delete_transient('clarity_is_latest_plugin_version');
+
+	// A plugin update is also the recovery lever for a moved BrandAgent backend: drop the cached backend
+	// URL (24h TTL) that content webhooks post to, so the new version re-fetches instead of posting to a
+	// stale host until the TTL lapses.
+	BrandAgent_Config::clear_cache();
 }
 
 /**
@@ -630,12 +687,34 @@ function brandagent_process_pending_webhook_deletion() {
 }
 
 /**
- * Call Clarity dashboard uninstall endpoint to clean up BA server data
- * This function can be called during plugin uninstall to notify the backend
+ * Call the Clarity dashboard uninstall endpoint so the backend drops this site's Brand Agent data.
+ * Invoked during plugin uninstall, before the local HMAC secret is deleted.
+ *
+ * Which endpoint depends on how the site onboarded, and the two are not interchangeable. A
+ * WooCommerce store is registered as Platform=WooCommerce with credentials and webhooks the
+ * WooCommerce teardown unwinds, and its secret is filed in Key Vault under a woocommerce-* name.
+ * A plain site is Platform=WordPress with a wordpress-* secret and a different signing scheme.
+ * Sending either one down the other's path fails signature verification, and because uninstall is
+ * fire-and-forget the merchant's data would be left behind with nothing to retry it.
  */
 function handle_brandagent_uninstall() {
 	if ( get_option( 'BAOauthSuccess' ) != 1 ) {
 		brandagent_log( 'BrandAgent Uninstall: Skipping backend uninstall because OAuth is not marked successful' );
+		return;
+	}
+
+	// Follows the credential this site actually holds, which is what "how it onboarded" means once
+	// the secret is filed under a platform-specific Key Vault name. Live activation state is the
+	// wrong signal here for the same reason it is wrong for signing: a store that deactivates
+	// WooCommerce before deleting the plugin still holds a woocommerce-* secret, so the WordPress
+	// teardown would fail verification and strand its data with nothing to retry the call.
+	if ( brandagent_get_hmac_platform() !== 'woocommerce' ) {
+		if ( function_exists( 'brandagent_wordpress_notify_uninstall' ) ) {
+			brandagent_wordpress_notify_uninstall();
+		} else {
+			brandagent_log( 'BrandAgent Uninstall: WordPress uninstall helper not available' );
+		}
+
 		return;
 	}
 
