@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: TutorStarter 4.0.1\n"
+"Project-Id-Version: TutorStarter 4.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/tutorstarter\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-08T09:33:11+00:00\n"
+"POT-Creation-Date: 2026-08-26T07:37:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tutorstarter\n"
@@ -27,7 +27,7 @@ msgstr ""
 
 #. Description of the theme
 #: style.css:6
-msgid "Tutor Starter is a free WordPress LMS theme powered by Tutor LMS, the popular eLearning plugin for WordPress. It is designed to let Tutor LMS take center stage while also letting you pick what feels right. Tutor Starter is created with the same Unified Design System from Tutor LMS making it the perfect companion eLearning theme for Tutor LMS. Tutor Starter is also highly specialized for speed and efficiency, with all of its components optimized to give your eLearning website a great score on Google's PageSpeed. Tutor Starter pages are also schema ready and SEO optimized to make ranking on search engines as easy as pie! It also boasts an impressive blog single page for perfect readability. With full support for both Elementor and Gutenberg, Tutor Starter hopes to cater to the largest audience of both classic page builders and modern Gutenberg based builders. It comes with customizer settings for headers, footers, and everything in between. With several header and footer variations, advanced typography settings, and contextual page settings, create the eLearning website of your dreams with this free LMS theme. Tutor Starter features 3 modern and pre-built home layouts with fully functioning inner pages for both Elementor and Gutenberg to let you get started in no time. Tutor Starter also features a clean and light one-click demo importer to import all these pre-built home layouts for Gutenberg and Elementor. This, along with deep ties with Tutor LMS makes it a no-brainer WordPress LMS theme. Please Check theme demo here https://preview.tutorlms.com/"
+msgid "Tutor Starter is a free WordPress LMS theme powered by Tutor LMS, the popular eLearning plugin for WordPress. It is designed to let Tutor LMS take center stage while also letting you pick what feels right. Tutor Starter is created with the same Unified Design System from Tutor LMS making it the perfect companion eLearning theme for Tutor LMS. Tutor Starter is also highly specialized for speed and efficiency, with all of its components optimized to give your eLearning website a great score on Google's PageSpeed. Tutor Starter pages are also schema ready and SEO optimized to make ranking on search engines as easy as pie! It also boasts an impressive blog single page for perfect readability. With full support for both Elementor and Gutenberg, Tutor Starter hopes to cater to the largest audience of both classic page builders and modern Gutenberg based builders. It comes with customizer settings for headers, footers, and everything in between. With several header and footer variations, advanced typography settings, and contextual page settings, create the eLearning website of your dreams with this free LMS theme. Tutor Starter features 3 modern and pre-built home layouts with fully functioning inner pages for both Elementor and Gutenberg to let you get started in no time. Tutor Starter also features a clean and light one-click demo importer to import all these pre-built home layouts for Gutenberg and Elementor. This, along with deep ties with Tutor LMS makes it a no-brainer WordPress LMS theme. Please Check theme demo here https://tutorlms.io/university"
 msgstr ""
 
 #. Author of the theme
@@ -1254,8 +1254,8 @@ msgstr ""
 
 #: inc/Helpers.php:562
 #: inc/Helpers.php:596
-#: views/partials/header/header_default.php:83
-#: views/partials/header/header_transparent.php:90
+#: views/partials/header/header_default.php:75
+#: views/partials/header/header_transparent.php:82
 msgid "View your shopping cart"
 msgstr ""
 
@@ -1264,9 +1264,9 @@ msgstr ""
 msgid "Complete Payment"
 msgstr ""
 
-#: inc/Helpers.php:676
-#: inc/Helpers.php:700
-#: views/partials/header/header_transparent.php:131
+#: inc/Helpers.php:713
+#: inc/Helpers.php:737
+#: views/partials/header/header_transparent.php:122
 #, php-format
 msgid "%s"
 msgstr ""
@@ -1372,8 +1372,8 @@ msgstr ""
 #. Template Name of the theme
 #: page-templates/tpl-getting-started.php:3
 #: page-templates/tpl-getting-started.php:29
-#: views/partials/header/header_default.php:115
-#: views/partials/header/header_default.php:116
+#: views/partials/header/header_default.php:107
+#: views/partials/header/header_default.php:108
 msgid "Getting Started"
 msgstr ""
 
@@ -1528,29 +1528,29 @@ msgstr ""
 msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: views/partials/header/header_default.php:29
-#: views/partials/header/header_transparent.php:24
+#: views/partials/header/header_default.php:21
+#: views/partials/header/header_transparent.php:16
 msgid "Search..."
 msgstr ""
 
-#: views/partials/header/header_default.php:65
-#: views/partials/header/header_default.php:102
-#: views/partials/header/header_transparent.php:109
-#: views/partials/header/header_transparent.php:119
+#: views/partials/header/header_default.php:57
+#: views/partials/header/header_default.php:94
+#: views/partials/header/header_transparent.php:101
+#: views/partials/header/header_transparent.php:110
 msgid "Want to Explore!"
 msgstr ""
 
-#: views/partials/header/header_default.php:68
-#: views/partials/header/header_default.php:104
-#: views/partials/header/header_transparent.php:111
-#: views/partials/header/header_transparent.php:121
+#: views/partials/header/header_default.php:60
+#: views/partials/header/header_default.php:96
+#: views/partials/header/header_transparent.php:102
+#: views/partials/header/header_transparent.php:112
 msgid "Instant Login"
 msgstr ""
 
 #: woocommerce/cart/cart-totals.php:24
 #: woocommerce/cart/cart-totals.php:25
 #: woocommerce/checkout/review-order.php:24
-#: woocommerce/checkout/review-order.php:58
+#: woocommerce/checkout/review-order.php:59
 msgid "Subtotal"
 msgstr ""
 
@@ -1567,35 +1567,35 @@ msgstr ""
 
 #: woocommerce/cart/cart-totals.php:101
 #: woocommerce/cart/cart-totals.php:102
-#: woocommerce/checkout/review-order.php:105
+#: woocommerce/checkout/review-order.php:106
 msgid "Total"
 msgstr ""
 
-#: woocommerce/cart/cart.php:72
+#: woocommerce/cart/cart.php:73
 #: woocommerce/checkout/form-checkout.php:83
 msgid "Available on backorder"
 msgstr ""
 
 #. translators: %s is the product name in the cart.
-#: woocommerce/cart/cart.php:96
+#: woocommerce/cart/cart.php:97
 #, php-format
 msgid "Remove %s from cart"
 msgstr ""
 
-#: woocommerce/cart/cart.php:99
+#: woocommerce/cart/cart.php:100
 msgid "Remove"
 msgstr ""
 
-#: woocommerce/cart/cart.php:123
+#: woocommerce/cart/cart.php:124
 #: woocommerce/checkout/form-checkout.php:106
 msgid "Summary"
 msgstr ""
 
-#: woocommerce/cart/cart.php:146
+#: woocommerce/cart/cart.php:147
 msgid "Enter coupon"
 msgstr ""
 
-#: woocommerce/cart/cart.php:146
+#: woocommerce/cart/cart.php:147
 msgid "Apply"
 msgstr ""
 
@@ -1637,6 +1637,10 @@ msgstr ""
 
 #: woocommerce/checkout/form-coupon.php:50
 msgid "Apply coupon"
+msgstr ""
+
+#: woocommerce/checkout/payment.php:26
+msgid "Payment methods"
 msgstr ""
 
 #: woocommerce/checkout/payment.php:34
@@ -1692,6 +1696,20 @@ msgstr ""
 
 #: woocommerce/checkout/thankyou.php:72
 msgid "Payment method:"
+msgstr ""
+
+#: assets/src/scripts/modules/frontend-create-course.js:13
+msgid "Operation failed"
+msgstr ""
+
+#: assets/src/scripts/modules/frontend-create-course.js:24
+msgid "Something went wrong, please try again"
+msgstr ""
+
+#: assets/src/scripts/modules/frontend-create-course.js:37
+#: assets/src/scripts/modules/frontend-create-course.js:39
+#: assets/src/scripts/modules/frontend-create-course.js:43
+msgid "Failed"
 msgstr ""
 
 #: inc/Api/Customizer/reactjs/src/common/responsive.js:20
@@ -1814,7 +1832,7 @@ msgid "Keywords"
 msgstr ""
 
 #: inc/Custom/Schema/schemajs/src/schema/fields/schema-fields.js:90
-msgid "e.g: seo wordpress blog"
+msgid "e.g: seo WordPress blog"
 msgstr ""
 
 #: inc/Custom/Schema/schemajs/src/schema/fields/schema-fields.js:97
