@@ -122,12 +122,6 @@ class Plugin {
 			$query = preg_replace( '/ORDER BY\s+o\.id\s+(DESC|ASC)/i', "ORDER BY o.created_at_gmt {$order_dir}, o.id {$order_dir}", $query );
 		}
 
-		// 2. Tutor LMS Students list: Order by user_registered DESC by default
-		if ( strpos( $query, 'tutor_enrolled' ) !== false && strpos( $query, 'GROUP BY post_author' ) !== false && strpos( $query, 'ORDER BY posts.post_date' ) !== false ) {
-			$order_dir = ( isset( $_GET['order'] ) && strtolower( sanitize_text_field( wp_unslash( $_GET['order'] ) ) ) === 'asc' ) ? 'ASC' : 'DESC';
-			$query = preg_replace( '/ORDER BY\s+posts\.post_date\s+(DESC|ASC)/i', "ORDER BY user.user_registered {$order_dir}, posts.post_date {$order_dir}", $query );
-		}
-
 		return $query;
 	}
 
