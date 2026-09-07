@@ -401,14 +401,23 @@ class Migration_Engine {
 				// Find local Tutor LMS Course ID
 				$tutor_course_id = 0;
 
-				// 1. Known Edmingle Bundle ID aliases (e.g. Wella / Partner variants)
+				// 1. Known Edmingle Bundle ID aliases (e.g. Wella / Partner variants & Core Bundles)
 				$bundle_aliases = array(
-					'66419' => 792, // Meo-ri Collection Korean Hair Trends - (Part1) - Wella -> Part 1
-					'66420' => 812, // Meo-ri Collection Korean Hair Trends - (Part 2) - Wella -> Part 2
+					'66419' => 792,  // Meo-ri Collection Korean Hair Trends - (Part1) - Wella -> Part 1
+					'66420' => 812,  // Meo-ri Collection Korean Hair Trends - (Part 2) - Wella -> Part 2
+					'65548' => 775,  // SHAPES FOR FACE SHAPES - COMPLEMENTARY COURSE
+					'65095' => 792,  // MEO-RI COLLECTION: KOREAN HAIR TRENDS (PART 1)
+					'65546' => 812,  // MEO-RI COLLECTION: KOREAN HAIR TRENDS (PART 2)
+					'67574' => 669,  // Complimentary Eyebrow Makeup Course
+					'67495' => 832,  // Makeup Mastery Series by Pooja Chudasama
 				);
 
 				if ( ! empty( $bundle_id ) && isset( $bundle_aliases[ $bundle_id ] ) ) {
-					$tutor_course_id = (int) $bundle_aliases[ $bundle_id ];
+					// Verify course exists, otherwise fallback to finding it
+					$alias_course_id = (int) $bundle_aliases[ $bundle_id ];
+					if ( get_post( $alias_course_id ) ) {
+						$tutor_course_id = $alias_course_id;
+					}
 				}
 
 				// 2. Try to get mapping by bundle_id or master_batch_id from DB
@@ -427,20 +436,46 @@ class Migration_Engine {
 					}
 				}
 
-				// 4. Smart fallback: Strip partner tags like "- Wella", "- Vurve", "- Streax"
+				// 4. Smart fallback: fuzzy keyword matching for known courses
 				if ( ! $tutor_course_id && ! empty( $course_name ) ) {
-					$clean_name = trim( preg_replace( '/\s*-\s*\(?(Wella|Vurve|Streax)\)?/i', '', $course_name ) );
+					// Normalize multiple spaces and punctuation
+					$norm_name = preg_replace( '/\s+/', ' ', trim( $course_name ) );
+					$clean_name = trim( preg_replace( '/\s*-\s*\(?(Wella|Vurve|Streax)\)?/i', '', $norm_name ) );
 					$clean_name = trim( preg_replace( '/\s*-\s*Part\s*(\d+)/i', ' (Part $1)', $clean_name ) );
-					
+
 					$course_post = get_page_by_title( $clean_name, OBJECT, 'courses' );
 					if ( $course_post ) {
 						$tutor_course_id = $course_post->ID;
 					} else {
-						// Search by Korean Hair Trends Part 1 or Part 2
-						if ( stripos( $course_name, 'Part 2' ) !== false || stripos( $course_name, 'Part2' ) !== false ) {
-							$tutor_course_id = 812; // MEO-RI Collection: Korean Hair Trends (Part 2)
-						} elseif ( stripos( $course_name, 'Part 1' ) !== false || stripos( $course_name, 'Part1' ) !== false ) {
-							$tutor_course_id = 792; // MEO-RI Collection: Korean Hair Trends (Part 1)
+						global $wpdb;
+						// A. Shapes for Face Shapes
+						if ( stripos( $course_name, 'SHAPES FOR FACE SHAPES' ) !== false || stripos( $course_name, 'SHAPES' ) !== false ) {
+							$found_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_title LIKE '%Shapes For Face Shapes%' ORDER BY post_status = 'publish' DESC, ID ASC LIMIT 1" );
+							if ( $found_id ) {
+								$tutor_course_id = (int) $found_id;
+							} else {
+								$tutor_course_id = 775; // Published default fallback
+							}
+						}
+						// B. Korean Hair Trends Part 2
+						elseif ( stripos( $course_name, 'Part 2' ) !== false || stripos( $course_name, 'Part2' ) !== false ) {
+							$found_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND (post_title LIKE '%Korean%Part 2%' OR post_title LIKE '%Korean%Part2%') ORDER BY post_status = 'publish' DESC, ID ASC LIMIT 1" );
+							$tutor_course_id = $found_id ? (int) $found_id : 812;
+						}
+						// C. Korean Hair Trends Part 1
+						elseif ( stripos( $course_name, 'Part 1' ) !== false || stripos( $course_name, 'Part1' ) !== false || stripos( $course_name, 'Meo-ri' ) !== false ) {
+							$found_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND (post_title LIKE '%Korean%Part 1%' OR post_title LIKE '%Korean%Part1%') ORDER BY post_status = 'publish' DESC, ID ASC LIMIT 1" );
+							$tutor_course_id = $found_id ? (int) $found_id : 792;
+						}
+						// D. Eyebrow Makeup Course
+						elseif ( stripos( $course_name, 'Eyebrow' ) !== false ) {
+							$found_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_title LIKE '%Eyebrow%' ORDER BY post_status = 'publish' DESC, ID ASC LIMIT 1" );
+							$tutor_course_id = $found_id ? (int) $found_id : 669;
+						}
+						// E. Makeup Mastery / Pooja Chudasama
+						elseif ( stripos( $course_name, 'Pooja' ) !== false || stripos( $course_name, 'Makeup Mastery' ) !== false ) {
+							$found_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_title LIKE '%Pooja%' ORDER BY post_status = 'publish' DESC, ID ASC LIMIT 1" );
+							$tutor_course_id = $found_id ? (int) $found_id : 832;
 						}
 					}
 				}
