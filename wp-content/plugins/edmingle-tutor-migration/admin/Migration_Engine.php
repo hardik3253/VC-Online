@@ -646,6 +646,17 @@ class Migration_Engine {
 								update_post_meta( $enroll_id, 'order_amount', $order_amount );
 							}
 						}
+					} else {
+						// Ensure existing order timestamps reflect the actual order/enrollment date
+						$order_date = $enroll_date_mysql;
+						$wpdb->update(
+							$wpdb->prefix . 'tutor_orders',
+							array(
+								'created_at_gmt' => get_gmt_from_date( $order_date ),
+								'updated_at_gmt' => get_gmt_from_date( $order_date ),
+							),
+							array( 'id' => $existing_order_id )
+						);
 					}
 				}
 
