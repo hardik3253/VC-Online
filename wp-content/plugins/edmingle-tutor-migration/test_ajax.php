@@ -1,5 +1,11 @@
 <?php
-require_once dirname(__FILE__) . '/../../../wp-load.php';
+/**
+ * Test Ajax Script
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 use ETM\Includes\Edmingle_API;
 

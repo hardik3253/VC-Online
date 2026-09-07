@@ -1,10 +1,13 @@
 <?php
 /**
  * Plugin Name:       Edmingle to Tutor LMS Migration
- * Plugin URI:        https://example.com/
+ * Plugin URI:        https://hardikmprajapati.com/edmingle-tutor-lms-migration/
  * Description:       A production-ready plugin to migrate data from Edmingle to Tutor LMS.
  * Version:           1.0.0
- * Author:            Your Name
+ * Author:            Hardik Prajapati
+ * Author URI:        https://hardikmprajapati.com/
+ * License:           GPL-2.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       edmingle-tutor-migration
  * Domain Path:       /languages
  * Requires at least: 6.0

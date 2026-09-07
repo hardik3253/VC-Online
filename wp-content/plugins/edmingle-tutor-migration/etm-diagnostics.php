@@ -3,12 +3,10 @@
  * ETM Diagnostics Tool
  */
 
-// Load WordPress
-$wp_load_path = dirname(__FILE__) . '/../../../wp-load.php';
-if ( ! file_exists( $wp_load_path ) ) {
-	die( 'Error: wp-load.php not found.' );
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
-require_once $wp_load_path;
+
 
 if ( ! current_user_can( 'manage_options' ) ) {
 	die( 'Access denied. You must be logged in as an administrator.' );
