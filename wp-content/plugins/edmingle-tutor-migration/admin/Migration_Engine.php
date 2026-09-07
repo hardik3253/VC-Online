@@ -401,24 +401,53 @@ class Migration_Engine {
 				// Find local Tutor LMS Course ID
 				$tutor_course_id = 0;
 
-				// 1. Try to get mapping by bundle_id or master_batch_id
-				if ( ! empty( $bundle_id ) ) {
+				// 1. Known Edmingle Bundle ID aliases (e.g. Wella / Partner variants)
+				$bundle_aliases = array(
+					'66419' => 792, // Meo-ri Collection Korean Hair Trends - (Part1) - Wella -> Part 1
+					'66420' => 812, // Meo-ri Collection Korean Hair Trends - (Part 2) - Wella -> Part 2
+				);
+
+				if ( ! empty( $bundle_id ) && isset( $bundle_aliases[ $bundle_id ] ) ) {
+					$tutor_course_id = (int) $bundle_aliases[ $bundle_id ];
+				}
+
+				// 2. Try to get mapping by bundle_id or master_batch_id from DB
+				if ( ! $tutor_course_id && ! empty( $bundle_id ) ) {
 					$tutor_course_id = ETM_Database::get_course_mapping( $bundle_id );
 				}
 				if ( ! $tutor_course_id && ! empty( $master_batch_id ) ) {
 					$tutor_course_id = ETM_Database::get_course_mapping( $master_batch_id );
 				}
 
-				// 2. Try to match by title
+				// 3. Try exact title match
 				if ( ! $tutor_course_id && ! empty( $course_name ) ) {
 					$course_post = get_page_by_title( $course_name, OBJECT, 'courses' );
 					if ( $course_post ) {
 						$tutor_course_id = $course_post->ID;
-						// Save mapping for future reference
-						if ( ! empty( $bundle_id ) ) {
-							ETM_Database::save_course_mapping( $bundle_id, $tutor_course_id );
+					}
+				}
+
+				// 4. Smart fallback: Strip partner tags like "- Wella", "- Vurve", "- Streax"
+				if ( ! $tutor_course_id && ! empty( $course_name ) ) {
+					$clean_name = trim( preg_replace( '/\s*-\s*\(?(Wella|Vurve|Streax)\)?/i', '', $course_name ) );
+					$clean_name = trim( preg_replace( '/\s*-\s*Part\s*(\d+)/i', ' (Part $1)', $clean_name ) );
+					
+					$course_post = get_page_by_title( $clean_name, OBJECT, 'courses' );
+					if ( $course_post ) {
+						$tutor_course_id = $course_post->ID;
+					} else {
+						// Search by Korean Hair Trends Part 1 or Part 2
+						if ( stripos( $course_name, 'Part 2' ) !== false || stripos( $course_name, 'Part2' ) !== false ) {
+							$tutor_course_id = 812; // MEO-RI Collection: Korean Hair Trends (Part 2)
+						} elseif ( stripos( $course_name, 'Part 1' ) !== false || stripos( $course_name, 'Part1' ) !== false ) {
+							$tutor_course_id = 792; // MEO-RI Collection: Korean Hair Trends (Part 1)
 						}
 					}
+				}
+
+				// Save found mapping for future fast lookups
+				if ( $tutor_course_id && ! empty( $bundle_id ) ) {
+					ETM_Database::save_course_mapping( $bundle_id, $tutor_course_id );
 				}
 
 				if ( ! $tutor_course_id ) {
