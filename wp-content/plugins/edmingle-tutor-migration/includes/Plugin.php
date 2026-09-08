@@ -72,6 +72,9 @@ class Plugin {
 
 		// Custom filter to render migrated progress percentage correctly in Tutor LMS
 		add_filter( 'tutor_course_completed_percent', array( $this, 'filter_course_completed_percent' ), 10, 4 );
+
+		// Format course star rating numbers to 1 decimal place (e.g. 4.7, 4.8)
+		add_filter( 'tutor_course_rating_average', array( $this, 'format_rating_one_decimal' ), 99, 1 );
 	}
 
 	/**
@@ -92,6 +95,19 @@ class Plugin {
 			return $progress;
 		}
 		return $result;
+	}
+
+	/**
+	 * Format course rating numbers to 1 decimal place (e.g. 4.7, 4.8).
+	 *
+	 * @param mixed $rating
+	 * @return string
+	 */
+	public function format_rating_one_decimal( $rating ) {
+		if ( is_numeric( $rating ) && (float) $rating > 0 ) {
+			return number_format( (float) $rating, 1, '.', '' );
+		}
+		return $rating;
 	}
 
 	/**
