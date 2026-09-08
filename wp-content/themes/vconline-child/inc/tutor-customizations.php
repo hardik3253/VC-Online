@@ -47,6 +47,34 @@ class Tutor_LMS_Customizations {
 
         // 9. Display regular price with <del> tag for Free courses on Single Course Details page
         add_filter( 'tutor/course/single/entry-box/free', array( $this, 'filter_single_course_free_entry_box' ), 20, 2 );
+
+        // 10. Display 1 Year instead of 365 days for enrollment validity
+        add_filter( 'tutor_course_expire_validity', array( $this, 'filter_course_expire_validity' ), 99, 2 );
+        add_filter( 'tutor/course/single/sidebar/metadata', array( $this, 'filter_sidebar_metadata_validity' ), 99, 2 );
+    }
+
+    /**
+     * Filter enrollment validity text: change 365 days to 1 Year
+     */
+    public function filter_course_expire_validity( $validity, $course_id ) {
+        if ( is_string( $validity ) ) {
+            return str_ireplace( array( '365 days', '365 day' ), '1 Year', $validity );
+        }
+        return $validity;
+    }
+
+    /**
+     * Filter single course sidebar metadata: change 365 days to 1 Year in enrollment validity
+     */
+    public function filter_sidebar_metadata_validity( $meta, $course_id ) {
+        if ( is_array( $meta ) ) {
+            foreach ( $meta as &$item ) {
+                if ( isset( $item['value'] ) && is_string( $item['value'] ) ) {
+                    $item['value'] = str_ireplace( array( '365 days', '365 day' ), '1 Year', $item['value'] );
+                }
+            }
+        }
+        return $meta;
     }
 
     /**
