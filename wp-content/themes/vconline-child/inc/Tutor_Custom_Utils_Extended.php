@@ -301,7 +301,9 @@ class Tutor_Custom_Utils_Extended extends \TUTOR\Utils {
                     <?php echo esc_html( $formatted_rating ); ?>
                 </div>
                 <div class="tutor-ratings-count">
-                    (<?php echo esc_html( $total_count ) . ' ' . ( $total_count > 1 ? esc_html__( 'Ratings', 'tutor' ) : esc_html__( 'Rating', 'tutor' ) ); ?>)
+                    <a href="#tutor-course-details-tab-reviews" class="vco-ratings-reviews-link">
+                        (<?php echo esc_html( $total_count ) . ' ' . ( $total_count > 1 ? esc_html__( 'Ratings', 'tutor' ) : esc_html__( 'Rating', 'tutor' ) ); ?>)
+                    </a>
                 </div>
             <?php endif; ?>
         </div>

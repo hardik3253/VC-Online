@@ -206,6 +206,69 @@ function custom_tutor_social_share_scripts() {
     <?php
 }
 
+add_action( 'wp_footer', 'vco_single_course_rating_scroll_script' );
+function vco_single_course_rating_scroll_script() {
+    if ( ! is_singular( 'courses' ) ) {
+        return;
+    }
+    ?>
+    <script>
+    (function () {
+        function setupRatingReviewClick() {
+            var ratingLinks = document.querySelectorAll('.tutor-course-details-ratings .vco-ratings-reviews-link, .tutor-course-details-ratings .tutor-ratings-count');
+            ratingLinks.forEach(function (el) {
+                if (el.dataset.vcoBound) return;
+                el.dataset.vcoBound = '1';
+
+                el.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // 1. Locate the Reviews tab trigger link
+                    var reviewsTabBtn = document.querySelector('[data-tutor-nav-target="tutor-course-details-tab-reviews"]');
+                    if (reviewsTabBtn) {
+                        reviewsTabBtn.click();
+                    } else {
+                        // Fallback manual activation if click event didn't trigger
+                        var navContainer = document.querySelector('.tutor-course-details-tab');
+                        if (navContainer) {
+                            var allNavLinks = navContainer.querySelectorAll('.tutor-nav-link');
+                            var allTabItems = navContainer.querySelectorAll('.tutor-tab-item');
+                            allNavLinks.forEach(function(btn) { btn.classList.remove('is-active'); });
+                            allTabItems.forEach(function(tab) { tab.classList.remove('is-active'); });
+
+                            var targetTab = document.getElementById('tutor-course-details-tab-reviews');
+                            if (targetTab) {
+                                targetTab.classList.add('is-active');
+                            }
+                        }
+                    }
+
+                    // 2. Smoothly scroll to the tabs section
+                    var targetElement = document.querySelector('.tutor-course-details-tab') || document.getElementById('tutor-course-details-tab-reviews');
+                    if (targetElement) {
+                        var headerOffset = 100;
+                        var elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        var offsetPosition = elementPosition - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setupRatingReviewClick);
+        } else {
+            setupRatingReviewClick();
+        }
+    })();
+    </script>
+    <?php
+}
+
 add_action('wp_enqueue_scripts', 'custom_tutor_avatar_script');
 
 function custom_tutor_avatar_script() {
