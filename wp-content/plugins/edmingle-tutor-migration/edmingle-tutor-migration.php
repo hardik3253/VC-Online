@@ -3,7 +3,7 @@
  * Plugin Name:       Edmingle to Tutor LMS Migration
  * Plugin URI:        https://hardikmprajapati.com/edmingle-tutor-lms-migration/
  * Description:       A production-ready plugin to migrate data from Edmingle to Tutor LMS.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Hardik Prajapati
  * Author URI:        https://hardikmprajapati.com/
  * License:           GPL-2.0-or-later
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Plugin Constants
  */
-define( 'ETM_VERSION', '1.0.0' );
+define( 'ETM_VERSION', '1.0.1' );
 define( 'ETM_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ETM_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'ETM_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );

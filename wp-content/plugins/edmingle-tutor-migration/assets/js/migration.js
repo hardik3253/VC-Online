@@ -98,4 +98,38 @@ jQuery(document).ready(function($) {
 		}
 	}
 
+	// Handle Sync Students button click
+	$('#etm-btn-sync-students').on('click', function(e) {
+		e.preventDefault();
+		var $btn = $(this);
+		var $spinner = $('#etm-sync-students-spinner');
+		var $notice = $('#etm-sync-students-notice');
+
+		$btn.prop('disabled', true);
+		$spinner.addClass('is-active');
+		$notice.hide().removeClass('notice-success notice-error');
+
+		$.ajax({
+			url: ajaxurl,
+			method: 'POST',
+			data: {
+				action: 'etm_sync_student_roles',
+				nonce: etm_admin.nonce
+			}
+		}).done(function(response) {
+			$btn.prop('disabled', false);
+			$spinner.removeClass('is-active');
+			if (response.success) {
+				$('#etm-total-students-count').text(response.data.total_students);
+				$notice.addClass('notice-success').html(response.data.message).show();
+			} else {
+				$notice.addClass('notice-error').html(response.data.message || 'Failed to sync students').show();
+			}
+		}).fail(function() {
+			$btn.prop('disabled', false);
+			$spinner.removeClass('is-active');
+			$notice.addClass('notice-error').html('Server request failed while syncing students.').show();
+		});
+	});
+
 });

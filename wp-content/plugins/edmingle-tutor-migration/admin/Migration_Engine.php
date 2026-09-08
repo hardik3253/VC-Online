@@ -19,6 +19,7 @@ class Migration_Engine {
 		add_action( 'wp_ajax_etm_migrate_students', array( $this, 'ajax_migrate_students' ) );
 		add_action( 'wp_ajax_etm_migrate_courses', array( $this, 'ajax_migrate_courses' ) );
 		add_action( 'wp_ajax_etm_migrate_enrollments', array( $this, 'ajax_migrate_enrollments' ) );
+		add_action( 'wp_ajax_etm_sync_student_roles', array( $this, 'ajax_sync_student_roles' ) );
 	}
 
 	/**
@@ -144,6 +145,7 @@ class Migration_Engine {
 				update_user_meta( $user->ID, '_etm_edmingle_id', $record->edmingle_id );
 				update_user_meta( $user->ID, 'billing_phone', $phone );
 				update_user_meta( $user->ID, '_etm_student_status', $status );
+				update_user_meta( $user->ID, '_is_tutor_student', time() );
 
 				$stats['updated']++;
 				ETM_Database::log_migration( 'student_updated', $record->edmingle_id, "Updated user {$email}" );
@@ -162,6 +164,7 @@ class Migration_Engine {
 					update_user_meta( $user_id, '_etm_edmingle_id', $record->edmingle_id );
 					update_user_meta( $user_id, 'billing_phone', $phone );
 					update_user_meta( $user_id, '_etm_student_status', $status );
+					update_user_meta( $user_id, '_is_tutor_student', time() );
 					
 					$stats['imported']++;
 					ETM_Database::log_migration( 'student_created', $record->edmingle_id, "Created user {$email}" );
@@ -398,87 +401,8 @@ class Migration_Engine {
 					$course_name = $batch['actual_master_batch_name'];
 				}
 
-				// Find local Tutor LMS Course ID
-				$tutor_course_id = 0;
-
-				// 1. Known Edmingle Bundle ID aliases (e.g. Wella / Partner variants & Core Bundles)
-				$bundle_aliases = array(
-					'66419' => 792,  // Meo-ri Collection Korean Hair Trends - (Part1) - Wella -> Part 1
-					'66420' => 812,  // Meo-ri Collection Korean Hair Trends - (Part 2) - Wella -> Part 2
-					'65548' => 775,  // SHAPES FOR FACE SHAPES - COMPLEMENTARY COURSE
-					'65095' => 792,  // MEO-RI COLLECTION: KOREAN HAIR TRENDS (PART 1)
-					'65546' => 812,  // MEO-RI COLLECTION: KOREAN HAIR TRENDS (PART 2)
-					'67574' => 669,  // Complimentary Eyebrow Makeup Course
-					'67495' => 832,  // Makeup Mastery Series by Pooja Chudasama
-				);
-
-				if ( ! empty( $bundle_id ) && isset( $bundle_aliases[ $bundle_id ] ) ) {
-					// Verify course exists, otherwise fallback to finding it
-					$alias_course_id = (int) $bundle_aliases[ $bundle_id ];
-					if ( get_post( $alias_course_id ) ) {
-						$tutor_course_id = $alias_course_id;
-					}
-				}
-
-				// 2. Try to get mapping by bundle_id or master_batch_id from DB
-				if ( ! $tutor_course_id && ! empty( $bundle_id ) ) {
-					$tutor_course_id = ETM_Database::get_course_mapping( $bundle_id );
-				}
-				if ( ! $tutor_course_id && ! empty( $master_batch_id ) ) {
-					$tutor_course_id = ETM_Database::get_course_mapping( $master_batch_id );
-				}
-
-				// 3. Try exact title match
-				if ( ! $tutor_course_id && ! empty( $course_name ) ) {
-					$course_post = get_page_by_title( $course_name, OBJECT, 'courses' );
-					if ( $course_post ) {
-						$tutor_course_id = $course_post->ID;
-					}
-				}
-
-				// 4. Smart fallback: fuzzy keyword matching for known courses
-				if ( ! $tutor_course_id && ! empty( $course_name ) ) {
-					// Normalize multiple spaces and punctuation
-					$norm_name = preg_replace( '/\s+/', ' ', trim( $course_name ) );
-					$clean_name = trim( preg_replace( '/\s*-\s*\(?(Wella|Vurve|Streax)\)?/i', '', $norm_name ) );
-					$clean_name = trim( preg_replace( '/\s*-\s*Part\s*(\d+)/i', ' (Part $1)', $clean_name ) );
-
-					$course_post = get_page_by_title( $clean_name, OBJECT, 'courses' );
-					if ( $course_post ) {
-						$tutor_course_id = $course_post->ID;
-					} else {
-						global $wpdb;
-						// A. Shapes for Face Shapes
-						if ( stripos( $course_name, 'SHAPES FOR FACE SHAPES' ) !== false || stripos( $course_name, 'SHAPES' ) !== false ) {
-							$found_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_title LIKE '%Shapes For Face Shapes%' ORDER BY post_status = 'publish' DESC, ID ASC LIMIT 1" );
-							if ( $found_id ) {
-								$tutor_course_id = (int) $found_id;
-							} else {
-								$tutor_course_id = 775; // Published default fallback
-							}
-						}
-						// B. Korean Hair Trends Part 2
-						elseif ( stripos( $course_name, 'Part 2' ) !== false || stripos( $course_name, 'Part2' ) !== false ) {
-							$found_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND (post_title LIKE '%Korean%Part 2%' OR post_title LIKE '%Korean%Part2%') ORDER BY post_status = 'publish' DESC, ID ASC LIMIT 1" );
-							$tutor_course_id = $found_id ? (int) $found_id : 812;
-						}
-						// C. Korean Hair Trends Part 1
-						elseif ( stripos( $course_name, 'Part 1' ) !== false || stripos( $course_name, 'Part1' ) !== false || stripos( $course_name, 'Meo-ri' ) !== false ) {
-							$found_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND (post_title LIKE '%Korean%Part 1%' OR post_title LIKE '%Korean%Part1%') ORDER BY post_status = 'publish' DESC, ID ASC LIMIT 1" );
-							$tutor_course_id = $found_id ? (int) $found_id : 792;
-						}
-						// D. Eyebrow Makeup Course
-						elseif ( stripos( $course_name, 'Eyebrow' ) !== false ) {
-							$found_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_title LIKE '%Eyebrow%' ORDER BY post_status = 'publish' DESC, ID ASC LIMIT 1" );
-							$tutor_course_id = $found_id ? (int) $found_id : 669;
-						}
-						// E. Makeup Mastery / Pooja Chudasama
-						elseif ( stripos( $course_name, 'Pooja' ) !== false || stripos( $course_name, 'Makeup Mastery' ) !== false ) {
-							$found_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_title LIKE '%Pooja%' ORDER BY post_status = 'publish' DESC, ID ASC LIMIT 1" );
-							$tutor_course_id = $found_id ? (int) $found_id : 832;
-						}
-					}
-				}
+				// Find local Tutor LMS Course ID dynamically across any environment
+				$tutor_course_id = $this->resolve_tutor_course_id( $bundle_id, $master_batch_id, $course_name );
 
 				// Save found mapping for future fast lookups
 				if ( $tutor_course_id && ! empty( $bundle_id ) ) {
@@ -532,6 +456,7 @@ class Migration_Engine {
 						update_post_meta( $enroll_id, 'enrollment_date', $enroll_date_mysql );
 
 						wp_update_post( array( 'ID' => $enroll_id, 'post_status' => 'completed' ) );
+						update_user_meta( $wp_user_id, '_is_tutor_student', time() );
 						
 						$stats['imported']++;
 						ETM_Database::log_migration( 'enrollment_created', $edmingle_student_id, "Enrolled user {$wp_user_id} in course {$tutor_course_id}" );
@@ -557,6 +482,7 @@ class Migration_Engine {
 							array( 'ID' => $enroll_id )
 						);
 						update_post_meta( $enroll_id, 'enrollment_date', $enroll_date_mysql );
+						update_user_meta( $wp_user_id, '_is_tutor_student', time() );
 					}
 				}
 
@@ -692,5 +618,145 @@ class Migration_Engine {
 		}
 
 		$this->send_progress( $state_key, $state, $stats );
+	}
+
+	/**
+	 * Find the real Tutor LMS Course ID.
+	 * Dynamically verifies and finds published courses in the current database.
+	 *
+	 * @param string $bundle_id
+	 * @param string $master_batch_id
+	 * @param string $course_name
+	 * @return int
+	 */
+	public function resolve_tutor_course_id( $bundle_id, $master_batch_id, $course_name ) {
+		global $wpdb;
+
+		// 1. Check existing mapping table first (if post still exists as a course)
+		if ( ! empty( $bundle_id ) ) {
+			$mapped_id = (int) ETM_Database::get_course_mapping( $bundle_id );
+			if ( $mapped_id && 'courses' === get_post_type( $mapped_id ) && 'publish' === get_post_status( $mapped_id ) ) {
+				return $mapped_id;
+			}
+		}
+		if ( ! empty( $master_batch_id ) ) {
+			$mapped_id = (int) ETM_Database::get_course_mapping( $master_batch_id );
+			if ( $mapped_id && 'courses' === get_post_type( $mapped_id ) && 'publish' === get_post_status( $mapped_id ) ) {
+				return $mapped_id;
+			}
+		}
+
+		// 2. Known Bundle ID Aliases to specific published courses
+		$alias_titles = array(
+			'66419' => 'Korean%Part 1',
+			'65095' => 'Korean%Part 1',
+			'66420' => 'Korean%Part 2',
+			'65546' => 'Korean%Part 2',
+			'65548' => 'Shapes%Face Shapes',
+			'67574' => 'Eyebrow',
+			'67495' => 'Makeup Mastery',
+		);
+		if ( ! empty( $bundle_id ) && isset( $alias_titles[ $bundle_id ] ) ) {
+			$pattern = $alias_titles[ $bundle_id ];
+			$found = $wpdb->get_var( $wpdb->prepare(
+				"SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_status = 'publish' AND post_title LIKE %s ORDER BY ID ASC LIMIT 1",
+				'%' . $wpdb->esc_like( $pattern ) . '%'
+			) );
+			if ( $found ) {
+				return (int) $found;
+			}
+		}
+
+		// 3. Exact & Clean Title Match against published courses
+		if ( ! empty( $course_name ) ) {
+			$norm_name  = preg_replace( '/\s+/', ' ', trim( $course_name ) );
+			$clean_name = trim( preg_replace( '/\s*-\s*\(?(Wella|Vurve|Streax)\)?/i', '', $norm_name ) );
+			$clean_name = trim( preg_replace( '/\s*-\s*Part\s*(\d+)/i', ' (Part $1)', $clean_name ) );
+
+			$found = $wpdb->get_var( $wpdb->prepare(
+				"SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_status = 'publish' AND (post_title = %s OR post_title = %s) LIMIT 1",
+				$course_name, $clean_name
+			) );
+			if ( $found ) {
+				return (int) $found;
+			}
+		}
+
+		// 4. Smart keyword matching against published courses
+		$name_lower = strtolower( $course_name );
+		$keyword_id = 0;
+
+		if ( strpos( $name_lower, 'shapes' ) !== false ) {
+			$keyword_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_status = 'publish' AND post_title LIKE '%Shapes%' ORDER BY ID ASC LIMIT 1" );
+		} elseif ( strpos( $name_lower, 'part 2' ) !== false || strpos( $name_lower, 'part2' ) !== false ) {
+			$keyword_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_status = 'publish' AND (post_title LIKE '%Part 2%' OR post_title LIKE '%Part2%') ORDER BY ID ASC LIMIT 1" );
+		} elseif ( strpos( $name_lower, 'part 1' ) !== false || strpos( $name_lower, 'part1' ) !== false || strpos( $name_lower, 'meo-ri' ) !== false || strpos( $name_lower, 'korean' ) !== false ) {
+			$keyword_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_status = 'publish' AND (post_title LIKE '%Part 1%' OR post_title LIKE '%Part1%') ORDER BY ID ASC LIMIT 1" );
+		} elseif ( strpos( $name_lower, 'eyebrow' ) !== false ) {
+			$keyword_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_status = 'publish' AND post_title LIKE '%Eyebrow%' ORDER BY ID ASC LIMIT 1" );
+		} elseif ( strpos( $name_lower, 'pooja' ) !== false || strpos( $name_lower, 'makeup mastery' ) !== false ) {
+			$keyword_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_status = 'publish' AND (post_title LIKE '%Pooja%' OR post_title LIKE '%Makeup Mastery%') ORDER BY ID ASC LIMIT 1" );
+		} elseif ( strpos( $name_lower, 'barcode' ) !== false ) {
+			$keyword_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_status = 'publish' AND post_title LIKE '%Barcode%' ORDER BY ID ASC LIMIT 1" );
+		}
+
+		if ( $keyword_id ) {
+			return (int) $keyword_id;
+		}
+
+		// 5. Fallback: Any course status (e.g. draft if not published yet)
+		if ( strpos( $name_lower, 'shapes' ) !== false ) {
+			$keyword_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_title LIKE '%Shapes%' ORDER BY post_status = 'publish' DESC, ID ASC LIMIT 1" );
+		} elseif ( strpos( $name_lower, 'part 2' ) !== false || strpos( $name_lower, 'part2' ) !== false ) {
+			$keyword_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND (post_title LIKE '%Part 2%' OR post_title LIKE '%Part2%') ORDER BY post_status = 'publish' DESC, ID ASC LIMIT 1" );
+		} elseif ( strpos( $name_lower, 'part 1' ) !== false || strpos( $name_lower, 'part1' ) !== false || strpos( $name_lower, 'meo-ri' ) !== false || strpos( $name_lower, 'korean' ) !== false ) {
+			$keyword_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND (post_title LIKE '%Part 1%' OR post_title LIKE '%Part1%') ORDER BY post_status = 'publish' DESC, ID ASC LIMIT 1" );
+		} elseif ( strpos( $name_lower, 'eyebrow' ) !== false ) {
+			$keyword_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND post_title LIKE '%Eyebrow%' ORDER BY post_status = 'publish' DESC, ID ASC LIMIT 1" );
+		} elseif ( strpos( $name_lower, 'pooja' ) !== false || strpos( $name_lower, 'makeup mastery' ) !== false ) {
+			$keyword_id = $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'courses' AND (post_title LIKE '%Pooja%' OR post_title LIKE '%Makeup Mastery%') ORDER BY post_status = 'publish' DESC, ID ASC LIMIT 1" );
+		}
+
+		return (int) $keyword_id;
+	}
+
+	/**
+	 * AJAX to sync & ensure all migrated users have _is_tutor_student and proper status.
+	 */
+	public function ajax_sync_student_roles() {
+		check_ajax_referer( 'etm_admin_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( 'Permission denied.' );
+		}
+
+		global $wpdb;
+
+		// 1. Ensure all users imported from Edmingle have _is_tutor_student
+		$edmingle_uids = $wpdb->get_col( "SELECT user_id FROM {$wpdb->usermeta} WHERE meta_key = '_etm_edmingle_id'" );
+		$meta_updated = 0;
+		foreach ( $edmingle_uids as $uid ) {
+			if ( ! get_user_meta( $uid, '_is_tutor_student', true ) ) {
+				update_user_meta( $uid, '_is_tutor_student', time() );
+				$meta_updated++;
+			}
+		}
+
+		// 2. Ensure all users who have an enrollment post have _is_tutor_student
+		$enrolled_uids = $wpdb->get_col( "SELECT DISTINCT post_author FROM {$wpdb->posts} WHERE post_type = 'tutor_enrolled' AND post_status = 'completed'" );
+		foreach ( $enrolled_uids as $uid ) {
+			if ( ! get_user_meta( $uid, '_is_tutor_student', true ) ) {
+				update_user_meta( $uid, '_is_tutor_student', time() );
+				$meta_updated++;
+			}
+		}
+
+		$total_students = function_exists( 'tutor_utils' ) ? tutor_utils()->get_total_students() : 0;
+
+		wp_send_json_success( array(
+			'message'        => sprintf( 'Verified student records. Total Tutor LMS students: %d (%d updated).', $total_students, $meta_updated ),
+			'total_students' => $total_students,
+			'updated_count'  => $meta_updated,
+		) );
 	}
 }

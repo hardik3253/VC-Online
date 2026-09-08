@@ -57,6 +57,25 @@ $types = array(
 			<div class="etm-card-notice" style="display:none;"></div>
 		</div>
 		<?php endforeach; ?>
+
+		<div class="etm-card" data-type="sync_students">
+			<h2><?php esc_html_e( 'Sync & Verify Students', 'edmingle-tutor-migration' ); ?></h2>
+			
+			<div class="etm-card-stats">
+				<p><strong>Total Tutor Students:</strong> <span id="etm-total-students-count" class="etm-stat-total"><?php echo intval( function_exists( 'tutor_utils' ) ? tutor_utils()->get_total_students() : 0 ); ?></span></p>
+				<p style="color: #666; font-size: 0.9em; margin-top: 5px;">
+					<?php esc_html_e( 'Ensure all migrated users are linked to Tutor LMS with active student permissions and meta.', 'edmingle-tutor-migration' ); ?>
+				</p>
+			</div>
+
+			<div class="etm-card-actions">
+				<button type="button" class="button button-secondary" id="etm-btn-sync-students">
+					<?php esc_html_e( 'Sync Students Now', 'edmingle-tutor-migration' ); ?>
+				</button>
+				<span class="spinner" id="etm-sync-students-spinner"></span>
+			</div>
+			<div class="etm-card-notice" id="etm-sync-students-notice" style="display:none; margin-top: 10px;"></div>
+		</div>
 	</div>
 
 	<!-- Migration Logs Table -->
