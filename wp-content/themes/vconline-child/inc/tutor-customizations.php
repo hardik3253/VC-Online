@@ -38,6 +38,19 @@ class Tutor_LMS_Customizations {
         // 6. AJAX handlers for frontend/course builder static enrolled
         add_action( 'wp_ajax_vca_get_static_enrolled', array( $this, 'ajax_get_static_enrolled' ) );
         add_action( 'wp_ajax_vca_save_static_enrolled', array( $this, 'ajax_save_static_enrolled' ) );
+
+        // 7. Format rating display to exactly 1 decimal place (e.g. 4.7, 4.8)
+        add_filter( 'tutor_course_rating_average', array( $this, 'format_rating_one_decimal' ), 99, 1 );
+    }
+
+    /**
+     * Format any average rating to 1 decimal place.
+     */
+    public function format_rating_one_decimal( $rating ) {
+        if ( is_numeric( $rating ) && (float) $rating > 0 ) {
+            return number_format( (float) $rating, 1, '.', '' );
+        }
+        return $rating;
     }
 
     /**

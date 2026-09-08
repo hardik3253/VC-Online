@@ -261,4 +261,50 @@ class Tutor_Custom_Utils_Extended extends \TUTOR\Utils {
 
         return parent::count_enrolled_users_by_course( $course_id, $period );
     }
+
+    /**
+     * Override get_course_rating to ensure rating_avg is formatted to 1 decimal place (e.g., 4.7, 4.8).
+     */
+    public function get_course_rating( $course_id = 0 ) {
+        $ratings = parent::get_course_rating( $course_id );
+
+        if ( isset( $ratings->rating_avg ) && $ratings->rating_avg > 0 ) {
+            $ratings->rating_avg = number_format( (float) $ratings->rating_avg, 1, '.', '' );
+        }
+
+        return $ratings;
+    }
+
+    /**
+     * Override star_rating_generator_v2 to format average rating to 1 decimal place.
+     */
+    public function star_rating_generator_v2( $current_rating, $total_count = null, $show_avg_rate = false, $parent_class = '', $screen_size = '' ) {
+        $formatted_rating = number_format( (float) $current_rating, 1, '.', '' );
+        $css_class        = isset( $screen_size ) ? "{$parent_class} tutor-ratings-{$screen_size}" : "{$parent_class}";
+        ?>
+        <div class="tutor-ratings<?php echo esc_attr( $css_class ); ?>">
+            <div class="tutor-ratings-stars">
+            <?php
+            for ( $i = 1; $i <= 5; $i++ ) {
+                $class = 'tutor-icon-star-line';
+
+                if ( $i <= round( (float) $current_rating ) ) {
+                    $class = 'tutor-icon-star-bold';
+                }
+
+                echo '<span class="' . $class . '"></span>';
+            }
+            ?>
+            </div>
+            <?php if ( $show_avg_rate && $total_count > 0 ) : ?>
+                <div class="tutor-ratings-average">
+                    <?php echo esc_html( $formatted_rating ); ?>
+                </div>
+                <div class="tutor-ratings-count">
+                    (<?php echo esc_html( $total_count ) . ' ' . ( $total_count > 1 ? esc_html__( 'Ratings', 'tutor' ) : esc_html__( 'Rating', 'tutor' ) ); ?>)
+                </div>
+            <?php endif; ?>
+        </div>
+        <?php
+    }
 }
