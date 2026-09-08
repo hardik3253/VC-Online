@@ -41,6 +41,37 @@ class Tutor_LMS_Customizations {
 
         // 7. Format rating display to exactly 1 decimal place (e.g. 4.7, 4.8)
         add_filter( 'tutor_course_rating_average', array( $this, 'format_rating_one_decimal' ), 99, 1 );
+
+        // 8. Display course price on Course Cards (both Course List page and Home Page Elementor widget)
+        add_filter( 'tutor_course_loop_price', array( $this, 'filter_course_loop_price' ), 20, 2 );
+    }
+
+    /**
+     * Display course price above the button on course loop cards when course is free or user can continue
+     */
+    public function filter_course_loop_price( $loop_html, $course_id ) {
+        // If price is already displayed (e.g., guest viewing a purchasable paid course with .list-item-price), do not duplicate
+        if ( false !== strpos( $loop_html, 'list-item-price' ) ) {
+            return $loop_html;
+        }
+
+        $price_type = get_post_meta( $course_id, '_tutor_course_price_type', true );
+        $price_html = '';
+
+        if ( 'paid' === $price_type ) {
+            $formatted_price = tutor_utils()->get_course_price( $course_id );
+            if ( $formatted_price ) {
+                $price_html = $formatted_price;
+            }
+        } else {
+            $price_html = '<div class="list-item-price tutor-item-price"><span class="price tutor-fs-6 tutor-fw-bold tutor-color-black">' . esc_html__( 'Free', 'tutor' ) . '</span></div>';
+        }
+
+        if ( ! empty( $price_html ) ) {
+            return '<div class="vco-card-price-wrapper tutor-mb-12">' . $price_html . '</div>' . $loop_html;
+        }
+
+        return $loop_html;
     }
 
     /**
