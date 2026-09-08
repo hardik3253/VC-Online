@@ -44,6 +44,20 @@ class Tutor_LMS_Customizations {
 
         // 8. Display course price on Course Cards (both Course List page and Home Page Elementor widget)
         add_filter( 'tutor_course_loop_price', array( $this, 'filter_course_loop_price' ), 20, 2 );
+
+        // 9. Display regular price with <del> tag for Free courses on Single Course Details page
+        add_filter( 'tutor/course/single/entry-box/free', array( $this, 'filter_single_course_free_entry_box' ), 20, 2 );
+    }
+
+    /**
+     * Helper to get regular price of a course
+     */
+    public function get_course_regular_price( $course_id ) {
+        $regular_price = (float) get_post_meta( $course_id, 'tutor_course_price', true );
+        if ( ! $regular_price ) {
+            $regular_price = (float) get_post_meta( $course_id, '_tutor_course_price', true );
+        }
+        return $regular_price;
     }
 
     /**
@@ -64,7 +78,12 @@ class Tutor_LMS_Customizations {
                 $price_html = $formatted_price;
             }
         } else {
-            $price_html = '<div class="list-item-price tutor-item-price"><span class="price tutor-fs-6 tutor-fw-bold tutor-color-black">' . esc_html__( 'Free', 'tutor' ) . '</span></div>';
+            $regular_price = $this->get_course_regular_price( $course_id );
+            $del_html      = '';
+            if ( $regular_price > 0 ) {
+                $del_html = '<del class="tutor-fs-7 tutor-color-muted tutor-ml-8">' . tutor_utils()->tutor_price( $regular_price ) . '</del>';
+            }
+            $price_html = '<div class="list-item-price tutor-item-price"><span class="price tutor-fs-6 tutor-fw-bold tutor-color-black">' . esc_html__( 'Free', 'tutor' ) . '</span>' . $del_html . '</div>';
         }
 
         if ( ! empty( $price_html ) ) {
@@ -72,6 +91,19 @@ class Tutor_LMS_Customizations {
         }
 
         return $loop_html;
+    }
+
+    /**
+     * Display regular price with <del> tag on Single Course Details page for Free courses
+     */
+    public function filter_single_course_free_entry_box( $html, $course_id ) {
+        $regular_price = $this->get_course_regular_price( $course_id );
+        if ( $regular_price > 0 ) {
+            $formatted_regular = tutor_utils()->tutor_price( $regular_price );
+            $custom_price_html = '<div class="tutor-course-single-pricing tutor-d-flex tutor-align-center"><span class="tutor-fs-4 tutor-fw-bold tutor-color-black">' . esc_html__( 'Free', 'tutor' ) . '</span><del class="tutor-fs-6 tutor-color-muted tutor-ml-8" style="color: #888888; text-decoration: line-through;">' . $formatted_regular . '</del></div>';
+            $html = preg_replace( '/<div class="tutor-course-single-pricing">.*?<\/div>/s', $custom_price_html, $html );
+        }
+        return $html;
     }
 
     /**
