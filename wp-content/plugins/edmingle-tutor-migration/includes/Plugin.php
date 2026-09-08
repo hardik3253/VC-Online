@@ -116,14 +116,83 @@ class Plugin {
 	 * @return string
 	 */
 	public function filter_tutor_admin_queries_order( $query ) {
+		global $wpdb;
+
 		// 1. Tutor LMS Orders list: Order by created_at_gmt DESC by default instead of o.id DESC
 		if ( strpos( $query, 'tutor_orders' ) !== false && strpos( $query, 'ORDER BY o.id' ) !== false ) {
 			$order_dir = ( isset( $_GET['order'] ) && strtolower( sanitize_text_field( wp_unslash( $_GET['order'] ) ) ) === 'asc' ) ? 'ASC' : 'DESC';
 			$query = preg_replace( '/ORDER BY\s+o\.id\s+(DESC|ASC)/i', "ORDER BY o.created_at_gmt {$order_dir}, o.id {$order_dir}", $query );
 		}
 
+		// 2. Tutor LMS Students list query: include all students (even with 0 courses) ordered by user_registered DESC
+		if ( strpos( $query, 'tutor_enrolled' ) !== false && strpos( $query, 'GROUP BY post_author' ) !== false && strpos( $query, 'SELECT user.* FROM' ) !== false ) {
+			$course_join  = '';
+			$course_query = '';
+			if ( preg_match( '/posts\.post_parent\s*=\s*(\d+)/', $query, $matches ) ) {
+				$course_id    = intval( $matches[1] );
+				$course_join  = "INNER JOIN {$wpdb->posts} posts ON user.ID = posts.post_author AND posts.post_type = 'tutor_enrolled' AND posts.post_status = 'completed'";
+				$course_query = "AND posts.post_parent = {$course_id}";
+			}
+
+			$date_query = '';
+			if ( preg_match( '/DATE\(user\.user_registered\)\s*=\s*CAST\(([^)]+)\s*AS DATE\)/', $query, $matches ) ) {
+				$date_query = "AND DATE(user.user_registered) = CAST({$matches[1]} AS DATE)";
+			}
+
+			$order_dir   = ( isset( $_GET['order'] ) && strtolower( sanitize_text_field( wp_unslash( $_GET['order'] ) ) ) === 'asc' ) ? 'ASC' : 'DESC';
+			$order_query = "ORDER BY user.user_registered {$order_dir}";
+
+			preg_match( '/LIMIT\s+(\d+),\s*(\d+)/i', $query, $limit_matches );
+			$limit_clause = ! empty( $limit_matches ) ? "LIMIT {$limit_matches[1]}, {$limit_matches[2]}" : '';
+
+			preg_match( '/AND\s*\((user\.display_name\s+LIKE[^\)]+)\)/is', $query, $search_matches );
+			$search_clause = ! empty( $search_matches ) ? 'AND (' . $search_matches[1] . ')' : '';
+
+			$query = "SELECT user.* FROM {$wpdb->users} AS user
+				LEFT JOIN {$wpdb->usermeta} AS meta 
+					ON user.ID = meta.user_id AND meta.meta_key = '{$wpdb->prefix}capabilities'
+				{$course_join}
+				WHERE (meta.meta_value IS NULL OR (meta.meta_value NOT LIKE '%administrator%' AND meta.meta_value NOT LIKE '%tutor_instructor%'))
+					{$course_query}
+					{$date_query}
+					{$search_clause}
+				GROUP BY user.ID
+				{$order_query}
+				{$limit_clause}";
+		}
+
+		// 3. Tutor LMS Students total count query
+		if ( strpos( $query, 'tutor_enrolled' ) !== false && strpos( $query, 'SELECT user.ID FROM' ) !== false && strpos( $query, 'GROUP BY user.ID' ) !== false ) {
+			$course_join  = '';
+			$course_query = '';
+			if ( preg_match( '/posts\.post_parent\s*=\s*(\d+)/', $query, $matches ) ) {
+				$course_id    = intval( $matches[1] );
+				$course_join  = "INNER JOIN {$wpdb->posts} posts ON user.ID = posts.post_author AND posts.post_type = 'tutor_enrolled' AND posts.post_status = 'completed'";
+				$course_query = "AND posts.post_parent = {$course_id}";
+			}
+
+			$date_query = '';
+			if ( preg_match( '/DATE\(user\.user_registered\)\s*=\s*CAST\(([^)]+)\s*AS DATE\)/', $query, $matches ) ) {
+				$date_query = "AND DATE(user.user_registered) = CAST({$matches[1]} AS DATE)";
+			}
+
+			preg_match( '/AND\s*\((user\.display_name\s+LIKE[^\)]+)\)/is', $query, $search_matches );
+			$search_clause = ! empty( $search_matches ) ? 'AND (' . $search_matches[1] . ')' : '';
+
+			$query = "SELECT user.ID FROM {$wpdb->users} AS user
+				LEFT JOIN {$wpdb->usermeta} AS meta 
+					ON user.ID = meta.user_id AND meta.meta_key = '{$wpdb->prefix}capabilities'
+				{$course_join}
+				WHERE (meta.meta_value IS NULL OR (meta.meta_value NOT LIKE '%administrator%' AND meta.meta_value NOT LIKE '%tutor_instructor%'))
+					{$course_query}
+					{$date_query}
+					{$search_clause}
+				GROUP BY user.ID";
+		}
+
 		return $query;
 	}
+
 
 	/**
 	 * Run the plugin.
