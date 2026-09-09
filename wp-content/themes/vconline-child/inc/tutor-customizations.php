@@ -51,6 +51,13 @@ class Tutor_LMS_Customizations {
         // 10. Display 1 Year instead of 365 days for enrollment validity
         add_filter( 'tutor_course_expire_validity', array( $this, 'filter_course_expire_validity' ), 99, 2 );
         add_filter( 'tutor/course/single/sidebar/metadata', array( $this, 'filter_sidebar_metadata_validity' ), 99, 2 );
+
+        // 11. Date-wise sorting: latest changes course display first
+        add_action( 'pre_get_posts', array( $this, 'sort_course_archive_by_latest_changes' ), 999 );
+        add_action( 'pre_get_posts', array( $this, 'sort_admin_wp_course_list_by_latest_changes' ), 999 );
+        add_filter( 'tutor_admin_course_list', array( $this, 'sort_admin_course_list_by_latest_changes' ), 99, 4 );
+        add_filter( 'tutor_course_filter_args', array( $this, 'sort_course_filter_args_by_latest_changes' ), 99, 1 );
+        add_filter( 'gettext', array( $this, 'filter_course_filter_dropdown_label' ), 20, 3 );
     }
 
     /**
@@ -337,6 +344,178 @@ class Tutor_LMS_Customizations {
         }
 
         wp_send_json_success();
+    }
+
+    /**
+     * 11. Sort Course Archive query by latest changes (post_modified DESC, post_date DESC)
+     */
+    public function sort_course_archive_by_latest_changes( $query ) {
+        if ( is_admin() || ! $query->is_main_query() || $query->is_feed() ) {
+            return;
+        }
+
+        $post_type        = $query->get( 'post_type' );
+        $course_category  = $query->get( 'course-category' );
+        $course_post_type = function_exists( 'tutor' ) ? tutor()->course_post_type : 'courses';
+
+        $is_course = false;
+        if ( is_array( $post_type ) && in_array( $course_post_type, $post_type, true ) ) {
+            $is_course = true;
+        } elseif ( $post_type === $course_post_type ) {
+            $is_course = true;
+        } elseif ( ! empty( $course_category ) ) {
+            $is_course = true;
+        } elseif ( $query->is_post_type_archive( $course_post_type ) || $query->is_tax( 'course-category' ) || $query->is_tax( 'course-tag' ) ) {
+            $is_course = true;
+        }
+
+        // Also check if current page is the selected course archive page
+        if ( ! $is_course && is_page() ) {
+            $page_id               = get_queried_object_id();
+            $selected_archive_page = (int) apply_filters( 'tutor_filter_course_archive_page', tutor_utils()->get_option( 'course_archive_page' ) );
+            if ( $page_id && $page_id === $selected_archive_page ) {
+                $is_course = true;
+            }
+        }
+
+        if ( $is_course ) {
+            $course_filter = '';
+            if ( ! empty( $_GET['course_order'] ) ) {
+                $course_filter = sanitize_text_field( wp_unslash( $_GET['course_order'] ) );
+            } elseif ( ! empty( $_GET['tutor_course_filter'] ) ) {
+                $course_filter = sanitize_text_field( wp_unslash( $_GET['tutor_course_filter'] ) );
+            }
+
+            switch ( $course_filter ) {
+                case 'oldest_first':
+                    $query->set( 'orderby', array(
+                        'post_modified' => 'ASC',
+                        'post_date'     => 'ASC',
+                    ) );
+                    $query->set( 'order', 'ASC' );
+                    break;
+
+                case 'course_title_az':
+                    $query->set( 'orderby', 'post_title' );
+                    $query->set( 'order', 'ASC' );
+                    break;
+
+                case 'course_title_za':
+                    $query->set( 'orderby', 'post_title' );
+                    $query->set( 'order', 'DESC' );
+                    break;
+
+                case 'newest_first':
+                default:
+                    $query->set( 'orderby', array(
+                        'post_modified' => 'DESC',
+                        'post_date'     => 'DESC',
+                    ) );
+                    $query->set( 'order', 'DESC' );
+                    break;
+            }
+        }
+    }
+
+    /**
+     * Sort Course Filter args (Elementor Course List widget, AJAX filters, etc.) by latest changes
+     */
+    public function sort_course_filter_args_by_latest_changes( $args ) {
+        if ( ! is_array( $args ) ) {
+            return $args;
+        }
+
+        $orderby = isset( $args['orderby'] ) ? $args['orderby'] : '';
+        $order   = isset( $args['order'] ) ? strtoupper( $args['order'] ) : 'DESC';
+
+        // Check if date-based sorting is requested (default, post_date, date)
+        $is_date_sort = false;
+        if ( empty( $orderby ) ) {
+            $is_date_sort = true;
+        } elseif ( in_array( $orderby, array( 'post_date', 'date' ), true ) && 'DESC' === $order ) {
+            $is_date_sort = true;
+        }
+
+        // If request explicitly specified non-date order, respect it
+        $course_order = '';
+        if ( isset( $_POST['course_order'] ) ) {
+            $course_order = sanitize_text_field( wp_unslash( $_POST['course_order'] ) );
+        } elseif ( isset( $_GET['course_order'] ) ) {
+            $course_order = sanitize_text_field( wp_unslash( $_GET['course_order'] ) );
+        } elseif ( isset( $_POST['tutor_course_filter'] ) ) {
+            $course_order = sanitize_text_field( wp_unslash( $_POST['tutor_course_filter'] ) );
+        } elseif ( isset( $_GET['tutor_course_filter'] ) ) {
+            $course_order = sanitize_text_field( wp_unslash( $_GET['tutor_course_filter'] ) );
+        }
+
+        if ( in_array( $course_order, array( 'oldest_first', 'course_title_az', 'course_title_za' ), true ) ) {
+            $is_date_sort = false;
+        }
+
+        if ( $is_date_sort ) {
+            $args['orderby'] = array(
+                'post_modified' => 'DESC',
+                'post_date'     => 'DESC',
+            );
+            $args['order']   = 'DESC';
+        }
+
+        return $args;
+    }
+
+    /**
+     * Update filter dropdown label to clarify date-wise sorting by latest changes
+     */
+    public function filter_course_filter_dropdown_label( $translation, $text, $domain ) {
+        if ( 'tutor' === $domain && 'Release Date (newest first)' === $text ) {
+            return __( 'Date (latest changes first)', 'tutor' );
+        }
+        return $translation;
+    }
+
+    /**
+     * Sort Tutor LMS Admin Courses list (admin.php?page=courses / tutor-courses) by latest changes
+     */
+    public function sort_admin_course_list_by_latest_changes( $args, $user_id = null, $status = null, $all_post_types = false ) {
+        if ( ! is_array( $args ) ) {
+            return $args;
+        }
+
+        // If user explicitly requested custom orderby via GET (other than default ID), respect it
+        $orderby = isset( $_GET['orderby'] ) ? sanitize_text_field( wp_unslash( $_GET['orderby'] ) ) : '';
+        if ( ! empty( $orderby ) && 'ID' !== $orderby ) {
+            return $args;
+        }
+
+        $args['orderby'] = array(
+            'post_modified' => 'DESC',
+            'post_date'     => 'DESC',
+        );
+        $args['order']   = 'DESC';
+
+        return $args;
+    }
+
+    /**
+     * Sort WordPress Admin edit.php?post_type=courses list by latest changes
+     */
+    public function sort_admin_wp_course_list_by_latest_changes( $query ) {
+        if ( ! is_admin() || ! $query->is_main_query() ) {
+            return;
+        }
+
+        $post_type = $query->get( 'post_type' );
+        $course_post_type = function_exists( 'tutor' ) ? tutor()->course_post_type : 'courses';
+
+        if ( $post_type === $course_post_type ) {
+            if ( ! isset( $_GET['orderby'] ) ) {
+                $query->set( 'orderby', array(
+                    'post_modified' => 'DESC',
+                    'post_date'     => 'DESC',
+                ) );
+                $query->set( 'order', 'DESC' );
+            }
+        }
     }
 }
 
