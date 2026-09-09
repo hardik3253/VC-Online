@@ -9,7 +9,8 @@ function vconline_child_enqueue_styles() {
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
     wp_enqueue_style( 'child-style',
         get_stylesheet_directory_uri() . '/style.css',
-        array('parent-style')
+        array('parent-style'),
+        filemtime( get_stylesheet_directory() . '/style.css' )
     );
 }
 /*
@@ -273,14 +274,28 @@ add_action('wp_enqueue_scripts', 'custom_tutor_avatar_script');
 
 function custom_tutor_avatar_script() {
 
+    $avatar_svg_url = esc_url( get_stylesheet_directory_uri() . '/images/avatar.svg' );
+
     wp_add_inline_script('jquery-core', "
 
         function changeTutorAvatarText() {
 
-            jQuery('.tutor-avatar-text').each(function(){
-
+            // Only update non-review avatars to 'VC'
+            jQuery('.tutor-avatar-text').not('.tutor-reviews *, .tutor-review-card *, .tutor-review-list-item *').each(function(){
                 jQuery(this).text('VC');
+            });
 
+            // Ensure review avatars display SVG avatar image instead of text
+            jQuery('.tutor-review-list-item .tutor-avatar, .tutor-reviews .tutor-avatar').each(function(){
+                var \$avatar = jQuery(this);
+                if (!\$avatar.find('img').length) {
+                    var \$ratio = \$avatar.find('.tutor-ratio');
+                    if (\$ratio.length) {
+                        \$ratio.html('<img src=\"{$avatar_svg_url}\" alt=\"Student Avatar\" class=\"tutor-avatar-img\" />');
+                    } else {
+                        \$avatar.html('<div class=\"tutor-ratio tutor-ratio-1x1\"><img src=\"{$avatar_svg_url}\" alt=\"Student Avatar\" class=\"tutor-avatar-img\" /></div>');
+                    }
+                }
             });
 
         }

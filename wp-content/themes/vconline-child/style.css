@@ -148,8 +148,21 @@ header .navbar .vc-header-bottom {
 	height: auto;
 }
 
-.tutor-card .tutor-reviews .tutor-reviewer-name {
-	display: none;
+.tutor-card .tutor-reviews .tutor-reviewer-name,
+.tutor-reviewer-name {
+	display: block !important;
+	font-weight: 600;
+}
+
+.tutor-card .tutor-reviews .tutor-reviewer-name a,
+.tutor-reviewer-name a {
+	color: #1e293b !important;
+	text-decoration: none !important;
+}
+
+.tutor-card .tutor-reviews .tutor-reviewer-name a:hover,
+.tutor-reviewer-name a:hover {
+	color: #2161db !important;
 }
 
 #tutor-pro-social-authentication #tutor-pro-google-authentication {
@@ -318,4 +331,22 @@ header .navbar .vc-header-bottom {
 .tutor-course-details-ratings .vco-ratings-reviews-link:hover {
 	color: #2161db;
 	text-decoration: underline;
+}
+
+/* Review Avatars */
+.tutor-review-list-item .tutor-avatar,
+.tutor-reviews .tutor-avatar {
+	border-radius: 50% !important;
+	overflow: hidden !important;
+	background-color: #E2E8F0;
+	display: inline-block;
+}
+
+.tutor-review-list-item .tutor-avatar img,
+.tutor-reviews .tutor-avatar img {
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover !important;
+	border-radius: 50% !important;
+	display: block !important;
 }
