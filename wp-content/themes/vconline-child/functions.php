@@ -438,3 +438,6 @@ require_once get_stylesheet_directory() . '/inc/course-pricing.php';
 
 // Load Tutor LMS Customizations and Overrides
 require_once get_stylesheet_directory() . '/inc/tutor-customizations.php';
+
+// Auto-sync dummy student names and expanded reviews (runs automatically on live site)
+require_once get_stylesheet_directory() . '/inc/sync-dummy-reviews.php';
