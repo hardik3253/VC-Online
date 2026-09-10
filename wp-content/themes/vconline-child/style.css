@@ -350,3 +350,32 @@ header .navbar .vc-header-bottom {
 	border-radius: 50% !important;
 	display: block !important;
 }
+
+/* Course Benefits (What Will I Learn) Rich Content */
+.tutor-course-benefits-content {
+	line-height: 1.7;
+	color: #5b6574;
+}
+.tutor-course-benefits-content p {
+	margin-bottom: 14px;
+}
+.tutor-course-benefits-content ul,
+.tutor-course-benefits-content ol {
+	margin: 14px 0 16px 20px;
+	padding-left: 10px;
+}
+.tutor-course-benefits-content ul {
+	list-style-type: disc;
+}
+.tutor-course-benefits-content ol {
+	list-style-type: decimal;
+}
+.tutor-course-benefits-content li {
+	margin-bottom: 8px;
+	line-height: 1.6;
+}
+.tutor-course-benefits-content strong,
+.tutor-course-benefits-content b {
+	font-weight: 600;
+	color: #212327;
+}

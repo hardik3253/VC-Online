@@ -58,6 +58,15 @@ class Tutor_LMS_Customizations {
         add_filter( 'tutor_admin_course_list', array( $this, 'sort_admin_course_list_by_latest_changes' ), 99, 4 );
         add_filter( 'tutor_course_filter_args', array( $this, 'sort_course_filter_args_by_latest_changes' ), 99, 1 );
         add_filter( 'gettext', array( $this, 'filter_course_filter_dropdown_label' ), 20, 3 );
+
+        // 12. Support Rich Editor HTML in Course Benefits ("What Will I Learn?")
+        add_action( 'tutor_after_prepare_update_post_meta', array( $this, 'save_course_benefits_rich_meta' ), 20, 2 );
+        add_action( 'save_post_courses', array( $this, 'save_course_benefits_classic_meta' ), 20, 2 );
+        add_filter( 'tutor_course/single/benefits_html', array( $this, 'filter_course_benefits_html_rich_content' ), 99, 1 );
+
+        // 13. Load custom Course Builder Additional Chunk from child theme (No core plugin changes, no .htaccess)
+        add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_custom_course_builder_chunk' ), 50 );
+        add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_custom_course_builder_chunk' ), 50 );
     }
 
     /**
@@ -515,6 +524,110 @@ class Tutor_LMS_Customizations {
                 ) );
                 $query->set( 'order', 'DESC' );
             }
+        }
+    }
+
+    /**
+     * 12. Save rich editor HTML content for Course Benefits from Course Builder AJAX update
+     */
+    public function save_course_benefits_rich_meta( $post_id, $params = null ) {
+        $benefits = null;
+        if ( isset( $_POST['additional_content']['course_benefits'] ) ) {
+            $benefits = wp_unslash( $_POST['additional_content']['course_benefits'] );
+        } elseif ( isset( $_POST['course_benefits'] ) ) {
+            $benefits = wp_unslash( $_POST['course_benefits'] );
+        }
+
+        if ( null !== $benefits ) {
+            $benefits = wp_kses_post( $benefits );
+            if ( '' !== trim( $benefits ) && '<p></p>' !== trim( $benefits ) ) {
+                update_post_meta( $post_id, '_tutor_course_benefits', $benefits );
+            } else {
+                delete_post_meta( $post_id, '_tutor_course_benefits' );
+            }
+        }
+    }
+
+    /**
+     * Save rich editor HTML content for Course Benefits from classic WordPress course editor
+     */
+    public function save_course_benefits_classic_meta( $post_id, $post ) {
+        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+            return;
+        }
+        if ( ! current_user_can( 'edit_post', $post_id ) ) {
+            return;
+        }
+        if ( isset( $_POST['course_benefits'] ) ) {
+            $benefits = wp_kses_post( wp_unslash( $_POST['course_benefits'] ) );
+            if ( '' !== trim( $benefits ) && '<p></p>' !== trim( $benefits ) ) {
+                update_post_meta( $post_id, '_tutor_course_benefits', $benefits );
+            } else {
+                delete_post_meta( $post_id, '_tutor_course_benefits' );
+            }
+        }
+    }
+
+    /**
+     * Filter Course Benefits HTML output to render rich editor content
+     * Handles both Elementor CourseBenefits addon and any other template calls
+     */
+    public function filter_course_benefits_html_rich_content( $html ) {
+        $course_id = get_the_ID();
+        if ( ! $course_id ) {
+            return $html;
+        }
+
+        $raw_benefits = get_post_meta( $course_id, '_tutor_course_benefits', true );
+        if ( empty( $raw_benefits ) ) {
+            return $html;
+        }
+
+        // Only override if benefits content contains HTML markup from the rich editor
+        if ( $raw_benefits !== strip_tags( $raw_benefits ) ) {
+            $rich_content = '<div class="tutor-course-benefits-content tutor-fs-6 tutor-color-secondary tutor-mt-16">' . apply_filters( 'the_content', $raw_benefits ) . '</div>';
+
+            // If the HTML output has a list (like from Elementor addon or fallback template), replace the list
+            if ( preg_match( '/<ul[^>]*class="[^"]*(?:etlms-course-widget-list-items|tutor-course-details-widget-list)[^"]*"[^>]*>.*?<\/ul>/is', $html ) ) {
+                $html = preg_replace( '/<ul[^>]*class="[^"]*(?:etlms-course-widget-list-items|tutor-course-details-widget-list)[^"]*"[^>]*>.*?<\/ul>/is', $rich_content, $html );
+            }
+        }
+
+        return $html;
+    }
+
+    /**
+     * 13. Check if on course builder page and enqueue custom chunk
+     */
+    public function maybe_enqueue_custom_course_builder_chunk() {
+        $page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
+        if ( in_array( $page, array( 'tutor-course-builder', 'create-course' ), true ) || ( function_exists( 'tutor_utils' ) && tutor_utils()->is_tutor_frontend_dashboard( 'create-course' ) ) ) {
+            $this->enqueue_custom_course_builder_chunk();
+        }
+    }
+
+    /**
+     * Enqueue child theme course builder chunk
+     */
+    public function enqueue_custom_course_builder_chunk() {
+        $file_path = get_stylesheet_directory() . '/js/tutor-course-builder-additional.js';
+        if ( file_exists( $file_path ) ) {
+            // Ensure WordPress default editor scripts and settings are enqueued
+            if ( function_exists( 'wp_enqueue_editor' ) ) {
+                wp_enqueue_editor();
+            }
+
+            // Provide early safety polyfill for window.wp.editor.getDefaultSettings
+            $inline_editor_safe = 'window.wp=window.wp||{};window.wp.editor=window.wp.editor||{};if(!window.wp.editor.getDefaultSettings){window.wp.editor.getDefaultSettings=function(){return {tinymce:{},quicktags:{buttons:"strong,em,link,ul,ol,li,code"}}};}';
+            wp_add_inline_script( 'tutor-course-builder', $inline_editor_safe, 'after' );
+
+            wp_enqueue_script(
+                'vco-course-builder-additional-chunk',
+                get_stylesheet_directory_uri() . '/js/tutor-course-builder-additional.js',
+                array( 'tutor-course-builder' ),
+                filemtime( $file_path ),
+                true
+            );
         }
     }
 }
