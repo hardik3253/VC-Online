@@ -226,35 +226,6 @@ header .navbar .vc-header-bottom {
 	font-size: 1.5rem;
 }
 
-@media (max-width: 767px) {
-	header .navbar {
-		max-width: 1280px;
-		margin: 0 auto;
-		padding: 10px 15px;
-		display: grid;
-	}
-
-	header .navbar .vc-mobile-right-menu {
-		display: flex;
-	}
-
-	header .navbar .navbar-utils {
-		order: 1;
-	}
-
-	.vc-feature-course .tutor-card .tutor-ratio {
-		padding-top: 70%;
-	}
-
-	#page .tutor-wrap {
-		padding-top: 0 !important;
-	}
-
-	.tutor-mt-12 {
-		margin-top: 0;
-	}
-}
-
 /* Course Card Pricing Display (Course List Page & Home Page Widget) */
 .tutor-card-footer {
 	display: flex;
@@ -386,10 +357,39 @@ header .navbar .vc-header-bottom {
 	color: #212327;
 }
 
-.tutor-course-details-page .tutor-single-course-sidebar .tutor-card .tutor-card-body {
-	position: fixed;
-	bottom: 0;
-	z-index: 99999;
-	width: 100%;
-	margin-left: -13px;
+@media (max-width: 767px) {
+	header .navbar {
+		max-width: 1280px;
+		margin: 0 auto;
+		padding: 10px 15px;
+		display: grid;
+	}
+
+	header .navbar .vc-mobile-right-menu {
+		display: flex;
+	}
+
+	header .navbar .navbar-utils {
+		order: 1;
+	}
+
+	.vc-feature-course .tutor-card .tutor-ratio {
+		padding-top: 70%;
+	}
+
+	#page .tutor-wrap {
+		padding-top: 0 !important;
+	}
+
+	.tutor-mt-12 {
+		margin-top: 0;
+	}
+
+	.tutor-course-details-page .tutor-single-course-sidebar .tutor-card .tutor-card-body {
+		position: fixed;
+		bottom: 0;
+		z-index: 99999;
+		width: 100%;
+		margin-left: -13px;
+	}
 }
