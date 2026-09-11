@@ -29,6 +29,21 @@ class Logger extends Model
         'subject'
     ];
 
+    /*
+     * Columns log navigation may filter on. `filter_by` arrives from the
+     * request and lands in the query as an identifier, which prepare() cannot
+     * bind, so a value outside this list is dropped instead of interpolated.
+     * Every key is re-checked against it in buildWhere()'s loop, which is the
+     * one place an identifier is written into SQL.
+     */
+    protected $filterables = [
+        'status',
+        'created_at',
+        'to',
+        'from',
+        'subject'
+    ];
+
     protected $table = null;
 
     public function __construct()
@@ -97,16 +112,56 @@ class Logger extends Model
     {
         $where = [];
 
-        if (isset($data['filter_by_value'])) {
-            $where[$data['filter_by']] = $data['filter_by_value'];
+        $filterBy = Arr::get($data, 'filter_by');
+
+        if (isset($data['filter_by_value']) && in_array($filterBy, $this->filterables, true)) {
+            $value = $this->normalizeFilterValue($filterBy, $data['filter_by_value']);
+
+            if (!is_null($value)) {
+                $where[$filterBy] = $value;
+            }
         }
 
-        if (isset($data['query'])) {
-            foreach ($this->searchables as $column) {
+        /*
+         * The date range travels beside filter_by rather than through it.
+         *
+         * There is only one filter_by slot and the logs screen already spends it on
+         * status, so a viewer opened from a date-filtered list had no range at all and
+         * its Prev/Next walked straight out of the result set the user was looking at.
+         * Normalized through the same helper so the pair reaching the loop is scalar.
+         */
+        $dateRange = $this->normalizeFilterValue('created_at', Arr::get($data, 'date_range'));
+
+        if (!isset($where['created_at']) && is_array($dateRange)) {
+            $where['created_at'] = $dateRange;
+        }
+
+        if (isset($data['query']) && is_scalar($data['query']) && trim($data['query']) !== '') {
+            $query = trim($data['query']);
+            $columns = $this->searchables;
+
+            /*
+             * The same reading get() gives the search box: `subject:invoice` is a
+             * search of that one column, not of every column for the literal text.
+             * The viewer's Prev and Next walk the list the search produced, so a
+             * column search that the list understood and the navigation did not
+             * left Next with nothing to land on.
+             */
+            if (strpos($query, ':')) {
+                $parts = explode(':', $query);
+                $column = array_shift($parts);
+
+                if (in_array($column, $this->filterables, true)) {
+                    $columns = [$column];
+                    $query = trim(implode(':', $parts));
+                }
+            }
+
+            foreach ($columns as $column) {
                 if (isset($where[$column])) {
-                    $where[$column] .= '|' . $data['query'];
+                    $where[$column] .= '|' . $query;
                 } else {
-                    $where[$column] = $data['query'];
+                    $where[$column] = $query;
                 }
             }
         }
@@ -116,6 +171,10 @@ class Logger extends Model
         $whereClause = "WHERE 1 = '%d'";
 
         foreach ($where as $key => $value) {
+            if (!in_array($key, $this->filterables, true)) {
+                continue;
+            }
+
             if (in_array($key, ['status', 'created_at'])) {
                 if ($key == 'created_at') {
                     if (is_array($value)) {
@@ -153,6 +212,32 @@ class Logger extends Model
         $whereClause = implode(' ', [$whereClause, trim($andWhere), $orWhere]);
 
         return [$whereClause, $args];
+    }
+
+    /**
+     * `created_at` is the one filter carried as a [from, to] pair; every other
+     * column takes a single value. The request can send either as an array, so
+     * anything that would reach the string operations in buildWhere() as a
+     * non-scalar is normalized here or dropped. Returns null when there is
+     * nothing usable left.
+     */
+    protected function normalizeFilterValue($column, $value)
+    {
+        if (is_scalar($value)) {
+            return $value;
+        }
+
+        if ($column != 'created_at' || !is_array($value)) {
+            return null;
+        }
+
+        $value = array_values(array_filter($value, 'is_scalar'));
+
+        if (count($value) > 1) {
+            return [$value[0], $value[1]];
+        }
+
+        return count($value) ? $value[0] : null;
     }
 
     protected function formatResult($result)
@@ -271,7 +356,14 @@ class Logger extends Model
             }
         }
 
-        $id = $data['id'];
+        /*
+         * The cursor is bound as '%d', so it cannot carry SQL either way, but
+         * an array-shaped `id` from the request reaches prepare() as an
+         * unsupported argument type and trips _doing_it_wrong(), which prints
+         * a notice into the AJAX response body on a debug site. Narrowed to an
+         * integer here instead.
+         */
+        $id = isset($data['id']) && is_scalar($data['id']) ? (int) $data['id'] : 0;
 
         $dir = isset($data['dir']) ? $data['dir'] : null;
 

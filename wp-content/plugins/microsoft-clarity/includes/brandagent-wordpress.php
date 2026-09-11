@@ -198,6 +198,15 @@ function brandagent_wordpress_connect_locked() {
 
 	brandagent_log( 'BrandAgent WordPress Connect: starting', array( 'store_url' => $store_url, 'endpoint' => $connect_url, 'attempt_id' => $attempt_id ) );
 
+	// The dashboard mints the secret and commits it to Key Vault before it answers, so from this
+	// point on the credential this site holds may already be stale — including when the reply never
+	// arrives (30s timeout below) or comes back non-200 after the backend call succeeded. Mark the
+	// connection unconfirmed for the whole round trip and clear it only once a readback proves this
+	// side holds the same secret. brandagent_wordpress_maybe_resume_connect() consults this so a
+	// stale-but-readable credential cannot make the site look connected and cancel its own retries,
+	// which is what turned a recoverable failure into a permanent desync.
+	update_option( 'brandagent_wp_connect_unverified', 1 );
+
 	$response = wp_remote_post( $connect_url, array(
 		'timeout' => 30,
 		'headers' => array( 'Content-Type' => 'application/json' ),
@@ -230,7 +239,65 @@ function brandagent_wordpress_connect_locked() {
 		);
 	}
 
-	brandagent_store_hmac_secret( $data['hmac_secret'], 'wordpress' );
+	// By the time the server answers it has already committed this secret to Key Vault and advanced
+	// the advertiser metadata, so the plugin is the only party that can still drop it. Storing can
+	// fail outright (an encryption error returns false before the option is written), and a value
+	// that cannot be read back leaves brandagent_get_hmac_secret() returning false while Key Vault
+	// holds a secret this site cannot reproduce. Every signed BA -> plugin call then fails "Invalid
+	// signature": the config update that flips BAInjectFrontendScript never lands, so the widget is
+	// never injected even though the brand reports as shipped.
+	//
+	// Verify by reading the credential back before declaring the connect a success. This proves the
+	// secret is storable and readable *now*; it cannot detect a later salt rotation, which breaks
+	// decryption after the fact and is not recovered by this path. On failure leave the retry state
+	// and the unverified marker intact so the throttled, attempt-capped admin_init fallback tries
+	// again — each retry mints a fresh secret server-side, which converges only if this side
+	// actually persists it.
+	//
+	// is_string, not is_scalar: json_decode turns `"hmac_secret": true` into a bool, which casts to
+	// the string "1" and then stores and reads back as "1", so hash_equals below would compare "1"
+	// against itself and pass. That would declare success while the site signs with "1" and Key
+	// Vault holds 32 random bytes — the exact desync this guard exists to catch.
+	$raw_secret = isset( $data['hmac_secret'] ) ? $data['hmac_secret'] : null;
+	if ( ! is_string( $raw_secret ) ) {
+		brandagent_log( 'BrandAgent WordPress Connect: hmac_secret was not a string', array(
+			'store_url'  => $store_url,
+			'attempt_id' => $attempt_id,
+			'type'       => gettype( $raw_secret ),
+		) );
+
+		return array(
+			'success'    => false,
+			'error'      => 'connect failed (invalid hmac_secret)',
+			'error_code' => 'invalid_hmac_secret',
+		);
+	}
+
+	// A secret that normalizes to empty (e.g. all whitespace) would otherwise store and read back as
+	// "" and compare equal to itself, passing the check below while leaving the site unable to sign.
+	// Short-circuit so it is never written over a credential that still works.
+	$expected_secret = str_replace( array( "\r", "\n", " " ), '', trim( $raw_secret ) );
+	$secret_stored   = '' !== $expected_secret && brandagent_store_hmac_secret( $raw_secret, 'wordpress' );
+	$secret_readback = $secret_stored ? brandagent_get_hmac_secret() : false;
+
+	if ( ! $secret_stored || ! is_string( $secret_readback ) || ! hash_equals( $expected_secret, $secret_readback ) ) {
+		brandagent_log( 'BrandAgent WordPress Connect: HMAC secret failed to persist', array(
+			'store_url'  => $store_url,
+			'attempt_id' => $attempt_id,
+			'stored'     => (bool) $secret_stored,
+			'readable'   => is_string( $secret_readback ),
+		) );
+
+		return array(
+			'success'    => false,
+			'error'      => 'HMAC secret failed to persist',
+			'error_code' => 'hmac_persist_failed',
+		);
+	}
+
+	// Only now is the credential confirmed to match what the server committed.
+	delete_option( 'brandagent_wp_connect_unverified' );
+
 	update_option( 'BAOauthSuccess', true );
 	brandagent_wordpress_clear_connect_retry_state();
 	brandagent_log( 'BrandAgent WordPress Connect: success', array( 'store_url' => $store_url, 'attempt_id' => $attempt_id ) );
@@ -277,6 +344,10 @@ function brandagent_wordpress_clear_connect_retry_state() {
 	delete_option( 'brandagent_wp_connect_optin' );
 	delete_option( 'brandagent_wp_connect_attempts' );
 	delete_transient( 'brandagent_wp_connect_throttle' );
+
+	// Part of the same bookkeeping: once nothing will retry, an unverified marker has no reader left
+	// and would otherwise linger as dead state on a site that is not retrying anyway.
+	delete_option( 'brandagent_wp_connect_unverified' );
 }
 
 /**
@@ -550,8 +621,11 @@ function brandagent_wordpress_maybe_resume_connect() {
 		return;
 	}
 
-	// Already connected: clear the opt-in bookkeeping and stop.
-	if ( brandagent_wordpress_has_connection() ) {
+	// Already connected: clear the opt-in bookkeeping and stop. The unverified marker is what keeps
+	// this from firing after a connect that may have rotated the server-side secret without this
+	// site persisting the replacement — a stale credential still decrypts, so has_connection() alone
+	// would report a live connection and cancel the very retries needed to converge.
+	if ( brandagent_wordpress_has_connection() && ! get_option( 'brandagent_wp_connect_unverified' ) ) {
 		brandagent_wordpress_clear_connect_retry_state();
 		return;
 	}

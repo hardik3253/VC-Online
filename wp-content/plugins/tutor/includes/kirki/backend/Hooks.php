@@ -58,25 +58,51 @@ class Hooks
 
     public function show_kirki_header($show)
     {
-        $is_frontend_builder = tutor_utils()->is_tutor_frontend_dashboard( 'create-course' );
-        if ( $is_frontend_builder ) {
+        $is_frontend_dashboard = tutor_utils()->is_tutor_frontend_dashboard();
+        $is_frontend_builder = tutor_utils()->is_tutor_frontend_dashboard('create-course');
+        $is_learning_area = tutor_utils()->is_learning_area();
+
+        $show_dashboard_site_header = tutor_utils()->get_option('show_dashboard_site_header');
+        $show_learning_site_header = tutor_utils()->get_option('show_learning_site_header');
+
+        if ($is_frontend_dashboard) {
+            if ($is_frontend_builder) {
+                $show = false;
+            }
+
+            if (!$show_dashboard_site_header) {
+                $show = false;
+            }
+        } else if ($is_learning_area && !$show_learning_site_header) {
             $show = false;
         }
-        if( $this->if_spotlight_mode_for_learning_page_enabled() ) {
-            $show = false;
-        }
+
         return $show;
     }
 
     public function show_kirki_footer($show)
     {
-        $is_frontend_builder = tutor_utils()->is_tutor_frontend_dashboard( 'create-course' );
-        if ( $is_frontend_builder ) {
+        $is_frontend_dashboard = tutor_utils()->is_tutor_frontend_dashboard();
+        $is_frontend_builder = tutor_utils()->is_tutor_frontend_dashboard('create-course');
+
+        $is_learning_area = tutor_utils()->is_learning_area();
+
+        $show_dashboard_site_footer = tutor_utils()->get_option('show_dashboard_site_footer');
+        $show_learning_site_footer = tutor_utils()->get_option('show_learning_site_footer');
+
+        if ($is_frontend_dashboard) {
+            if ($is_frontend_builder) {
+                $show = false;
+            }
+
+            if (!$show_dashboard_site_footer) {
+                $show = false;
+            }
+
+        } else if ($is_learning_area && !$show_learning_site_footer) {
             $show = false;
         }
-        if( $this->if_spotlight_mode_for_learning_page_enabled() ) {
-            $show = false;
-        }
+
         return $show;
     }
 
@@ -224,8 +250,9 @@ class Hooks
         return $fields;
     }
 
-    public function modify_external_collection_options($options, $args)
+  public function modify_external_collection_options($options, $args)
     {
+        $this_options = [];
         $type           = $args['type'];
         $collectionType = $args['collectionType'];
 
@@ -257,15 +284,15 @@ class Hooks
             ],
         ];
 
-        $cart_group = [
-            'title'               => 'Course',
-            'value'               => 'TUTOR_LMS_COURSES',
-            'inherit'             => true,
-            'default_select_type' => "TUTOR_LMS-cart",
-            'group'               => [
-                ['title' => 'Cart', 'value' => "TUTOR_LMS-cart", 'itemType' => 'post'],
-            ],
-        ];
+        // $cart_group = [
+        //     'title'               => 'Course',
+        //     'value'               => 'TUTOR_LMS_COURSES',
+        //     'inherit'             => true,
+        //     'default_select_type' => "TUTOR_LMS-cart",
+        //     'group'               => [
+        //         ['title' => 'Cart', 'value' => "TUTOR_LMS-cart", 'itemType' => 'post'],
+        //     ],
+        // ];
 
         $membership_group = [
             'title'               => 'Membership',
@@ -279,15 +306,19 @@ class Hooks
         ];
 
         if ($collectionType === 'posts' && $type === 'courses') {
-            $options[] = $courses_group;
+            $this_options[] = $courses_group;
         } else if ($collectionType === 'TUTOR_LMS_COURSES' && $type === 'TUTOR_LMS-topics') {
-            $options[] = $curriculum_group;
+            $this_options[] = $curriculum_group;
         } else {
-            // $options[] = $cart_group; //temporary commented.
+            // $this_options[] = $cart_group; //temporary commented.
         }
 
-        $options[] = $membership_group;
+        $this_options[] = $membership_group;
 
+        $options[] = array(
+            'title' => 'Tutor LMS',
+            'options' => $this_options
+        );
         return $options;
     }
 

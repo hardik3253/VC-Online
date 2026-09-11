@@ -1024,9 +1024,8 @@ class OrderController {
 			$where_clause['o.order_status'] = $active_tab;
 		}
 
-		$list_order    = 'DESC';
-		$list_order_by = 'o.id';
-		
+		$list_order    = Input::get( 'order', 'DESC' );
+		$list_order_by = 'id';
 
 		return $this->model->get_orders( $where_clause, $search_term, $limit, $offset, $list_order_by, $list_order );
 	}
