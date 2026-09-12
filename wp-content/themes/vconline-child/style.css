@@ -391,6 +391,7 @@ header .navbar .vc-header-bottom {
 		z-index: 99999;
 		width: 100%;
 		margin-left: -13px;
+		background: #fff;
 	}
 
 	.tutor-course-details-page .tutor-card .tutor-card-body .vco-pricing-extras {
