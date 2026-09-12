@@ -385,7 +385,7 @@ header .navbar .vc-header-bottom {
 		margin-top: 0;
 	}
 
-	.tutor-course-details-page .tutor-single-course-sidebar .tutor-card .tutor-card-body {
+	.tutor-course-details-page .tutor-card .tutor-card-body {
 		position: fixed;
 		bottom: 0;
 		z-index: 99999;
@@ -393,7 +393,7 @@ header .navbar .vc-header-bottom {
 		margin-left: -13px;
 	}
 
-	.tutor-course-details-page .tutor-single-course-sidebar .tutor-card .tutor-card-body .vco-pricing-extras {
+	.tutor-course-details-page .tutor-card .tutor-card-body .vco-pricing-extras {
 		gap: 13px;
 		display: grid;
 	}
