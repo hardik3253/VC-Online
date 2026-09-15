@@ -102,7 +102,7 @@ $gpay_svg_url     = get_stylesheet_directory_uri() . '/images/google-pay-mark.sv
 				<div class="tutor-row tutor-g-4 vco-checkout-grid">
 					
 					<!-- Left Column: Order Summary & Course Card -->
-					<div class="tutor-col-lg-6 tutor-col-12 vco-left-col" tutor-checkout-details>
+					<div class="tutor-col-lg-6 vco-col-12 vco-left-col" tutor-checkout-details>
 						<div class="vco-card vco-order-card">
 							<?php
 							$details_file = tutor()->path . 'templates/ecommerce/checkout-details.php';
@@ -146,7 +146,7 @@ $gpay_svg_url     = get_stylesheet_directory_uri() . '/images/google-pay-mark.sv
 					</div>
 
 					<!-- Right Column: Simplified Details & Google Pay CTA -->
-					<div class="tutor-col-lg-6 tutor-col-12 vco-right-col">
+					<div class="tutor-col-lg-6 vco-col-12 vco-right-col">
 						<div class="vco-card vco-payment-card">
 							
 							<!-- Login Prompt if Guest -->
@@ -341,6 +341,26 @@ if ( ! is_user_logged_in() ) {
 ?>
 
 <script>
+(function() {
+	// Guard against legacy snippets (e.g. simplifyTutorCheckout) mistakenly removing checkout columns
+	var origRemove = Element.prototype.remove;
+	if (origRemove) {
+		Element.prototype.remove = function() {
+			if (this && this.classList && (
+				this.classList.contains('vco-right-col') ||
+				this.classList.contains('vco-payment-card') ||
+				this.classList.contains('vco-left-col') ||
+				this.classList.contains('vco-order-card') ||
+				this.classList.contains('vco-simplified-billing-fields')
+			)) {
+				console.warn('VCO: Prevented external script from removing checkout element', this);
+				return;
+			}
+			return origRemove.apply(this, arguments);
+		};
+	}
+})();
+
 function triggerVcoPayment(intent, e) {
 	if (e && e.preventDefault) {
 		e.preventDefault();

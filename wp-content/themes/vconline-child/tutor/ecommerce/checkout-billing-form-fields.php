@@ -132,9 +132,11 @@ if ( ! empty( $billing_phone ) ) {
 	</div>
 
 	<!-- Hidden default billing fields required by Tutor LMS & Razorpay -->
-	<input type="hidden" name="billing_country" value="India">
-	<input type="hidden" name="billing_state" value="Maharashtra">
-	<input type="hidden" name="billing_city" value="Mumbai">
-	<input type="hidden" name="billing_zip_code" value="400001">
-	<input type="hidden" name="billing_address" value="Online Course Access">
+	<div class="vco-hidden-billing-fields" style="display: none !important;">
+		<input type="hidden" name="billing_country" value="India">
+		<input type="hidden" name="billing_state" value="Maharashtra">
+		<input type="hidden" name="billing_city" value="Mumbai">
+		<input type="hidden" name="billing_zip_code" value="400001">
+		<input type="hidden" name="billing_address" value="Online Course Access">
+	</div>
 </div>

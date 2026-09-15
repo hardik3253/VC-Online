@@ -481,6 +481,16 @@ body.vco-checkout-distraction-free .site-content {
 	padding-bottom: 50px;
 }
 
+.vco-checkout-grid > .vco-col-12 {
+	width: 100%;
+}
+
+@media (min-width: 992px) {
+	.vco-checkout-grid > .vco-col-12.tutor-col-lg-6 {
+		width: 50%;
+	}
+}
+
 .vco-card {
 	background: #ffffff;
 	border: 1px solid #e2e8f0;
