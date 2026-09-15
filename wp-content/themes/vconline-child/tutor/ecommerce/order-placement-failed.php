@@ -21,9 +21,14 @@ $error_msg    = Input::get( 'error_message' );
 // Retrieve course_id to guarantee "Back to Checkout" never displays price as 0
 $course_id = Input::get( 'course_id', 0, Input::TYPE_INT );
 if ( ! $course_id && $order_id ) {
-	$order_items = tutor_utils()->get_order_items( $order_id );
-	if ( ! empty( $order_items ) && isset( $order_items[0]->item_id ) ) {
-		$course_id = (int) $order_items[0]->item_id;
+	if ( class_exists( '\Tutor\Models\OrderModel' ) ) {
+		$order_model = new \Tutor\Models\OrderModel();
+		if ( method_exists( $order_model, 'get_order_items_by_id' ) ) {
+			$order_items = $order_model->get_order_items_by_id( (int) $order_id );
+			if ( ! empty( $order_items ) && isset( $order_items[0]->item_id ) ) {
+				$course_id = (int) $order_items[0]->item_id;
+			}
+		}
 	}
 }
 if ( ! $course_id && ! empty( $_COOKIE['vco_last_checkout_course_id'] ) ) {

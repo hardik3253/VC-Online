@@ -716,9 +716,14 @@ class Tutor_LMS_Customizations {
                     $course_id = (int) sanitize_text_field( wp_unslash( $_POST['object_ids'] ) );
                 }
                 if ( ! $course_id && ! empty( $order_id ) ) {
-                    $order_items = tutor_utils()->get_order_items( (int) $order_id );
-                    if ( ! empty( $order_items ) && isset( $order_items[0]->item_id ) ) {
-                        $course_id = (int) $order_items[0]->item_id;
+                    if ( class_exists( '\Tutor\Models\OrderModel' ) ) {
+                        $order_model = new \Tutor\Models\OrderModel();
+                        if ( method_exists( $order_model, 'get_order_items_by_id' ) ) {
+                            $order_items = $order_model->get_order_items_by_id( (int) $order_id );
+                            if ( ! empty( $order_items ) && isset( $order_items[0]->item_id ) ) {
+                                $course_id = (int) $order_items[0]->item_id;
+                            }
+                        }
                     }
                 }
                 if ( ! $course_id && ! empty( $_COOKIE['vco_last_checkout_course_id'] ) ) {
@@ -832,9 +837,14 @@ class Tutor_LMS_Customizations {
         } elseif ( ! empty( $_POST['object_ids'] ) ) {
             $course_id = (int) $_POST['object_ids'];
         } elseif ( ! empty( $args['order_id'] ) ) {
-            $order_items = tutor_utils()->get_order_items( (int) $args['order_id'] );
-            if ( ! empty( $order_items ) && isset( $order_items[0]->item_id ) ) {
-                $course_id = (int) $order_items[0]->item_id;
+            if ( class_exists( '\Tutor\Models\OrderModel' ) ) {
+                $order_model = new \Tutor\Models\OrderModel();
+                if ( method_exists( $order_model, 'get_order_items_by_id' ) ) {
+                    $order_items = $order_model->get_order_items_by_id( (int) $args['order_id'] );
+                    if ( ! empty( $order_items ) && isset( $order_items[0]->item_id ) ) {
+                        $course_id = (int) $order_items[0]->item_id;
+                    }
+                }
             }
         }
         if ( ! $course_id && ! empty( $_COOKIE['vco_last_checkout_course_id'] ) ) {
