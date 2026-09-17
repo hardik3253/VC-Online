@@ -210,7 +210,7 @@ header .navbar .vc-header-bottom {
 	gap: 10px;
 }
 
-.single-courses .tutor-course-details-title > * {
+.single-courses .tutor-course-details-title>* {
 	min-width: 0;
 }
 
@@ -428,6 +428,7 @@ video.tutorPlayer {
 }
 
 @media (max-width: 767px) {
+
 	html,
 	body.single-courses {
 		overflow-x: hidden !important;
@@ -576,12 +577,28 @@ video.tutorPlayer {
 	}
 
 	.vco-course-sticky-btn.vco-enrolled-btn {
-		background: #16a34a;
+		background: #000;
 		box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
 	}
 
 	.vco-course-sticky-btn.vco-enrolled-btn:hover {
-		background: #15803d;
+		background: #000000b7;
+	}
+
+	.vco-course-mobile-sticky-bar.vco-is-enrolled .vco-course-sticky-inner {
+		justify-content: center;
+	}
+
+	.vco-course-mobile-sticky-bar.vco-is-enrolled .vco-course-sticky-action-col {
+		width: 100%;
+		flex: 1 1 100%;
+	}
+
+	.vco-course-mobile-sticky-bar.vco-is-enrolled .vco-course-sticky-btn {
+		width: 100%;
+		justify-content: center;
+		padding: 12px 20px;
+		font-size: 15px;
 	}
 
 	.vco-course-sticky-btn svg {
