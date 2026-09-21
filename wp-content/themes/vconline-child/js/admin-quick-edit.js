@@ -23,6 +23,10 @@ jQuery(document).ready(function($) {
             $edit_row.find('.quick-edit-badge-text').val(text);
             $edit_row.find('.quick-edit-badge-text-color').val(textcolor);
             $edit_row.find('.quick-edit-badge-bg-color').val(bgcolor);
+
+            // Course Visibility sync
+            const is_hidden = $row.find('.column-course_visibility .vc-online-hidden-badge').data('hidden') == '1';
+            $edit_row.find('.quick-edit-hide-frontend').prop('checked', is_hidden);
         }
     };
 });

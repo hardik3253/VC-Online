@@ -190,5 +190,76 @@ jQuery(document).ready(function($) {
                 enrolledTypingTimer = setTimeout(saveStaticEnrolledSettings, 800);
             });
         }
+
+        // 3. Inject Course Visibility Settings
+        if ($('#vc-online-visibility-builder-settings').length === 0) {
+            const html = `
+                <div data-cy="form-field-wrapper" class="${classes}" id="vc-online-visibility-builder-settings" style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #e2e8f0; width: 100%;">
+                    <div class="css-1itza76" style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
+                        <h4 style="font-size: 15px; font-weight: bold; margin: 0 0 5px 0; color: #1e293b; clear: both;">Course Visibility</h4>
+                        
+                        <div style="display: flex; align-items: flex-start; width: 100%;">
+                            <label style="display: inline-flex; align-items: flex-start; cursor: pointer; font-weight: 500; font-size: 14px; color: #334155; margin: 0; line-height: 1.4;">
+                                <input type="checkbox" id="vco_builder_hide_from_frontend" style="margin-right: 8px; margin-top: 2px; width: 16px; height: 16px; cursor: pointer;" />
+                                <div>
+                                    <div><strong>Hide from Frontend Listings</strong></div>
+                                    <div style="font-size: 12px; color: #64748b; font-weight: normal; margin-top: 2px;">
+                                        Hide this course from course archives, taxonomy listings, search results, and course loops. The single course page remains fully accessible via direct link.
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div id="vco_builder_visibility_status" style="font-size: 12px; color: #64748b; height: 15px; margin: 0;"></div>
+                    </div>
+                </div>
+            `;
+
+            const $staticEnrolled = $('#vca-static-enrolled-builder-settings');
+            if ($staticEnrolled.length > 0) {
+                $staticEnrolled.after(html);
+            } else {
+                const $badgeSettings = $('#vco-badge-builder-settings');
+                if ($badgeSettings.length > 0) {
+                    $badgeSettings.after(html);
+                } else {
+                    $parent.append(html);
+                }
+            }
+
+            // Fetch current visibility status
+            $.post(ajaxurl, {
+                action: 'vc_online_get_course_visibility',
+                course_id: courseId,
+                nonce: nonce
+            }, function(response) {
+                if (response.success && response.data) {
+                    $('#vco_builder_hide_from_frontend').prop('checked', response.data.hide_from_frontend);
+                }
+            });
+
+            // Save on toggle
+            $('#vco_builder_hide_from_frontend').on('change', function() {
+                const hide = $(this).is(':checked');
+                $('#vco_builder_visibility_status').text('Saving visibility...').css('color', '#64748b');
+
+                $.post(ajaxurl, {
+                    action: 'vc_online_save_course_visibility',
+                    course_id: courseId,
+                    hide: hide,
+                    nonce: nonce
+                }, function(response) {
+                    if (response.success) {
+                        $('#vco_builder_visibility_status').text('Visibility saved successfully.').css('color', '#10b981');
+                        setTimeout(function() {
+                            $('#vco_builder_visibility_status').text('');
+                        }, 2000);
+                    } else {
+                        $('#vco_builder_visibility_status').text('Error saving visibility.').css('color', '#ef4444');
+                    }
+                });
+            });
+        }
     }, 1000);
 });
+
