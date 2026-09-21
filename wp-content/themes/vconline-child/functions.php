@@ -444,3 +444,6 @@ require_once get_stylesheet_directory() . '/inc/sync-dummy-reviews.php';
 
 // Course Visibility: Hide from Frontend Listings
 require_once get_stylesheet_directory() . '/inc/course-visibility.php';
+
+// Razorpay Payment Verification & Tutor LMS Order Sync
+require_once get_stylesheet_directory() . '/inc/razorpay-sync.php';

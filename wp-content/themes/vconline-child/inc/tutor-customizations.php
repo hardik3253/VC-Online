@@ -697,12 +697,40 @@ class Tutor_LMS_Customizations {
 
                 $key_id       = $data['key_id'] ?? '';
                 $amount       = (int) ( $data['amount'] ?? 0 );
-                $order_id     = $data['order_id'] ?? '';
-                $name         = $data['name'] ?? get_bloginfo( 'name' );
-                $callback_url = html_entity_decode( $data['callback_url'] ?? home_url() );
-                $cancel_url   = html_entity_decode( $data['cancel_url'] ?? home_url() );
-                $user_name    = $data['profile[name]'] ?? '';
-                $user_email   = $data['profile[email]'] ?? '';
+                $order_id       = $data['order_id'] ?? '';
+                $tutor_order_id = (int) ( $data['notes[order_id]'] ?? $_REQUEST['order_id'] ?? 0 );
+                $name           = $data['name'] ?? get_bloginfo( 'name' );
+                $callback_url   = html_entity_decode( $data['callback_url'] ?? home_url() );
+                $cancel_url     = html_entity_decode( $data['cancel_url'] ?? home_url() );
+                $user_name      = $data['profile[name]'] ?? '';
+                $user_email     = $data['profile[email]'] ?? '';
+
+                // Link Razorpay Order ID to Tutor LMS Order ID in database
+                if ( $tutor_order_id && $order_id ) {
+                    global $wpdb;
+                    $wpdb->replace(
+                        $wpdb->prefix . 'tutor_ordermeta',
+                        array(
+                            'order_id'       => $tutor_order_id,
+                            'meta_key'       => 'razorpay_order_id',
+                            'meta_value'     => $order_id,
+                            'created_at_gmt' => current_time( 'mysql', true ),
+                            'created_by'     => get_current_user_id(),
+                            'updated_at_gmt' => current_time( 'mysql', true ),
+                            'updated_by'     => get_current_user_id(),
+                        ),
+                        array( '%d', '%s', '%s', '%s', '%d', '%s', '%d' )
+                    );
+                    setcookie( 'vco_last_tutor_order_id', (string) $tutor_order_id, time() + 86400, COOKIEPATH, COOKIE_DOMAIN );
+                }
+
+                // Ensure callback_url always has tutor_order_placement=success and order_id
+                if ( $tutor_order_id ) {
+                    $callback_url = add_query_arg( array(
+                        'tutor_order_placement' => 'success',
+                        'order_id'              => $tutor_order_id,
+                    ), $callback_url );
+                }
 
                 $intent = 'gpay';
                 if ( ! empty( $_POST['vco_payment_intent'] ) ) {
@@ -718,11 +746,11 @@ class Tutor_LMS_Customizations {
                 if ( ! empty( $_POST['object_ids'] ) ) {
                     $course_id = (int) sanitize_text_field( wp_unslash( $_POST['object_ids'] ) );
                 }
-                if ( ! $course_id && ! empty( $order_id ) ) {
+                if ( ! $course_id && ! empty( $tutor_order_id ) ) {
                     if ( class_exists( '\Tutor\Models\OrderModel' ) ) {
                         $order_model = new \Tutor\Models\OrderModel();
                         if ( method_exists( $order_model, 'get_order_items_by_id' ) ) {
-                            $order_items = $order_model->get_order_items_by_id( (int) $order_id );
+                            $order_items = $order_model->get_order_items_by_id( (int) $tutor_order_id );
                             if ( ! empty( $order_items ) && isset( $order_items[0]->item_id ) ) {
                                 $course_id = (int) $order_items[0]->item_id;
                             }
@@ -751,6 +779,7 @@ class Tutor_LMS_Customizations {
                         'description'  => 'Online Course Enrollment',
                         'order_id'     => $order_id,
                         'callback_url' => $callback_url,
+                        'handler'      => 'RZP_SUCCESS_HANDLER',
                         'theme'        => array(
                             'color' => '#010101',
                         ),
@@ -795,6 +824,7 @@ class Tutor_LMS_Customizations {
 
                     $json_options = wp_json_encode( $rzp_options );
                     $json_options = str_replace( '"RZP_DISMISS_HANDLER"', 'function() { window.location.href = ' . wp_json_encode( $cancel_url ) . '; }', $json_options );
+                    $json_options = str_replace( '"RZP_SUCCESS_HANDLER"', 'function(response) { var form = document.createElement("form"); form.method = "POST"; form.action = ' . wp_json_encode( $callback_url ) . '; var p = document.createElement("input"); p.type="hidden"; p.name="razorpay_payment_id"; p.value=response.razorpay_payment_id; form.appendChild(p); var o = document.createElement("input"); o.type="hidden"; o.name="razorpay_order_id"; o.value=response.razorpay_order_id; form.appendChild(o); var s = document.createElement("input"); s.type="hidden"; s.name="razorpay_signature"; s.value=response.razorpay_signature; form.appendChild(s); document.body.appendChild(form); form.submit(); }', $json_options );
 
                     return '<!DOCTYPE html>'
                         . '<html lang="en"><head>'
