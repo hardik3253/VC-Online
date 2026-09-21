@@ -344,6 +344,10 @@ function clarity_section_iframe_callback()
     // Square UI; older dashboards ignore unknown query params.
     $query_params = $query_params . "&WordPressBrandAgentConnectorsSupported=1";
 
+    // 0.10.32+ acknowledges project-id persistence. The dashboard waits only when this marker is
+    // present, so older plugin versions retain their historical fire-and-forget behavior.
+    $query_params = $query_params . "&WordPressProjectPersistenceAckSupported=1";
+
     // initially set iframe src to the new users path
     $iframe_src = $clarity_domain . $query_params;
 
@@ -475,9 +479,9 @@ function add_event_listeners($hook)
 
     wp_register_script(
         'window_listeners_js', /* handle */
-        plugins_url('js\add_window_listeners.js', __FILE__), /* src */
-        array(), /* deps  */
-        false, /* ver  */
+        plugins_url('js/add_window_listeners.js', __FILE__), /* src */
+        array('jquery'), /* deps  */
+        get_installed_plugin_version(), /* ver  */
         false /* in_footer */
     );
     wp_enqueue_script(
@@ -571,11 +575,16 @@ function edit_clarity_project_id()
                 )
             ));
     } else {
-        update_option(
-            'clarity_project_id', /* option */
-            $new_value /* value */
-            /* autoload */
-        );
+        $project_result = brandagent_wordpress_update_project_id($new_value);
+        if (empty($project_result['success'])) {
+            die(json_encode(
+                    array(
+                        'success' => false,
+                        'message' => $project_result['error'],
+                        'error_code' => $project_result['error_code']
+                    )
+                ));
+        }
         die(json_encode(
                 array(
                     'success' => true,

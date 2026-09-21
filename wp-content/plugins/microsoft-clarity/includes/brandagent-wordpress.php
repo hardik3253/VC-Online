@@ -21,9 +21,11 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Run the plain-WordPress connect handshake.
  *
+ * @param array|null $request Optional AJAX request whose project and retry state must be prepared
+ *                            under the same lock as Connect.
  * @return array Result with at least a boolean 'success' key.
  */
-function brandagent_wordpress_connect() {
+function brandagent_wordpress_connect( $request = null ) {
 	$connect_lock = brandagent_wordpress_acquire_connect_lock();
 	if ( false === $connect_lock ) {
 		return array(
@@ -34,7 +36,7 @@ function brandagent_wordpress_connect() {
 	}
 
 	try {
-		return brandagent_wordpress_connect_locked();
+		return brandagent_wordpress_connect_locked( $request );
 	} finally {
 		brandagent_wordpress_release_connect_lock( $connect_lock );
 	}
@@ -135,11 +137,46 @@ function brandagent_wordpress_release_connect_lock( $owner ) {
 }
 
 /**
+ * Update the Clarity project while excluding an in-flight WordPress Connect.
+ *
+ * @param mixed $project_id Project value accepted by the existing project-change endpoint.
+ * @return array Result with a boolean success key and a machine-readable error code on failure.
+ */
+function brandagent_wordpress_update_project_id( $project_id ) {
+	$connect_lock = brandagent_wordpress_acquire_connect_lock();
+	if ( false === $connect_lock ) {
+		return array(
+			'success'    => false,
+			'error'      => 'Brand Agent connection is already in progress.',
+			'error_code' => 'connect_in_progress',
+		);
+	}
+
+	try {
+		update_option( 'clarity_project_id', $project_id );
+		// update_option() also returns false when the requested value is already stored, so verify
+		// the readback instead of treating its return value as a persistence failure.
+		if ( $project_id !== get_option( 'clarity_project_id', null ) ) {
+			return array(
+				'success'    => false,
+				'error'      => 'Clarity project ID failed to persist.',
+				'error_code' => 'project_id_persist_failed',
+			);
+		}
+
+		return array( 'success' => true );
+	} finally {
+		brandagent_wordpress_release_connect_lock( $connect_lock );
+	}
+}
+
+/**
  * Execute Connect while the caller owns brandagent_wp_connect_lock.
  *
+ * @param array|null $request Optional AJAX request to prepare before Connect.
  * @return array Result with at least a boolean 'success' key.
  */
-function brandagent_wordpress_connect_locked() {
+function brandagent_wordpress_connect_locked( $request = null ) {
 	// WooCommerce stores must onboard through the wc-auth flow. The plugin is the only component
 	// that knows this reliably at request time: the dashboard decides eligibility from the
 	// hasWooCommerce flag recorded on the integration, which goes stale when WooCommerce is
@@ -168,6 +205,19 @@ function brandagent_wordpress_connect_locked() {
 			'error'      => 'Store is registered as WooCommerce and must be offboarded before connecting as WordPress.',
 			'error_code' => 'platform_mismatch',
 		);
+	}
+
+	if ( null !== $request ) {
+		$project_result = brandagent_wordpress_prepare_connect_project_id( $request );
+		if ( empty( $project_result['success'] ) ) {
+			return $project_result;
+		}
+
+		// Clicking Continue is the opt-in. Initialize recovery only after project validation and
+		// persistence succeed, while the project write and ensuing Connect still share this lock.
+		update_option( 'brandagent_wp_connect_optin', 1 );
+		delete_option( 'brandagent_wp_connect_attempts' );
+		delete_transient( 'brandagent_wp_connect_throttle' );
 	}
 
 	$store_url  = home_url();
@@ -592,13 +642,54 @@ function brandagent_wordpress_connect_ajax() {
 		) );
 	}
 
-	// Record the opt-in and start a fresh attempt budget for the server-side resume fallback.
-	update_option( 'brandagent_wp_connect_optin', 1 );
-	delete_option( 'brandagent_wp_connect_attempts' );
-	delete_transient( 'brandagent_wp_connect_throttle' );
-
-	$result = brandagent_wordpress_connect();
+	$result = brandagent_wordpress_connect( $_POST );
 	wp_send_json( $result );
+}
+
+/**
+ * Persist the project selected by the dashboard before starting WordPress Connect.
+ *
+ * Older dashboard versions do not send project_id, so its absence deliberately preserves the
+ * legacy flow. The caller must own brandagent_wp_connect_lock: when the field is present, the exact
+ * value must read back and remain protected until the ensuing Connect has consumed it.
+ *
+ * @param array $request AJAX request data.
+ * @return array Result with at least a boolean 'success' key.
+ */
+function brandagent_wordpress_prepare_connect_project_id( $request ) {
+	if ( ! is_array( $request ) || ! array_key_exists( 'project_id', $request ) ) {
+		return array( 'success' => true );
+	}
+
+	$raw_project_id = $request['project_id'];
+	if ( ! is_string( $raw_project_id ) ) {
+		return array(
+			'success'    => false,
+			'error'      => 'Invalid Clarity project ID.',
+			'error_code' => 'invalid_project_id',
+		);
+	}
+
+	$raw_project_id = wp_unslash( $raw_project_id );
+	$project_id     = sanitize_text_field( $raw_project_id );
+	if ( $project_id !== $raw_project_id || '' === $project_id || 1 !== preg_match( '/\A[a-zA-Z0-9]+\z/', $project_id ) ) {
+		return array(
+			'success'    => false,
+			'error'      => 'Invalid Clarity project ID.',
+			'error_code' => 'invalid_project_id',
+		);
+	}
+
+	update_option( 'clarity_project_id', $project_id );
+	if ( $project_id !== get_option( 'clarity_project_id', '' ) ) {
+		return array(
+			'success'    => false,
+			'error'      => 'Unable to save the Clarity project ID.',
+			'error_code' => 'project_id_persist_failed',
+		);
+	}
+
+	return array( 'success' => true );
 }
 
 /**

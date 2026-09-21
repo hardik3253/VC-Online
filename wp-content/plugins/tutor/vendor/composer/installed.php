@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'themeum/tutor',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '21f1947dd20c7c2c4ed549d57bdc37454df01504',
+        'pretty_version' => '4.1.0.x-dev',
+        'version' => '4.1.0.9999999-dev',
+        'reference' => '3e6df2604a07f55440942693970732670a0d9d23',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'themeum/tutor' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '21f1947dd20c7c2c4ed549d57bdc37454df01504',
+            'pretty_version' => '4.1.0.x-dev',
+            'version' => '4.1.0.9999999-dev',
+            'reference' => '3e6df2604a07f55440942693970732670a0d9d23',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
