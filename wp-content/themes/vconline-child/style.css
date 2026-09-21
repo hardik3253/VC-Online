@@ -204,7 +204,6 @@ header .navbar .vc-header-bottom {
 	max-width: 100%;
 	display: flex;
 	justify-content: space-between;
-	flex-direction: row-reverse;
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 10px;
@@ -212,6 +211,11 @@ header .navbar .vc-header-bottom {
 
 .single-courses .tutor-course-details-title>* {
 	min-width: 0;
+}
+
+.single-courses .tutor-course-details-title>.single-course-badge,
+.single-courses .tutor-course-details-title>.tutor-course-custom-badge {
+	order: 2;
 }
 
 .page-id-20 .tutor-wrap {
@@ -397,7 +401,7 @@ header .navbar .vc-header-bottom {
 	}
 
 	.single-courses .tutor-course-details-title {
-		flex-direction: column-reverse;
+		flex-direction: column;
 		align-items: flex-start;
 		gap: 8px;
 	}
