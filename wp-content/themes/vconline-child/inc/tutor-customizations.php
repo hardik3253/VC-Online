@@ -83,6 +83,30 @@ class Tutor_LMS_Customizations {
 
         // 18. Render mobile sticky bar with price and Buy Now button on course details page
         add_action( 'wp_footer', array( $this, 'render_course_mobile_sticky_bar' ) );
+
+        // 19. Certificate page template override in child theme
+        add_filter( 'template_include', array( $this, 'override_single_certificate_template' ), 999 );
+
+        // 20. Certificate Builder AJAX prefilter and canvas fix (no plugin modifications)
+        add_action( 'tutor_certificate_builder_init', array( $this, 'attach_certificate_builder_prefilter' ) );
+        add_action( 'tutor_certificate_builder_enqueue_script', array( $this, 'attach_certificate_builder_prefilter' ) );
+        add_action( 'wp_head', array( $this, 'maybe_attach_prefilter_to_frontend' ), 1 );
+        add_filter( 'get_post_metadata', array( $this, 'filter_certificate_template_postmeta' ), 10, 4 );
+
+        // 21. Student Dashboard: View Certificate button on completed course cards
+        add_action( 'tutor_course_action_btn', array( $this, 'render_dashboard_course_certificate_btn' ), 5, 1 );
+
+        // 22. Student Dashboard: "My Certificates" navigation tab & template routing
+        add_filter( 'tutor_dashboard/nav_items', array( $this, 'register_dashboard_certificates_nav' ), 20, 1 );
+        add_filter( 'tutor_student_dashboard_nav', array( $this, 'register_dashboard_certificates_nav' ), 20, 1 );
+        add_filter( 'load_dashboard_template_part_from_other_location', array( $this, 'load_dashboard_certificates_template' ), 20, 1 );
+        add_filter( 'tutor_dashboard/permalinks', array( $this, 'register_dashboard_certificates_permalink' ), 20, 1 );
+        add_action( 'parse_request', array( $this, 'ensure_dashboard_certificates_request' ) );
+        add_filter( 'tutor_certificate_public_url', array( $this, 'ensure_trailing_slash_certificate_url' ), 99 );
+
+        // 23. Course Completion Rating Modal: include Course Preview card with Access Course button
+        add_action( 'wp', array( $this, 'setup_custom_review_popup' ), 20 );
+        add_action( 'wp_footer', array( $this, 'custom_popup_review_form' ) );
     }
 
     /**
@@ -1057,6 +1081,288 @@ class Tutor_LMS_Customizations {
             </div>
         </div>
         <?php
+    }
+
+    /**
+     * Override single certificate page template to load from child theme
+     */
+    public function override_single_certificate_template( $template ) {
+        $cert_hash = isset( $_GET['cert_hash'] ) ? sanitize_text_field( $_GET['cert_hash'] ) : '';
+        if ( $cert_hash ) {
+            $certificate_page_id = function_exists( 'tutor_utils' ) ? (int) tutor_utils()->get_option( 'tutor_certificate_page' ) : 0;
+            global $post;
+            if ( ( isset( $post ) && (int) $post->ID === $certificate_page_id ) || ( false !== strpos( $template, 'single-certificate.php' ) ) ) {
+                $child_cert_template = get_stylesheet_directory() . '/tutor/single-certificate.php';
+                if ( file_exists( $child_cert_template ) ) {
+                    return $child_cert_template;
+                }
+            }
+        }
+        return $template;
+    }
+
+    /**
+     * Attach AJAX prefilter inside Certificate Builder iframe / editor
+     */
+    public function attach_certificate_builder_prefilter() {
+        static $attached = false;
+        if ( $attached ) {
+            return;
+        }
+        $attached = true;
+        ?>
+        <script>
+        (function() {
+            function initBuilderFix() {
+                if (window.jQuery && window.jQuery.ajaxPrefilter) {
+                    window.jQuery.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+                        var isCertStore = false;
+                        if (options.url && (options.url.indexOf('[object') !== -1 || options.url.indexOf('object%20Object') !== -1)) {
+                            isCertStore = true;
+                        } else if (typeof options.data === 'string' && (options.data.indexOf('tutor_store_certificate_image') !== -1 || options.data.indexOf('tutor_certificate_store_preview') !== -1)) {
+                            isCertStore = true;
+                        } else if (options.data instanceof FormData && (options.data.get('action') === 'tutor_store_certificate_image' || options.data.get('action') === 'tutor_certificate_store_preview')) {
+                            isCertStore = true;
+                        } else if (originalOptions.data && (originalOptions.data.action === 'tutor_store_certificate_image' || originalOptions.data.action === 'tutor_certificate_store_preview')) {
+                            isCertStore = true;
+                        }
+
+                        if (isCertStore) {
+                            var targetUrl = (window.tutor_object_cb && window.tutor_object_cb.ajaxUrl) ? window.tutor_object_cb.ajaxUrl : '<?php echo esc_js( admin_url( 'admin-ajax.php' ) ); ?>';
+                            options.url = targetUrl;
+                        }
+                    });
+                } else {
+                    setTimeout(initBuilderFix, 25);
+                }
+            }
+            initBuilderFix();
+        })();
+        </script>
+        <?php
+    }
+
+    /**
+     * Maybe attach prefilter on frontend pages with cert_hash
+     */
+    public function maybe_attach_prefilter_to_frontend() {
+        if ( isset( $_GET['cert_hash'] ) ) {
+            $this->attach_certificate_builder_prefilter();
+        }
+    }
+
+    /**
+     * Dynamically replace dead domain URLs in certificate postmeta to avoid canvas tainting
+     */
+    public function filter_certificate_template_postmeta( $value, $object_id, $meta_key, $single ) {
+        if ( 'tutor_certificate_data' === $meta_key || 'tutor_certificate_draft_data' === $meta_key ) {
+            remove_filter( 'get_post_metadata', array( $this, 'filter_certificate_template_postmeta' ), 10 );
+            $raw_value = get_post_meta( $object_id, $meta_key, $single );
+            add_filter( 'get_post_metadata', array( $this, 'filter_certificate_template_postmeta' ), 10, 4 );
+
+            if ( is_string( $raw_value ) && ! empty( $raw_value ) ) {
+                $upload_baseurl = wp_upload_dir()['baseurl'];
+                $replacements = array(
+                    'https://vcacademy.in/wp-content/uploads' => $upload_baseurl,
+                    'http://vcacademy.in/wp-content/uploads'  => $upload_baseurl,
+                );
+                return str_replace( array_keys( $replacements ), array_values( $replacements ), $raw_value );
+            }
+            return $raw_value;
+        }
+        return $value;
+    }
+
+    /**
+     * Render View Certificate action button on completed course cards in student dashboard
+     */
+    public function render_dashboard_course_certificate_btn( $course_id ) {
+        $user_id = get_current_user_id();
+        $is_completed = function_exists( 'tutor_utils' ) ? tutor_utils()->is_completed_course( $course_id, $user_id ) : false;
+        if ( $is_completed && ! empty( $is_completed->completed_hash ) ) {
+            $cert_url = apply_filters( 'tutor_certificate_public_url', $is_completed->completed_hash );
+            if ( $cert_url ) {
+                ?>
+                <a href="<?php echo esc_url( $cert_url ); ?>" 
+                   class="tutor-btn tutor-btn-primary tutor-btn-x-small vco-view-certificate-btn" 
+                   target="_blank" 
+                   @click.stop 
+                   style="z-index: 2; position: relative;">
+                    <span class="tutor-icon-certificate-landscape"></span>
+                    <span><?php esc_html_e( 'View Certificate', 'vconline' ); ?></span>
+                </a>
+                <?php
+            }
+        }
+    }
+
+    /**
+     * Register "My Certificates" in Tutor dashboard navigation
+     */
+    public function register_dashboard_certificates_nav( $items ) {
+        $icon = 'certificate';
+        $items['certificates'] = array(
+            'title'       => __( 'My Certificates', 'vconline' ),
+            'icon'        => $icon,
+            'active_icon' => $icon,
+            'url'         => trailingslashit( tutor_utils()->get_tutor_dashboard_page_permalink( 'certificates' ) ),
+        );
+        return $items;
+    }
+
+    /**
+     * Ensure /dashboard/certificates/ correctly populates query vars
+     */
+    public function ensure_dashboard_certificates_request( $wp ) {
+        if ( isset( $wp->request ) && preg_match( '#^dashboard/certificates/?$#i', $wp->request ) ) {
+            $wp->query_vars['pagename'] = 'dashboard';
+            $wp->query_vars['tutor_dashboard_page'] = 'certificates';
+        }
+    }
+
+    /**
+     * Ensure certificate URL has trailing slash before query args
+     */
+    public function ensure_trailing_slash_certificate_url( $url ) {
+        if ( is_string( $url ) && false !== strpos( $url, 'tutor-certificate?' ) ) {
+            $url = str_replace( 'tutor-certificate?', 'tutor-certificate/?', $url );
+        }
+        return $url;
+    }
+
+    /**
+     * Load child theme dashboard certificates template
+     */
+    public function load_dashboard_certificates_template( $other_location ) {
+        global $wp_query;
+        $sub_page  = $wp_query->query_vars['tutor_dashboard_sub_page'] ?? '';
+        $page_slug = $wp_query->query_vars['tutor_dashboard_page'] ?? '';
+        if ( 'certificates' === $sub_page || 'certificates' === $page_slug ) {
+            $cert_template = get_stylesheet_directory() . '/tutor/dashboard/certificates.php';
+            if ( file_exists( $cert_template ) ) {
+                return $cert_template;
+            }
+        }
+        return $other_location;
+    }
+
+    /**
+     * Register certificates dashboard subpage permalink/rewrite
+     */
+    public function register_dashboard_certificates_permalink( $permalinks ) {
+        $permalinks['certificates'] = array(
+            'title' => __( 'My Certificates', 'vconline' ),
+        );
+        return $permalinks;
+    }
+
+    /**
+     * Remove Tutor default review popup in favor of custom popup with course card
+     */
+    public function setup_custom_review_popup() {
+        if ( function_exists( 'tutor_course' ) ) {
+            remove_action( 'wp_footer', array( tutor_course(), 'popup_review_form' ) );
+        }
+    }
+
+    /**
+     * Custom review popup with completed course card & Access Course button
+     */
+    public function custom_popup_review_form() {
+        if ( ! is_user_logged_in() || ! function_exists( 'tutor_utils' ) ) {
+            return;
+        }
+
+        $is_learning_area   = tutor_utils()->is_learning_area();
+        $is_legacy_learning = tutor_utils()->is_legacy_learning_mode();
+        if ( $is_legacy_learning && $is_learning_area ) {
+            return;
+        }
+
+        // Only run on single course page or learning area
+        if ( ! is_single() && ! $is_learning_area ) {
+            return;
+        }
+
+        $course_id = get_the_ID();
+        if ( $is_learning_area && ! \TUTOR\Input::has( 'subpage' ) ) {
+            $course_id = wp_get_post_parent_id( wp_get_post_parent_id( get_the_ID() ) );
+        }
+
+        if ( empty( $course_id ) ) {
+            return;
+        }
+
+        $user_id  = get_current_user_id();
+        $meta_key = class_exists( 'TUTOR\User' ) && method_exists( 'TUTOR\User', 'get_review_popup_meta' )
+            ? \TUTOR\User::get_review_popup_meta( $course_id )
+            : 'tutor_review_course_popup_' . $course_id;
+
+        if ( ! $meta_key ) {
+            return;
+        }
+
+        $review_course_id = (int) get_user_meta( $user_id, $meta_key, true );
+        if ( is_single() && $course_id === $review_course_id ) {
+            $course_thumb = get_tutor_course_thumbnail_src( 'thumbnail', $course_id );
+            $course_title = get_the_title( $course_id );
+            $course_url   = get_permalink( $course_id );
+            $modal_id     = 'tutor-review-modal-' . $course_id;
+            ?>
+            <form class="tutor-modal tutor-is-active tutor-course-review-popup-form">
+                <div class="tutor-modal-overlay"></div>
+                <div class="tutor-modal-window">
+                    <div class="tutor-modal-content tutor-modal-content-white">
+                        <button type="button" class="tutor-iconic-btn tutor-modal-close-o" data-tutor-modal-close aria-label="<?php esc_attr_e( 'Close', 'tutor' ); ?>">
+                            <span class="tutor-icon-times" aria-hidden="true"></span>
+                        </button>
+
+                        <div class="tutor-modal-body tutor-text-center">
+                            <div class="vco-review-course-banner tutor-mb-24" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; text-align:left; gap:12px; margin-top:16px;">
+                                <div style="display:flex; align-items:center; gap:12px; min-width:0;">
+                                    <?php if ( $course_thumb ) : ?>
+                                        <img src="<?php echo esc_url( $course_thumb ); ?>" alt="<?php echo esc_attr( $course_title ); ?>" style="width:48px; height:48px; object-fit:cover; border-radius:8px; flex-shrink:0;" />
+                                    <?php endif; ?>
+                                    <div style="min-width:0;">
+                                        <div style="font-size:11px; font-weight:600; text-transform:uppercase; color:#ff5500; letter-spacing:0.5px;"><?php esc_html_e( 'Course Completed', 'vconline' ); ?></div>
+                                        <div style="font-size:14px; font-weight:600; color:#0f172a; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><?php echo esc_html( $course_title ); ?></div>
+                                    </div>
+                                </div>
+                                <a href="<?php echo esc_url( $course_url ); ?>" class="tutor-btn tutor-btn-outline-primary tutor-btn-xs" style="border-radius:6px; font-weight:600; padding:6px 12px; white-space:nowrap; display:inline-flex; align-items:center; gap:4px; text-decoration:none; flex-shrink:0;">
+                                    <span class="tutor-icon-play-circle"></span>
+                                    <span><?php esc_html_e( 'Access Course', 'vconline' ); ?></span>
+                                </a>
+                            </div>
+
+                            <div id="<?php echo esc_attr( $modal_id ); ?>-title" class="tutor-fs-4 tutor-fw-bold tutor-color-black tutor-mb-8"><?php esc_html_e( 'How would you rate this course?', 'tutor' ); ?></div>
+                            <div class="tutor-fs-7 tutor-color-muted"><?php esc_html_e( 'Select Rating', 'tutor' ); ?></div>
+
+                            <input type="hidden" name="course_id" value="<?php echo esc_attr( $course_id ); ?>"> 
+                            <input type="hidden" name="review_id" value="<?php echo esc_attr( isset( $review_id ) ? $review_id : '' ); ?>"/>
+                            <input type="hidden" name="action" value="tutor_place_rating" />
+
+                            <div class="tutor-ratings tutor-ratings-xl tutor-ratings-selectable tutor-justify-center tutor-mt-16" tutor-ratings-selectable>
+                                <?php
+                                    tutor_utils()->star_rating_generator( tutor_utils()->get_rating_value() );
+                                ?>
+                            </div>
+
+                            <textarea name="review" class="tutor-form-control tutor-mt-24" aria-label="<?php esc_attr_e( 'Tell us about your own personal experience taking this course', 'tutor' ); ?>" placeholder="<?php esc_attr_e( 'Tell us about your own personal experience taking this course. Was it a good match for you?', 'tutor' ); ?>"></textarea>
+
+                            <div class="tutor-d-flex tutor-justify-center tutor-my-32">
+                                <button type="button" class="tutor-review-popup-cancel tutor-btn tutor-btn-outline-primary" data-tutor-modal-close>
+                                    <?php esc_html_e( 'Cancel', 'tutor' ); ?>
+                                </button>
+                                <button type="submit" class="tutor_submit_review_btn tutor-btn tutor-btn-primary tutor-ml-20">
+                                    <?php esc_html_e( 'Update Review', 'tutor' ); ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <?php
+        }
     }
 }
 

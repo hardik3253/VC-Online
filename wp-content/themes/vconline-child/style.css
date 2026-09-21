@@ -1208,3 +1208,117 @@ body.vco-checkout-distraction-free .site-content {
 		width: auto;
 	}
 }
+
+/* Student Dashboard Course Card Actions & Certificate Button */
+.tutor-progress-card {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: space-between !important;
+	position: relative !important;
+}
+
+.tutor-progress-card-inner {
+	flex: 1 1 auto !important;
+	min-width: 0 !important;
+}
+
+.tutor-progress-card-actions {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: flex-end !important;
+	padding-right: 20px !important;
+	padding-left: 16px !important;
+	flex-shrink: 0 !important;
+	z-index: 5 !important;
+}
+
+/* View Certificate Button matching Tutor Start Button color */
+.vco-view-certificate-btn {
+	background: var(--tutor-button-primary, #000000) !important;
+	color: var(--tutor-text-primary-inverse, #ffffff) !important;
+	border: 1px solid var(--tutor-button-primary, #000000) !important;
+	border-radius: 6px !important;
+	padding: 6px 14px !important;
+	font-weight: 500 !important;
+	font-size: 13px !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	gap: 6px !important;
+	transition: all 0.2s ease !important;
+	text-decoration: none !important;
+}
+
+.vco-view-certificate-btn:hover {
+	background: var(--tutor-button-primary-hover, #262626) !important;
+	color: var(--tutor-text-primary-inverse, #ffffff) !important;
+	border-color: var(--tutor-button-primary-hover, #262626) !important;
+}
+
+/* My Certificates Dashboard Grid & Card Styles matching theme */
+.vco-dashboard-certificates-wrap {
+	width: 100%;
+}
+
+.vco-certificates-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 24px;
+	padding-top: 28px !important;
+}
+
+.vco-certificate-card {
+	border: 1px solid var(--tutor-border-idle, #2d3039) !important;
+	border-radius: 12px !important;
+	overflow: hidden !important;
+	background-color: var(--tutor-surface-l1, #1f242f) !important;
+	display: flex !important;
+	flex-direction: column !important;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+	transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+}
+
+.vco-certificate-card:hover {
+	background-color: var(--tutor-surface-l1-hover, #2d3039) !important;
+	border-color: var(--tutor-border-brand, #3b4252) !important;
+	transform: translateY(-2px);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25) !important;
+}
+
+.vco-certificate-card h4 a {
+	color: var(--tutor-text-primary, #f0f1f1) !important;
+	text-decoration: none !important;
+}
+
+.vco-certificate-actions {
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+	text-align: center !important;
+	width: 100% !important;
+	padding-top: 18px !important;
+	border-top: 1px solid var(--tutor-border-idle, #2d3039) !important;
+}
+
+.vco-cert-view-btn {
+	background: var(--tutor-button-primary, #000000) !important;
+	color: var(--tutor-text-primary-inverse, #ffffff) !important;
+	border: 1px solid var(--tutor-button-primary, #000000) !important;
+	border-radius: 8px !important;
+	padding: 8px 24px !important;
+	font-weight: 600 !important;
+	font-size: 13px !important;
+	display: inline-flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+	gap: 8px !important;
+	margin: 0 auto !important;
+	min-width: 180px !important;
+	transition: all 0.2s ease !important;
+	text-decoration: none !important;
+}
+
+.vco-cert-view-btn:hover {
+	background: var(--tutor-button-primary-hover, #262626) !important;
+	color: var(--tutor-text-primary-inverse, #ffffff) !important;
+	border-color: var(--tutor-button-primary-hover, #262626) !important;
+}
