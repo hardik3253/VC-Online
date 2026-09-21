@@ -899,18 +899,31 @@ class Tutor_LMS_Customizations {
             }
         }
 
+        $is_public  = ( get_post_meta( $course_id, '_tutor_is_public_course', true ) === 'yes' );
+        if ( ! $is_public && class_exists( '\TUTOR\Course_List' ) && method_exists( '\TUTOR\Course_List', 'is_public' ) ) {
+            $is_public = (bool) \TUTOR\Course_List::is_public( $course_id );
+        }
+
+        $price_type = function_exists( 'tutor_utils' ) ? tutor_utils()->price_type( $course_id ) : get_post_meta( $course_id, '_tutor_course_price_type', true );
+        $is_free    = ( 'free' === $price_type || ( function_exists( 'tutor_utils' ) && ! tutor_utils()->is_course_purchasable( $course_id ) ) );
+
+        $is_public_free     = ( $is_public && $is_free );
+        $can_start_learning = ( $is_enrolled || $is_public_free );
+
         $lesson_url = '';
-        if ( $is_enrolled && function_exists( 'tutor_utils' ) ) {
-            $lesson_url = tutor_utils()->get_course_first_lesson( $course_id );
-            if ( ! $lesson_url && isset( tutor()->lesson_post_type ) ) {
+        if ( $can_start_learning && function_exists( 'tutor_utils' ) ) {
+            if ( isset( tutor()->lesson_post_type ) ) {
                 $lesson_url = tutor_utils()->get_course_first_lesson( $course_id, tutor()->lesson_post_type );
             }
+            if ( ! $lesson_url ) {
+                $lesson_url = tutor_utils()->get_course_first_lesson( $course_id );
+            }
         }
-        if ( $is_enrolled && ! $lesson_url ) {
+        if ( $can_start_learning && ! $lesson_url ) {
             $lesson_url = get_permalink( $course_id );
         }
 
-        // Determine button label for enrolled user
+        // Determine button label
         $enroll_btn_text = __( 'Start Learning', 'tutor' );
         if ( $is_enrolled && function_exists( 'tutor_utils' ) ) {
             $course_progress   = tutor_utils()->get_course_completed_percent( $course_id, $user_id, true );
@@ -920,7 +933,7 @@ class Tutor_LMS_Customizations {
             }
         }
 
-        // Check pricing only for non-enrolled users
+        // Check pricing only when user cannot directly start learning
         $has_sale                = false;
         $discount_pct            = 0;
         $formatted_display_price = '';
@@ -930,7 +943,7 @@ class Tutor_LMS_Customizations {
         $regular_price           = 0;
         $buy_now_link            = '';
 
-        if ( ! $is_enrolled ) {
+        if ( ! $can_start_learning ) {
             $is_purchasable = function_exists( 'tutor_utils' ) ? tutor_utils()->is_course_purchasable( $course_id ) : true;
             $price_info     = function_exists( 'tutor_utils' ) ? tutor_utils()->get_raw_course_price( $course_id ) : null;
 
@@ -944,24 +957,35 @@ class Tutor_LMS_Customizations {
             $formatted_display_price = ( function_exists( 'tutor_get_formatted_price' ) && $display_price ) ? tutor_get_formatted_price( $display_price ) : ( ( function_exists( 'tutor_utils' ) && method_exists( tutor_utils(), 'tutor_price' ) ) ? tutor_utils()->tutor_price( $display_price ) : '₹' . $display_price );
             $formatted_regular_price = ( function_exists( 'tutor_get_formatted_price' ) && $regular_price ) ? tutor_get_formatted_price( $regular_price ) : ( ( function_exists( 'tutor_utils' ) && method_exists( tutor_utils(), 'tutor_price' ) ) ? tutor_utils()->tutor_price( $regular_price ) : '₹' . $regular_price );
 
-            // Direct checkout link for "Buy Now"
-            $checkout_url = '';
-            if ( class_exists( '\Tutor\Ecommerce\CheckoutController' ) ) {
-                $checkout_url = \Tutor\Ecommerce\CheckoutController::get_page_url();
-            } elseif ( function_exists( 'tutor_utils' ) ) {
-                $checkout_url = tutor_utils()->get_checkout_page_url();
+            if ( ! $is_free ) {
+                // Direct checkout link for "Buy Now" (paid courses only)
+                $checkout_url = '';
+                if ( class_exists( '\Tutor\Ecommerce\CheckoutController' ) ) {
+                    $checkout_url = \Tutor\Ecommerce\CheckoutController::get_page_url();
+                } elseif ( function_exists( 'tutor_utils' ) ) {
+                    $checkout_url = tutor_utils()->get_checkout_page_url();
+                }
+                $buy_now_link = add_query_arg( array( 'course_id' => $course_id ), $checkout_url );
             }
-            $buy_now_link = add_query_arg( array( 'course_id' => $course_id ), $checkout_url );
+        }
+
+        $login_url = '';
+        if ( ! is_user_logged_in() && function_exists( 'tutor_utils' ) ) {
+            $is_tutor_login_disabled = ! tutor_utils()->get_option( 'enable_tutor_native_login', null, true, true );
+            $login_url = $is_tutor_login_disabled ? ( isset( $_SERVER['REQUEST_SCHEME'] ) ? wp_login_url( tutor_utils()->get_current_url() ) : '' ) : '';
         }
         ?>
-        <div class="vco-course-mobile-sticky-bar<?php echo $is_enrolled ? ' vco-is-enrolled' : ''; ?>" id="vco-course-mobile-sticky-bar">
+        <div class="vco-course-mobile-sticky-bar<?php echo $can_start_learning ? ' vco-is-enrolled vco-is-start-learning' : ''; ?>" id="vco-course-mobile-sticky-bar">
             <div class="vco-course-sticky-inner">
-                <?php if ( ! $is_enrolled ) : ?>
+                <?php if ( ! $can_start_learning ) : ?>
                     <div class="vco-course-sticky-price-col">
                         <span class="vco-course-sticky-price-label"><?php esc_html_e( 'Price', 'tutor' ); ?></span>
                         <div class="vco-course-sticky-price-row">
-                            <?php if ( ! $is_purchasable || ( ! $display_price && ! $regular_price ) ) : ?>
+                            <?php if ( $is_free || ! $is_purchasable || ( ! $display_price && ! $regular_price ) ) : ?>
                                 <span class="vco-course-sticky-current-price"><?php esc_html_e( 'Free', 'tutor' ); ?></span>
+                                <?php if ( $regular_price && (float) $regular_price > 0 ) : ?>
+                                    <del class="vco-course-sticky-regular-price"><?php echo wp_kses_post( $formatted_regular_price ); ?></del>
+                                <?php endif; ?>
                             <?php else : ?>
                                 <span class="vco-course-sticky-current-price"><?php echo wp_kses_post( $formatted_display_price ); ?></span>
                                 <?php if ( $has_sale ) : ?>
@@ -976,11 +1000,23 @@ class Tutor_LMS_Customizations {
                 <?php endif; ?>
 
                 <div class="vco-course-sticky-action-col">
-                    <?php if ( $is_enrolled ) : ?>
-                        <a href="<?php echo esc_url( $lesson_url ? $lesson_url : '#' ); ?>" class="vco-course-sticky-btn vco-enrolled-btn tutor-btn tutor-btn-primary">
+                    <?php if ( $can_start_learning ) : ?>
+                        <a href="<?php echo esc_url( $lesson_url ? $lesson_url : '#' ); ?>" class="vco-course-sticky-btn vco-enrolled-btn vco-start-learning-btn tutor-btn tutor-btn-primary">
                             <span><?php echo esc_html( $enroll_btn_text ); ?></span>
                             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
+                    <?php elseif ( $is_free ) : ?>
+                        <div class="tutor-course-single-btn-group <?php echo is_user_logged_in() ? '' : 'tutor-course-entry-box-login'; ?>" data-login_url="<?php echo esc_url( $login_url ); ?>">
+                            <form class="tutor-enrol-course-form" method="post">
+                                <?php wp_nonce_field( tutor()->nonce_action, tutor()->nonce, false ); ?>
+                                <input type="hidden" name="tutor_course_id" value="<?php echo esc_attr( $course_id ); ?>">
+                                <input type="hidden" name="tutor_course_action" value="_tutor_course_enroll_now">
+                                <button type="submit" class="vco-course-sticky-btn vco-enroll-btn tutor-btn tutor-btn-primary tutor-enroll-course-button <?php echo is_user_logged_in() ? 'tutor-static-loader' : ''; ?>">
+                                    <span><?php esc_html_e( 'Enroll Now', 'tutor' ); ?></span>
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </button>
+                            </form>
+                        </div>
                     <?php else : ?>
                         <a href="<?php echo esc_url( $buy_now_link ); ?>" class="vco-course-sticky-btn vco-buy-now-btn">
                             <span><?php esc_html_e( 'Buy Now', 'tutor' ); ?></span>
