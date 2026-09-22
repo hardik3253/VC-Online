@@ -32,24 +32,30 @@ if ( ! file_exists( $cert_file ) ) {
 }
 
 $course_template_key = get_post_meta( $course->ID, 'tutor_course_certificate_template', true );
-$saved_template_key  = get_comment_meta( $completed->certificate_id, '_vco_certificate_template_key', true );
-
-// If file exists and no saved template key recorded yet, record current course template
-if ( $cert_file && empty( $saved_template_key ) && ! empty( $course_template_key ) ) {
-	update_comment_meta( $completed->certificate_id, '_vco_certificate_template_key', $course_template_key );
-	$saved_template_key = $course_template_key;
+if ( empty( $course_template_key ) ) {
+	$course_template_key = 'default';
 }
 
-// Only regenerate if:
-// 1. Image does not exist on disk
-// 2. OR template was changed to a DIFFERENT template after having been previously saved
-// 3. OR user explicitly requested ?regenerate=1
-$template_changed = ( $course_template_key && $saved_template_key && $course_template_key !== $saved_template_key );
-$user_regen       = ( is_user_logged_in() && 1 == Input::get( 'regenerate' ) );
+$verified_template_key = get_comment_meta( $completed->certificate_id, '_vco_certificate_template_verified', true );
+$user_regen            = ( 1 == Input::get( 'regenerate' ) );
 
-$generate_cert = ( ! $cert_file ) || $template_changed || $user_regen;
+$file_on_disk_valid   = ( $cert_file && file_exists( $cert_file ) );
+$course_modified_time = strtotime( $course->post_modified );
+$file_mtime           = $file_on_disk_valid ? filemtime( $cert_file ) : 0;
+
+// Determine if certificate needs regeneration:
+// 1. Image does not exist on disk
+// 2. OR verified template key does not match current course template (fixes live site showing old default certificate!)
+// 3. OR file on disk is older than the course's latest update in the backend
+// 4. OR explicit user regeneration requested (?regenerate=1)
+$needs_regen = ( ! $file_on_disk_valid )
+               || ( $verified_template_key !== $course_template_key )
+               || ( $file_on_disk_valid && $course_modified_time && $file_mtime < ( $course_modified_time - 60 ) )
+               || $user_regen;
+
+$generate_cert = $needs_regen;
 if ( $generate_cert ) {
-	if ( ( $template_changed || $user_regen ) && $cert_file && file_exists( $cert_file ) ) {
+	if ( $file_on_disk_valid ) {
 		@unlink( $cert_file );
 	}
 	$cert_file = null;
@@ -60,9 +66,6 @@ $cert_url = $cert_obj->tutor_certificate_public_url( $cert_hash );
 
 if ( $generate_cert ) {
 	update_user_meta( get_current_user_id(), 'tutor_certificate_generated', $completed->course_id );
-	if ( ! empty( $course_template_key ) ) {
-		update_comment_meta( $completed->certificate_id, '_vco_certificate_template_key', $course_template_key );
-	}
 }
 
 $issued_by = tutor_utils()->get_option( 'tutor_cert_authorised_name' );
@@ -94,25 +97,40 @@ $course_permalink = get_permalink( $course->ID );
 
 	<?php if ( $generate_cert ) : ?>
 	var pollCount = 0;
-	var maxPolls = 15;
+	var maxPolls = 20;
 	var checkInterval = setInterval(function() {
 		pollCount++;
 		if (pollCount > maxPolls) {
 			clearInterval(checkInterval);
 			return;
 		}
-		var img = new Image();
-		img.src = '<?php echo esc_url( $certificate_dir_url . $cert_path ); ?>?t=' + new Date().getTime();
-		img.onload = function() {
-			clearInterval(checkInterval);
-			var preview = document.getElementById('tutor-pro-certificate-preview');
-			if (preview) {
-				preview.src = img.src;
-				preview.dataset.is_generated = 'yes';
-				preview.style.width = '';
-				preview.style.height = '';
-			}
-		};
+		if (window.jQuery) {
+			window.jQuery.ajax({
+				url: '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
+				type: 'GET',
+				data: {
+					action: 'vco_check_certificate_status',
+					cert_hash: '<?php echo esc_js( $cert_hash ); ?>'
+				},
+				success: function(res) {
+					if (res && res.success && res.data && res.data.is_generated && res.data.image_url) {
+						clearInterval(checkInterval);
+						var preview = document.getElementById('tutor-pro-certificate-preview');
+						if (preview) {
+							preview.src = res.data.image_url;
+							preview.dataset.is_generated = 'yes';
+							preview.style.width = '';
+							preview.style.height = '';
+						}
+						var printImg = document.querySelector('#div-to-print img');
+						if (printImg) {
+							printImg.src = res.data.image_url;
+							printImg.dataset.is_generated = 'yes';
+						}
+					}
+				}
+			});
+		}
 	}, 2000);
 	<?php endif; ?>
 })();

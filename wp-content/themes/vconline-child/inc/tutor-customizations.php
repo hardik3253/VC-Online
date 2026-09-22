@@ -87,7 +87,15 @@ class Tutor_LMS_Customizations {
         // 19. Certificate page template override in child theme
         add_filter( 'template_include', array( $this, 'override_single_certificate_template' ), 999 );
 
-        // 20. Certificate Builder AJAX prefilter and canvas fix (no plugin modifications)
+        // 20. Certificate Builder AJAX prefilter, canvas fix, and lifecycle bootstrap
+        if ( class_exists( '\Tutor\Certificate\Builder\Plugin' ) && class_exists( '\Tutor\Certificate\Builder\ProIntegration' ) ) {
+            static $cb_bootstrapped = false;
+            if ( ! $cb_bootstrapped && ! has_filter( 'tutor_certificate_builder_url' ) ) {
+                $cb_bootstrapped = true;
+                ( new \Tutor\Certificate\Builder\Plugin() )->run();
+                new \Tutor\Certificate\Builder\ProIntegration();
+            }
+        }
         add_action( 'tutor_certificate_builder_init', array( $this, 'attach_certificate_builder_prefilter' ) );
         add_action( 'tutor_certificate_builder_enqueue_script', array( $this, 'attach_certificate_builder_prefilter' ) );
         add_action( 'wp_head', array( $this, 'maybe_attach_prefilter_to_frontend' ), 1 );
@@ -96,6 +104,10 @@ class Tutor_LMS_Customizations {
         add_filter( 'option_tutor_addons_config', array( $this, 'ensure_certificate_addon_enabled' ) );
         add_filter( 'tutor_certificate_templates', array( $this, 'ensure_course_certificate_templates' ), 99, 3 );
         add_filter( 'tutor_certificate_builder_url', array( $this, 'match_current_domain_builder_url' ), 99, 2 );
+        add_action( 'updated_comment_meta', array( $this, 'on_certificate_image_stored' ), 10, 4 );
+        add_action( 'added_comment_meta', array( $this, 'on_certificate_image_stored' ), 10, 4 );
+        add_action( 'wp_ajax_vco_check_certificate_status', array( $this, 'ajax_check_certificate_status' ) );
+        add_action( 'wp_ajax_nopriv_vco_check_certificate_status', array( $this, 'ajax_check_certificate_status' ) );
 
         // 21. Student Dashboard: View Certificate button on completed course cards
         add_action( 'tutor_course_action_btn', array( $this, 'render_dashboard_course_certificate_btn' ), 5, 1 );
@@ -1148,24 +1160,63 @@ class Tutor_LMS_Customizations {
             $templates = array();
         }
 
-        // Fetch all tutor_certificate posts regardless of author or status to ensure no templates are lost
+        $upload_baseurl = trailingslashit( wp_upload_dir()['baseurl'] );
+        $cb_dir         = 'tutor-certificate-builder/';
+
+        // 1. If specific templates are requested (e.g. tutor_cb_1339), directly fetch each post
+        if ( ! empty( $template_in ) && is_array( $template_in ) ) {
+            foreach ( $template_in as $tpl_key ) {
+                if ( is_string( $tpl_key ) && 0 === strpos( $tpl_key, 'tutor_cb_' ) && ! isset( $templates[ $tpl_key ] ) ) {
+                    $cert_id = (int) str_replace( 'tutor_cb_', '', $tpl_key );
+                    if ( $cert_id > 0 ) {
+                        $cert_post = get_post( $cert_id );
+                        if ( $cert_post && 'tutor_certificate' === $cert_post->post_type ) {
+                            $dimension   = get_post_meta( $cert_post->ID, 'tutor_certificate_dimension', true );
+                            $size        = get_post_meta( $cert_post->ID, 'tutor_certificate_size', true );
+                            $preview_img = get_post_meta( $cert_post->ID, 'tutor_cb_template_preview_name', true );
+                            if ( ! $preview_img ) {
+                                $preview_img = get_post_meta( $cert_post->ID, '_tutor_certificate_preview', true );
+                            }
+                            $preview_url = $preview_img ? $upload_baseurl . $cb_dir . $preview_img : get_the_post_thumbnail_url( $cert_post->ID, 'full' );
+
+                            $templates[ $tpl_key ] = array(
+                                'name'           => $cert_post->post_title,
+                                'orientation'    => ! empty( $dimension ) ? $dimension : 'landscape',
+                                'size'           => empty( $size ) ? 'letter' : $size,
+                                'path'           => '',
+                                'url'            => '',
+                                'edit_url'       => add_query_arg( array( 'action' => 'tutor_certificate_builder', 'post' => $cert_post->ID ), get_home_url() ),
+                                'preview_src'    => $preview_url ? $preview_url : '',
+                                'background_src' => '',
+                                'author_id'      => $cert_post->post_author,
+                                'key'            => $tpl_key,
+                            );
+                        }
+                    }
+                }
+            }
+        }
+
+        // 2. Fetch all tutor_certificate posts regardless of author or status, suppressing capability/language filters
         $cert_posts = get_posts( array(
-            'post_type'      => 'tutor_certificate',
-            'post_status'    => array( 'publish', 'draft', 'private' ),
-            'posts_per_page' => -1,
-            'orderby'        => 'ID',
-            'order'          => 'DESC',
+            'post_type'        => 'tutor_certificate',
+            'post_status'      => 'any',
+            'posts_per_page'   => -1,
+            'suppress_filters' => true,
+            'orderby'          => 'ID',
+            'order'            => 'DESC',
         ) );
 
         if ( ! empty( $cert_posts ) ) {
-            $upload_baseurl = trailingslashit( wp_upload_dir()['baseurl'] );
-            $cb_dir         = 'tutor-certificates/';
             foreach ( $cert_posts as $cert_post ) {
                 $tpl_key = 'tutor_cb_' . $cert_post->ID;
                 if ( ! isset( $templates[ $tpl_key ] ) ) {
                     $dimension   = get_post_meta( $cert_post->ID, 'tutor_certificate_dimension', true );
                     $size        = get_post_meta( $cert_post->ID, 'tutor_certificate_size', true );
-                    $preview_img = get_post_meta( $cert_post->ID, '_tutor_certificate_preview', true );
+                    $preview_img = get_post_meta( $cert_post->ID, 'tutor_cb_template_preview_name', true );
+                    if ( ! $preview_img ) {
+                        $preview_img = get_post_meta( $cert_post->ID, '_tutor_certificate_preview', true );
+                    }
                     $preview_url = $preview_img ? $upload_baseurl . $cb_dir . $preview_img : get_the_post_thumbnail_url( $cert_post->ID, 'full' );
 
                     $templates[ $tpl_key ] = array(
@@ -1205,16 +1256,89 @@ class Tutor_LMS_Customizations {
     /**
      * Ensure certificate builder URL matches current visitor domain/protocol to prevent cross-origin iframe blocking
      */
-    public function match_current_domain_builder_url( $url, $template_id = null ) {
+    public function match_current_domain_builder_url( $url, $additional = array() ) {
+        // If $url is numeric or not a full URL, build the full builder URL using Helper or query args
+        if ( is_numeric( $url ) || ( is_string( $url ) && ! preg_match( '#^https?://#i', $url ) ) ) {
+            $extra = is_array( $additional ) ? $additional : array();
+            if ( class_exists( '\Tutor\Certificate\Builder\Helper' ) ) {
+                $url = \Tutor\Certificate\Builder\Helper::certificate_builder_url( (int) $url, $extra );
+            } else {
+                $url = add_query_arg( array_merge( array( 'action' => 'tutor_certificate_builder', 'post' => (int) $url ), $extra ), get_home_url() );
+            }
+        }
+
         if ( is_string( $url ) && isset( $_SERVER['HTTP_HOST'] ) ) {
             $parsed = parse_url( $url );
             if ( ! empty( $parsed['host'] ) ) {
-                $scheme = is_ssl() ? 'https' : 'http';
+                $scheme = ( is_ssl() || ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] ) || ( isset( $_SERVER['HTTPS'] ) && 'off' !== $_SERVER['HTTPS'] && ! empty( $_SERVER['HTTPS'] ) ) ) ? 'https' : 'http';
                 $host   = $_SERVER['HTTP_HOST'];
                 $url    = preg_replace( '#^https?://[^/]+#i', $scheme . '://' . $host, $url );
             }
         }
         return $url;
+    }
+
+    /**
+     * When a certificate image is stored, record the verified template key
+     */
+    public function on_certificate_image_stored( $meta_id, $comment_id, $meta_key, $meta_value ) {
+        if ( 'tutor_certificate_has_image' === $meta_key && ! empty( $meta_value ) ) {
+            $comment = get_comment( $comment_id );
+            if ( $comment && ! empty( $comment->comment_post_ID ) ) {
+                $course_id = (int) $comment->comment_post_ID;
+                $tpl = get_post_meta( $course_id, 'tutor_course_certificate_template', true );
+                $tpl = ! empty( $tpl ) ? $tpl : 'default';
+                update_comment_meta( $comment_id, '_vco_certificate_template_verified', $tpl );
+                update_comment_meta( $comment_id, '_vco_certificate_template_key', $tpl );
+            }
+        }
+    }
+
+    /**
+     * AJAX endpoint to check if certificate image has been generated and verified
+     */
+    public function ajax_check_certificate_status() {
+        $cert_hash = isset( $_GET['cert_hash'] ) ? sanitize_text_field( $_GET['cert_hash'] ) : '';
+        if ( ! $cert_hash ) {
+            wp_send_json_error( array( 'message' => 'Missing cert hash' ) );
+        }
+
+        if ( ! class_exists( '\TUTOR_CERT\Certificate' ) ) {
+            wp_send_json_error( array( 'message' => 'Certificate class not available' ) );
+        }
+
+        $cert_obj  = new \TUTOR_CERT\Certificate( true );
+        $completed = $cert_obj->completed_course( $cert_hash );
+        if ( ! $completed ) {
+            wp_send_json_error( array( 'message' => 'Not found' ) );
+        }
+
+        $course              = get_post( $completed->course_id );
+        $course_template_key = get_post_meta( $course->ID, 'tutor_course_certificate_template', true );
+        if ( empty( $course_template_key ) ) {
+            $course_template_key = 'default';
+        }
+
+        $verified_key = get_comment_meta( $completed->certificate_id, '_vco_certificate_template_verified', true );
+        $rand_string  = get_comment_meta( $completed->certificate_id, $cert_obj->certificate_stored_key, true );
+
+        $upload_dir    = wp_upload_dir();
+        $cert_dir_path = $upload_dir['basedir'] . '/' . $cert_obj->certificates_dir_name;
+        $cert_dir_url  = $upload_dir['baseurl'] . '/' . $cert_obj->certificates_dir_name;
+
+        $cert_file = $rand_string ? $cert_dir_path . '/' . $rand_string . '-' . $cert_hash . '.jpg' : null;
+        $exists    = ( $cert_file && file_exists( $cert_file ) );
+
+        if ( $exists && $verified_key === $course_template_key ) {
+            wp_send_json_success( array(
+                'is_generated' => true,
+                'image_url'    => $cert_dir_url . '/' . $rand_string . '-' . $cert_hash . '.jpg',
+            ) );
+        }
+
+        wp_send_json_success( array(
+            'is_generated' => false,
+        ) );
     }
 
     /**
