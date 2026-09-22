@@ -93,7 +93,9 @@ class Tutor_LMS_Customizations {
         add_action( 'wp_head', array( $this, 'maybe_attach_prefilter_to_frontend' ), 1 );
         add_filter( 'get_post_metadata', array( $this, 'filter_certificate_template_postmeta' ), 10, 4 );
         add_filter( 'active_plugins', array( $this, 'ensure_certificate_builder_active_in_list' ) );
+        add_filter( 'option_tutor_addons_config', array( $this, 'ensure_certificate_addon_enabled' ) );
         add_filter( 'tutor_certificate_templates', array( $this, 'ensure_course_certificate_templates' ), 99, 3 );
+        add_filter( 'tutor_certificate_builder_url', array( $this, 'match_current_domain_builder_url' ), 99, 2 );
 
         // 21. Student Dashboard: View Certificate button on completed course cards
         add_action( 'tutor_course_action_btn', array( $this, 'render_dashboard_course_certificate_btn' ), 5, 1 );
@@ -107,6 +109,7 @@ class Tutor_LMS_Customizations {
         add_filter( 'tutor_dashboard/permalinks', array( $this, 'register_dashboard_certificates_permalink' ), 20, 1 );
         add_action( 'init', array( $this, 'add_dashboard_certificates_rewrite_rule' ), 10 );
         add_action( 'parse_request', array( $this, 'ensure_dashboard_certificates_request' ) );
+        add_action( 'template_redirect', array( $this, 'fix_dashboard_certificates_404' ) );
         add_filter( 'tutor_certificate_public_url', array( $this, 'ensure_trailing_slash_certificate_url' ), 99 );
 
         // 23. Course Completion Rating Modal: include Course Preview card with Access Course button
@@ -1110,6 +1113,21 @@ class Tutor_LMS_Customizations {
     }
 
     /**
+     * Ensure Tutor Pro Certificate addon is always marked enabled in tutor_addons_config
+     */
+    public function ensure_certificate_addon_enabled( $addons_config ) {
+        $addons = maybe_unserialize( $addons_config );
+        if ( is_array( $addons ) ) {
+            $cert_key = 'tutor-pro/addons/tutor-certificate/tutor-certificate.php';
+            if ( empty( $addons[ $cert_key ]['is_enable'] ) ) {
+                $addons[ $cert_key ] = array( 'is_enable' => 1 );
+                return maybe_serialize( $addons );
+            }
+        }
+        return $addons_config;
+    }
+
+    /**
      * Ensure Certificate Builder is recognized as active in active_plugins list
      */
     public function ensure_certificate_builder_active_in_list( $plugins ) {
@@ -1123,36 +1141,80 @@ class Tutor_LMS_Customizations {
     }
 
     /**
-     * Ensure certificate builder templates (published, draft, or by ID) are always available in tutor_certificate_templates
+     * Ensure certificate builder templates (published, draft, or private) are always available in tutor_certificate_templates
      */
     public function ensure_course_certificate_templates( $templates, $include_admins = false, $template_in = array() ) {
-        if ( ! empty( $template_in ) && is_array( $template_in ) ) {
-            foreach ( $template_in as $tpl_key ) {
-                if ( is_string( $tpl_key ) && 0 === strpos( $tpl_key, 'tutor_cb_' ) && ! isset( $templates[ $tpl_key ] ) ) {
-                    $cert_id = (int) str_replace( 'tutor_cb_', '', $tpl_key );
-                    if ( $cert_id > 0 ) {
-                        $cert_post = get_post( $cert_id );
-                        if ( $cert_post && 'tutor_certificate' === $cert_post->post_type ) {
-                            $dimension = get_post_meta( $cert_post->ID, 'tutor_certificate_dimension', true );
-                            $size      = get_post_meta( $cert_post->ID, 'tutor_certificate_size', true );
-                            $templates[ $tpl_key ] = array(
-                                'name'           => $cert_post->post_title,
-                                'orientation'    => ! empty( $dimension ) ? $dimension : 'landscape',
-                                'size'           => empty( $size ) ? 'letter' : $size,
-                                'path'           => '',
-                                'url'            => '',
-                                'edit_url'       => add_query_arg( array( 'action' => 'tutor_certificate_builder', 'post' => $cert_post->ID ), get_home_url() ),
-                                'preview_src'    => get_the_post_thumbnail_url( $cert_post->ID, 'full' ),
-                                'background_src' => '',
-                                'author_id'      => $cert_post->post_author,
-                                'key'            => $tpl_key,
-                            );
-                        }
-                    }
+        if ( ! is_array( $templates ) ) {
+            $templates = array();
+        }
+
+        // Fetch all tutor_certificate posts regardless of author or status to ensure no templates are lost
+        $cert_posts = get_posts( array(
+            'post_type'      => 'tutor_certificate',
+            'post_status'    => array( 'publish', 'draft', 'private' ),
+            'posts_per_page' => -1,
+            'orderby'        => 'ID',
+            'order'          => 'DESC',
+        ) );
+
+        if ( ! empty( $cert_posts ) ) {
+            $upload_baseurl = trailingslashit( wp_upload_dir()['baseurl'] );
+            $cb_dir         = 'tutor-certificates/';
+            foreach ( $cert_posts as $cert_post ) {
+                $tpl_key = 'tutor_cb_' . $cert_post->ID;
+                if ( ! isset( $templates[ $tpl_key ] ) ) {
+                    $dimension   = get_post_meta( $cert_post->ID, 'tutor_certificate_dimension', true );
+                    $size        = get_post_meta( $cert_post->ID, 'tutor_certificate_size', true );
+                    $preview_img = get_post_meta( $cert_post->ID, '_tutor_certificate_preview', true );
+                    $preview_url = $preview_img ? $upload_baseurl . $cb_dir . $preview_img : get_the_post_thumbnail_url( $cert_post->ID, 'full' );
+
+                    $templates[ $tpl_key ] = array(
+                        'name'           => $cert_post->post_title,
+                        'orientation'    => ! empty( $dimension ) ? $dimension : 'landscape',
+                        'size'           => empty( $size ) ? 'letter' : $size,
+                        'path'           => '',
+                        'url'            => '',
+                        'edit_url'       => add_query_arg( array( 'action' => 'tutor_certificate_builder', 'post' => $cert_post->ID ), get_home_url() ),
+                        'preview_src'    => $preview_url ? $preview_url : '',
+                        'background_src' => '',
+                        'author_id'      => $cert_post->post_author,
+                        'key'            => $tpl_key,
+                    );
                 }
             }
         }
+
         return $templates;
+    }
+
+    /**
+     * Recursively replace upload URLs in arrays or strings safely without breaking serialization
+     */
+    private function clean_certificate_urls_recursive( $data, $target_baseurl ) {
+        if ( is_string( $data ) ) {
+            return preg_replace( '#https?://[^"\'\s\\\\]+/.*?wp-content/uploads/#i', $target_baseurl, $data );
+        }
+        if ( is_array( $data ) ) {
+            foreach ( $data as $k => $v ) {
+                $data[ $k ] = $this->clean_certificate_urls_recursive( $v, $target_baseurl );
+            }
+        }
+        return $data;
+    }
+
+    /**
+     * Ensure certificate builder URL matches current visitor domain/protocol to prevent cross-origin iframe blocking
+     */
+    public function match_current_domain_builder_url( $url, $template_id = null ) {
+        if ( is_string( $url ) && isset( $_SERVER['HTTP_HOST'] ) ) {
+            $parsed = parse_url( $url );
+            if ( ! empty( $parsed['host'] ) ) {
+                $scheme = is_ssl() ? 'https' : 'http';
+                $host   = $_SERVER['HTTP_HOST'];
+                $url    = preg_replace( '#^https?://[^/]+#i', $scheme . '://' . $host, $url );
+            }
+        }
+        return $url;
     }
 
     /**
@@ -1207,6 +1269,7 @@ class Tutor_LMS_Customizations {
 
     /**
      * Dynamically replace dead domain URLs in certificate postmeta to avoid canvas tainting
+     * without breaking PHP serialization
      */
     public function filter_certificate_template_postmeta( $value, $object_id, $meta_key, $single ) {
         if ( 'tutor_certificate_data' === $meta_key || 'tutor_certificate_draft_data' === $meta_key ) {
@@ -1215,12 +1278,28 @@ class Tutor_LMS_Customizations {
             add_filter( 'get_post_metadata', array( $this, 'filter_certificate_template_postmeta' ), 10, 4 );
 
             if ( is_string( $raw_value ) && ! empty( $raw_value ) ) {
-                $upload_baseurl = wp_upload_dir()['baseurl'];
-                $replacements = array(
-                    'https://vcacademy.in/wp-content/uploads' => $upload_baseurl,
-                    'http://vcacademy.in/wp-content/uploads'  => $upload_baseurl,
-                );
-                return str_replace( array_keys( $replacements ), array_values( $replacements ), $raw_value );
+                $upload_baseurl = trailingslashit( wp_upload_dir()['baseurl'] );
+
+                // Check if it is a serialized string
+                if ( is_serialized( $raw_value ) ) {
+                    $unserialized = @unserialize( $raw_value );
+                    if ( false !== $unserialized ) {
+                        // Check if double-serialized
+                        if ( is_string( $unserialized ) && is_serialized( $unserialized ) ) {
+                            $inner = @unserialize( $unserialized );
+                            if ( false !== $inner ) {
+                                $clean = $this->clean_certificate_urls_recursive( $inner, $upload_baseurl );
+                                return serialize( $clean );
+                            }
+                        }
+                        $clean = $this->clean_certificate_urls_recursive( $unserialized, $upload_baseurl );
+                        return serialize( $clean );
+                    }
+                }
+
+                // If not serialized (e.g. JSON or plaintext), perform regex safely
+                $clean = preg_replace( '#https?://[^"\'\s\\\\]+/.*?wp-content/uploads/#i', $upload_baseurl, $raw_value );
+                return $clean ? $clean : $raw_value;
             }
             return $raw_value;
         }
@@ -1255,17 +1334,21 @@ class Tutor_LMS_Customizations {
      */
     public function register_dashboard_certificates_nav( $items ) {
         $icon = 'certificate';
+        $cert_url = tutor_utils()->get_tutor_dashboard_page_permalink( 'certificates' );
+        if ( false === strpos( $cert_url, '?' ) ) {
+            $cert_url = trailingslashit( $cert_url );
+        }
         $items['certificates'] = array(
             'title'       => __( 'My Certificates', 'vconline' ),
             'icon'        => $icon,
             'active_icon' => $icon,
-            'url'         => trailingslashit( tutor_utils()->get_tutor_dashboard_page_permalink( 'certificates' ) ),
+            'url'         => $cert_url,
         );
         return $items;
     }
 
     /**
-     * Add rewrite rule for dashboard/certificates/
+     * Add rewrite rule for dashboard/certificates/ and auto-flush if missing
      */
     public function add_dashboard_certificates_rewrite_rule() {
         $dashboard_page_id   = (int) ( function_exists( 'tutor_utils' ) ? tutor_utils()->get_option( 'tutor_dashboard_page_id' ) : 0 );
@@ -1276,6 +1359,12 @@ class Tutor_LMS_Customizations {
         add_rewrite_rule( "^{$dashboard_page_slug}/certificates/?$", "index.php?pagename={$dashboard_page_slug}&tutor_dashboard_page=certificates", 'top' );
         if ( 'dashboard' !== $dashboard_page_slug ) {
             add_rewrite_rule( '^dashboard/certificates/?$', "index.php?pagename={$dashboard_page_slug}&tutor_dashboard_page=certificates", 'top' );
+        }
+
+        // Auto-flush rewrite rules if our certificate rule is not in cached rewrite_rules
+        $rules = get_option( 'rewrite_rules' );
+        if ( is_array( $rules ) && ! isset( $rules[ "^{$dashboard_page_slug}/certificates/?$" ] ) ) {
+            flush_rewrite_rules( false );
         }
     }
 
@@ -1290,9 +1379,39 @@ class Tutor_LMS_Customizations {
         }
 
         $pattern = '#(?:^|/)(' . preg_quote( $dashboard_page_slug, '#' ) . '|dashboard)/certificates/?$#i';
-        if ( isset( $wp->request ) && preg_match( $pattern, $wp->request ) ) {
+        if ( ( isset( $wp->request ) && preg_match( $pattern, $wp->request ) )
+             || ( isset( $_GET['tutor_dashboard_page'] ) && 'certificates' === $_GET['tutor_dashboard_page'] ) ) {
             $wp->query_vars['pagename']             = $dashboard_page_slug;
             $wp->query_vars['tutor_dashboard_page'] = 'certificates';
+            if ( $dashboard_page_id ) {
+                $wp->query_vars['page_id'] = $dashboard_page_id;
+            }
+        }
+    }
+
+    /**
+     * Fix 404 when viewing dashboard certificates if rewrite cache is out of sync
+     */
+    public function fix_dashboard_certificates_404() {
+        global $wp_query;
+        if ( isset( $wp_query->query_vars['tutor_dashboard_page'] ) && 'certificates' === $wp_query->query_vars['tutor_dashboard_page'] ) {
+            $dashboard_page_id = (int) ( function_exists( 'tutor_utils' ) ? tutor_utils()->get_option( 'tutor_dashboard_page_id' ) : 0 );
+            if ( $wp_query->is_404 ) {
+                $wp_query->is_404      = false;
+                $wp_query->is_page     = true;
+                $wp_query->is_singular = true;
+                if ( $dashboard_page_id ) {
+                    $post = get_post( $dashboard_page_id );
+                    if ( $post ) {
+                        $wp_query->queried_object_id = $dashboard_page_id;
+                        $wp_query->queried_object    = $post;
+                        $wp_query->post              = $post;
+                        $wp_query->posts             = array( $post );
+                        $wp_query->post_count        = 1;
+                    }
+                }
+                status_header( 200 );
+            }
         }
     }
 

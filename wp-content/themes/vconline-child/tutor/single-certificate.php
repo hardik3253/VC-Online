@@ -34,11 +34,24 @@ if ( ! file_exists( $cert_file ) ) {
 $course_template_key = get_post_meta( $course->ID, 'tutor_course_certificate_template', true );
 $saved_template_key  = get_comment_meta( $completed->certificate_id, '_vco_certificate_template_key', true );
 
-// If template key changed on course, force regeneration of certificate image
-$template_changed = ( $course_template_key && $saved_template_key && $course_template_key !== $saved_template_key );
+// If file exists and no saved template key recorded yet, record current course template
+if ( $cert_file && empty( $saved_template_key ) && ! empty( $course_template_key ) ) {
+	update_comment_meta( $completed->certificate_id, '_vco_certificate_template_key', $course_template_key );
+	$saved_template_key = $course_template_key;
+}
 
-$generate_cert = ! $cert_file || $template_changed || ( is_user_logged_in() && 1 == Input::get( 'regenerate' ) );
+// Only regenerate if:
+// 1. Image does not exist on disk
+// 2. OR template was changed to a DIFFERENT template after having been previously saved
+// 3. OR user explicitly requested ?regenerate=1
+$template_changed = ( $course_template_key && $saved_template_key && $course_template_key !== $saved_template_key );
+$user_regen       = ( is_user_logged_in() && 1 == Input::get( 'regenerate' ) );
+
+$generate_cert = ( ! $cert_file ) || $template_changed || $user_regen;
 if ( $generate_cert ) {
+	if ( ( $template_changed || $user_regen ) && $cert_file && file_exists( $cert_file ) ) {
+		@unlink( $cert_file );
+	}
 	$cert_file = null;
 }
 
