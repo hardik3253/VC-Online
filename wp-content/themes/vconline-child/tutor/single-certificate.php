@@ -31,7 +31,13 @@ if ( ! file_exists( $cert_file ) ) {
 	$cert_file = null;
 }
 
-$generate_cert = ! $cert_file || ( is_user_logged_in() && 1 == Input::get( 'regenerate' ) );
+$course_template_key = get_post_meta( $course->ID, 'tutor_course_certificate_template', true );
+$saved_template_key  = get_comment_meta( $completed->certificate_id, '_vco_certificate_template_key', true );
+
+// If template key changed on course, force regeneration of certificate image
+$template_changed = ( $course_template_key && $saved_template_key && $course_template_key !== $saved_template_key );
+
+$generate_cert = ! $cert_file || $template_changed || ( is_user_logged_in() && 1 == Input::get( 'regenerate' ) );
 if ( $generate_cert ) {
 	$cert_file = null;
 }
@@ -41,6 +47,9 @@ $cert_url = $cert_obj->tutor_certificate_public_url( $cert_hash );
 
 if ( $generate_cert ) {
 	update_user_meta( get_current_user_id(), 'tutor_certificate_generated', $completed->course_id );
+	if ( ! empty( $course_template_key ) ) {
+		update_comment_meta( $completed->certificate_id, '_vco_certificate_template_key', $course_template_key );
+	}
 }
 
 $issued_by = tutor_utils()->get_option( 'tutor_cert_authorised_name' );
