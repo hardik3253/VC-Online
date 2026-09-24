@@ -280,7 +280,8 @@ const brandAgentConnectCallback = (event) => {
 
 window.addEventListener("message", brandAgentConnectCallback, false);
 
-// Square connector operations. The iframe sends only action + requestId + providerId.
+// Square connector operations. A pending reauthorization replacement is bound to the exact
+// authorization version observed by the iframe.
 // This parent holds the admin-ajax nonce and never forwards HMAC material back.
 const brandAgentConnectorCallback = (event) => {
   if (event.origin !== TRUSTED_CLARITY_ORIGIN) return;
@@ -291,6 +292,16 @@ const brandAgentConnectorCallback = (event) => {
   const requestId = typeof postedMessage.requestId === "string" ? postedMessage.requestId : "";
   const operation = typeof postedMessage.connectorOperation === "string" ? postedMessage.connectorOperation : "";
   const providerId = typeof postedMessage.providerId === "string" ? postedMessage.providerId : "";
+  const hasReplacePendingAuthorization = Object.prototype.hasOwnProperty.call(
+    postedMessage,
+    "replacePendingAuthorization",
+  );
+  const replacePendingAuthorization = postedMessage.replacePendingAuthorization === true;
+  const hasExpectedAuthorizationVersion = Object.prototype.hasOwnProperty.call(
+    postedMessage,
+    "expectedAuthorizationVersion",
+  );
+  const expectedAuthorizationVersion = postedMessage.expectedAuthorizationVersion;
   const nonce =
     typeof window !== "undefined" &&
     window.clarityBrandAgentConfig &&
@@ -319,16 +330,42 @@ const brandAgentConnectorCallback = (event) => {
     return;
   }
 
+  const hasPendingReplacementFields =
+    hasReplacePendingAuthorization || hasExpectedAuthorizationVersion;
+  const validReplacePendingAuthorization =
+    !hasReplacePendingAuthorization || typeof postedMessage.replacePendingAuthorization === "boolean";
+  const validPendingReplacement =
+    operation === "reauthorize" &&
+    replacePendingAuthorization &&
+    Number.isInteger(expectedAuthorizationVersion) &&
+    expectedAuthorizationVersion > 0 &&
+    expectedAuthorizationVersion <= 2147483647;
+  if (
+    (hasPendingReplacementFields &&
+      (operation !== "reauthorize" ||
+        !validReplacePendingAuthorization ||
+        (replacePendingAuthorization ? !validPendingReplacement : hasExpectedAuthorizationVersion)))
+  ) {
+    respond(false, null, { code: "invalid_request", message: "Invalid connector request." });
+    return;
+  }
+
+  const requestData = {
+    action: "brandagent_connectors",
+    nonce: nonce,
+    operation: operation,
+    providerId: providerId,
+  };
+  if (validPendingReplacement) {
+    requestData.replacePendingAuthorization = true;
+    requestData.expectedAuthorizationVersion = expectedAuthorizationVersion;
+  }
+
   jQuery
     .ajax({
       method: "POST",
       url: ajaxurl,
-      data: {
-        action: "brandagent_connectors",
-        nonce: nonce,
-        operation: operation,
-        providerId: providerId,
-      },
+      data: requestData,
       dataType: "json",
     })
     .done(function (json) {
@@ -339,13 +376,18 @@ const brandAgentConnectorCallback = (event) => {
       const message =
         (json && json.data && json.data.message) || "The connector request failed.";
       const code = (json && json.data && json.data.code) || "connector_request_failed";
-      respond(false, null, { code: code, message: message });
+      respond(false, null, {
+        code: code,
+        message: message,
+        connector: (json && json.data && json.data.connector) || null,
+      });
     })
     .fail(function (xhr) {
       const payload = xhr && xhr.responseJSON && xhr.responseJSON.data;
       respond(false, null, {
         code: (payload && payload.code) || "connector_request_failed",
         message: (payload && payload.message) || "The connector request failed.",
+        connector: (payload && payload.connector) || null,
       });
     });
 };

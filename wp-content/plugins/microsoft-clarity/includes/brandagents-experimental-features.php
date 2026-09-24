@@ -351,7 +351,7 @@ function brandagent_ucp_build_upstream_url() {
 		return '';
 	}
 
-	$normalized_store_url = brandagent_normalize_store_url( home_url() );
+	$normalized_store_url = brandagent_normalize_store_url( brandagent_get_connected_store_url() );
 	if ( empty( $normalized_store_url ) ) {
 		return '';
 	}
