@@ -447,3 +447,6 @@ require_once get_stylesheet_directory() . '/inc/course-visibility.php';
 
 // Razorpay Payment Verification & Tutor LMS Order Sync
 require_once get_stylesheet_directory() . '/inc/razorpay-sync.php';
+
+// Frontend Password Reset Functionality (Tutor LMS Pro)
+require_once get_stylesheet_directory() . '/inc/frontend-password-reset.php';
