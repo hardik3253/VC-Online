@@ -44,6 +44,11 @@ class Handler extends BaseHandler
             'bcc' => $this->getBlindCarbonCopy()
         ];
 
+        if ($this->getParam('headers.content-type') == 'text/plain') {
+            $body['content']['text'] = $this->phpMailer->Body;
+            unset($body['content']['html']);
+        }
+
         if ($replyTo = $this->getReplyTo()) {
             $body['content']['reply_to'] = $replyTo;
         }
@@ -99,7 +104,7 @@ class Handler extends BaseHandler
         $email = $this->getParam('sender_email');
 
         if ($name = $this->getParam('sender_name')) {
-            $from = $name . ' <' . $email . '>';
+            $from = self::formatAddress($email, $name);
         } else {
             $from = $email;
         }
