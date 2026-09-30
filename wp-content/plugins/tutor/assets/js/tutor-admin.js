@@ -217,14 +217,14 @@ g(a)})})}/**
 	 */function y(e){var r=e.is(":checked");var o=e.data("toggle-fields").split(",");if(Array.isArray(o)===false||o.length===0)return;o=o.map(e=>e.trim());r?o.forEach(e=>t("#field_".concat(e)).removeClass("tutor-hide-option")):o.forEach(e=>t("#field_".concat(e)).addClass("tutor-hide-option"));var a=e.closest(".tutor-option-field-row");var n=e.closest(".item-wrapper");var i=n.find(".tutor-option-field-row").not("div.tutor-hide-option");if(i.length===1){a.addClass("tutor-option-no-bottom-border")}else{a.removeClass("tutor-option-no-bottom-border");i.last().addClass("tutor-option-no-bottom-border")}}var w=t('input[type="checkbox"][data-toggle-fields]');w.each(function(){y(t(this))});w.change(function(){y(t(this))});/**
 	 * On toggle switch change - show, hide setting's blocks
 	 * @since 3.0.0
-	 */function k(e){var r=e.is(":checked");var o=e.data("toggle-blocks").split(",");if(Array.isArray(o)===false||o.length===0)return;o=o.map(e=>e.trim());o.forEach(e=>{if(r){t(".tutor-option-single-item.".concat(e)).removeClass("tutor-d-none")}else{t(".tutor-option-single-item.".concat(e)).addClass("tutor-d-none")}})}var q=t('input[type="checkbox"][data-toggle-blocks]');q.each(function(){k(t(this))});q.change(function(){k(t(this))});/**
+	 */function q(e){var r=e.is(":checked");var o=e.data("toggle-blocks").split(",");if(Array.isArray(o)===false||o.length===0)return;o=o.map(e=>e.trim());o.forEach(e=>{if(r){t(".tutor-option-single-item.".concat(e)).removeClass("tutor-d-none")}else{t(".tutor-option-single-item.".concat(e)).addClass("tutor-d-none")}})}var C=t('input[type="checkbox"][data-toggle-blocks]');C.each(function(){q(t(this))});C.change(function(){q(t(this))});/**
 	 * Show/Hide setting option
 	 * @param object element			Dom object
 	 * @param conditionFn function	Condition function
 	 * @return void
 	 * 
 	 * @since 2.0.7
-	 */function C(e,t){if(!e)return;if(t()){e.classList.remove("tutor-d-none")}else{e.classList.add("tutor-d-none")}// Remove border if only one item left.
+	 */function x(e,t){if(!e)return;if(t()){e.classList.remove("tutor-d-none")}else{e.classList.add("tutor-d-none")}// Remove border if only one item left.
 var r=e.closest(".item-wrapper");if(r){var o=r.querySelectorAll(".tutor-option-field-row:not(.tutor-d-none)");if(o.length&&o.length===1){o[0].classList.add("tutor-option-no-bottom-border")}else{o[0].classList.remove("tutor-option-no-bottom-border")}}}/**
 	 * Woocommerce order auto complete
 	 *
@@ -237,11 +237,11 @@ var r=e.closest(".item-wrapper");if(r){var o=r.querySelectorAll(".tutor-option-f
 	 * Monetization options refactored
 	 *
 	 * @since 3.0.0
-	 */var x=document.querySelector("[name='tutor_option[monetize_by]']");if(x){var A=x===null||x===void 0?void 0:x.value;var j=document.querySelector("[data-toggle-fields=sharing_percentage]");var T=["tutor","wc","edd","pmpro","restrict-content-pro"];var D=document.querySelector(".tutor-option-single-item.woocommerce");var I=document.querySelector(".tutor-option-single-item.ecommerce_currency");var O=document.querySelector(".tutor-option-single-item.revenue_sharing");var M=document.querySelector(".tutor-option-single-item.fees");var B=document.querySelector(".tutor-option-single-item.withdraw");var F=document.querySelector(".tutor-option-single-item.ecommerce_invoice");var N=document.querySelector("#field_tutor_cart_page_id");var P=document.querySelector("#field_tutor_checkout_page_id");var H=document.querySelector("#field_hide_course_from_shop_page");C(D,()=>A==="wc");C(I,()=>A==="tutor");C(N,()=>A==="tutor");C(P,()=>A==="tutor");C(F,()=>A==="tutor");C(H,()=>A!=="tutor");C(O,()=>T.includes(A));C(M,()=>T.includes(A)&&(j===null||j===void 0?void 0:j.checked));C(B,()=>T.includes(A)&&(j===null||j===void 0?void 0:j.checked));// Handle monetization fields on change.
-x.onchange=e=>{var t=e.target.value;C(D,()=>t==="wc");C(I,()=>t==="tutor");C(N,()=>t==="tutor");C(P,()=>t==="tutor");C(F,()=>t==="tutor");C(H,()=>t!=="tutor");C(O,()=>T.includes(t));C(M,()=>T.includes(t)&&(j===null||j===void 0?void 0:j.checked));C(B,()=>T.includes(t)&&(j===null||j===void 0?void 0:j.checked))}}/**
+	 */var A=document.querySelector("[name='tutor_option[monetize_by]']");if(A){var j=A===null||A===void 0?void 0:A.value;var T=document.querySelector("[data-toggle-fields=sharing_percentage]");var D=["tutor","wc","edd","pmpro","restrict-content-pro"];var I=document.querySelector(".tutor-option-single-item.woocommerce");var O=document.querySelector(".tutor-option-single-item.ecommerce_currency");var M=document.querySelector(".tutor-option-single-item.revenue_sharing");var B=document.querySelector(".tutor-option-single-item.fees");var F=document.querySelector(".tutor-option-single-item.withdraw");var N=document.querySelector(".tutor-option-single-item.ecommerce_invoice");var P=document.querySelector("#field_tutor_cart_page_id");var H=document.querySelector("#field_tutor_checkout_page_id");var U=document.querySelector("#field_hide_course_from_shop_page");x(I,()=>j==="wc");x(O,()=>j==="tutor");x(P,()=>j==="tutor");x(H,()=>j==="tutor");x(N,()=>j==="tutor");x(U,()=>j!=="tutor");x(M,()=>D.includes(j));x(B,()=>D.includes(j)&&(T===null||T===void 0?void 0:T.checked));x(F,()=>D.includes(j)&&(T===null||T===void 0?void 0:T.checked));// Handle monetization fields on change.
+A.onchange=e=>{var t=e.target.value;x(I,()=>t==="wc");x(O,()=>t==="tutor");x(P,()=>t==="tutor");x(H,()=>t==="tutor");x(N,()=>t==="tutor");x(U,()=>t!=="tutor");x(M,()=>D.includes(t));x(B,()=>D.includes(t)&&(T===null||T===void 0?void 0:T.checked));x(F,()=>D.includes(t)&&(T===null||T===void 0?void 0:T.checked))}}/**
 	 * Maxlength counter for Textarea and Text field.
 	 * @since 2.2.3
-	 */var U=t(".tutor-option-field-input textarea[maxlength], .tutor-option-field-input input[maxlength]");U.each(function(){var e=t(this),r=t(this).attr("maxlength"),o=t(this).val().length,a="".concat(o,"/").concat(r);e.css("margin-right",0);t(this).parent().append('<div class="tutor-field-maxlength-info tutor-mr-4 tutor-fs-8 tutor-color-muted">'.concat(a,"</div>"))});U.keyup(function(){var e=t(this),r=t(this).attr("maxlength"),o=t(this).val().length,a="".concat(o,"/").concat(r);e.parent().find(".tutor-field-maxlength-info").text(a)});/**
+	 */var R=t(".tutor-option-field-input textarea[maxlength], .tutor-option-field-input input[maxlength]");R.each(function(){var e=t(this),r=t(this).attr("maxlength"),o=t(this).val().length,a="".concat(o,"/").concat(r);e.css("margin-right",0);t(this).parent().append('<div class="tutor-field-maxlength-info tutor-mr-4 tutor-fs-8 tutor-color-muted">'.concat(a,"</div>"))});R.keyup(function(){var e=t(this),r=t(this).attr("maxlength"),o=t(this).val().length,a="".concat(o,"/").concat(r);e.parent().find(".tutor-field-maxlength-info").text(a)});/**
 	 * Tutor option password type hide and show
 	 * 
 	 * @since 3.0.0
@@ -249,8 +249,32 @@ x.onchange=e=>{var t=e.target.value;C(D,()=>t==="wc");C(I,()=>t==="tutor");C(N,(
 	 * Tutor option withdraw bank transfer instruction hide and show
 	 * 
 	 * @since 3.0.0
-	 */var R=document.querySelector("#tutor_check_bank_transfer_withdraw");var z=document.querySelector("#field_tutor_bank_transfer_withdraw_instruction");if(R&&z){if(!R.checked){var J;z.classList.add("tutor-d-none");(J=z.previousElementSibling)===null||J===void 0?void 0:J.classList.add("tutor-option-no-bottom-border")}R.addEventListener("change",e=>{var t;z.classList.toggle("tutor-d-none",!e.target.checked);(t=z.previousElementSibling)===null||t===void 0?void 0:t.classList.toggle("tutor-option-no-bottom-border",!e.target.checked)})}});// EXTERNAL MODULE: ./assets/src/js/admin-dashboard/segments/reset.js
-var k=r(76592);// CONCATENATED MODULE: ./assets/src/js/admin-dashboard/segments/withdraw.js
+	 */var z=document.querySelector("#tutor_check_bank_transfer_withdraw");var J=document.querySelector("#field_tutor_bank_transfer_withdraw_instruction");if(z&&J){if(!z.checked){var Z;J.classList.add("tutor-d-none");(Z=J.previousElementSibling)===null||Z===void 0?void 0:Z.classList.add("tutor-option-no-bottom-border")}z.addEventListener("change",e=>{var t;J.classList.toggle("tutor-d-none",!e.target.checked);(t=J.previousElementSibling)===null||t===void 0?void 0:t.classList.toggle("tutor-option-no-bottom-border",!e.target.checked)})}/**
+	 * Option change and turn-off confirmation modals.
+	 *
+	 * Intercepts user interactions on options configured in the localized
+	 * `tutorOptionConfirmations` map (keyed by field key).
+	 *
+	 * Supports:
+	 * - 'turnoff': When a toggle switch is turned OFF.
+	 * - 'change': When a field value (e.g. select dropdown) changes.
+	 *
+	 * The map is localized by Tutor Pro; Free only provides this generic,
+	 * configuration-driven mechanism.
+	 *
+	 * @since 4.1.0
+	 */var W=window.tutorOptionConfirmations||{};Object.entries(W).forEach(e=>{var[r,o]=e;var a=o.message;var n=o.title;var i=o.cancel;var s=o.confirm;var l=o.usage_check_action;var c=o.type||"turnoff";if(!a){return}if(c==="turnoff"){document.querySelectorAll("#field_".concat(r," .tutor-form-toggle-input")).forEach(e=>{e.addEventListener("change",function(e){if(this.checked){return}var r=this.previousElementSibling;var o=()=>{var e=t(this);if(e.data("toggle-fields")){y(e)}if(e.data("toggle-blocks")){q(e)}};var c=()=>{this.checked=true;if(r){r.value="on"}o()};var u=()=>{this.checked=false;if(r){r.value="off"}o()};var d=()=>{c();k(a,n,i,s).then(e=>{if(e){u()}})};if(!l){d();return}var v=new FormData;v.append("action",l);v.append(_tutorobject.nonce_key,_tutorobject._tutor_nonce);fetch(_tutorobject.ajaxurl,{method:"POST",body:v}).then(e=>e.json()).then(e=>{var t;var r=e===null||e===void 0?void 0:(t=e.data)===null||t===void 0?void 0:t.has_customized;if(r){d()}else{u()}}).catch(()=>{c()})})})}else if(c==="change"){document.querySelectorAll("#field_".concat(r," select")).forEach(e=>{var t=e.value;e.addEventListener("change",function(){var e=this.value;if(e===t){return}var r=document.getElementById("save_tutor_option");var o=r?r.disabled:false;var l=()=>{this.value=t;var e=this.nextElementSibling;if(e&&e.classList.contains("tutor-js-form-select")){var a=e.querySelector(".tutor-form-select-label");var n=Array.from(this.options).find(e=>e.value===t);if(a&&n){a.innerText=n.text;a.dataset.value=t}var i=e.querySelector(".tutor-form-select-options");if(i){var s;(s=i.querySelector(".is-active"))===null||s===void 0?void 0:s.classList.remove("is-active");var l=i.querySelector('[data-key="'.concat(t,'"]'));if(l){l.classList.add("is-active")}}}if(r){r.disabled=o}};k(a,n,i,s).then(o=>{if(o){t=e;if(r){r.disabled=false}}else{l()}})})})}})});/**
+ * Show a confirmation modal for option changes or turn-offs.
+ *
+ * @since 4.1.0
+ *
+ * @param {string} message The confirmation message.
+ * @param {string} [title] Optional modal title.
+ * @param {string} [cancelText] Optional cancel button label.
+ * @param {string} [confirmText] Optional confirm button label.
+ * @return {Promise<boolean>} Resolves true if confirmed, false if cancelled.
+ */function k(e,t,r,o){var{__}=wp.i18n;return new Promise(a=>{var n;var i=false;var s=e=>{if(i){return}i=true;a(e);n.find("[data-tutor-modal-close]").click()};n=new window.tutor_popup(window.jQuery,"").popup({title:t||__("Confirm setting?","tutor"),description:e,buttons:{cancel:{title:r||__("No, keep it","tutor"),id:"cancel",class:"tutor-btn tutor-btn-outline-primary",callback:function e(){s(false)}},confirm:{title:o||__("Yes, turn off","tutor"),id:"confirm",class:"tutor-btn tutor-btn-primary tutor-ml-20",callback:function e(){s(true)}}}});n.on("click","[data-tutor-modal-close], .tutor-modal-overlay",function(){s(false)})})}// EXTERNAL MODULE: ./assets/src/js/admin-dashboard/segments/reset.js
+var q=r(76592);// CONCATENATED MODULE: ./assets/src/js/admin-dashboard/segments/withdraw.js
 document.addEventListener("DOMContentLoaded",function(){var{__,_x:e,_n:r,_nx:o,sprintf:a}=wp.i18n;// Approve and Reject button
 var n=document.querySelectorAll(".tutor-admin-open-withdraw-approve-modal");var i=document.querySelectorAll(".tutor-admin-open-withdraw-reject-modal");var s;// Onclick button dynamically create content
 if(n){for(var l of n){l.onclick=e=>{s=e.currentTarget.dataset.id;var t=e.currentTarget.dataset.amount;var r=e.currentTarget.dataset.name;var o=document.getElementById("tutor-admin-withdraw-approve-content");o.innerHTML="".concat(/* translators: %1$s is the Account name and %2$s is the Amount */a(__("You are approving %1$s withdrawal request for %2$s. Are you sure you want to approve?","tutor"),'<strong style="color:#000;">'.concat(r,"</strong>"),'<strong  style="color:#000;">'.concat(t,"</strong>")))}}}// Onclick button dynamically create content
@@ -272,14 +296,14 @@ return navigator.clipboard.writeText(e)}else{// text area method
 var t=document.createElement("textarea");t.value=e;// make the textarea out of viewport
 t.style.position="fixed";t.style.left="-999999px";t.style.top="-999999px";document.body.appendChild(t);t.focus();t.select();return new Promise((e,r)=>{// here the magic happens
 document.execCommand("copy")?e():r();t.remove()})}}var f=document.querySelectorAll(".withdraw-tutor-copy-to-clipboard");if(f){var g=function(e){e.addEventListener("click",t=>{m(t.currentTarget.dataset.textCopy).then(t=>{var r=e.innerHTML;e.innerHTML="".concat(__("Copied","tutor"));setTimeout(()=>{e.innerHTML=r},5e3)})})};for(var _ of f)g(_)}});// EXTERNAL MODULE: ./assets/src/js/front/_select_dd_search.js
-var q=r(71962);// CONCATENATED MODULE: ./assets/src/js/admin-dashboard/quiz-attempts.js
+var C=r(71962);// CONCATENATED MODULE: ./assets/src/js/admin-dashboard/quiz-attempts.js
 /**
  * Get quiz attempts count data
  *
  * @since v2.0.6
  */document.addEventListener("DOMContentLoaded",function(){return t(function*(){// Create new course
 var e=_tutorobject.current_page;if(e==="tutor_quiz_attempts"){var t=new FormData;t.set("action","tutor_quiz_attempts_count");t.set(window.tutor_get_nonce_data(true).key,window.tutor_get_nonce_data(true).value);var r=new URLSearchParams(window.location.search);var a=["course-id","date","search"];a.forEach(e=>{var o=r.get(e);if(o){t.set(e.replace("-","_"),o)}});var n=yield o(t);if(n.ok){var i=yield n.json();if(i.success&&i.data){var s=document.querySelector(".tutor-form-control[name=data]");if(s){var l=document.querySelectorAll(".tutor-form-control[name=data] + .tutor-form-select .tutor-form-select-label");l.forEach(e=>{e.innerHTML=e.innerHTML.replace("(0)","(".concat(i.data[s.value||"all"],")"))})}var c=document.querySelectorAll(".tutor-form-control[name=data] + .tutor-form-select [tutor-dropdown-item]");c.forEach(e=>{e.innerHTML=e.innerHTML.replace("(0)","(".concat(i.data[e.dataset.key||"all"],")"))})}}}})()});// EXTERNAL MODULE: ./assets/src/js/admin-dashboard/wp-events-subscriber.js
-var C=r(39298);// CONCATENATED MODULE: ./assets/src/js/admin-dashboard/tutor-admin.js
+var x=r(39298);// CONCATENATED MODULE: ./assets/src/js/admin-dashboard/tutor-admin.js
 document.querySelectorAll(".tutor-control-button").forEach(function(e){e.addEventListener("click",function(t){e.classList.toggle("active");var r=e.querySelector('input[type="checkbox"]');r.checked=!r.checked;r.dispatchEvent(new Event("change",{bubbles:true}))})});jQuery(document).ready(function(e){"use strict";var r;var{__}=wp.i18n;/**i
 	 * Color Picker
 	 * @since v.1.2.21
