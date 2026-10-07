@@ -9,6 +9,10 @@ const MessageOperation = {
 const CONNECTOR_OPERATIONS = {
   status: true,
   connect: true,
+  validate_api_key: true,
+  submit_api_key: true,
+  apply_configuration: true,
+  apply_default_configuration: true,
   reauthorize: true,
   sync: true,
   disconnect: true,
@@ -26,6 +30,89 @@ const PROJECT_ID_CHANGE_RESULT = "PROJECT_ID_CHANGE_RESULT";
 const PROJECT_ID_CHANGE_MAX_ATTEMPTS = 12;
 const PROJECT_ID_CHANGE_RETRY_BASE_MS = 500;
 const PROJECT_ID_CHANGE_RETRY_MAX_MS = 4000;
+const CONNECTOR_MAXIMUM_SERVICE_COUNT = 200;
+const CONNECTOR_MAXIMUM_SERVICE_ID_BYTES = 512;
+
+const brandAgentUtf8ByteLength = (value) => {
+  let bytes = 0;
+  for (let index = 0; index < value.length; index++) {
+    const codeUnit = value.charCodeAt(index);
+    if (codeUnit <= 0x7f) {
+      bytes += 1;
+    } else if (codeUnit <= 0x7ff) {
+      bytes += 2;
+    } else if (codeUnit >= 0xd800 && codeUnit <= 0xdbff) {
+      const nextCodeUnit = value.charCodeAt(index + 1);
+      if (nextCodeUnit < 0xdc00 || nextCodeUnit > 0xdfff) {
+        return null;
+      }
+      bytes += 4;
+      index += 1;
+    } else if (codeUnit >= 0xdc00 && codeUnit <= 0xdfff) {
+      return null;
+    } else {
+      bytes += 3;
+    }
+  }
+  return bytes;
+};
+
+const brandAgentValidServiceId = (value) => {
+  const bytes = typeof value === "string" ? brandAgentUtf8ByteLength(value) : null;
+  return (
+    bytes !== null &&
+    bytes > 0 &&
+    bytes <= CONNECTOR_MAXIMUM_SERVICE_ID_BYTES &&
+    value.trim() === value &&
+    !/[\x00-\x1F\x7F]/.test(value)
+  );
+};
+
+const brandAgentParseApiKeyConfiguration = (configuration) => {
+  if (!configuration || typeof configuration !== "object" || Array.isArray(configuration)) {
+    return null;
+  }
+
+  if (configuration.mode === "default") {
+    return Number.isInteger(configuration.durationMinutes) &&
+      configuration.durationMinutes >= 1 &&
+      configuration.durationMinutes <= 1440
+      ? { mode: "default", durationMinutes: configuration.durationMinutes }
+      : null;
+  }
+
+  if (
+    configuration.mode !== "per_service" ||
+    !Array.isArray(configuration.services) ||
+    configuration.services.length > CONNECTOR_MAXIMUM_SERVICE_COUNT
+  ) {
+    return null;
+  }
+
+  const serviceIds = new Set();
+  const services = [];
+  for (const service of configuration.services) {
+    if (
+      !service ||
+      typeof service !== "object" ||
+      Array.isArray(service) ||
+      !brandAgentValidServiceId(service.serviceId) ||
+      serviceIds.has(service.serviceId) ||
+      !Number.isInteger(service.durationMinutes) ||
+      service.durationMinutes < 1 ||
+      service.durationMinutes > 1440
+    ) {
+      return null;
+    }
+    serviceIds.add(service.serviceId);
+    services.push({
+      serviceId: service.serviceId,
+      durationMinutes: service.durationMinutes,
+    });
+  }
+
+  return { mode: "per_service", services };
+};
 let activeProjectChangeRequest = null;
 let projectChangeAjaxInFlight = false;
 let projectChangeRetryTimer = null;
@@ -280,7 +367,7 @@ const brandAgentConnectCallback = (event) => {
 
 window.addEventListener("message", brandAgentConnectCallback, false);
 
-// Square connector operations. A pending reauthorization replacement is bound to the exact
+// Allowlisted connector operations. A pending reauthorization replacement is bound to the exact
 // authorization version observed by the iframe.
 // This parent holds the admin-ajax nonce and never forwards HMAC material back.
 const brandAgentConnectorCallback = (event) => {
@@ -302,6 +389,22 @@ const brandAgentConnectorCallback = (event) => {
     "expectedAuthorizationVersion",
   );
   const expectedAuthorizationVersion = postedMessage.expectedAuthorizationVersion;
+  const hasApiKey = Object.prototype.hasOwnProperty.call(postedMessage, "apiKey");
+  const hasDurationMinutes = Object.prototype.hasOwnProperty.call(postedMessage, "durationMinutes");
+  const hasConfiguration = Object.prototype.hasOwnProperty.call(postedMessage, "configuration");
+  const isApiKeyValidation = operation === "validate_api_key";
+  const isApiKeySubmission = operation === "submit_api_key";
+  const isConfigurationApplication = operation === "apply_configuration";
+  const isApiKeyOperation = isApiKeyValidation || isApiKeySubmission;
+  const isDefaultConfiguration = operation === "apply_default_configuration";
+  const apiKey = postedMessage.apiKey;
+  const apiKeyBytes = typeof apiKey === "string" ? brandAgentUtf8ByteLength(apiKey) : null;
+  const durationMinutes = postedMessage.durationMinutes;
+  const configuration = isApiKeySubmission || isConfigurationApplication
+    ? brandAgentParseApiKeyConfiguration(postedMessage.configuration)
+    : null;
+  const hasLegacyDuration =
+    Number.isInteger(durationMinutes) && durationMinutes >= 1 && durationMinutes <= 1440;
   const nonce =
     typeof window !== "undefined" &&
     window.clarityBrandAgentConfig &&
@@ -330,21 +433,57 @@ const brandAgentConnectorCallback = (event) => {
     return;
   }
 
+  const validApiKey =
+    isApiKeyOperation &&
+    providerId === "housecallpro" &&
+    typeof apiKey === "string" &&
+    apiKeyBytes !== null &&
+    apiKeyBytes <= 4096 &&
+    apiKey.trim().length > 0 &&
+    !/[\x00-\x1F\x7F]/.test(apiKey);
+  const validApiKeySubmission =
+    validApiKey &&
+    isApiKeySubmission &&
+    ((hasConfiguration && configuration !== null && !hasDurationMinutes) ||
+      (!hasConfiguration && hasLegacyDuration));
+  if (
+    (isApiKeyValidation && (!validApiKey || hasDurationMinutes)) ||
+    (isApiKeySubmission && !validApiKeySubmission) ||
+    (isConfigurationApplication &&
+      (providerId !== "housecallpro" ||
+        hasApiKey ||
+        hasDurationMinutes ||
+        !hasConfiguration ||
+        configuration === null)) ||
+    (!isApiKeyOperation && hasApiKey) ||
+    (!isApiKeySubmission && !isConfigurationApplication && hasConfiguration) ||
+    (!isApiKeyOperation && !isDefaultConfiguration && hasDurationMinutes) ||
+    (isDefaultConfiguration &&
+      (providerId !== "housecallpro" ||
+        !Number.isInteger(durationMinutes) ||
+        durationMinutes < 1 ||
+        durationMinutes > 1440))
+  ) {
+    respond(false, null, { code: "invalid_request", message: "Invalid connector request." });
+    return;
+  }
+
   const hasPendingReplacementFields =
     hasReplacePendingAuthorization || hasExpectedAuthorizationVersion;
   const validReplacePendingAuthorization =
     !hasReplacePendingAuthorization || typeof postedMessage.replacePendingAuthorization === "boolean";
   const validPendingReplacement =
-    operation === "reauthorize" &&
+    (operation === "reauthorize" || isApiKeySubmission) &&
     replacePendingAuthorization &&
     Number.isInteger(expectedAuthorizationVersion) &&
     expectedAuthorizationVersion > 0 &&
     expectedAuthorizationVersion <= 2147483647;
+  const pendingReplacementAllowed = operation === "reauthorize" || isApiKeySubmission;
   if (
-    (hasPendingReplacementFields &&
-      (operation !== "reauthorize" ||
+    hasPendingReplacementFields &&
+      (!pendingReplacementAllowed ||
         !validReplacePendingAuthorization ||
-        (replacePendingAuthorization ? !validPendingReplacement : hasExpectedAuthorizationVersion)))
+        (replacePendingAuthorization ? !validPendingReplacement : hasExpectedAuthorizationVersion))
   ) {
     respond(false, null, { code: "invalid_request", message: "Invalid connector request." });
     return;
@@ -359,6 +498,18 @@ const brandAgentConnectorCallback = (event) => {
   if (validPendingReplacement) {
     requestData.replacePendingAuthorization = true;
     requestData.expectedAuthorizationVersion = expectedAuthorizationVersion;
+  }
+  if (isApiKeyOperation) {
+    requestData.apiKey = apiKey;
+  }
+  if (isApiKeySubmission || isConfigurationApplication) {
+    if (configuration !== null) {
+      requestData.configuration = configuration;
+    } else if (isApiKeySubmission) {
+      requestData.durationMinutes = durationMinutes;
+    }
+  } else if (isDefaultConfiguration) {
+    requestData.durationMinutes = durationMinutes;
   }
 
   jQuery

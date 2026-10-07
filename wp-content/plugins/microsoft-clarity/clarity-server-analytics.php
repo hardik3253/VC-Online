@@ -60,6 +60,7 @@ function clarity_construct_collect_event($clarity_project_id)
     );
 
     $analytics = array(
+        'rid'    => wp_generate_uuid4(),
         'time'   => time(),
         'ip'     => clarity_get_ip_address(),
         'ua'     => isset($_SERVER['HTTP_USER_AGENT']) ? sanitize_text_field($_SERVER['HTTP_USER_AGENT']) : 'Unknown',

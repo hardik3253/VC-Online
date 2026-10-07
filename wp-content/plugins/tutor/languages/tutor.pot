@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Tutor LMS 4.1.0\n"
+"Project-Id-Version: Tutor LMS 4.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tutor\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-29T08:03:06+00:00\n"
+"POT-Creation-Date: 2026-10-06T08:00:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tutor\n"
@@ -331,8 +331,8 @@ msgid "You're currently using Tutor LMS %s. To ensure stability, please do not u
 msgstr ""
 
 #: classes/Admin.php:190
+#: assets/js/tutor.js:2803
 #: assets/js/tutor.js:2808
-#: assets/js/tutor.js:2813
 msgid "Warning!"
 msgstr ""
 
@@ -375,11 +375,11 @@ msgstr ""
 #: views/pages/quiz_attempts.php:64
 #: views/pages/students.php:55
 #: views/pages/welcome.php:84
-#: assets/js/tutor-coupon.js:3391
-#: assets/js/tutor-coupon.js:3501
-#: assets/js/tutor-coupon.js:4399
+#: assets/js/tutor-coupon.js:3420
+#: assets/js/tutor-coupon.js:3530
+#: assets/js/tutor-coupon.js:4428
 #: assets/js/tutor-import-export.js:7489
-#: assets/js/tutor-order-details.js:9787
+#: assets/js/tutor-order-details.js:9816
 msgid "Courses"
 msgstr ""
 
@@ -420,7 +420,7 @@ msgstr ""
 #: classes/Announcements.php:180
 #: classes/Options_V2.php:1647
 #: classes/Utils.php:2895
-#: classes/Utils.php:8707
+#: classes/Utils.php:8713
 #: templates/dashboard/announcements.php:90
 #: templates/learning-area/subpages/announcements.php:45
 #: views/fragments/announcement-list.php:253
@@ -442,7 +442,7 @@ msgstr ""
 #: classes/Admin.php:314
 #: classes/Options_V2.php:1536
 #: classes/Q_And_A.php:107
-#: classes/Utils.php:8702
+#: classes/Utils.php:8708
 #: templates/dashboard.php:90
 #: templates/dashboard/discussions.php:40
 #: templates/learning-area/subpages/qna.php:75
@@ -513,17 +513,17 @@ msgstr ""
 #: assets/js/tutor-admin.js:2332
 #: assets/js/tutor-admin.js:2364
 #: assets/js/tutor-admin.js:2399
-#: assets/js/tutor-admin.js:3549
-#: assets/js/tutor-admin.js:3602
-#: assets/js/tutor-admin.js:3605
+#: assets/js/tutor-admin.js:3578
+#: assets/js/tutor-admin.js:3631
+#: assets/js/tutor-admin.js:3634
 #: assets/js/tutor-core.js:2434
 #: assets/js/tutor-front.js:1723
 #: assets/js/tutor-front.js:2215
 #: assets/js/tutor-front.js:2257
 #: assets/js/tutor-front.js:2414
-#: assets/js/tutor.js:2375
-#: assets/js/tutor.js:2409
-#: assets/js/tutor.js:3126
+#: assets/js/tutor.js:2370
+#: assets/js/tutor.js:2404
+#: assets/js/tutor.js:3121
 msgid "Success"
 msgstr ""
 
@@ -586,8 +586,8 @@ msgstr ""
 #: classes/Ajax.php:159
 #: classes/Ajax.php:513
 #: classes/Ajax.php:593
-#: classes/Course.php:2108
-#: classes/Course.php:2428
+#: classes/Course.php:2115
+#: classes/Course.php:2435
 #: classes/Instructor.php:366
 #: classes/Quiz.php:596
 #: classes/Quiz.php:627
@@ -657,7 +657,7 @@ msgstr ""
 #: assets/js/tutor.js:206
 #: assets/js/tutor.js:380
 #: assets/js/tutor.js:384
-#: assets/js/tutor.js:2559
+#: assets/js/tutor.js:2554
 msgid "Something Went Wrong!"
 msgstr ""
 
@@ -743,7 +743,7 @@ msgstr ""
 #: views/pages/instructors.php:57
 #: views/quiz/attempt-details.php:330
 #: views/quiz/attempt-table.php:138
-#: assets/js/tutor-order-details.js:9114
+#: assets/js/tutor-order-details.js:9143
 msgid "Pending"
 msgstr ""
 
@@ -797,10 +797,10 @@ msgstr ""
 #: views/templates/consent-logs-modal.php:32
 #: assets/js/tutor-addon-list.js:4607
 #: assets/js/tutor-addon-list.js:4673
-#: assets/js/tutor-coupon.js:4164
-#: assets/js/tutor-coupon.js:6280
+#: assets/js/tutor-coupon.js:4193
 #: assets/js/tutor-coupon.js:6309
-#: assets/js/tutor-coupon.js:8283
+#: assets/js/tutor-coupon.js:6338
+#: assets/js/tutor-coupon.js:8312
 #: assets/js/tutor-course-builder.js:933
 #: assets/js/tutor-course-builder.js:1320
 #: assets/js/tutor-course-builder.js:4702
@@ -835,20 +835,20 @@ msgstr ""
 #: assets/js/tutor-import-export.js:5652
 #: assets/js/tutor-import-export.js:7422
 #: assets/js/tutor-import-export.js:8806
-#: assets/js/tutor-order-details.js:7829
 #: assets/js/tutor-order-details.js:7858
-#: assets/js/tutor-order-details.js:8512
-#: assets/js/tutor-order-details.js:8615
-#: assets/js/tutor-order-details.js:9008
-#: assets/js/tutor-payment-settings.js:4164
-#: assets/js/tutor-payment-settings.js:9548
-#: assets/js/tutor-payment-settings.js:9577
-#: assets/js/tutor-payment-settings.js:10596
-#: assets/js/tutor-tax-settings.js:7707
+#: assets/js/tutor-order-details.js:7887
+#: assets/js/tutor-order-details.js:8541
+#: assets/js/tutor-order-details.js:8644
+#: assets/js/tutor-order-details.js:9037
+#: assets/js/tutor-payment-settings.js:4173
+#: assets/js/tutor-payment-settings.js:9586
+#: assets/js/tutor-payment-settings.js:9615
+#: assets/js/tutor-payment-settings.js:10634
 #: assets/js/tutor-tax-settings.js:7736
-#: assets/js/tutor-tax-settings.js:8322
-#: assets/js/tutor-tax-settings.js:9193
-#: assets/js/tutor-tax-settings.js:9453
+#: assets/js/tutor-tax-settings.js:7765
+#: assets/js/tutor-tax-settings.js:8351
+#: assets/js/tutor-tax-settings.js:9222
+#: assets/js/tutor-tax-settings.js:9482
 msgid "Cancel"
 msgstr ""
 
@@ -870,8 +870,8 @@ msgstr ""
 #: models/CouponModel.php:207
 #: models/OrderModel.php:302
 #: views/pages/course-list.php:181
-#: assets/js/tutor-coupon.js:6750
-#: assets/js/tutor-order-details.js:10076
+#: assets/js/tutor-coupon.js:6779
+#: assets/js/tutor-order-details.js:10105
 msgid "Trash"
 msgstr ""
 
@@ -886,7 +886,7 @@ msgstr ""
 #: includes/translate-text.php:163
 #: models/CouponModel.php:205
 #: templates/dashboard/student/stats.php:68
-#: assets/js/tutor-coupon.js:6742
+#: assets/js/tutor-coupon.js:6771
 msgid "Active"
 msgstr ""
 
@@ -894,14 +894,14 @@ msgstr ""
 #: classes/InstructorMetricsAdapter.php:300
 #: includes/translate-text.php:167
 #: models/CouponModel.php:206
-#: assets/js/tutor-coupon.js:6746
+#: assets/js/tutor-coupon.js:6775
 #: assets/js/tutor-course-builder.js:11779
 #: assets/js/tutor-course-builder.js:11780
 msgid "Inactive"
 msgstr ""
 
 #: classes/Backend_Page_Trait.php:238
-#: assets/js/tutor-order-details.js:9193
+#: assets/js/tutor-order-details.js:9222
 msgid "Mark as paid"
 msgstr ""
 
@@ -967,65 +967,65 @@ msgstr ""
 msgid "Course list retrieved successfully!"
 msgstr ""
 
-#: classes/Course.php:1042
-#: classes/Course.php:1143
-#: classes/Course.php:1308
-#: classes/Course.php:1339
+#: classes/Course.php:1043
+#: classes/Course.php:1144
+#: classes/Course.php:1309
+#: classes/Course.php:1340
 msgid "Invalid input"
 msgstr ""
 
-#: classes/Course.php:1067
+#: classes/Course.php:1068
 msgid "Course created successfully"
 msgstr ""
 
-#: classes/Course.php:1115
-#: classes/Course.php:1209
-#: classes/Course.php:1302
-#: classes/Course.php:1333
+#: classes/Course.php:1116
+#: classes/Course.php:1210
+#: classes/Course.php:1303
+#: classes/Course.php:1334
 msgid "Invalid course id"
 msgstr ""
 
-#: classes/Course.php:1191
+#: classes/Course.php:1192
 msgid "Course updated successfully."
 msgstr ""
 
-#: classes/Course.php:1235
+#: classes/Course.php:1236
 msgid "Builder unlinked successfully."
 msgstr ""
 
-#: classes/Course.php:1314
+#: classes/Course.php:1315
 msgid "Course contents fetched successfully"
 msgstr ""
 
-#: classes/Course.php:1440
+#: classes/Course.php:1441
 msgid "Data retrieved successfully!"
 msgstr ""
 
-#: classes/Course.php:1475
+#: classes/Course.php:1476
 msgid "You cannot edit this course because it is in the Trash. Please restore it and try again"
 msgstr ""
 
-#: classes/Course.php:1710
+#: classes/Course.php:1715
 msgid "Products retrieved successfully!"
 msgstr ""
 
-#: classes/Course.php:1740
+#: classes/Course.php:1747
 msgid "One product can not be added to multiple course!"
 msgstr ""
 
-#: classes/Course.php:1752
+#: classes/Course.php:1759
 msgid "Product not found"
 msgstr ""
 
-#: classes/Course.php:1772
+#: classes/Course.php:1779
 msgid "Sorting order is required"
 msgstr ""
 
-#: classes/Course.php:1805
+#: classes/Course.php:1812
 msgid "Course content order updated successfully!"
 msgstr ""
 
-#: classes/Course.php:1824
+#: classes/Course.php:1831
 #: templates/loop/course-price-edd.php:80
 #: templates/loop/course-price-tutor.php:84
 #: templates/loop/course-price-woocommerce.php:77
@@ -1033,177 +1033,177 @@ msgstr ""
 msgid "Fully Booked"
 msgstr ""
 
-#: classes/Course.php:2091
+#: classes/Course.php:2098
 msgid "Topic title is required!"
 msgstr ""
 
-#: classes/Course.php:2093
+#: classes/Course.php:2100
 #: classes/Lesson.php:453
 #: ecommerce/BillingController.php:181
 msgid "Invalid inputs"
 msgstr ""
 
-#: classes/Course.php:2131
+#: classes/Course.php:2138
 msgid "Topic updated successfully!"
 msgstr ""
 
-#: classes/Course.php:2136
+#: classes/Course.php:2143
 msgid "Topic created successfully!"
 msgstr ""
 
-#: classes/Course.php:2182
+#: classes/Course.php:2189
 msgid "Topic deleted successfully!"
 msgstr ""
 
-#: classes/Course.php:2204
+#: classes/Course.php:2211
 msgid "Please Sign In first"
 msgstr ""
 
-#: classes/Course.php:2218
-#: classes/Course.php:3223
+#: classes/Course.php:2225
+#: classes/Course.php:3230
 msgid "You do not have permission to enroll in this course"
 msgstr ""
 
-#: classes/Course.php:2265
+#: classes/Course.php:2272
 #: classes/Lesson.php:603
 msgid "Please Sign-In"
 msgstr ""
 
-#: classes/Course.php:2269
+#: classes/Course.php:2276
 msgid "User is not enrolled in course"
 msgstr ""
 
-#: classes/Course.php:2282
-#: classes/Course.php:2327
+#: classes/Course.php:2289
+#: classes/Course.php:2334
 msgid "You do not have permission to complete this course."
 msgstr ""
 
-#: classes/Course.php:2309
+#: classes/Course.php:2316
 #: classes/Quiz.php:669
 msgid "Invalid course"
 msgstr ""
 
-#: classes/Course.php:2314
+#: classes/Course.php:2321
 msgid "You are not enrolled in this course"
 msgstr ""
 
-#: classes/Course.php:2333
+#: classes/Course.php:2340
 msgid "Course completed successfully"
 msgstr ""
 
-#: classes/Course.php:2437
+#: classes/Course.php:2444
 msgid "Only main instructor can delete this course"
 msgstr ""
 
-#: classes/Course.php:2458
+#: classes/Course.php:2465
 msgid "Course has been trashed successfully "
 msgstr ""
 
-#: classes/Course.php:2965
+#: classes/Course.php:2972
 msgid "Complete all lessons to mark this course as complete"
 msgstr ""
 
-#: classes/Course.php:3011
+#: classes/Course.php:3018
 msgid "quiz"
 msgid_plural "quizzes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: classes/Course.php:3012
+#: classes/Course.php:3019
 msgid "assignment"
 msgid_plural "assignments"
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %1$s: item count; %2$s: item label
-#: classes/Course.php:3017
-#: classes/Course.php:3026
+#: classes/Course.php:3024
+#: classes/Course.php:3033
 #, php-format
 msgid "You have to pass %1$s %2$s to complete this course."
 msgstr ""
 
 #. translators: %1$s: quiz count; %2$s: quiz label; %3$s: assignment count; %4$s: assignment label
-#: classes/Course.php:3034
+#: classes/Course.php:3041
 #, php-format
 msgid "You have to pass %1$s %2$s and %3$s %4$s to complete this course."
 msgstr ""
 
-#: classes/Course.php:3157
+#: classes/Course.php:3164
 msgid "You do not have permission to reset this course."
 msgstr ""
 
-#: classes/Course.php:3162
+#: classes/Course.php:3169
 msgid "You do not have permission to retake this course."
 msgstr ""
 
-#: classes/Course.php:3167
+#: classes/Course.php:3174
 msgid "Invalid Course ID or Access Denied."
 msgstr ""
 
-#: classes/Course.php:3217
+#: classes/Course.php:3224
 msgid "This course is password protected"
 msgstr ""
 
-#: classes/Course.php:3240
+#: classes/Course.php:3247
 msgid "Please purchase the course before enrolling"
 msgstr ""
 
-#: classes/Course.php:3246
+#: classes/Course.php:3253
 msgid "Enrollment successfully done!"
 msgstr ""
 
-#: classes/Course.php:3248
+#: classes/Course.php:3255
 msgid "Enrollment failed, please try again!"
 msgstr ""
 
-#: classes/Course.php:3474
+#: classes/Course.php:3481
 #: classes/InstructorMetricsAdapter.php:292
-#: classes/Utils.php:7064
+#: classes/Utils.php:7070
 #: includes/translate-text.php:75
 #: models/OrderModel.php:300
 #: templates/dashboard/student/stats.php:75
 #: templates/learning-area/lesson/footer.php:65
-#: assets/js/tutor-order-details.js:10068
+#: assets/js/tutor-order-details.js:10097
 msgid "Completed"
 msgstr ""
 
-#: classes/Course.php:3485
+#: classes/Course.php:3492
 msgid "Resume"
 msgstr ""
 
-#: classes/Course.php:3485
+#: classes/Course.php:3492
 msgid "Start"
 msgstr ""
 
-#: classes/Course.php:3520
+#: classes/Course.php:3527
 msgid "You have not completed all required lessons and assessments. "
 msgstr ""
 
-#: classes/Course.php:3525
+#: classes/Course.php:3532
 msgid "Your Progress"
 msgstr ""
 
-#: classes/Course.php:3562
+#: classes/Course.php:3569
 msgid "Complete the Course"
 msgstr ""
 
-#: classes/Course.php:3606
+#: classes/Course.php:3613
 msgid "Retake this Course"
 msgstr ""
 
-#: classes/Course.php:3631
+#: classes/Course.php:3638
 msgid "Invalid course or topic ID"
 msgstr ""
 
-#: classes/Course.php:3655
+#: classes/Course.php:3660
 msgid "No topics provided"
 msgstr ""
 
-#: classes/Course.php:3670
+#: classes/Course.php:3675
 msgid "Invalid topic id provided"
 msgstr ""
 
-#: classes/Course.php:3688
+#: classes/Course.php:3693
 msgid "Invalid content id provided"
 msgstr ""
 
@@ -1244,7 +1244,7 @@ msgstr ""
 #: includes/translate-text.php:159
 #: views/pages/course-list.php:183
 #: assets/js/tutor-addon-list.js:894
-#: assets/js/tutor-coupon.js:9999
+#: assets/js/tutor-coupon.js:10028
 #: assets/js/tutor-course-builder.js:12603
 #: assets/js/tutor-course-builder.js:44601
 #: assets/js/tutor-import-export.js:898
@@ -1295,8 +1295,8 @@ msgstr ""
 
 #: classes/Course_Widget.php:154
 #: views/pages/course-list.php:258
-#: assets/js/tutor-coupon.js:4970
-#: assets/js/tutor-coupon.js:6784
+#: assets/js/tutor-coupon.js:4999
+#: assets/js/tutor-coupon.js:6813
 #: assets/js/tutor-course-builder.js:13733
 #: assets/js/tutor-course-builder.js:14554
 #: assets/js/tutor-course-builder.js:15183
@@ -1305,10 +1305,10 @@ msgstr ""
 #: assets/js/tutor-course-builder.js:44869
 #: assets/js/tutor-import-export.js:6234
 #: assets/js/tutor-import-export.js:8005
-#: assets/js/tutor-order-details.js:6410
-#: assets/js/tutor-payment-settings.js:3511
-#: assets/js/tutor-payment-settings.js:8330
-#: assets/js/tutor-payment-settings.js:10541
+#: assets/js/tutor-order-details.js:6439
+#: assets/js/tutor-payment-settings.js:3520
+#: assets/js/tutor-payment-settings.js:8339
+#: assets/js/tutor-payment-settings.js:10579
 #: assets/js/tutor-tax-settings.js:6112
 msgid "Title"
 msgstr ""
@@ -1338,8 +1338,8 @@ msgstr ""
 #: templates/shortcode/instructor-filter.php:57
 #: views/elements/filters.php:120
 #: views/pages/course-list.php:98
-#: assets/js/tutor-coupon.js:3358
-#: assets/js/tutor-coupon.js:3359
+#: assets/js/tutor-coupon.js:3387
+#: assets/js/tutor-coupon.js:3388
 msgid "Category"
 msgstr ""
 
@@ -1370,7 +1370,7 @@ msgstr ""
 
 #: classes/Dashboard.php:133
 #: classes/Reviews.php:186
-#: classes/Utils.php:8698
+#: classes/Utils.php:8704
 #: templates/learning-area/subpages/reviews.php:62
 msgid "Reviews"
 msgstr ""
@@ -1455,7 +1455,7 @@ msgstr ""
 #: views/elements/search-filter.php:43
 #: views/qna/contexts.php:16
 #: views/quiz/header-context/frontend-dashboard-students-attempts.php:31
-#: assets/js/tutor-order-details.js:9664
+#: assets/js/tutor-order-details.js:9693
 msgid "Student"
 msgstr ""
 
@@ -1586,7 +1586,7 @@ msgid "Enrolled"
 msgstr ""
 
 #: classes/InstructorMetricsAdapter.php:296
-#: classes/Utils.php:7068
+#: classes/Utils.php:7074
 msgid "In Progress"
 msgstr ""
 
@@ -1596,7 +1596,7 @@ msgstr ""
 #: includes/translate-text.php:107
 #: models/OrderModel.php:301
 #: models/UserModel.php:95
-#: assets/js/tutor-order-details.js:10072
+#: assets/js/tutor-order-details.js:10101
 msgid "Cancelled"
 msgstr ""
 
@@ -1741,7 +1741,7 @@ msgid "Total share percentage must be 100% or less"
 msgstr ""
 
 #: classes/Options_V2.php:602
-#: assets/js/tutor-admin.js:2679
+#: assets/js/tutor-admin.js:2708
 msgid "Settings Saved"
 msgstr ""
 
@@ -1756,7 +1756,7 @@ msgid "General Settings"
 msgstr ""
 
 #: classes/Options_V2.php:747
-#: classes/Utils.php:7109
+#: classes/Utils.php:7115
 msgid "Dashboard Page"
 msgstr ""
 
@@ -2683,7 +2683,7 @@ msgstr ""
 #: classes/Options_V2.php:1669
 #: ecommerce/Settings.php:168
 #: ecommerce/Settings.php:195
-#: assets/js/tutor-tax-settings.js:9957
+#: assets/js/tutor-tax-settings.js:9986
 msgid "Advanced Settings"
 msgstr ""
 
@@ -2712,7 +2712,7 @@ msgid "This page will be used to list all the published courses."
 msgstr ""
 
 #: classes/Options_V2.php:1704
-#: classes/Utils.php:7110
+#: classes/Utils.php:7116
 msgid "Instructor Registration Page"
 msgstr ""
 
@@ -2721,7 +2721,7 @@ msgid "Choose the page for instructor registration."
 msgstr ""
 
 #: classes/Options_V2.php:1713
-#: classes/Utils.php:7111
+#: classes/Utils.php:7117
 msgid "Student Registration Page"
 msgstr ""
 
@@ -3450,7 +3450,7 @@ msgstr ""
 #: classes/Quiz.php:2394
 #: templates/dashboard/my-quiz-attempts.php:98
 #: templates/dashboard/quiz-attempts.php:142
-#: assets/js/tutor.js:1651
+#: assets/js/tutor.js:1646
 msgid "Time"
 msgstr ""
 
@@ -3575,9 +3575,9 @@ msgstr ""
 #: assets/js/tutor-admin.js:359
 #: assets/js/tutor-admin.js:369
 #: assets/js/tutor-admin.js:867
-#: assets/js/tutor-admin.js:2734
+#: assets/js/tutor-admin.js:2763
 #: assets/js/tutor-core.js:2435
-#: assets/js/tutor-coupon.js:9440
+#: assets/js/tutor-coupon.js:9469
 #: assets/js/tutor-course-builder.js:36581
 #: assets/js/tutor-front.js:905
 #: assets/js/tutor-front.js:1729
@@ -3586,10 +3586,10 @@ msgstr ""
 #: assets/js/tutor-order-details.js:533
 #: assets/js/tutor-payment-settings.js:533
 #: assets/js/tutor-tax-settings.js:533
+#: assets/js/tutor.js:2993
 #: assets/js/tutor.js:2998
-#: assets/js/tutor.js:3003
-#: assets/js/tutor.js:3222
-#: assets/js/tutor.js:3224
+#: assets/js/tutor.js:3217
+#: assets/js/tutor.js:3219
 msgid "Error"
 msgstr ""
 
@@ -3640,9 +3640,9 @@ msgstr ""
 #: assets/js/tutor-admin.js:2369
 #: assets/js/tutor-admin.js:2401
 #: assets/js/tutor-admin.js:2404
-#: assets/js/tutor-admin.js:3265
-#: assets/js/tutor-admin.js:3281
-#: assets/js/tutor-admin.js:3609
+#: assets/js/tutor-admin.js:3294
+#: assets/js/tutor-admin.js:3310
+#: assets/js/tutor-admin.js:3638
 #: assets/js/tutor-front.js:973
 #: assets/js/tutor-front.js:1321
 #: assets/js/tutor-front.js:1424
@@ -3655,14 +3655,14 @@ msgstr ""
 #: assets/js/tutor-front.js:2397
 #: assets/js/tutor-front.js:2423
 #: assets/js/tutor-front.js:2426
-#: assets/js/tutor-order-details.js:9098
-#: assets/js/tutor.js:2534
-#: assets/js/tutor.js:2537
-#: assets/js/tutor.js:3053
-#: assets/js/tutor.js:3056
-#: assets/js/tutor.js:3129
-#: assets/js/tutor.js:3132
-#: assets/js/tutor.js:3135
+#: assets/js/tutor-order-details.js:9127
+#: assets/js/tutor.js:2529
+#: assets/js/tutor.js:2532
+#: assets/js/tutor.js:3048
+#: assets/js/tutor.js:3051
+#: assets/js/tutor.js:3124
+#: assets/js/tutor.js:3127
+#: assets/js/tutor.js:3130
 msgid "Failed"
 msgstr ""
 
@@ -3691,7 +3691,7 @@ msgstr ""
 #: views/pages/students.php:166
 #: views/quiz/attempt-table.php:159
 #: views/quiz/contexts.php:25
-#: assets/js/tutor-coupon.js:7338
+#: assets/js/tutor-coupon.js:7367
 msgid "Details"
 msgstr ""
 
@@ -3769,12 +3769,12 @@ msgstr ""
 #: assets/js/tutor-front.js:1421
 #: assets/js/tutor-front.js:1426
 #: assets/js/tutor-import-export.js:8059
-#: assets/js/tutor-payment-settings.js:4179
-#: assets/js/tutor-tax-settings.js:9319
-#: assets/js/tutor-tax-settings.js:9468
-#: assets/js/tutor-tax-settings.js:9726
-#: assets/js/tutor-tax-settings.js:10182
-#: assets/js/tutor-tax-settings.js:10249
+#: assets/js/tutor-payment-settings.js:4188
+#: assets/js/tutor-tax-settings.js:9348
+#: assets/js/tutor-tax-settings.js:9497
+#: assets/js/tutor-tax-settings.js:9755
+#: assets/js/tutor-tax-settings.js:10211
+#: assets/js/tutor-tax-settings.js:10278
 msgid "Delete"
 msgstr ""
 
@@ -3797,8 +3797,8 @@ msgstr ""
 #: assets/js/tutor-addon-list.js:4783
 #: assets/js/tutor-admin.js:2214
 #: assets/js/tutor-admin.js:2217
-#: assets/js/tutor-admin.js:2697
-#: assets/js/tutor-admin.js:3609
+#: assets/js/tutor-admin.js:2726
+#: assets/js/tutor-admin.js:3638
 #: assets/js/tutor-setup.js:212
 msgid "Something went wrong!"
 msgstr ""
@@ -3898,7 +3898,7 @@ msgid "Profile Page"
 msgstr ""
 
 #: classes/Template.php:660
-#: classes/Utils.php:8694
+#: classes/Utils.php:8700
 #: assets/js/tutor-course-builder.js:4290
 msgid "Course Info"
 msgstr ""
@@ -3935,10 +3935,10 @@ msgstr ""
 #: classes/Tools_V2.php:153
 #: classes/Tools_V2.php:254
 #: views/pages/tools/status.php:116
-#: assets/js/tutor-coupon.js:5018
+#: assets/js/tutor-coupon.js:5047
 #: assets/js/tutor-course-builder.js:41460
-#: assets/js/tutor-order-details.js:6458
-#: assets/js/tutor-payment-settings.js:8378
+#: assets/js/tutor-order-details.js:6487
+#: assets/js/tutor-payment-settings.js:8387
 #: assets/js/tutor-tax-settings.js:6160
 msgid "Language"
 msgstr ""
@@ -4312,156 +4312,156 @@ msgstr ""
 msgid "Rating"
 msgstr ""
 
-#: classes/Utils.php:5495
+#: classes/Utils.php:5501
 msgid "All Levels"
 msgstr ""
 
-#: classes/Utils.php:5496
+#: classes/Utils.php:5502
 msgid "Beginner"
 msgstr ""
 
-#: classes/Utils.php:5497
+#: classes/Utils.php:5503
 msgid "Intermediate"
 msgstr ""
 
-#: classes/Utils.php:5498
+#: classes/Utils.php:5504
 msgid "Expert"
 msgstr ""
 
-#: classes/Utils.php:5907
+#: classes/Utils.php:5913
 msgid "Facebook"
 msgstr ""
 
-#: classes/Utils.php:5914
+#: classes/Utils.php:5920
 msgid "X"
 msgstr ""
 
-#: classes/Utils.php:5921
+#: classes/Utils.php:5927
 msgid "Linkedin"
 msgstr ""
 
-#: classes/Utils.php:5928
+#: classes/Utils.php:5934
 msgid "Github"
 msgstr ""
 
-#: classes/Utils.php:5935
+#: classes/Utils.php:5941
 msgid "Website"
 msgstr ""
 
-#: classes/Utils.php:7070
+#: classes/Utils.php:7076
 msgid "Not Taken"
 msgstr ""
 
-#: classes/Utils.php:7112
+#: classes/Utils.php:7118
 msgid "Cart"
 msgstr ""
 
-#: classes/Utils.php:7113
+#: classes/Utils.php:7119
 #: ecommerce/Settings.php:217
 #: GDPR/Controllers/LegalConsent.php:165
 msgid "Checkout"
 msgstr ""
 
-#: classes/Utils.php:7306
+#: classes/Utils.php:7312
 msgid "Set Your Profile Photo"
 msgstr ""
 
-#: classes/Utils.php:7307
+#: classes/Utils.php:7313
 msgid "Add Your Social Links"
 msgstr ""
 
-#: classes/Utils.php:7308
+#: classes/Utils.php:7314
 msgid "Set Your Bio"
 msgstr ""
 
-#: classes/Utils.php:7313
+#: classes/Utils.php:7319
 msgid "Set Withdraw Method"
 msgstr ""
 
-#: classes/Utils.php:8428
+#: classes/Utils.php:8434
 msgid "Try adjusting your filters."
 msgstr ""
 
-#: classes/Utils.php:8442
+#: classes/Utils.php:8448
 msgid "Try using different keywords."
 msgstr ""
 
-#: classes/Utils.php:8578
+#: classes/Utils.php:8584
 #: components/DateFilter.php:361
 #: components/DateFilter.php:430
 #: assets/js/lazy-chunks/tutor-calendar.js:43
 msgid "All Time"
 msgstr ""
 
-#: classes/Utils.php:8579
+#: classes/Utils.php:8585
 #: components/DateFilter.php:434
 #: templates/dashboard/instructor/home/upcoming-task-item.php:32
 msgid "Today"
 msgstr ""
 
-#: classes/Utils.php:8580
+#: classes/Utils.php:8586
 #: components/DateFilter.php:438
 msgid "Last 30 Days"
 msgstr ""
 
-#: classes/Utils.php:8581
+#: classes/Utils.php:8587
 msgid "Last 90 Days"
 msgstr ""
 
-#: classes/Utils.php:8582
+#: classes/Utils.php:8588
 msgid "Last 365 Days"
 msgstr ""
 
-#: classes/Utils.php:8583
+#: classes/Utils.php:8589
 msgid "Custom"
 msgstr ""
 
-#: classes/Utils.php:8927
+#: classes/Utils.php:8933
 #: templates/single/lesson/sidebar_question_and_answer.php:43
 msgid "No Data Available in this Section"
 msgstr ""
 
-#: classes/Utils.php:8928
+#: classes/Utils.php:8934
 msgid "No Data Found from your Search/Filter"
 msgstr ""
 
-#: classes/Utils.php:9026
+#: classes/Utils.php:9032
 msgid "HTML 5 (mp4)"
 msgstr ""
 
-#: classes/Utils.php:9030
+#: classes/Utils.php:9036
 msgid "External URL"
 msgstr ""
 
-#: classes/Utils.php:9034
+#: classes/Utils.php:9040
 msgid "YouTube"
 msgstr ""
 
-#: classes/Utils.php:9038
+#: classes/Utils.php:9044
 msgid "Vimeo"
 msgstr ""
 
-#: classes/Utils.php:9042
+#: classes/Utils.php:9048
 msgid "Embedded"
 msgstr ""
 
-#: classes/Utils.php:9046
+#: classes/Utils.php:9052
 msgid "Shortcode"
 msgstr ""
 
-#: classes/Utils.php:10034
-#: models/QuizModel.php:1878
+#: classes/Utils.php:10040
+#: models/QuizModel.php:1881
 #: assets/js/tutor-addon-list.js:2021
 #: assets/js/tutor-addon-list.js:2027
 #: assets/js/tutor-core.js:2171
 #: assets/js/tutor-core.js:2173
 #: assets/js/tutor-core.js:4022
 #: assets/js/tutor-core.js:4925
-#: assets/js/tutor-coupon.js:3407
-#: assets/js/tutor-coupon.js:3572
-#: assets/js/tutor-coupon.js:4071
-#: assets/js/tutor-coupon.js:11555
-#: assets/js/tutor-coupon.js:11561
+#: assets/js/tutor-coupon.js:3436
+#: assets/js/tutor-coupon.js:3601
+#: assets/js/tutor-coupon.js:4100
+#: assets/js/tutor-coupon.js:11584
+#: assets/js/tutor-coupon.js:11590
 #: assets/js/tutor-course-builder.js:25812
 #: assets/js/tutor-course-builder.js:26660
 #: assets/js/tutor-course-builder.js:26950
@@ -4481,92 +4481,92 @@ msgstr ""
 #: assets/js/tutor-payment-settings.js:2037
 #: assets/js/tutor-tax-settings.js:2026
 #: assets/js/tutor-tax-settings.js:2032
-#: assets/js/tutor.js:3003
+#: assets/js/tutor.js:2998
 msgid "Something went wrong"
 msgstr ""
 
-#: classes/Utils.php:10039
+#: classes/Utils.php:10045
 msgid "You are not authorzied to perform this action"
 msgstr ""
 
-#: classes/Utils.php:10040
+#: classes/Utils.php:10046
 msgid "Nonce not matched. Action failed!"
 msgstr ""
 
-#: classes/Utils.php:10041
+#: classes/Utils.php:10047
 msgid "Invalid request"
 msgstr ""
 
-#: classes/Utils.php:10042
+#: classes/Utils.php:10048
 msgid "Authentication failed"
 msgstr ""
 
-#: classes/Utils.php:10043
+#: classes/Utils.php:10049
 msgid "Authorization required"
 msgstr ""
 
-#: classes/Utils.php:10044
+#: classes/Utils.php:10050
 msgid "Requested resource not found"
 msgstr ""
 
-#: classes/Utils.php:10045
+#: classes/Utils.php:10051
 msgid "Internal server error"
 msgstr ""
 
-#: classes/Utils.php:10046
+#: classes/Utils.php:10052
 msgid "Request timed out"
 msgstr ""
 
-#: classes/Utils.php:10047
+#: classes/Utils.php:10053
 msgid "Access to this resource is forbidden"
 msgstr ""
 
-#: classes/Utils.php:10048
+#: classes/Utils.php:10054
 msgid "HTTP method not allowed"
 msgstr ""
 
-#: classes/Utils.php:10049
+#: classes/Utils.php:10055
 msgid "Too many requests"
 msgstr ""
 
-#: classes/Utils.php:10050
+#: classes/Utils.php:10056
 #: GDPR/Controllers/LegalConsent.php:442
 #: assets/js/lazy-chunks/tutor-form.js:123
 msgid "Validation error"
 msgstr ""
 
-#: classes/Utils.php:10051
+#: classes/Utils.php:10057
 msgid "Database operation failed"
 msgstr ""
 
-#: classes/Utils.php:10052
+#: classes/Utils.php:10058
 msgid "Requested file not found"
 msgstr ""
 
-#: classes/Utils.php:10053
+#: classes/Utils.php:10059
 msgid "Unsupported media type"
 msgstr ""
 
-#: classes/Utils.php:10163
+#: classes/Utils.php:10169
 msgid "Gutenberg"
 msgstr ""
 
-#: classes/Utils.php:10178
+#: classes/Utils.php:10184
 msgid "Droip"
 msgstr ""
 
-#: classes/Utils.php:10196
+#: classes/Utils.php:10202
 msgid "Elementor"
 msgstr ""
 
-#: classes/Utils.php:10224
+#: classes/Utils.php:10230
 #: assets/js/tutor-course-builder.js:13796
 #: assets/js/tutor-course-builder.js:33103
 msgid "Classic Editor"
 msgstr ""
 
 #. translators: %s: timestamp
-#: classes/Utils.php:10342
+#: classes/Utils.php:10348
 #, php-format
 msgid "%s left"
 msgstr ""
@@ -4585,86 +4585,130 @@ msgstr ""
 msgid "Get your payment directly into your bank account"
 msgstr ""
 
-#: classes/Withdraw.php:70
+#: classes/Withdraw.php:71
 msgid "Account Name"
 msgstr ""
 
-#: classes/Withdraw.php:74
+#: classes/Withdraw.php:77
 msgid "Account Number"
 msgstr ""
 
-#: classes/Withdraw.php:78
+#: classes/Withdraw.php:83
 msgid "Bank Name"
 msgstr ""
 
-#: classes/Withdraw.php:82
+#: classes/Withdraw.php:89
 msgid "IBAN"
 msgstr ""
 
-#: classes/Withdraw.php:86
+#: classes/Withdraw.php:95
 msgid "BIC / SWIFT"
 msgstr ""
 
-#: classes/Withdraw.php:93
+#: classes/Withdraw.php:103
 #: models/WithdrawModel.php:63
 msgid "E-Check"
 msgstr ""
 
-#: classes/Withdraw.php:98
+#: classes/Withdraw.php:109
 msgid "Your Physical Address"
 msgstr ""
 
-#: classes/Withdraw.php:99
+#: classes/Withdraw.php:110
 msgid "We will send you an E-Check to this address directly."
 msgstr ""
 
-#: classes/Withdraw.php:105
+#: classes/Withdraw.php:117
 #: ecommerce/Ecommerce.php:233
 #: models/WithdrawModel.php:62
 msgid "PayPal"
 msgstr ""
 
-#: classes/Withdraw.php:110
+#: classes/Withdraw.php:123
 msgid "PayPal E-Mail Address"
 msgstr ""
 
-#: classes/Withdraw.php:111
+#: classes/Withdraw.php:124
 msgid "We will use this email address to send the money to your Paypal account"
 msgstr ""
 
-#: classes/Withdraw.php:256
+#: classes/Withdraw.php:323
+msgid "Invalid withdrawal method."
+msgstr ""
+
+#: classes/Withdraw.php:330
+msgid "This withdrawal method is not currently available."
+msgstr ""
+
+#: classes/Withdraw.php:337
+msgid "No form fields defined for this withdrawal method."
+msgstr ""
+
+#: classes/Withdraw.php:344
+msgid "No withdrawal data submitted."
+msgstr ""
+
+#. translators: %s: submitted field key
+#: classes/Withdraw.php:359
+#, php-format
+msgid "Unknown field submitted: \"%s\"."
+msgstr ""
+
+#. translators: %s: field label
+#: classes/Withdraw.php:368
+#, php-format
+msgid "Field \"%s\" must not be an array."
+msgstr ""
+
+#. translators: %s: field label
+#: classes/Withdraw.php:385
+#, php-format
+msgid "Field \"%s\" contains an invalid value."
+msgstr ""
+
+#. translators: 1: field label, 2: expected field type
+#: classes/Withdraw.php:394
+#, php-format
+msgid "Field \"%1$s\" has an invalid value\"."
+msgstr ""
+
+#: classes/Withdraw.php:415
+msgid "Please fill in the required withdrawal fields."
+msgstr ""
+
+#: classes/Withdraw.php:423
 msgid "Withdrawal information saved!"
 msgstr ""
 
-#: classes/Withdraw.php:285
+#: classes/Withdraw.php:452
 msgid "Another withdrawal request is in progress. Please try again."
 msgstr ""
 
 #. translators: 1: total pending withdraw request 2: available for withdraw
-#: classes/Withdraw.php:299
+#: classes/Withdraw.php:466
 #, php-format
 msgid "You have total %1$s pending withdraw request. You can't make more than %2$s withdraw request at a time"
 msgstr ""
 
-#: classes/Withdraw.php:310
+#: classes/Withdraw.php:477
 msgid "Please save withdraw method "
 msgstr ""
 
 #. translators: 1: strong tag start 2: min withdrawal amount 3: strong tag end
-#: classes/Withdraw.php:316
+#: classes/Withdraw.php:483
 #, php-format
 msgid "Minimum withdrawal amount is %1$s %2$s %3$s "
 msgstr ""
 
-#: classes/Withdraw.php:321
+#: classes/Withdraw.php:488
 msgid "Insufficient balance."
 msgstr ""
 
-#: classes/Withdraw.php:342
+#: classes/Withdraw.php:509
 msgid "Unable to process withdrawal request. Please try again."
 msgstr ""
 
-#: classes/Withdraw.php:358
+#: classes/Withdraw.php:525
 msgid "Withdrawal Request Sent!"
 msgstr ""
 
@@ -4797,7 +4841,7 @@ msgstr ""
 #: views/elements/filters.php:218
 #: views/elements/list-filters.php:155
 #: assets/js/tutor-addon-list.js:5287
-#: assets/js/tutor-coupon.js:3300
+#: assets/js/tutor-coupon.js:3329
 #: assets/js/tutor-course-builder.js:25599
 #: assets/js/tutor-import-export.js:4430
 #: assets/js/tutor-import-export.js:6996
@@ -4846,7 +4890,7 @@ msgstr ""
 #: components/Pagination.php:238
 #: templates/dashboard/elements/pagination.php:55
 #: views/elements/pagination.php:16
-#: assets/js/tutor-coupon.js:2871
+#: assets/js/tutor-coupon.js:2900
 #: assets/js/tutor-course-builder.js:25432
 #: assets/js/tutor-import-export.js:4521
 msgid "Page"
@@ -4855,7 +4899,7 @@ msgstr ""
 #: components/Pagination.php:240
 #: templates/dashboard/elements/pagination.php:59
 #: views/elements/pagination.php:20
-#: assets/js/tutor-coupon.js:2891
+#: assets/js/tutor-coupon.js:2920
 #: assets/js/tutor-course-builder.js:25452
 #: assets/js/tutor-import-export.js:4541
 msgid "of"
@@ -5566,7 +5610,7 @@ msgid "Set the number of decimal places."
 msgstr ""
 
 #: ecommerce/Settings.php:166
-#: assets/js/tutor-payment-settings.js:11586
+#: assets/js/tutor-payment-settings.js:11632
 msgid "Payment Methods"
 msgstr ""
 
@@ -5575,12 +5619,12 @@ msgid "Payment Settings"
 msgstr ""
 
 #: ecommerce/Settings.php:193
-#: assets/js/tutor-tax-settings.js:10510
+#: assets/js/tutor-tax-settings.js:10539
 msgid "Taxes"
 msgstr ""
 
 #: ecommerce/Settings.php:208
-#: assets/js/tutor-tax-settings.js:9927
+#: assets/js/tutor-tax-settings.js:9956
 msgid "Tax Settings"
 msgstr ""
 
@@ -5771,7 +5815,7 @@ msgstr ""
 #. translators: %d: number of days
 #: helpers/TimerHelper.php:141
 #: assets/js/tutor-addon-list.js:2139
-#: assets/js/tutor-coupon.js:11673
+#: assets/js/tutor-coupon.js:11702
 #: assets/js/tutor-course-builder.js:48723
 #: assets/js/tutor-import-export.js:2149
 #: assets/js/tutor-order-details.js:2142
@@ -5786,7 +5830,7 @@ msgstr[1] ""
 #. translators: %d: number of hours
 #: helpers/TimerHelper.php:149
 #: assets/js/tutor-addon-list.js:2131
-#: assets/js/tutor-coupon.js:11665
+#: assets/js/tutor-coupon.js:11694
 #: assets/js/tutor-course-builder.js:48715
 #: assets/js/tutor-import-export.js:2141
 #: assets/js/tutor-order-details.js:2134
@@ -5988,7 +6032,7 @@ msgstr ""
 
 #: includes/translate-text.php:79
 #: models/OrderModel.php:299
-#: assets/js/tutor-order-details.js:10064
+#: assets/js/tutor-order-details.js:10093
 msgid "Incomplete"
 msgstr ""
 
@@ -6009,13 +6053,13 @@ msgstr ""
 
 #: includes/translate-text.php:135
 #: models/OrderModel.php:334
-#: assets/js/tutor-order-details.js:9106
+#: assets/js/tutor-order-details.js:9135
 msgid "Refunded"
 msgstr ""
 
 #: includes/translate-text.php:139
 #: models/OrderModel.php:332
-#: assets/js/tutor-order-details.js:9110
+#: assets/js/tutor-order-details.js:9139
 msgid "Unpaid"
 msgstr ""
 
@@ -6023,7 +6067,7 @@ msgstr ""
 #: models/OrderModel.php:331
 #: templates/course-filter/filters.php:16
 #: assets/js/tutor-course-builder.js:12189
-#: assets/js/tutor-order-details.js:9094
+#: assets/js/tutor-order-details.js:9123
 msgid "Paid"
 msgstr ""
 
@@ -6214,7 +6258,7 @@ msgstr ""
 
 #: includes/tutor-template-functions.php:1541
 #: assets/js/tutor-addon-list.js:2133
-#: assets/js/tutor-coupon.js:11667
+#: assets/js/tutor-coupon.js:11696
 #: assets/js/tutor-course-builder.js:15676
 #: assets/js/tutor-course-builder.js:48717
 #: assets/js/tutor-import-export.js:2143
@@ -6257,32 +6301,32 @@ msgid "Please make sure you are logged in to correct account"
 msgstr ""
 
 #: models/CouponModel.php:224
-#: assets/js/tutor-coupon.js:4231
+#: assets/js/tutor-coupon.js:4260
 msgid "All courses and bundles"
 msgstr ""
 
 #: models/CouponModel.php:225
-#: assets/js/tutor-coupon.js:4222
+#: assets/js/tutor-coupon.js:4251
 msgid "All courses"
 msgstr ""
 
 #: models/CouponModel.php:226
-#: assets/js/tutor-coupon.js:4227
+#: assets/js/tutor-coupon.js:4256
 msgid "All bundles"
 msgstr ""
 
 #: models/CouponModel.php:227
-#: assets/js/tutor-coupon.js:4242
+#: assets/js/tutor-coupon.js:4271
 msgid "Specific courses"
 msgstr ""
 
 #: models/CouponModel.php:228
-#: assets/js/tutor-coupon.js:4247
+#: assets/js/tutor-coupon.js:4276
 msgid "Specific bundles"
 msgstr ""
 
 #: models/CouponModel.php:229
-#: assets/js/tutor-coupon.js:4252
+#: assets/js/tutor-coupon.js:4281
 msgid "Specific category"
 msgstr ""
 
@@ -6300,14 +6344,14 @@ msgstr ""
 
 #: models/CouponModel.php:290
 #: views/pages/ecommerce/coupon-list.php:138
-#: assets/js/tutor-coupon.js:6720
+#: assets/js/tutor-coupon.js:6749
 msgid "Code"
 msgstr ""
 
 #: models/CouponModel.php:291
 #: views/pages/ecommerce/coupon-list.php:186
-#: assets/js/tutor-coupon.js:6724
-#: assets/js/tutor-coupon.js:7263
+#: assets/js/tutor-coupon.js:6753
+#: assets/js/tutor-coupon.js:7292
 msgid "Automatic"
 msgstr ""
 
@@ -6384,9 +6428,9 @@ msgid "History"
 msgstr ""
 
 #: models/OrderActivitiesModel.php:77
-#: assets/js/tutor-order-details.js:9016
-#: assets/js/tutor-order-details.js:9184
-#: assets/js/tutor-order-details.js:9495
+#: assets/js/tutor-order-details.js:9045
+#: assets/js/tutor-order-details.js:9213
+#: assets/js/tutor-order-details.js:9524
 msgid "Refund"
 msgstr ""
 
@@ -6407,54 +6451,54 @@ msgid "Failed to insert order items"
 msgstr ""
 
 #. translators: %s: username
-#: models/OrderModel.php:1540
+#: models/OrderModel.php:1554
 msgid "Order marked as cancelled"
 msgstr ""
 
 #. translators: %s: username
-#: models/OrderModel.php:1540
+#: models/OrderModel.php:1554
 #, php-format
 msgid "Order marked as cancelled by %s"
 msgstr ""
 
 #. translators: %s: username
-#: models/OrderModel.php:1543
+#: models/OrderModel.php:1557
 msgid "Order marked as completed"
 msgstr ""
 
 #. translators: %s: username
-#: models/OrderModel.php:1543
+#: models/OrderModel.php:1557
 #, php-format
 msgid "Order marked as completed by %s"
 msgstr ""
 
 #. translators: %s: username
-#: models/OrderModel.php:1546
+#: models/OrderModel.php:1560
 msgid "Order marked as incomplete"
 msgstr ""
 
 #. translators: %s: username
-#: models/OrderModel.php:1546
+#: models/OrderModel.php:1560
 #, php-format
 msgid "Order marked as incomplete by %s"
 msgstr ""
 
 #. translators: %s: username
-#: models/OrderModel.php:1549
+#: models/OrderModel.php:1563
 msgid "Order marked as trash"
 msgstr ""
 
 #. translators: %s: username
-#: models/OrderModel.php:1549
+#: models/OrderModel.php:1563
 #, php-format
 msgid "Order marked as trash by %s"
 msgstr ""
 
-#: models/OrderModel.php:1920
+#: models/OrderModel.php:1934
 msgid "Payment Is Pending Due To Gateway Processing."
 msgstr ""
 
-#: models/OrderModel.php:2201
+#: models/OrderModel.php:2227
 #: templates/dashboard/account/billing/edd-order-history-card.php:79
 #: templates/dashboard/account/billing/wc-order-history-card.php:89
 msgid "Pay"
@@ -6550,11 +6594,11 @@ msgstr ""
 msgid "Skipped"
 msgstr ""
 
-#: models/QuizModel.php:1887
+#: models/QuizModel.php:1890
 msgid "Invalid quiz ID"
 msgstr ""
 
-#: models/QuizModel.php:1890
+#: models/QuizModel.php:1893
 msgid "You don't have access to this course"
 msgstr ""
 
@@ -6599,7 +6643,7 @@ msgstr ""
 #: assets/js/tutor-course-builder.js:22761
 #: assets/js/tutor-course-builder.js:30427
 #: assets/js/tutor-course-builder.js:31498
-#: assets/js/tutor-tax-settings.js:9717
+#: assets/js/tutor-tax-settings.js:9746
 msgid "Edit"
 msgstr ""
 
@@ -6793,8 +6837,8 @@ msgstr ""
 
 #: templates/course-filter/filters.php:123
 #: views/pages/course-list.php:267
-#: assets/js/tutor-coupon.js:3544
-#: assets/js/tutor-coupon.js:4036
+#: assets/js/tutor-coupon.js:3573
+#: assets/js/tutor-coupon.js:4065
 #: assets/js/tutor-course-builder.js:11185
 msgid "Price"
 msgstr ""
@@ -7113,18 +7157,18 @@ msgstr ""
 #: templates/learning-area/subpages/qna/single.php:123
 #: templates/shared/components/quiz/attempt-details/questions/open-ended.php:198
 #: views/quiz/attempt-details.php:944
-#: assets/js/tutor-coupon.js:6286
-#: assets/js/tutor-coupon.js:8290
+#: assets/js/tutor-coupon.js:6315
+#: assets/js/tutor-coupon.js:8319
 #: assets/js/tutor-course-builder.js:8708
 #: assets/js/tutor-course-builder.js:11391
 #: assets/js/tutor-course-builder.js:14533
 #: assets/js/tutor-course-builder.js:15501
 #: assets/js/tutor-course-builder.js:29889
 #: assets/js/tutor-course-builder.js:44258
-#: assets/js/tutor-order-details.js:7835
-#: assets/js/tutor-payment-settings.js:9554
-#: assets/js/tutor-payment-settings.js:10601
-#: assets/js/tutor-tax-settings.js:7713
+#: assets/js/tutor-order-details.js:7864
+#: assets/js/tutor-payment-settings.js:9592
+#: assets/js/tutor-payment-settings.js:10639
+#: assets/js/tutor-tax-settings.js:7742
 msgid "Save"
 msgstr ""
 
@@ -7139,7 +7183,7 @@ msgstr ""
 #: views/options/template/common/reset-button-template.php:23
 #: views/options/template/google_classroom.php:19
 #: views/options/template/gradebook.php:19
-#: assets/js/tutor-payment-settings.js:11614
+#: assets/js/tutor-payment-settings.js:11660
 msgid "Reset to Default"
 msgstr ""
 
@@ -7307,8 +7351,8 @@ msgstr ""
 #: templates/dashboard/account/withdrawal/withdrawal-request-modal.php:66
 #: views/pages/withdraw_requests.php:111
 #: views/pages/withdraw_requests.php:258
-#: assets/js/tutor-order-details.js:8383
-#: assets/js/tutor-order-details.js:8941
+#: assets/js/tutor-order-details.js:8412
+#: assets/js/tutor-order-details.js:8970
 msgid "Amount"
 msgstr ""
 
@@ -7818,10 +7862,10 @@ msgstr ""
 #: views/elements/list-filters.php:181
 #: views/templates/consent-logs-modal.php:27
 #: assets/js/tutor-setup.js:186
-#: assets/js/tutor.js:1523
-#: assets/js/tutor.js:1638
-#: assets/js/tutor.js:1745
-#: assets/js/tutor.js:1796
+#: assets/js/tutor.js:1518
+#: assets/js/tutor.js:1633
+#: assets/js/tutor.js:1740
+#: assets/js/tutor.js:1791
 msgid "Loading..."
 msgstr ""
 
@@ -7999,7 +8043,7 @@ msgstr ""
 #: templates/dashboard/registration.php:90
 #: templates/dashboard/registration.php:111
 #: templates/login-form-legacy.php:63
-#: templates/login-form.php:64
+#: templates/login-form.php:61
 #: templates/template-part/form-retrieve-password.php:36
 #: views/pages/add_new_instructor.php:107
 #: views/pages/add_new_instructor.php:113
@@ -8052,7 +8096,7 @@ msgid "Search courses..."
 msgstr ""
 
 #: templates/dashboard/my-courses.php:224
-#: assets/js/tutor-order-details.js:9777
+#: assets/js/tutor-order-details.js:9806
 msgid "Plan:"
 msgstr ""
 
@@ -8303,7 +8347,7 @@ msgstr ""
 #: templates/ecommerce/billing-form-fields.php:47
 #: templates/ecommerce/billing.php:27
 #: templates/ecommerce/checkout.php:90
-#: assets/js/tutor-order-details.js:9694
+#: assets/js/tutor-order-details.js:9723
 msgid "Billing Address"
 msgstr ""
 
@@ -8336,7 +8380,7 @@ msgstr ""
 
 #: templates/ecommerce/billing-form-fields.php:119
 #: templates/ecommerce/checkout-billing-form-fields.php:80
-#: assets/js/tutor-tax-settings.js:9164
+#: assets/js/tutor-tax-settings.js:9193
 msgid "State"
 msgstr ""
 
@@ -8383,8 +8427,8 @@ msgstr[1] ""
 #: templates/ecommerce/cart.php:97
 #: assets/js/tutor-course-builder.js:13333
 #: assets/js/tutor-course-builder.js:34893
-#: assets/js/tutor-payment-settings.js:4348
-#: assets/js/tutor-payment-settings.js:11379
+#: assets/js/tutor-payment-settings.js:4357
+#: assets/js/tutor-payment-settings.js:11425
 msgid "Remove"
 msgstr ""
 
@@ -8451,7 +8495,7 @@ msgid "Order Details"
 msgstr ""
 
 #: templates/ecommerce/checkout-details.php:134
-#: assets/js/tutor-order-details.js:9249
+#: assets/js/tutor-order-details.js:9278
 msgid "Subtotal"
 msgstr ""
 
@@ -8474,10 +8518,10 @@ msgstr ""
 #: views/elements/search-filter.php:48
 #: views/pages/tools/settings-log.php:66
 #: assets/js/lazy-chunks/tutor-calendar.js:310
-#: assets/js/tutor-order-details.js:8519
-#: assets/js/tutor-tax-settings.js:8329
-#: assets/js/tutor-tax-settings.js:9198
-#: assets/js/tutor.js:1769
+#: assets/js/tutor-order-details.js:8548
+#: assets/js/tutor-tax-settings.js:8358
+#: assets/js/tutor-tax-settings.js:9227
+#: assets/js/tutor.js:1764
 msgid "Apply"
 msgstr ""
 
@@ -8502,7 +8546,7 @@ msgid "Continue as Guest"
 msgstr ""
 
 #: templates/ecommerce/checkout.php:104
-#: assets/js/tutor-order-details.js:9556
+#: assets/js/tutor-order-details.js:9585
 msgid "Payment Method"
 msgstr ""
 
@@ -9015,32 +9059,32 @@ msgid "Your Review"
 msgstr ""
 
 #: templates/login-form-legacy.php:59
-#: templates/login-form.php:47
+#: templates/login-form.php:44
 msgid "Username or Email Address"
 msgstr ""
 
 #: templates/login-form-legacy.php:76
-#: templates/login-form.php:78
+#: templates/login-form.php:75
 msgid "Keep me signed in"
 msgstr ""
 
 #: templates/login-form-legacy.php:80
-#: templates/login-form.php:83
+#: templates/login-form.php:80
 msgid "Forgot Password?"
 msgstr ""
 
 #: templates/login-form-legacy.php:86
-#: templates/login-form.php:89
+#: templates/login-form.php:86
 msgid "Sign In"
 msgstr ""
 
 #: templates/login-form-legacy.php:99
-#: templates/login-form.php:103
+#: templates/login-form.php:100
 msgid "Don't have an account?"
 msgstr ""
 
 #: templates/login-form-legacy.php:101
-#: templates/login-form.php:106
+#: templates/login-form.php:103
 msgid "Register Now"
 msgstr ""
 
@@ -9150,18 +9194,18 @@ msgid "Review your answers"
 msgstr ""
 
 #. translators: 1: achieved marks, 2: total marks.
-#: templates/shared/components/quiz/attempt-details/question-header.php:79
+#: templates/shared/components/quiz/attempt-details/question-header.php:82
 #: views/quiz/attempt-details.php:780
 #, php-format
 msgid "Score: %1$s/%2$s"
 msgstr ""
 
-#: templates/shared/components/quiz/attempt-details/question-header.php:103
+#: templates/shared/components/quiz/attempt-details/question-header.php:106
 #: views/quiz/attempt-details.php:854
 msgid "Mark as correct"
 msgstr ""
 
-#: templates/shared/components/quiz/attempt-details/question-header.php:121
+#: templates/shared/components/quiz/attempt-details/question-header.php:124
 #: views/quiz/attempt-details.php:858
 msgid "Mark as incorrect"
 msgstr ""
@@ -9210,7 +9254,7 @@ msgstr ""
 
 #: templates/shared/components/quiz/attempt-details/questions/open-ended.php:122
 #: views/quiz/attempt-details.php:844
-#: assets/js/tutor.js:3172
+#: assets/js/tutor.js:3167
 msgid "Add Feedback"
 msgstr ""
 
@@ -9218,7 +9262,7 @@ msgstr ""
 #: views/quiz/attempt-details.php:804
 #: views/quiz/attempt-details.php:805
 #: views/quiz/attempt-details.php:844
-#: assets/js/tutor.js:3172
+#: assets/js/tutor.js:3167
 msgid "Show Feedback"
 msgstr ""
 
@@ -9228,7 +9272,7 @@ msgstr ""
 
 #: templates/shared/components/quiz/attempt-details/questions/open-ended.php:156
 #: views/quiz/attempt-details.php:925
-#: assets/js/tutor.js:3185
+#: assets/js/tutor.js:3180
 msgid "Write feedback"
 msgstr ""
 
@@ -9349,9 +9393,9 @@ msgstr ""
 
 #: templates/shortcode/instructor-filter.php:50
 #: assets/js/tutor-coupon.js:2290
-#: assets/js/tutor-coupon.js:6545
-#: assets/js/tutor-coupon.js:7577
-#: assets/js/tutor-coupon.js:7766
+#: assets/js/tutor-coupon.js:6574
+#: assets/js/tutor-coupon.js:7606
+#: assets/js/tutor-coupon.js:7795
 #: assets/js/tutor-course-builder.js:16706
 #: assets/js/tutor-course-builder.js:16819
 #: assets/js/tutor-course-builder.js:20731
@@ -9362,18 +9406,18 @@ msgstr ""
 #: assets/js/tutor-course-builder.js:39595
 #: assets/js/tutor-course-builder.js:39979
 #: assets/js/tutor-import-export.js:6071
-#: assets/js/tutor-order-details.js:6167
-#: assets/js/tutor-order-details.js:8094
-#: assets/js/tutor-payment-settings.js:8087
-#: assets/js/tutor-payment-settings.js:9141
+#: assets/js/tutor-order-details.js:6196
+#: assets/js/tutor-order-details.js:8123
+#: assets/js/tutor-payment-settings.js:8096
+#: assets/js/tutor-payment-settings.js:9150
 #: assets/js/tutor-tax-settings.js:5869
-#: assets/js/tutor-tax-settings.js:7972
+#: assets/js/tutor-tax-settings.js:8001
 msgid "Clear"
 msgstr ""
 
 #: templates/shortcode/instructor-filter.php:77
 #: templates/single/course/course-content.php:41
-#: assets/js/tutor.js:1137
+#: assets/js/tutor.js:1132
 msgid "Show More"
 msgstr ""
 
@@ -9713,7 +9757,7 @@ msgid "Watch Tutorials"
 msgstr ""
 
 #: views/elements/filters.php:85
-#: assets/js/tutor-payment-settings.js:11602
+#: assets/js/tutor-payment-settings.js:11648
 msgid "Reset"
 msgstr ""
 
@@ -9820,12 +9864,12 @@ msgid "Upload Attachments"
 msgstr ""
 
 #: views/fragments/thumbnail-uploader.php:24
-#: assets/js/tutor.js:2163
+#: assets/js/tutor.js:2158
 msgid "Select or Upload Media Of Your Chosen Persuasion"
 msgstr ""
 
 #: views/fragments/thumbnail-uploader.php:24
-#: assets/js/tutor.js:2165
+#: assets/js/tutor.js:2160
 msgid "Use this media"
 msgstr ""
 
@@ -9855,8 +9899,8 @@ msgstr ""
 #: assets/js/tutor-course-builder.js:21541
 #: assets/js/tutor-course-builder.js:22868
 #: assets/js/tutor-course-builder.js:23376
-#: assets/js/tutor-payment-settings.js:10557
-#: assets/js/tutor-payment-settings.js:11348
+#: assets/js/tutor-payment-settings.js:10595
+#: assets/js/tutor-payment-settings.js:11394
 msgid "Upload Image"
 msgstr ""
 
@@ -10026,7 +10070,7 @@ msgstr ""
 #: views/options/field-types/webhook_url.php:29
 #: views/pages/withdraw_requests.php:196
 #: views/pages/withdraw_requests.php:223
-#: assets/js/tutor-payment-settings.js:10894
+#: assets/js/tutor-payment-settings.js:10932
 msgid "Copy"
 msgstr ""
 
@@ -10040,12 +10084,12 @@ msgid "Save Changes"
 msgstr ""
 
 #: views/options/template/common/reset-button-template.php:20
-#: assets/js/tutor-payment-settings.js:11599
+#: assets/js/tutor-payment-settings.js:11645
 msgid "Reset to Default Settings?"
 msgstr ""
 
 #: views/options/template/common/reset-button-template.php:21
-#: assets/js/tutor-payment-settings.js:11601
+#: assets/js/tutor-payment-settings.js:11647
 msgid "WARNING! This will overwrite all customized settings of this section and reset them to default. Proceed with caution."
 msgstr ""
 
@@ -10263,20 +10307,20 @@ msgid "Name"
 msgstr ""
 
 #: views/pages/ecommerce/coupon-list.php:129
-#: assets/js/tutor-coupon.js:4341
+#: assets/js/tutor-coupon.js:4370
 msgid "Applies to"
 msgstr ""
 
 #: views/pages/ecommerce/coupon-list.php:132
-#: assets/js/tutor-coupon.js:4304
-#: assets/js/tutor-order-details.js:9295
-#: assets/js/tutor-order-details.js:9332
+#: assets/js/tutor-coupon.js:4333
+#: assets/js/tutor-order-details.js:9324
+#: assets/js/tutor-order-details.js:9361
 msgid "Discount"
 msgstr ""
 
 #: views/pages/ecommerce/coupon-list.php:135
 #: views/quiz/contexts.php:96
-#: assets/js/tutor-coupon.js:7317
+#: assets/js/tutor-coupon.js:7346
 #: assets/js/tutor-course-builder.js:26639
 #: assets/js/tutor-import-export.js:8017
 msgid "Type"
@@ -10287,18 +10331,18 @@ msgid "Usage"
 msgstr ""
 
 #: views/pages/ecommerce/coupon-list.php:180
-#: assets/js/tutor-coupon.js:4216
+#: assets/js/tutor-coupon.js:4245
 msgid "Fixed Amount"
 msgstr ""
 
 #: views/pages/ecommerce/coupon-list.php:180
-#: assets/js/tutor-coupon.js:4212
-#: assets/js/tutor-order-details.js:8387
+#: assets/js/tutor-coupon.js:4241
+#: assets/js/tutor-order-details.js:8416
 msgid "Percentage"
 msgstr ""
 
 #: views/pages/ecommerce/order-list.php:138
-#: assets/js/tutor-coupon.js:6773
+#: assets/js/tutor-coupon.js:6802
 msgid "Method"
 msgstr ""
 
@@ -10314,7 +10358,7 @@ msgstr ""
 
 #. translators: %s is the transaction ID
 #: views/pages/ecommerce/order-list.php:206
-#: assets/js/tutor-order-details.js:9567
+#: assets/js/tutor-order-details.js:9596
 #, php-format,js-format
 msgid "Trx ID: %s"
 msgstr ""
@@ -10507,7 +10551,7 @@ msgstr ""
 #: views/pages/tools/settings-log.php:75
 #: assets/js/tutor-course-builder.js:42279
 #: assets/js/tutor-import-export.js:6572
-#: assets/js/tutor-payment-settings.js:6067
+#: assets/js/tutor-payment-settings.js:6076
 msgid "Download"
 msgstr ""
 
@@ -10731,7 +10775,7 @@ msgid "A full log of every quiz attempt — scores, correct answers, and time ta
 msgstr ""
 
 #: views/pages/welcome.php:94
-#: assets/js/tutor-order-details.js:4733
+#: assets/js/tutor-order-details.js:4762
 msgid "Notes"
 msgstr ""
 
@@ -11027,7 +11071,7 @@ msgstr ""
 
 #: views/pages/withdraw_requests.php:430
 #: views/pages/withdraw_requests.php:431
-#: assets/js/tutor-order-details.js:9946
+#: assets/js/tutor-order-details.js:9975
 msgid "Other"
 msgstr ""
 
@@ -11096,12 +11140,12 @@ msgid "Save mark"
 msgstr ""
 
 #: views/quiz/attempt-details.php:843
-#: assets/js/tutor.js:3174
+#: assets/js/tutor.js:3169
 msgid "Show feedback"
 msgstr ""
 
 #: views/quiz/attempt-details.php:843
-#: assets/js/tutor.js:3174
+#: assets/js/tutor.js:3169
 msgid "Add feedback"
 msgstr ""
 
@@ -11118,7 +11162,7 @@ msgid "Are you sure you want to delete this feedback?"
 msgstr ""
 
 #: views/quiz/attempt-details.php:969
-#: assets/js/tutor-admin.js:3193
+#: assets/js/tutor-admin.js:3222
 msgid "No, keep it"
 msgstr ""
 
@@ -11158,7 +11202,7 @@ msgid "Passing Marks"
 msgstr ""
 
 #: views/quiz/instructor-feedback.php:37
-#: assets/js/tutor.js:3050
+#: assets/js/tutor.js:3045
 msgid "Updated"
 msgstr ""
 
@@ -11229,7 +11273,7 @@ msgstr ""
 #: assets/js/lazy-chunks/tutor-file-uploader.js:186
 #: assets/js/tutor-core.js:4688
 #: assets/js/tutor-course-builder.js:46558
-#: assets/js/tutor-payment-settings.js:9701
+#: assets/js/tutor-payment-settings.js:9739
 #, js-format
 msgid "Cannot select more than %d files"
 msgstr ""
@@ -11256,7 +11300,7 @@ msgstr ""
 #: assets/js/tutor-coupon.js:2404
 #: assets/js/tutor-course-builder.js:48799
 #: assets/js/tutor-order-details.js:3915
-#: assets/js/tutor-payment-settings.js:9312
+#: assets/js/tutor-payment-settings.js:9321
 #: assets/js/tutor-tax-settings.js:7471
 msgid "This field is required"
 msgstr ""
@@ -11290,11 +11334,11 @@ msgid "Invalid format"
 msgstr ""
 
 #: assets/js/lazy-chunks/tutor-form.js:104
-#: assets/js/tutor-coupon.js:2442
-#: assets/js/tutor-course-builder.js:48837
-#: assets/js/tutor-order-details.js:3953
-#: assets/js/tutor-payment-settings.js:9350
-#: assets/js/tutor-tax-settings.js:7509
+#: assets/js/tutor-coupon.js:2471
+#: assets/js/tutor-course-builder.js:48866
+#: assets/js/tutor-order-details.js:3982
+#: assets/js/tutor-payment-settings.js:9388
+#: assets/js/tutor-tax-settings.js:7538
 msgid "Invalid time entered!"
 msgstr ""
 
@@ -11307,7 +11351,7 @@ msgid "Select time"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:537
-#: assets/js/tutor-coupon.js:9444
+#: assets/js/tutor-coupon.js:9473
 #: assets/js/tutor-course-builder.js:36585
 #: assets/js/tutor-import-export.js:537
 #: assets/js/tutor-order-details.js:537
@@ -11317,7 +11361,7 @@ msgid "Oops! Something went wrong"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:543
-#: assets/js/tutor-coupon.js:9450
+#: assets/js/tutor-coupon.js:9479
 #: assets/js/tutor-course-builder.js:36591
 #: assets/js/tutor-import-export.js:543
 #: assets/js/tutor-order-details.js:543
@@ -11327,7 +11371,7 @@ msgid "Try the following steps to resolve the issue:"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:548
-#: assets/js/tutor-coupon.js:9455
+#: assets/js/tutor-coupon.js:9484
 #: assets/js/tutor-course-builder.js:36596
 #: assets/js/tutor-import-export.js:548
 #: assets/js/tutor-order-details.js:548
@@ -11337,7 +11381,7 @@ msgid "Refresh the page."
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:551
-#: assets/js/tutor-coupon.js:9458
+#: assets/js/tutor-coupon.js:9487
 #: assets/js/tutor-course-builder.js:36599
 #: assets/js/tutor-import-export.js:551
 #: assets/js/tutor-order-details.js:551
@@ -11347,7 +11391,7 @@ msgid "Clear your browser cache."
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:556
-#: assets/js/tutor-coupon.js:9463
+#: assets/js/tutor-coupon.js:9492
 #: assets/js/tutor-course-builder.js:36604
 #: assets/js/tutor-import-export.js:556
 #: assets/js/tutor-order-details.js:556
@@ -11357,7 +11401,7 @@ msgid "Ensure the Free and Pro plugins are on the same version."
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:577
-#: assets/js/tutor-coupon.js:9484
+#: assets/js/tutor-coupon.js:9513
 #: assets/js/tutor-course-builder.js:36625
 #: assets/js/tutor-import-export.js:577
 #: assets/js/tutor-order-details.js:577
@@ -11367,7 +11411,7 @@ msgid "Reload"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:584
-#: assets/js/tutor-coupon.js:9491
+#: assets/js/tutor-coupon.js:9520
 #: assets/js/tutor-course-builder.js:36632
 #: assets/js/tutor-import-export.js:584
 #: assets/js/tutor-order-details.js:584
@@ -11377,7 +11421,7 @@ msgid "Still having trouble?"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:587
-#: assets/js/tutor-coupon.js:9494
+#: assets/js/tutor-coupon.js:9523
 #: assets/js/tutor-course-builder.js:36635
 #: assets/js/tutor-import-export.js:587
 #: assets/js/tutor-order-details.js:587
@@ -11387,7 +11431,7 @@ msgid "Contact"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:591
-#: assets/js/tutor-coupon.js:9498
+#: assets/js/tutor-coupon.js:9527
 #: assets/js/tutor-course-builder.js:36639
 #: assets/js/tutor-import-export.js:591
 #: assets/js/tutor-order-details.js:591
@@ -11397,7 +11441,7 @@ msgid "Support"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:594
-#: assets/js/tutor-coupon.js:9501
+#: assets/js/tutor-coupon.js:9530
 #: assets/js/tutor-course-builder.js:36642
 #: assets/js/tutor-import-export.js:594
 #: assets/js/tutor-order-details.js:594
@@ -11407,7 +11451,7 @@ msgid "for assistance."
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:886
-#: assets/js/tutor-coupon.js:9991
+#: assets/js/tutor-coupon.js:10020
 #: assets/js/tutor-course-builder.js:12595
 #: assets/js/tutor-course-builder.js:44593
 #: assets/js/tutor-import-export.js:890
@@ -11418,7 +11462,7 @@ msgid "Public"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:890
-#: assets/js/tutor-coupon.js:9995
+#: assets/js/tutor-coupon.js:10024
 #: assets/js/tutor-course-builder.js:12599
 #: assets/js/tutor-course-builder.js:44597
 #: assets/js/tutor-import-export.js:894
@@ -11430,7 +11474,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1891
 #: assets/js/tutor-core.js:412
-#: assets/js/tutor-coupon.js:11425
+#: assets/js/tutor-coupon.js:11454
 #: assets/js/tutor-course-builder.js:48475
 #: assets/js/tutor-import-export.js:1901
 #: assets/js/tutor-order-details.js:1894
@@ -11441,7 +11485,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1896
 #: assets/js/tutor-core.js:417
-#: assets/js/tutor-coupon.js:11430
+#: assets/js/tutor-coupon.js:11459
 #: assets/js/tutor-course-builder.js:48480
 #: assets/js/tutor-import-export.js:1906
 #: assets/js/tutor-order-details.js:1899
@@ -11452,7 +11496,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1897
 #: assets/js/tutor-core.js:418
-#: assets/js/tutor-coupon.js:11431
+#: assets/js/tutor-coupon.js:11460
 #: assets/js/tutor-course-builder.js:48481
 #: assets/js/tutor-import-export.js:1907
 #: assets/js/tutor-order-details.js:1900
@@ -11463,7 +11507,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1898
 #: assets/js/tutor-core.js:419
-#: assets/js/tutor-coupon.js:11432
+#: assets/js/tutor-coupon.js:11461
 #: assets/js/tutor-course-builder.js:14753
 #: assets/js/tutor-course-builder.js:48482
 #: assets/js/tutor-import-export.js:1908
@@ -11475,7 +11519,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1899
 #: assets/js/tutor-core.js:420
-#: assets/js/tutor-coupon.js:11433
+#: assets/js/tutor-coupon.js:11462
 #: assets/js/tutor-course-builder.js:48483
 #: assets/js/tutor-import-export.js:1909
 #: assets/js/tutor-order-details.js:1902
@@ -11486,7 +11530,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1900
 #: assets/js/tutor-core.js:421
-#: assets/js/tutor-coupon.js:11434
+#: assets/js/tutor-coupon.js:11463
 #: assets/js/tutor-course-builder.js:48484
 #: assets/js/tutor-import-export.js:1910
 #: assets/js/tutor-order-details.js:1903
@@ -11497,7 +11541,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1901
 #: assets/js/tutor-core.js:422
-#: assets/js/tutor-coupon.js:11435
+#: assets/js/tutor-coupon.js:11464
 #: assets/js/tutor-course-builder.js:48485
 #: assets/js/tutor-import-export.js:1911
 #: assets/js/tutor-order-details.js:1904
@@ -11508,7 +11552,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1902
 #: assets/js/tutor-core.js:423
-#: assets/js/tutor-coupon.js:11436
+#: assets/js/tutor-coupon.js:11465
 #: assets/js/tutor-course-builder.js:48486
 #: assets/js/tutor-import-export.js:1912
 #: assets/js/tutor-order-details.js:1905
@@ -11519,7 +11563,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1903
 #: assets/js/tutor-core.js:424
-#: assets/js/tutor-coupon.js:11437
+#: assets/js/tutor-coupon.js:11466
 #: assets/js/tutor-course-builder.js:48487
 #: assets/js/tutor-import-export.js:1913
 #: assets/js/tutor-order-details.js:1906
@@ -11530,7 +11574,7 @@ msgstr ""
 
 #: assets/js/tutor-addon-list.js:1904
 #: assets/js/tutor-core.js:425
-#: assets/js/tutor-coupon.js:11438
+#: assets/js/tutor-coupon.js:11467
 #: assets/js/tutor-course-builder.js:48488
 #: assets/js/tutor-import-export.js:1914
 #: assets/js/tutor-order-details.js:1907
@@ -11540,7 +11584,7 @@ msgid "YB"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2123
-#: assets/js/tutor-coupon.js:11657
+#: assets/js/tutor-coupon.js:11686
 #: assets/js/tutor-course-builder.js:11554
 #: assets/js/tutor-course-builder.js:11582
 #: assets/js/tutor-course-builder.js:48707
@@ -11553,7 +11597,7 @@ msgstr ""
 
 #. translators: %d: number of hours
 #: assets/js/tutor-addon-list.js:2129
-#: assets/js/tutor-coupon.js:11663
+#: assets/js/tutor-coupon.js:11692
 #: assets/js/tutor-course-builder.js:48713
 #: assets/js/tutor-import-export.js:2139
 #: assets/js/tutor-order-details.js:2132
@@ -11564,7 +11608,7 @@ msgid "%d hours"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2132
-#: assets/js/tutor-coupon.js:11666
+#: assets/js/tutor-coupon.js:11695
 #: assets/js/tutor-course-builder.js:48716
 #: assets/js/tutor-import-export.js:2142
 #: assets/js/tutor-order-details.js:2135
@@ -11575,7 +11619,7 @@ msgstr ""
 
 #. translators: %d: number of days
 #: assets/js/tutor-addon-list.js:2137
-#: assets/js/tutor-coupon.js:11671
+#: assets/js/tutor-coupon.js:11700
 #: assets/js/tutor-course-builder.js:48721
 #: assets/js/tutor-import-export.js:2147
 #: assets/js/tutor-order-details.js:2140
@@ -11586,7 +11630,7 @@ msgid "%d days"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2140
-#: assets/js/tutor-coupon.js:11674
+#: assets/js/tutor-coupon.js:11703
 #: assets/js/tutor-course-builder.js:48724
 #: assets/js/tutor-import-export.js:2150
 #: assets/js/tutor-order-details.js:2143
@@ -11596,7 +11640,7 @@ msgid "daily"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2141
-#: assets/js/tutor-coupon.js:11675
+#: assets/js/tutor-coupon.js:11704
 #: assets/js/tutor-course-builder.js:48725
 #: assets/js/tutor-import-export.js:2151
 #: assets/js/tutor-order-details.js:2144
@@ -11607,7 +11651,7 @@ msgstr ""
 
 #. translators: %d is the number of weeks
 #: assets/js/tutor-addon-list.js:2145
-#: assets/js/tutor-coupon.js:11679
+#: assets/js/tutor-coupon.js:11708
 #: assets/js/tutor-course-builder.js:48729
 #: assets/js/tutor-import-export.js:2155
 #: assets/js/tutor-order-details.js:2148
@@ -11619,7 +11663,7 @@ msgstr ""
 
 #. translators: %d is the number of weeks
 #: assets/js/tutor-addon-list.js:2147
-#: assets/js/tutor-coupon.js:11681
+#: assets/js/tutor-coupon.js:11710
 #: assets/js/tutor-course-builder.js:48731
 #: assets/js/tutor-import-export.js:2157
 #: assets/js/tutor-order-details.js:2150
@@ -11630,7 +11674,7 @@ msgid "%d week"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2148
-#: assets/js/tutor-coupon.js:11682
+#: assets/js/tutor-coupon.js:11711
 #: assets/js/tutor-course-builder.js:48732
 #: assets/js/tutor-import-export.js:2158
 #: assets/js/tutor-order-details.js:2151
@@ -11640,7 +11684,7 @@ msgid "weekly"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2149
-#: assets/js/tutor-coupon.js:11683
+#: assets/js/tutor-coupon.js:11712
 #: assets/js/tutor-course-builder.js:48733
 #: assets/js/tutor-import-export.js:2159
 #: assets/js/tutor-order-details.js:2152
@@ -11651,7 +11695,7 @@ msgstr ""
 
 #. translators: %d is the number of months
 #: assets/js/tutor-addon-list.js:2153
-#: assets/js/tutor-coupon.js:11687
+#: assets/js/tutor-coupon.js:11716
 #: assets/js/tutor-course-builder.js:48737
 #: assets/js/tutor-import-export.js:2163
 #: assets/js/tutor-order-details.js:2156
@@ -11663,7 +11707,7 @@ msgstr ""
 
 #. translators: %d is the number of months
 #: assets/js/tutor-addon-list.js:2155
-#: assets/js/tutor-coupon.js:11689
+#: assets/js/tutor-coupon.js:11718
 #: assets/js/tutor-course-builder.js:48739
 #: assets/js/tutor-import-export.js:2165
 #: assets/js/tutor-order-details.js:2158
@@ -11674,7 +11718,7 @@ msgid "%d month"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2156
-#: assets/js/tutor-coupon.js:11690
+#: assets/js/tutor-coupon.js:11719
 #: assets/js/tutor-course-builder.js:48740
 #: assets/js/tutor-import-export.js:2166
 #: assets/js/tutor-order-details.js:2159
@@ -11684,7 +11728,7 @@ msgid "monthly"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2157
-#: assets/js/tutor-coupon.js:11691
+#: assets/js/tutor-coupon.js:11720
 #: assets/js/tutor-course-builder.js:48741
 #: assets/js/tutor-import-export.js:2167
 #: assets/js/tutor-order-details.js:2160
@@ -11695,7 +11739,7 @@ msgstr ""
 
 #. translators: %d is the number of years
 #: assets/js/tutor-addon-list.js:2161
-#: assets/js/tutor-coupon.js:11695
+#: assets/js/tutor-coupon.js:11724
 #: assets/js/tutor-course-builder.js:48745
 #: assets/js/tutor-import-export.js:2171
 #: assets/js/tutor-order-details.js:2164
@@ -11707,7 +11751,7 @@ msgstr ""
 
 #. translators: %d is the number of years
 #: assets/js/tutor-addon-list.js:2163
-#: assets/js/tutor-coupon.js:11697
+#: assets/js/tutor-coupon.js:11726
 #: assets/js/tutor-course-builder.js:48747
 #: assets/js/tutor-import-export.js:2173
 #: assets/js/tutor-order-details.js:2166
@@ -11718,7 +11762,7 @@ msgid "%d year"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2164
-#: assets/js/tutor-coupon.js:11698
+#: assets/js/tutor-coupon.js:11727
 #: assets/js/tutor-course-builder.js:48748
 #: assets/js/tutor-import-export.js:2174
 #: assets/js/tutor-order-details.js:2167
@@ -11728,7 +11772,7 @@ msgid "yearly"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:2165
-#: assets/js/tutor-coupon.js:11699
+#: assets/js/tutor-coupon.js:11728
 #: assets/js/tutor-course-builder.js:48749
 #: assets/js/tutor-import-export.js:2175
 #: assets/js/tutor-order-details.js:2168
@@ -11878,17 +11922,17 @@ msgid "Search ..."
 msgstr ""
 
 #: assets/js/tutor-admin.js:1771
-#: assets/js/tutor-admin.js:3314
-#: assets/js/tutor-admin.js:3613
-#: assets/js/tutor-admin.js:3820
-#: assets/js/tutor-admin.js:3823
+#: assets/js/tutor-admin.js:3343
+#: assets/js/tutor-admin.js:3642
+#: assets/js/tutor-admin.js:3849
+#: assets/js/tutor-admin.js:3852
 #: assets/js/tutor-front.js:1160
-#: assets/js/tutor.js:2004
+#: assets/js/tutor.js:1999
 msgid "Operation failed"
 msgstr ""
 
 #: assets/js/tutor-admin.js:1894
-#: assets/js/tutor-admin.js:2622
+#: assets/js/tutor-admin.js:2651
 #: assets/js/tutor-core.js:2436
 #: assets/js/tutor-front.js:203
 #: assets/js/tutor-front.js:1279
@@ -11940,8 +11984,8 @@ msgid "API key permission updated successfully"
 msgstr ""
 
 #: assets/js/tutor-admin.js:2540
-#: assets/js/tutor-admin.js:2693
-#: assets/js/tutor-admin.js:2697
+#: assets/js/tutor-admin.js:2722
+#: assets/js/tutor-admin.js:2726
 #: assets/js/tutor-front.js:2282
 #: assets/js/tutor-front.js:2289
 #: assets/js/tutor.js:101
@@ -11949,14 +11993,14 @@ msgstr ""
 #: assets/js/tutor.js:208
 #: assets/js/tutor.js:381
 #: assets/js/tutor.js:384
-#: assets/js/tutor.js:2246
-#: assets/js/tutor.js:2411
-#: assets/js/tutor.js:2415
-#: assets/js/tutor.js:2639
-#: assets/js/tutor.js:2682
-#: assets/js/tutor.js:2740
-#: assets/js/tutor.js:2834
-#: assets/js/tutor.js:2882
+#: assets/js/tutor.js:2241
+#: assets/js/tutor.js:2406
+#: assets/js/tutor.js:2410
+#: assets/js/tutor.js:2634
+#: assets/js/tutor.js:2677
+#: assets/js/tutor.js:2735
+#: assets/js/tutor.js:2829
+#: assets/js/tutor.js:2877
 msgid "Error!"
 msgstr ""
 
@@ -11972,59 +12016,59 @@ msgstr ""
 msgid "Use this logo"
 msgstr ""
 
-#: assets/js/tutor-admin.js:2685
+#: assets/js/tutor-admin.js:2714
 msgid "Success!"
 msgstr ""
 
-#: assets/js/tutor-admin.js:3189
+#: assets/js/tutor-admin.js:3218
 msgid "Confirm setting?"
 msgstr ""
 
-#: assets/js/tutor-admin.js:3201
+#: assets/js/tutor-admin.js:3230
 msgid "Yes, turn off"
 msgstr ""
 
 #. translators: %1$s is the Account name and %2$s is the Amount
-#: assets/js/tutor-admin.js:3234
+#: assets/js/tutor-admin.js:3263
 #, js-format
 msgid "You are approving %1$s withdrawal request for %2$s. Are you sure you want to approve?"
 msgstr ""
 
 #. translators: %1$s is the Account name and %2$s is the Amount
-#: assets/js/tutor-admin.js:3246
+#: assets/js/tutor-admin.js:3275
 #, js-format
 msgid "You are rejecting %1$s withdrawal request for %2$s. Are you sure you want to reject?"
 msgstr ""
 
-#: assets/js/tutor-admin.js:3265
-#: assets/js/tutor-admin.js:3281
+#: assets/js/tutor-admin.js:3294
+#: assets/js/tutor-admin.js:3310
 #: assets/js/tutor-front.js:1700
 msgid "Something went wrong, please try again!"
 msgstr ""
 
-#: assets/js/tutor-admin.js:3292
+#: assets/js/tutor-admin.js:3321
 msgid "Withdraw Reject Reason"
 msgstr ""
 
-#: assets/js/tutor-admin.js:3351
+#: assets/js/tutor-admin.js:3380
 msgid "Copied"
 msgstr ""
 
-#: assets/js/tutor-admin.js:3474
-#: assets/js/tutor-admin.js:3680
+#: assets/js/tutor-admin.js:3503
+#: assets/js/tutor-admin.js:3709
 msgid "Select or Upload Media Of Your Choice"
 msgstr ""
 
-#: assets/js/tutor-admin.js:3476
-#: assets/js/tutor-admin.js:3682
+#: assets/js/tutor-admin.js:3505
+#: assets/js/tutor-admin.js:3711
 msgid "Upload media"
 msgstr ""
 
-#: assets/js/tutor-admin.js:3549
+#: assets/js/tutor-admin.js:3578
 msgid "New Instructor Added"
 msgstr ""
 
-#: assets/js/tutor-admin.js:3725
+#: assets/js/tutor-admin.js:3754
 msgid "Do you want to save without any category?"
 msgstr ""
 
@@ -12039,7 +12083,7 @@ msgid "Failed to copy to clipboard: %s"
 msgstr ""
 
 #: assets/js/tutor-core.js:1223
-#: assets/js/tutor-payment-settings.js:10858
+#: assets/js/tutor-payment-settings.js:10896
 msgid "Copied to clipboard"
 msgstr ""
 
@@ -12093,70 +12137,94 @@ msgstr ""
 #: assets/js/tutor-course-builder.js:37329
 #: assets/js/tutor-import-export.js:4076
 #: assets/js/tutor-order-details.js:3733
-#: assets/js/tutor-payment-settings.js:4885
+#: assets/js/tutor-payment-settings.js:4894
 #: assets/js/tutor-tax-settings.js:4291
 msgid "Limit exceeded"
 msgstr ""
 
 #: assets/js/tutor-coupon.js:2232
 #: assets/js/tutor-course-builder.js:39537
-#: assets/js/tutor-order-details.js:6109
-#: assets/js/tutor-payment-settings.js:8029
+#: assets/js/tutor-order-details.js:6138
+#: assets/js/tutor-payment-settings.js:8038
 #: assets/js/tutor-tax-settings.js:5811
 msgid "No options available"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:2419
-#: assets/js/tutor-course-builder.js:48814
-#: assets/js/tutor-order-details.js:3930
-#: assets/js/tutor-payment-settings.js:9327
-#: assets/js/tutor-tax-settings.js:7486
+#: assets/js/tutor-coupon.js:2422
+#: assets/js/tutor-course-builder.js:48817
+#: assets/js/tutor-order-details.js:3933
+#: assets/js/tutor-payment-settings.js:9339
+#: assets/js/tutor-tax-settings.js:7489
+msgid "Invalid email address entered!"
+msgstr ""
+
+#: assets/js/tutor-coupon.js:2436
+#: assets/js/tutor-course-builder.js:48831
+#: assets/js/tutor-order-details.js:3947
+#: assets/js/tutor-payment-settings.js:9353
+#: assets/js/tutor-tax-settings.js:7503
+msgid "This field should not be a URL."
+msgstr ""
+
+#: assets/js/tutor-coupon.js:2439
+#: assets/js/tutor-course-builder.js:48834
+#: assets/js/tutor-order-details.js:3950
+#: assets/js/tutor-payment-settings.js:9356
+#: assets/js/tutor-tax-settings.js:7506
+msgid "This field should not be an email."
+msgstr ""
+
+#: assets/js/tutor-coupon.js:2448
+#: assets/js/tutor-course-builder.js:48843
+#: assets/js/tutor-order-details.js:3959
+#: assets/js/tutor-payment-settings.js:9365
+#: assets/js/tutor-tax-settings.js:7515
 msgid "The field is required"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:2426
-#: assets/js/tutor-course-builder.js:48821
-#: assets/js/tutor-order-details.js:3937
-#: assets/js/tutor-payment-settings.js:9334
-#: assets/js/tutor-tax-settings.js:7493
+#: assets/js/tutor-coupon.js:2455
+#: assets/js/tutor-course-builder.js:48850
+#: assets/js/tutor-order-details.js:3966
+#: assets/js/tutor-payment-settings.js:9372
+#: assets/js/tutor-tax-settings.js:7522
 msgid "Invalid date entered!"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:3382
-#: assets/js/tutor-coupon.js:3526
+#: assets/js/tutor-coupon.js:3411
+#: assets/js/tutor-coupon.js:3555
 msgid "course item"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:3501
+#: assets/js/tutor-coupon.js:3530
 #: assets/js/tutor-import-export.js:7511
 msgid "Bundles"
 msgstr ""
 
 #. translators: %s is the starting price of the plan
-#: assets/js/tutor-coupon.js:3550
-#: assets/js/tutor-coupon.js:4356
+#: assets/js/tutor-coupon.js:3579
+#: assets/js/tutor-coupon.js:4385
 #, js-format
 msgid "Starting from %s"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:3646
-#: assets/js/tutor-coupon.js:3666
+#: assets/js/tutor-coupon.js:3675
+#: assets/js/tutor-coupon.js:3695
 #: assets/js/tutor-course-builder.js:10830
 #: assets/js/tutor-course-builder.js:10850
 msgid "Until cancelled"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:3647
+#: assets/js/tutor-coupon.js:3676
 #: assets/js/tutor-course-builder.js:10831
 #: assets/js/tutor-course-builder.js:11585
 msgid "No Renewal"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:3989
+#: assets/js/tutor-coupon.js:4018
 msgid "Membership Plans"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4171
+#: assets/js/tutor-coupon.js:4200
 #: assets/js/tutor-course-builder.js:9264
 #: assets/js/tutor-course-builder.js:10122
 #: assets/js/tutor-course-builder.js:15272
@@ -12166,780 +12234,780 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4237
+#: assets/js/tutor-coupon.js:4266
 msgid "All membership plans"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4257
+#: assets/js/tutor-coupon.js:4286
 msgid "Specific membership plans"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4315
-#: assets/js/tutor-order-details.js:8447
+#: assets/js/tutor-coupon.js:4344
+#: assets/js/tutor-order-details.js:8476
 msgid "Discount Type"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4327
-#: assets/js/tutor-order-details.js:8470
+#: assets/js/tutor-coupon.js:4356
+#: assets/js/tutor-order-details.js:8499
 msgid "Discount Value"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4451
+#: assets/js/tutor-coupon.js:4480
 msgid "Select items"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4458
+#: assets/js/tutor-coupon.js:4487
 msgid "Add Items"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4944
+#: assets/js/tutor-coupon.js:4973
 #: assets/js/tutor-course-builder.js:44843
-#: assets/js/tutor-order-details.js:6384
-#: assets/js/tutor-payment-settings.js:8304
+#: assets/js/tutor-order-details.js:6413
+#: assets/js/tutor-payment-settings.js:8313
 #: assets/js/tutor-tax-settings.js:6086
 msgid "Formal"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4948
+#: assets/js/tutor-coupon.js:4977
 #: assets/js/tutor-course-builder.js:44847
-#: assets/js/tutor-order-details.js:6388
-#: assets/js/tutor-payment-settings.js:8308
+#: assets/js/tutor-order-details.js:6417
+#: assets/js/tutor-payment-settings.js:8317
 #: assets/js/tutor-tax-settings.js:6090
 msgid "Casual"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4952
+#: assets/js/tutor-coupon.js:4981
 #: assets/js/tutor-course-builder.js:44851
-#: assets/js/tutor-order-details.js:6392
-#: assets/js/tutor-payment-settings.js:8312
+#: assets/js/tutor-order-details.js:6421
+#: assets/js/tutor-payment-settings.js:8321
 #: assets/js/tutor-tax-settings.js:6094
 msgid "Professional"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4956
+#: assets/js/tutor-coupon.js:4985
 #: assets/js/tutor-course-builder.js:44855
-#: assets/js/tutor-order-details.js:6396
-#: assets/js/tutor-payment-settings.js:8316
+#: assets/js/tutor-order-details.js:6425
+#: assets/js/tutor-payment-settings.js:8325
 #: assets/js/tutor-tax-settings.js:6098
 msgid "Enthusiastic"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4960
+#: assets/js/tutor-coupon.js:4989
 #: assets/js/tutor-course-builder.js:44859
-#: assets/js/tutor-order-details.js:6400
-#: assets/js/tutor-payment-settings.js:8320
+#: assets/js/tutor-order-details.js:6429
+#: assets/js/tutor-payment-settings.js:8329
 #: assets/js/tutor-tax-settings.js:6102
 msgid "Informational"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4964
+#: assets/js/tutor-coupon.js:4993
 #: assets/js/tutor-course-builder.js:44863
-#: assets/js/tutor-order-details.js:6404
-#: assets/js/tutor-payment-settings.js:8324
+#: assets/js/tutor-order-details.js:6433
+#: assets/js/tutor-payment-settings.js:8333
 #: assets/js/tutor-tax-settings.js:6106
 msgid "Funny"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4974
+#: assets/js/tutor-coupon.js:5003
 #: assets/js/tutor-course-builder.js:44873
-#: assets/js/tutor-order-details.js:6414
-#: assets/js/tutor-payment-settings.js:8334
+#: assets/js/tutor-order-details.js:6443
+#: assets/js/tutor-payment-settings.js:8343
 #: assets/js/tutor-tax-settings.js:6116
 msgid "Essay"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4978
+#: assets/js/tutor-coupon.js:5007
 #: assets/js/tutor-course-builder.js:44877
-#: assets/js/tutor-order-details.js:6418
-#: assets/js/tutor-payment-settings.js:8338
+#: assets/js/tutor-order-details.js:6447
+#: assets/js/tutor-payment-settings.js:8347
 #: assets/js/tutor-tax-settings.js:6120
 msgid "Paragraph"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:4982
+#: assets/js/tutor-coupon.js:5011
 #: assets/js/tutor-course-builder.js:44881
-#: assets/js/tutor-order-details.js:6422
-#: assets/js/tutor-payment-settings.js:8342
+#: assets/js/tutor-order-details.js:6451
+#: assets/js/tutor-payment-settings.js:8351
 #: assets/js/tutor-tax-settings.js:6124
 msgid "Outline"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5009
+#: assets/js/tutor-coupon.js:5038
 #: assets/js/tutor-course-builder.js:41451
-#: assets/js/tutor-order-details.js:6449
-#: assets/js/tutor-payment-settings.js:8369
+#: assets/js/tutor-order-details.js:6478
+#: assets/js/tutor-payment-settings.js:8378
 #: assets/js/tutor-tax-settings.js:6151
 msgid "Character Limit"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5028
+#: assets/js/tutor-coupon.js:5057
 #: assets/js/tutor-course-builder.js:41470
-#: assets/js/tutor-order-details.js:6468
-#: assets/js/tutor-payment-settings.js:8388
+#: assets/js/tutor-order-details.js:6497
+#: assets/js/tutor-payment-settings.js:8397
 #: assets/js/tutor-tax-settings.js:6170
 msgid "Tone"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5036
+#: assets/js/tutor-coupon.js:5065
 #: assets/js/tutor-course-builder.js:41478
-#: assets/js/tutor-order-details.js:6476
-#: assets/js/tutor-payment-settings.js:8396
+#: assets/js/tutor-order-details.js:6505
+#: assets/js/tutor-payment-settings.js:8405
 #: assets/js/tutor-tax-settings.js:6178
 msgid "Format"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5366
+#: assets/js/tutor-coupon.js:5395
 #: assets/js/tutor-course-builder.js:42875
-#: assets/js/tutor-order-details.js:7018
-#: assets/js/tutor-payment-settings.js:8560
+#: assets/js/tutor-order-details.js:7047
+#: assets/js/tutor-payment-settings.js:8569
 #: assets/js/tutor-tax-settings.js:6720
 msgid "Mastering Digital Marketing: A Complete Guide"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5367
+#: assets/js/tutor-coupon.js:5396
 #: assets/js/tutor-course-builder.js:42876
-#: assets/js/tutor-order-details.js:7019
-#: assets/js/tutor-payment-settings.js:8561
+#: assets/js/tutor-order-details.js:7048
+#: assets/js/tutor-payment-settings.js:8570
 #: assets/js/tutor-tax-settings.js:6721
 msgid "The Ultimate Photoshop Course for Beginners"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5368
+#: assets/js/tutor-coupon.js:5397
 #: assets/js/tutor-course-builder.js:42877
-#: assets/js/tutor-order-details.js:7020
-#: assets/js/tutor-payment-settings.js:8562
+#: assets/js/tutor-order-details.js:7049
+#: assets/js/tutor-payment-settings.js:8571
 #: assets/js/tutor-tax-settings.js:6722
 msgid "Python Programming: From Zero to Hero"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5369
+#: assets/js/tutor-coupon.js:5398
 #: assets/js/tutor-course-builder.js:42878
-#: assets/js/tutor-order-details.js:7021
-#: assets/js/tutor-payment-settings.js:8563
+#: assets/js/tutor-order-details.js:7050
+#: assets/js/tutor-payment-settings.js:8572
 #: assets/js/tutor-tax-settings.js:6723
 msgid "Creative Writing Essentials: Unlock Your Storytelling Potential"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5370
+#: assets/js/tutor-coupon.js:5399
 #: assets/js/tutor-course-builder.js:42879
-#: assets/js/tutor-order-details.js:7022
-#: assets/js/tutor-payment-settings.js:8564
+#: assets/js/tutor-order-details.js:7051
+#: assets/js/tutor-payment-settings.js:8573
 #: assets/js/tutor-tax-settings.js:6724
 msgid "The Complete Guide to Web Development with React"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5371
+#: assets/js/tutor-coupon.js:5400
 #: assets/js/tutor-course-builder.js:42880
-#: assets/js/tutor-order-details.js:7023
-#: assets/js/tutor-payment-settings.js:8565
+#: assets/js/tutor-order-details.js:7052
+#: assets/js/tutor-payment-settings.js:8574
 #: assets/js/tutor-tax-settings.js:6725
 msgid "Master Public Speaking: Deliver Powerful Presentations"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5372
+#: assets/js/tutor-coupon.js:5401
 #: assets/js/tutor-course-builder.js:42881
-#: assets/js/tutor-order-details.js:7024
-#: assets/js/tutor-payment-settings.js:8566
+#: assets/js/tutor-order-details.js:7053
+#: assets/js/tutor-payment-settings.js:8575
 #: assets/js/tutor-tax-settings.js:6726
 msgid "Excel for Business: From Basics to Advanced Analytics"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5373
+#: assets/js/tutor-coupon.js:5402
 #: assets/js/tutor-course-builder.js:42882
-#: assets/js/tutor-order-details.js:7025
-#: assets/js/tutor-payment-settings.js:8567
+#: assets/js/tutor-order-details.js:7054
+#: assets/js/tutor-payment-settings.js:8576
 #: assets/js/tutor-tax-settings.js:6727
 msgid "Fitness Fundamentals: Build Strength and Confidence"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5374
+#: assets/js/tutor-coupon.js:5403
 #: assets/js/tutor-course-builder.js:42883
-#: assets/js/tutor-order-details.js:7026
-#: assets/js/tutor-payment-settings.js:8568
+#: assets/js/tutor-order-details.js:7055
+#: assets/js/tutor-payment-settings.js:8577
 #: assets/js/tutor-tax-settings.js:6728
 msgid "Photography Made Simple: Capture Stunning Shots"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5375
+#: assets/js/tutor-coupon.js:5404
 #: assets/js/tutor-course-builder.js:42884
-#: assets/js/tutor-order-details.js:7027
-#: assets/js/tutor-payment-settings.js:8569
+#: assets/js/tutor-order-details.js:7056
+#: assets/js/tutor-payment-settings.js:8578
 #: assets/js/tutor-tax-settings.js:6729
 msgid "Financial Freedom: Learn the Basics of Investing"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5479
+#: assets/js/tutor-coupon.js:5508
 #: assets/js/tutor-course-builder.js:42988
-#: assets/js/tutor-order-details.js:7131
-#: assets/js/tutor-payment-settings.js:8673
+#: assets/js/tutor-order-details.js:7160
+#: assets/js/tutor-payment-settings.js:8682
 #: assets/js/tutor-tax-settings.js:6833
 msgid "Craft Your Course Description"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5480
+#: assets/js/tutor-coupon.js:5509
 #: assets/js/tutor-course-builder.js:42989
-#: assets/js/tutor-order-details.js:7132
-#: assets/js/tutor-payment-settings.js:8674
+#: assets/js/tutor-order-details.js:7161
+#: assets/js/tutor-payment-settings.js:8683
 #: assets/js/tutor-tax-settings.js:6834
 msgid "Provide a brief overview of your course topic, target audience, and key takeaways"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5499
+#: assets/js/tutor-coupon.js:5528
 #: assets/js/tutor-course-builder.js:42120
 #: assets/js/tutor-course-builder.js:43008
-#: assets/js/tutor-order-details.js:7151
-#: assets/js/tutor-payment-settings.js:6467
-#: assets/js/tutor-payment-settings.js:8693
+#: assets/js/tutor-order-details.js:7180
+#: assets/js/tutor-payment-settings.js:6476
+#: assets/js/tutor-payment-settings.js:8702
 #: assets/js/tutor-tax-settings.js:6853
 msgid "Inspire Me"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5601
+#: assets/js/tutor-coupon.js:5630
 #: assets/js/tutor-course-builder.js:43110
-#: assets/js/tutor-order-details.js:7253
-#: assets/js/tutor-payment-settings.js:8795
+#: assets/js/tutor-order-details.js:7282
+#: assets/js/tutor-payment-settings.js:8804
 #: assets/js/tutor-tax-settings.js:6955
 msgid "Rephrase"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5607
+#: assets/js/tutor-coupon.js:5636
 #: assets/js/tutor-course-builder.js:43116
-#: assets/js/tutor-order-details.js:7259
-#: assets/js/tutor-payment-settings.js:8801
+#: assets/js/tutor-order-details.js:7288
+#: assets/js/tutor-payment-settings.js:8810
 #: assets/js/tutor-tax-settings.js:6961
 msgid "Make Shorter"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5615
+#: assets/js/tutor-coupon.js:5644
 #: assets/js/tutor-course-builder.js:43124
-#: assets/js/tutor-order-details.js:7267
-#: assets/js/tutor-payment-settings.js:8809
+#: assets/js/tutor-order-details.js:7296
+#: assets/js/tutor-payment-settings.js:8818
 #: assets/js/tutor-tax-settings.js:6969
 msgid "Change Tone"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5629
+#: assets/js/tutor-coupon.js:5658
 #: assets/js/tutor-course-builder.js:43138
-#: assets/js/tutor-order-details.js:7281
-#: assets/js/tutor-payment-settings.js:8823
+#: assets/js/tutor-order-details.js:7310
+#: assets/js/tutor-payment-settings.js:8832
 #: assets/js/tutor-tax-settings.js:6983
 msgid "Translate to"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5641
+#: assets/js/tutor-coupon.js:5670
 #: assets/js/tutor-course-builder.js:43150
-#: assets/js/tutor-order-details.js:7293
-#: assets/js/tutor-payment-settings.js:8835
+#: assets/js/tutor-order-details.js:7322
+#: assets/js/tutor-payment-settings.js:8844
 #: assets/js/tutor-tax-settings.js:6995
 msgid "Write as Bullets"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5647
+#: assets/js/tutor-coupon.js:5676
 #: assets/js/tutor-course-builder.js:43156
-#: assets/js/tutor-order-details.js:7299
-#: assets/js/tutor-payment-settings.js:8841
+#: assets/js/tutor-order-details.js:7328
+#: assets/js/tutor-payment-settings.js:8850
 #: assets/js/tutor-tax-settings.js:7001
 msgid "Make Longer"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5653
+#: assets/js/tutor-coupon.js:5682
 #: assets/js/tutor-course-builder.js:43162
-#: assets/js/tutor-order-details.js:7305
-#: assets/js/tutor-payment-settings.js:8847
+#: assets/js/tutor-order-details.js:7334
+#: assets/js/tutor-payment-settings.js:8856
 #: assets/js/tutor-tax-settings.js:7007
 msgid "Simplify Language"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5704
+#: assets/js/tutor-coupon.js:5733
 #: assets/js/tutor-course-builder.js:3455
 #: assets/js/tutor-course-builder.js:4713
 #: assets/js/tutor-course-builder.js:25058
 #: assets/js/tutor-course-builder.js:42147
 #: assets/js/tutor-course-builder.js:43213
-#: assets/js/tutor-order-details.js:7356
-#: assets/js/tutor-payment-settings.js:6494
-#: assets/js/tutor-payment-settings.js:8898
+#: assets/js/tutor-order-details.js:7385
+#: assets/js/tutor-payment-settings.js:6503
+#: assets/js/tutor-payment-settings.js:8907
 #: assets/js/tutor-tax-settings.js:7058
 msgid "Generate Now"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5712
+#: assets/js/tutor-coupon.js:5741
 #: assets/js/tutor-course-builder.js:42147
 #: assets/js/tutor-course-builder.js:43221
-#: assets/js/tutor-order-details.js:7364
-#: assets/js/tutor-payment-settings.js:6494
-#: assets/js/tutor-payment-settings.js:8906
+#: assets/js/tutor-order-details.js:7393
+#: assets/js/tutor-payment-settings.js:6503
+#: assets/js/tutor-payment-settings.js:8915
 #: assets/js/tutor-tax-settings.js:7066
 msgid "Generate Again"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5721
+#: assets/js/tutor-coupon.js:5750
 #: assets/js/tutor-course-builder.js:42337
 #: assets/js/tutor-course-builder.js:43230
-#: assets/js/tutor-order-details.js:7373
-#: assets/js/tutor-payment-settings.js:6125
-#: assets/js/tutor-payment-settings.js:8915
+#: assets/js/tutor-order-details.js:7402
+#: assets/js/tutor-payment-settings.js:6134
+#: assets/js/tutor-payment-settings.js:8924
 #: assets/js/tutor-tax-settings.js:7075
 msgid "Use This"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5759
+#: assets/js/tutor-coupon.js:5788
 #: assets/js/tutor-course-builder.js:43941
-#: assets/js/tutor-order-details.js:7411
-#: assets/js/tutor-payment-settings.js:7256
+#: assets/js/tutor-order-details.js:7440
+#: assets/js/tutor-payment-settings.js:7265
 #: assets/js/tutor-tax-settings.js:7113
 msgid "Upgrade to Tutor LMS Pro today and experience the power of "
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5762
-#: assets/js/tutor-coupon.js:6435
+#: assets/js/tutor-coupon.js:5791
+#: assets/js/tutor-coupon.js:6464
 #: assets/js/tutor-course-builder.js:3413
 #: assets/js/tutor-course-builder.js:37821
 #: assets/js/tutor-course-builder.js:38066
 #: assets/js/tutor-course-builder.js:41209
 #: assets/js/tutor-course-builder.js:43944
-#: assets/js/tutor-order-details.js:7414
-#: assets/js/tutor-order-details.js:7984
-#: assets/js/tutor-payment-settings.js:7259
-#: assets/js/tutor-payment-settings.js:9031
-#: assets/js/tutor-payment-settings.js:9818
-#: assets/js/tutor-payment-settings.js:10306
+#: assets/js/tutor-order-details.js:7443
+#: assets/js/tutor-order-details.js:8013
+#: assets/js/tutor-payment-settings.js:7268
+#: assets/js/tutor-payment-settings.js:9040
+#: assets/js/tutor-payment-settings.js:9856
+#: assets/js/tutor-payment-settings.js:10344
 #: assets/js/tutor-tax-settings.js:7116
-#: assets/js/tutor-tax-settings.js:7862
+#: assets/js/tutor-tax-settings.js:7891
 msgid "AI Studio"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5766
+#: assets/js/tutor-coupon.js:5795
 #: assets/js/tutor-course-builder.js:43948
-#: assets/js/tutor-order-details.js:7418
-#: assets/js/tutor-payment-settings.js:7263
+#: assets/js/tutor-order-details.js:7447
+#: assets/js/tutor-payment-settings.js:7272
 #: assets/js/tutor-tax-settings.js:7120
 msgid "Upgrade your plan to access the AI feature"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5767
+#: assets/js/tutor-coupon.js:5796
 #: assets/js/tutor-course-builder.js:43949
-#: assets/js/tutor-order-details.js:7419
-#: assets/js/tutor-payment-settings.js:7264
+#: assets/js/tutor-order-details.js:7448
+#: assets/js/tutor-payment-settings.js:7273
 #: assets/js/tutor-tax-settings.js:7121
 msgid "Don’t miss out on this game-changing feature!"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5769
+#: assets/js/tutor-coupon.js:5798
 #: assets/js/tutor-course-builder.js:43951
-#: assets/js/tutor-order-details.js:7421
-#: assets/js/tutor-payment-settings.js:7266
+#: assets/js/tutor-order-details.js:7450
+#: assets/js/tutor-payment-settings.js:7275
 #: assets/js/tutor-tax-settings.js:7123
 msgid "Generate a complete course outline in seconds!"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5770
+#: assets/js/tutor-coupon.js:5799
 #: assets/js/tutor-course-builder.js:43952
-#: assets/js/tutor-order-details.js:7422
-#: assets/js/tutor-payment-settings.js:7267
+#: assets/js/tutor-order-details.js:7451
+#: assets/js/tutor-payment-settings.js:7276
 #: assets/js/tutor-tax-settings.js:7124
 msgid "Let the AI Studio create Quizzes on your behalf and give your brain a well-deserved break."
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5771
+#: assets/js/tutor-coupon.js:5800
 #: assets/js/tutor-course-builder.js:43953
-#: assets/js/tutor-order-details.js:7423
-#: assets/js/tutor-payment-settings.js:7268
+#: assets/js/tutor-order-details.js:7452
+#: assets/js/tutor-payment-settings.js:7277
 #: assets/js/tutor-tax-settings.js:7125
 msgid "Generate images, customize backgrounds, and even remove unwanted objects with ease."
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5772
+#: assets/js/tutor-coupon.js:5801
 #: assets/js/tutor-course-builder.js:43954
-#: assets/js/tutor-order-details.js:7424
-#: assets/js/tutor-payment-settings.js:7269
+#: assets/js/tutor-order-details.js:7453
+#: assets/js/tutor-payment-settings.js:7278
 #: assets/js/tutor-tax-settings.js:7126
 msgid "Say goodbye to typos and grammar errors with AI-powered copy editing."
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5781
+#: assets/js/tutor-coupon.js:5810
 #: assets/js/tutor-course-builder.js:6693
 #: assets/js/tutor-course-builder.js:8010
 #: assets/js/tutor-course-builder.js:13011
 #: assets/js/tutor-course-builder.js:43963
-#: assets/js/tutor-order-details.js:7433
-#: assets/js/tutor-payment-settings.js:7278
+#: assets/js/tutor-order-details.js:7462
+#: assets/js/tutor-payment-settings.js:7287
 #: assets/js/tutor-tax-settings.js:7135
 msgid "Get Tutor LMS Pro"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:5808
+#: assets/js/tutor-coupon.js:5837
 #: assets/js/tutor-course-builder.js:41940
 #: assets/js/tutor-course-builder.js:43990
-#: assets/js/tutor-order-details.js:7460
-#: assets/js/tutor-payment-settings.js:6287
-#: assets/js/tutor-payment-settings.js:7305
+#: assets/js/tutor-order-details.js:7489
+#: assets/js/tutor-payment-settings.js:6296
+#: assets/js/tutor-payment-settings.js:7314
 #: assets/js/tutor-tax-settings.js:7162
 msgid "Illustration"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6177
+#: assets/js/tutor-coupon.js:6206
 #: assets/js/tutor-course-builder.js:44149
-#: assets/js/tutor-order-details.js:7726
-#: assets/js/tutor-payment-settings.js:9445
-#: assets/js/tutor-tax-settings.js:7604
+#: assets/js/tutor-order-details.js:7755
+#: assets/js/tutor-payment-settings.js:9483
+#: assets/js/tutor-tax-settings.js:7633
 msgid "Configure AI Image Connector"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6177
+#: assets/js/tutor-coupon.js:6206
 #: assets/js/tutor-course-builder.js:44149
-#: assets/js/tutor-order-details.js:7726
-#: assets/js/tutor-payment-settings.js:9445
-#: assets/js/tutor-tax-settings.js:7604
+#: assets/js/tutor-order-details.js:7755
+#: assets/js/tutor-payment-settings.js:9483
+#: assets/js/tutor-tax-settings.js:7633
 msgid "Configure AI Connectors"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6177
+#: assets/js/tutor-coupon.js:6206
 #: assets/js/tutor-course-builder.js:44149
-#: assets/js/tutor-order-details.js:7726
-#: assets/js/tutor-payment-settings.js:9445
-#: assets/js/tutor-tax-settings.js:7604
+#: assets/js/tutor-order-details.js:7755
+#: assets/js/tutor-payment-settings.js:9483
+#: assets/js/tutor-tax-settings.js:7633
 msgid "Set OpenAI API key"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6199
+#: assets/js/tutor-coupon.js:6228
 #: assets/js/tutor-course-builder.js:44171
-#: assets/js/tutor-order-details.js:7748
-#: assets/js/tutor-payment-settings.js:9467
-#: assets/js/tutor-tax-settings.js:7626
+#: assets/js/tutor-order-details.js:7777
+#: assets/js/tutor-payment-settings.js:9505
+#: assets/js/tutor-tax-settings.js:7655
 msgid "Connect API KEY"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6205
+#: assets/js/tutor-coupon.js:6234
 #: assets/js/tutor-course-builder.js:44177
-#: assets/js/tutor-order-details.js:7754
-#: assets/js/tutor-payment-settings.js:9473
-#: assets/js/tutor-tax-settings.js:7632
+#: assets/js/tutor-order-details.js:7783
+#: assets/js/tutor-payment-settings.js:9511
+#: assets/js/tutor-tax-settings.js:7661
 msgid "API is not connected"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6211
+#: assets/js/tutor-coupon.js:6240
 #: assets/js/tutor-course-builder.js:44183
-#: assets/js/tutor-order-details.js:7760
-#: assets/js/tutor-payment-settings.js:9479
-#: assets/js/tutor-tax-settings.js:7638
+#: assets/js/tutor-order-details.js:7789
+#: assets/js/tutor-payment-settings.js:9517
+#: assets/js/tutor-tax-settings.js:7667
 msgid "Please, ask your Admin to connect the API with Tutor LMS Pro."
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6220
+#: assets/js/tutor-coupon.js:6249
 #: assets/js/tutor-course-builder.js:44192
-#: assets/js/tutor-order-details.js:7769
-#: assets/js/tutor-payment-settings.js:9488
-#: assets/js/tutor-tax-settings.js:7647
+#: assets/js/tutor-order-details.js:7798
+#: assets/js/tutor-payment-settings.js:9526
+#: assets/js/tutor-tax-settings.js:7676
 msgid "Please ask your Admin to configure an image-capable AI connector in WordPress Settings > Connectors."
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6220
+#: assets/js/tutor-coupon.js:6249
 #: assets/js/tutor-course-builder.js:44192
-#: assets/js/tutor-order-details.js:7769
-#: assets/js/tutor-payment-settings.js:9488
-#: assets/js/tutor-tax-settings.js:7647
+#: assets/js/tutor-order-details.js:7798
+#: assets/js/tutor-payment-settings.js:9526
+#: assets/js/tutor-tax-settings.js:7676
 msgid "Please ask your Admin to configure an AI connector in WordPress Settings > Connectors."
 msgstr ""
 
 #. translators: %1$s and %2$s are opening and closing anchor tags for the "OpenAI User settings" link
-#: assets/js/tutor-coupon.js:6241
+#: assets/js/tutor-coupon.js:6270
 #: assets/js/tutor-course-builder.js:44213
-#: assets/js/tutor-order-details.js:7790
-#: assets/js/tutor-payment-settings.js:9509
-#: assets/js/tutor-tax-settings.js:7668
+#: assets/js/tutor-order-details.js:7819
+#: assets/js/tutor-payment-settings.js:9547
+#: assets/js/tutor-tax-settings.js:7697
 #, js-format
 msgid "Find your Secret API key in your %1$sOpenAI User settings%2$s and paste it here to connect OpenAI with your Tutor LMS website."
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6247
+#: assets/js/tutor-coupon.js:6276
 #: assets/js/tutor-course-builder.js:44219
-#: assets/js/tutor-order-details.js:7796
-#: assets/js/tutor-payment-settings.js:9515
-#: assets/js/tutor-tax-settings.js:7674
+#: assets/js/tutor-order-details.js:7825
+#: assets/js/tutor-payment-settings.js:9553
+#: assets/js/tutor-tax-settings.js:7703
 msgid "The page will reload after submission. Make sure to save the course information."
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6258
+#: assets/js/tutor-coupon.js:6287
 #: assets/js/tutor-course-builder.js:44230
-#: assets/js/tutor-order-details.js:7807
-#: assets/js/tutor-payment-settings.js:9526
-#: assets/js/tutor-tax-settings.js:7685
+#: assets/js/tutor-order-details.js:7836
+#: assets/js/tutor-payment-settings.js:9564
+#: assets/js/tutor-tax-settings.js:7714
 msgid "OpenAI API key"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6259
+#: assets/js/tutor-coupon.js:6288
 #: assets/js/tutor-course-builder.js:44231
-#: assets/js/tutor-order-details.js:7808
-#: assets/js/tutor-payment-settings.js:9527
-#: assets/js/tutor-tax-settings.js:7686
+#: assets/js/tutor-order-details.js:7837
+#: assets/js/tutor-payment-settings.js:9565
+#: assets/js/tutor-tax-settings.js:7715
 msgid "Enter your OpenAI API key"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6266
+#: assets/js/tutor-coupon.js:6295
 #: assets/js/tutor-course-builder.js:44238
-#: assets/js/tutor-order-details.js:7815
-#: assets/js/tutor-payment-settings.js:9534
-#: assets/js/tutor-tax-settings.js:7693
+#: assets/js/tutor-order-details.js:7844
+#: assets/js/tutor-payment-settings.js:9572
+#: assets/js/tutor-tax-settings.js:7722
 msgid "Enable OpenAI"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6298
+#: assets/js/tutor-coupon.js:6327
 #: assets/js/tutor-course-builder.js:44270
-#: assets/js/tutor-order-details.js:7847
-#: assets/js/tutor-payment-settings.js:9566
-#: assets/js/tutor-tax-settings.js:7725
+#: assets/js/tutor-order-details.js:7876
+#: assets/js/tutor-payment-settings.js:9604
+#: assets/js/tutor-tax-settings.js:7754
 msgid "Your configured AI connector does not support image generation, or no AI connector is configured. Please configure an image-capable connector (such as OpenAI or Google) in WordPress settings to generate images in Tutor LMS."
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6298
+#: assets/js/tutor-coupon.js:6327
 #: assets/js/tutor-course-builder.js:44270
-#: assets/js/tutor-order-details.js:7847
-#: assets/js/tutor-payment-settings.js:9566
-#: assets/js/tutor-tax-settings.js:7725
+#: assets/js/tutor-order-details.js:7876
+#: assets/js/tutor-payment-settings.js:9604
+#: assets/js/tutor-tax-settings.js:7754
 msgid "No AI connector is configured yet. To use AI features in Tutor LMS, set up at least one connector such as OpenAI, Anthropic, or Google Gemini from WordPress Settings > Connectors."
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6316
+#: assets/js/tutor-coupon.js:6345
 #: assets/js/tutor-course-builder.js:44288
-#: assets/js/tutor-order-details.js:7865
-#: assets/js/tutor-payment-settings.js:9584
-#: assets/js/tutor-tax-settings.js:7743
+#: assets/js/tutor-order-details.js:7894
+#: assets/js/tutor-payment-settings.js:9622
+#: assets/js/tutor-tax-settings.js:7772
 msgid "Configure Connectors"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6446
+#: assets/js/tutor-coupon.js:6475
 #: assets/js/tutor-course-builder.js:38077
-#: assets/js/tutor-order-details.js:7995
-#: assets/js/tutor-payment-settings.js:9042
-#: assets/js/tutor-tax-settings.js:7873
+#: assets/js/tutor-order-details.js:8024
+#: assets/js/tutor-payment-settings.js:9051
+#: assets/js/tutor-tax-settings.js:7902
 msgid "Create a Compelling Title"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6447
+#: assets/js/tutor-coupon.js:6476
 #: assets/js/tutor-course-builder.js:38078
-#: assets/js/tutor-order-details.js:7996
-#: assets/js/tutor-payment-settings.js:9043
-#: assets/js/tutor-tax-settings.js:7874
+#: assets/js/tutor-order-details.js:8025
+#: assets/js/tutor-payment-settings.js:9052
+#: assets/js/tutor-tax-settings.js:7903
 msgid "Describe the main focus of your course in a few words"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6526
+#: assets/js/tutor-coupon.js:6555
 #: assets/js/tutor-course-builder.js:38157
-#: assets/js/tutor-order-details.js:8075
-#: assets/js/tutor-payment-settings.js:9122
-#: assets/js/tutor-tax-settings.js:7953
+#: assets/js/tutor-order-details.js:8104
+#: assets/js/tutor-payment-settings.js:9131
+#: assets/js/tutor-tax-settings.js:7982
 msgid "Show/Hide Password"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6762
+#: assets/js/tutor-coupon.js:6791
 msgid "Coupon Info"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6765
+#: assets/js/tutor-coupon.js:6794
 msgid "Create a coupon code or set up automatic discounts."
 msgstr ""
 
 #. translators: %s is the current year (e.g., 2025)
-#: assets/js/tutor-coupon.js:6785
+#: assets/js/tutor-coupon.js:6814
 #, js-format
 msgid "e.g. Summer Sale %s"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6796
+#: assets/js/tutor-coupon.js:6825
 msgid "Coupon Code"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6797
+#: assets/js/tutor-coupon.js:6826
 msgid "e.g. SUMMER20"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6806
+#: assets/js/tutor-coupon.js:6835
 msgid "Generate Code"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6815
+#: assets/js/tutor-coupon.js:6844
 msgid "Coupon status"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6924
+#: assets/js/tutor-coupon.js:6953
 msgid "Usage Limitation"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6936
+#: assets/js/tutor-coupon.js:6965
 msgid "Limit number of times this coupon can be used in total"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6950
-#: assets/js/tutor-coupon.js:6981
-#: assets/js/tutor-coupon.js:8032
+#: assets/js/tutor-coupon.js:6979
+#: assets/js/tutor-coupon.js:7010
+#: assets/js/tutor-coupon.js:8061
 #: assets/js/tutor-course-builder.js:12420
 #: assets/js/tutor-course-builder.js:12445
 msgid "0"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:6967
+#: assets/js/tutor-coupon.js:6996
 msgid "Limit number of times this coupon can be used by a customer"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7162
+#: assets/js/tutor-coupon.js:7191
 msgid "Coupon preview will appear here"
 msgstr ""
 
 #. translators: %s: Percentage or Amount of discount
-#: assets/js/tutor-coupon.js:7190
+#: assets/js/tutor-coupon.js:7219
 #, js-format
 msgid "%s off all courses"
 msgstr ""
 
 #. translators: %s: Percentage or Amount of discount
-#: assets/js/tutor-coupon.js:7193
+#: assets/js/tutor-coupon.js:7222
 #, js-format
 msgid "%s off all bundles"
 msgstr ""
 
 #. translators: %s: Percentage or Amount of discount
-#: assets/js/tutor-coupon.js:7196
+#: assets/js/tutor-coupon.js:7225
 #, js-format
 msgid "%s off all courses and bundles"
 msgstr ""
 
 #. translators: %s: Percentage or Amount of discount
-#: assets/js/tutor-coupon.js:7199
+#: assets/js/tutor-coupon.js:7228
 #, js-format
 msgid "%s off all membership plans"
 msgstr ""
 
 #. translators: %s: Percentage or Amount of discount
-#: assets/js/tutor-coupon.js:7202
+#: assets/js/tutor-coupon.js:7231
 #, js-format
 msgid "%s off specific courses"
 msgstr ""
 
 #. translators: %s: Percentage or Amount of discount
-#: assets/js/tutor-coupon.js:7205
+#: assets/js/tutor-coupon.js:7234
 #, js-format
 msgid "%s off specific bundles"
 msgstr ""
 
 #. translators: %s: Percentage or Amount of discount
-#: assets/js/tutor-coupon.js:7208
+#: assets/js/tutor-coupon.js:7237
 #, js-format
 msgid "%s off specific category"
 msgstr ""
 
 #. translators: %s: Percentage or Amount of discount
-#: assets/js/tutor-coupon.js:7211
+#: assets/js/tutor-coupon.js:7240
 #, js-format
 msgid "%s off specific membership plans"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7230
+#: assets/js/tutor-coupon.js:7259
 msgid "today"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7230
+#: assets/js/tutor-coupon.js:7259
 msgid "tomorrow"
 msgstr ""
 
 #. translators: %d is the number of times the coupon was used
-#: assets/js/tutor-coupon.js:7233
+#: assets/js/tutor-coupon.js:7262
 #, js-format
 msgid "Total %d times used"
 msgstr ""
 
 #. translators: %s is the date from which coupon is active
-#: assets/js/tutor-coupon.js:7235
+#: assets/js/tutor-coupon.js:7264
 #, js-format
 msgid "Active from %s"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7256
+#: assets/js/tutor-coupon.js:7285
 msgid "OFF"
 msgstr ""
 
 #. translators: %s is the validity end date
-#: assets/js/tutor-coupon.js:7267
+#: assets/js/tutor-coupon.js:7296
 #, js-format
 msgid "Valid until %s"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7290
+#: assets/js/tutor-coupon.js:7319
 msgid "Right circle icon"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7347
+#: assets/js/tutor-coupon.js:7376
 msgid "One use per customer"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7367
+#: assets/js/tutor-coupon.js:7396
 msgid "Activity"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7376
+#: assets/js/tutor-coupon.js:7405
 msgid "Not active yet"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7851
+#: assets/js/tutor-coupon.js:7880
 msgid "Validity"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7862
+#: assets/js/tutor-coupon.js:7891
 msgid "Starts from"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7889
+#: assets/js/tutor-coupon.js:7918
 msgid "Set end date"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7890
+#: assets/js/tutor-coupon.js:7919
 msgid "Leaving the end date blank will make the coupon valid indefinitely."
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7907
+#: assets/js/tutor-coupon.js:7936
 msgid "Ends in"
 msgstr ""
 
 #. translators: %s is the currency symbol, e.g. $, €, ¥
-#: assets/js/tutor-coupon.js:7970
+#: assets/js/tutor-coupon.js:7999
 #, js-format
 msgid "Minimum purchase amount (%s)"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7973
+#: assets/js/tutor-coupon.js:8002
 msgid "No minimum requirements"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7981
+#: assets/js/tutor-coupon.js:8010
 msgid "Minimum quantity of courses"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:7992
+#: assets/js/tutor-coupon.js:8021
 msgid "Minimum Purchase Requirements"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:8017
+#: assets/js/tutor-coupon.js:8046
 msgid "0.00"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:8254
+#: assets/js/tutor-coupon.js:8283
 msgid "Update Coupon"
 msgstr ""
 
-#: assets/js/tutor-coupon.js:8254
+#: assets/js/tutor-coupon.js:8283
 msgid "Create Coupon"
 msgstr ""
 
 #. translators: %1$s is author's name and %2$s is creation date/time
-#: assets/js/tutor-coupon.js:8266
-#: assets/js/tutor-order-details.js:10168
+#: assets/js/tutor-coupon.js:8295
+#: assets/js/tutor-order-details.js:10197
 #, js-format
 msgid "Created by %1$s at %2$s"
 msgstr ""
 
 #. translators: %1$s is author's name and %2$s is update date/time
-#: assets/js/tutor-coupon.js:8270
-#: assets/js/tutor-order-details.js:10172
+#: assets/js/tutor-coupon.js:8299
+#: assets/js/tutor-order-details.js:10201
 #, js-format
 msgid "Updated by %1$s at %2$s"
 msgstr ""
@@ -13386,7 +13454,7 @@ msgstr ""
 #: assets/js/tutor-course-builder.js:6907
 #: assets/js/tutor-course-builder.js:12981
 #: assets/js/tutor-course-builder.js:41905
-#: assets/js/tutor-payment-settings.js:6252
+#: assets/js/tutor-payment-settings.js:6261
 msgid "None"
 msgstr ""
 
@@ -15472,7 +15540,7 @@ msgid "Quiz imported successfully"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:29499
-#: assets/js/tutor.js:2877
+#: assets/js/tutor.js:2872
 msgid "Something went wrong."
 msgstr ""
 
@@ -15629,13 +15697,13 @@ msgstr ""
 #: assets/js/tutor-course-builder.js:37550
 #: assets/js/tutor-course-builder.js:37760
 #: assets/js/tutor-course-builder.js:40424
-#: assets/js/tutor-payment-settings.js:4245
-#: assets/js/tutor-payment-settings.js:9757
+#: assets/js/tutor-payment-settings.js:4254
+#: assets/js/tutor-payment-settings.js:9795
 msgid "Upload Media"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:34880
-#: assets/js/tutor-payment-settings.js:4335
+#: assets/js/tutor-payment-settings.js:4344
 msgid "Replace Image"
 msgstr ""
 
@@ -15726,194 +15794,194 @@ msgstr ""
 
 #: assets/js/tutor-course-builder.js:41124
 #: assets/js/tutor-course-builder.js:41145
-#: assets/js/tutor-payment-settings.js:10221
-#: assets/js/tutor-payment-settings.js:10242
+#: assets/js/tutor-payment-settings.js:10259
+#: assets/js/tutor-payment-settings.js:10280
 msgid "Back to WordPress Editor"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41129
-#: assets/js/tutor-payment-settings.js:10226
+#: assets/js/tutor-payment-settings.js:10264
 msgid "Warning: Switching to the WordPress default editor may cause issues with your current layout, design, and content."
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41131
-#: assets/js/tutor-payment-settings.js:10228
+#: assets/js/tutor-payment-settings.js:10266
 msgid "Confirm"
 msgstr ""
 
 #. translators: %s is the editor name
 #: assets/js/tutor-course-builder.js:41167
-#: assets/js/tutor-payment-settings.js:10264
+#: assets/js/tutor-payment-settings.js:10302
 #, js-format
 msgid "Edit with %s"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41250
-#: assets/js/tutor-payment-settings.js:10347
+#: assets/js/tutor-payment-settings.js:10385
 msgid "Edit with"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41762
-#: assets/js/tutor-payment-settings.js:4384
+#: assets/js/tutor-payment-settings.js:4393
 msgid "A serene classroom setting with books and a chalkboard"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41763
-#: assets/js/tutor-payment-settings.js:4385
+#: assets/js/tutor-payment-settings.js:4394
 msgid "An abstract representation of innovation and creativity"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41764
-#: assets/js/tutor-payment-settings.js:4386
+#: assets/js/tutor-payment-settings.js:4395
 msgid "A vibrant workspace with a laptop and coffee cup"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41765
-#: assets/js/tutor-payment-settings.js:4387
+#: assets/js/tutor-payment-settings.js:4396
 msgid "A modern design with digital learning icons"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41766
-#: assets/js/tutor-payment-settings.js:4388
+#: assets/js/tutor-payment-settings.js:4397
 msgid "A futuristic cityscape with a glowing pathway"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41767
-#: assets/js/tutor-payment-settings.js:4389
+#: assets/js/tutor-payment-settings.js:4398
 msgid "A peaceful nature scene with soft colors"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41768
-#: assets/js/tutor-payment-settings.js:4390
+#: assets/js/tutor-payment-settings.js:4399
 msgid "A professional boardroom with sleek visuals"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41769
-#: assets/js/tutor-payment-settings.js:4391
+#: assets/js/tutor-payment-settings.js:4400
 msgid "A stack of books with warm, inviting lighting"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41770
-#: assets/js/tutor-payment-settings.js:4392
+#: assets/js/tutor-payment-settings.js:4401
 msgid "A dynamic collage of technology and education themes"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41771
-#: assets/js/tutor-payment-settings.js:4393
+#: assets/js/tutor-payment-settings.js:4402
 msgid "A bold and minimalistic design with striking colors"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41910
-#: assets/js/tutor-payment-settings.js:6257
+#: assets/js/tutor-payment-settings.js:6266
 msgid "Photo"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41915
-#: assets/js/tutor-payment-settings.js:6262
+#: assets/js/tutor-payment-settings.js:6271
 msgid "Neon"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41920
-#: assets/js/tutor-payment-settings.js:6267
+#: assets/js/tutor-payment-settings.js:6276
 msgid "3D"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41925
-#: assets/js/tutor-payment-settings.js:6272
+#: assets/js/tutor-payment-settings.js:6281
 msgid "Painting"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41930
-#: assets/js/tutor-payment-settings.js:6277
+#: assets/js/tutor-payment-settings.js:6286
 msgid "Sketch"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41935
-#: assets/js/tutor-payment-settings.js:6282
+#: assets/js/tutor-payment-settings.js:6291
 msgid "Concept"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41945
-#: assets/js/tutor-payment-settings.js:6292
+#: assets/js/tutor-payment-settings.js:6301
 msgid "Dreamy"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41950
-#: assets/js/tutor-payment-settings.js:6297
+#: assets/js/tutor-payment-settings.js:6306
 msgid "Filmic"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41955
-#: assets/js/tutor-payment-settings.js:6302
+#: assets/js/tutor-payment-settings.js:6311
 msgid "Retro"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:41960
-#: assets/js/tutor-payment-settings.js:6307
+#: assets/js/tutor-payment-settings.js:6316
 msgid "Black & White"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:42097
-#: assets/js/tutor-payment-settings.js:6444
+#: assets/js/tutor-payment-settings.js:6453
 msgid "Visualize Your Course"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:42098
-#: assets/js/tutor-payment-settings.js:6445
+#: assets/js/tutor-payment-settings.js:6454
 msgid "Describe the image you want for your course thumbnail"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:42129
-#: assets/js/tutor-payment-settings.js:6476
+#: assets/js/tutor-payment-settings.js:6485
 msgid "Styles"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:42259
 #: assets/js/tutor-course-builder.js:42589
-#: assets/js/tutor-payment-settings.js:6047
-#: assets/js/tutor-payment-settings.js:7007
+#: assets/js/tutor-payment-settings.js:6056
+#: assets/js/tutor-payment-settings.js:7016
 msgid "Magic Fill"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:42308
-#: assets/js/tutor-payment-settings.js:6096
+#: assets/js/tutor-payment-settings.js:6105
 msgid "Generated Image"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:42603
-#: assets/js/tutor-payment-settings.js:7021
+#: assets/js/tutor-payment-settings.js:7030
 msgid "Revert to Original"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:42712
-#: assets/js/tutor-payment-settings.js:7130
+#: assets/js/tutor-payment-settings.js:7139
 msgid "Describe the Fill"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:42713
-#: assets/js/tutor-payment-settings.js:7131
+#: assets/js/tutor-payment-settings.js:7140
 msgid "Write 5 words to describe..."
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:42737
-#: assets/js/tutor-payment-settings.js:7155
+#: assets/js/tutor-payment-settings.js:7164
 msgid "Generative Erase"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:42755
-#: assets/js/tutor-payment-settings.js:7173
+#: assets/js/tutor-payment-settings.js:7182
 msgid "Use Image"
 msgstr ""
 
 #: assets/js/tutor-course-builder.js:43508
-#: assets/js/tutor-payment-settings.js:4153
-#: assets/js/tutor-tax-settings.js:9442
+#: assets/js/tutor-payment-settings.js:4162
+#: assets/js/tutor-tax-settings.js:9471
 msgid "Once you perform this action this can’t be undone."
 msgstr ""
 
 #. translators: %s is the file title
 #: assets/js/tutor-course-builder.js:46534
-#: assets/js/tutor-payment-settings.js:9677
+#: assets/js/tutor-payment-settings.js:9715
 #, js-format
 msgid "%s size exceeds the maximum allowed size"
 msgstr ""
@@ -16106,9 +16174,9 @@ msgstr ""
 
 #: assets/js/tutor-front.js:2197
 #: assets/js/tutor-front.js:2299
-#: assets/js/tutor.js:2514
-#: assets/js/tutor.js:3094
-#: assets/js/tutor.js:3101
+#: assets/js/tutor.js:2509
+#: assets/js/tutor.js:3089
+#: assets/js/tutor.js:3096
 msgid "Something went wrong, please try again"
 msgstr ""
 
@@ -16481,339 +16549,339 @@ msgstr ""
 msgid "Please answer all required questions before submitting."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:4622
+#: assets/js/tutor-order-details.js:4651
 msgid "You can see all the activities against this order chronologically."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:4623
+#: assets/js/tutor-order-details.js:4652
 msgid "Order activities"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:4651
+#: assets/js/tutor-order-details.js:4680
 msgid "Add a comment (Only admin can see comments.)"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:4652
+#: assets/js/tutor-order-details.js:4681
 msgid "Write a comment for this order..."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:4662
+#: assets/js/tutor-order-details.js:4691
 msgid "Post"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:4737
+#: assets/js/tutor-order-details.js:4766
 msgid "No notes"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8449
+#: assets/js/tutor-order-details.js:8478
 msgid "Select discount type"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8461
+#: assets/js/tutor-order-details.js:8490
 msgid "Should not be more than 100%."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8464
+#: assets/js/tutor-order-details.js:8493
 msgid "Discount should not exceed the total price."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8482
+#: assets/js/tutor-order-details.js:8511
 msgid "Price after the discount: "
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8496
+#: assets/js/tutor-order-details.js:8525
 msgid "Discount Reason"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8497
+#: assets/js/tutor-order-details.js:8526
 msgid "Enter the reason of this discount"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8587
+#: assets/js/tutor-order-details.js:8616
 msgid "This will create an order. Mark this as paid if you have manually received "
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8592
+#: assets/js/tutor-order-details.js:8621
 msgid " manually."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8599
-#: assets/js/tutor-order-details.js:10017
+#: assets/js/tutor-order-details.js:8628
+#: assets/js/tutor-order-details.js:10046
 msgid "Note"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8601
+#: assets/js/tutor-order-details.js:8630
 msgid "Write some note against this action."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8622
-#: assets/js/tutor-order-details.js:9508
+#: assets/js/tutor-order-details.js:8651
+#: assets/js/tutor-order-details.js:9537
 msgid "Mark as Paid"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8930
+#: assets/js/tutor-order-details.js:8959
 msgid "Refund amount must be greater than zero."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8933
+#: assets/js/tutor-order-details.js:8962
 msgid "Entered amount exceeds course payment."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8952
+#: assets/js/tutor-order-details.js:8981
 msgid "Available"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8958
+#: assets/js/tutor-order-details.js:8987
 msgid "for refund"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8968
+#: assets/js/tutor-order-details.js:8997
 msgid "Reason"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8969
+#: assets/js/tutor-order-details.js:8998
 msgid "Enter the reason of this refund"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8978
+#: assets/js/tutor-order-details.js:9007
 msgid "Remove the student from enrollment"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8985
+#: assets/js/tutor-order-details.js:9014
 msgid "Cancel the subscription"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:8994
+#: assets/js/tutor-order-details.js:9023
 msgid "Note: Refund won't be processed automatically. You are required to process the refund manually via the payment gateway."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9102
+#: assets/js/tutor-order-details.js:9131
 msgid "Partially refunded"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9212
+#: assets/js/tutor-order-details.js:9241
 msgid "Payment"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9255
+#: assets/js/tutor-order-details.js:9284
 msgid "Item(s)"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9271
+#: assets/js/tutor-order-details.js:9300
 msgid "Coupon"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9302
-#: assets/js/tutor-order-details.js:9313
-#: assets/js/tutor-order-details.js:9344
+#: assets/js/tutor-order-details.js:9331
+#: assets/js/tutor-order-details.js:9342
+#: assets/js/tutor-order-details.js:9373
 msgid "Add discount"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9399
+#: assets/js/tutor-order-details.js:9428
 msgid "Estimated tax"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9419
+#: assets/js/tutor-order-details.js:9448
 msgid "Total Paid"
 msgstr ""
 
 #. translators: %s is the tax amount formatted as a price
-#: assets/js/tutor-order-details.js:9425
+#: assets/js/tutor-order-details.js:9454
 #, js-format
 msgid "Incl. tax %s"
 msgstr ""
 
 #. translators: %s is the refund reason or '-' if none
-#: assets/js/tutor-order-details.js:9454
+#: assets/js/tutor-order-details.js:9483
 #, js-format
 msgid "Reason: %s"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9473
+#: assets/js/tutor-order-details.js:9502
 msgid "Net payment"
 msgstr ""
 
 #. translators: %s is the payment gateway name
-#: assets/js/tutor-order-details.js:9562
+#: assets/js/tutor-order-details.js:9591
 #, js-format
 msgid "Gateway: %s"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9562
+#: assets/js/tutor-order-details.js:9591
 msgid "Manual"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9680
+#: assets/js/tutor-order-details.js:9709
 msgid "Contact information"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9873
+#: assets/js/tutor-order-details.js:9902
 msgid "Order Summary"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9882
+#: assets/js/tutor-order-details.js:9911
 msgid "No course added."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9924
+#: assets/js/tutor-order-details.js:9953
 msgid "Customer changed or canceled order"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9927
+#: assets/js/tutor-order-details.js:9956
 msgid "The customer has modified or canceled their order. This action indicates that the customer has either updated their order details or decided to cancel their order entirely. Please review the order history for specific changes or cancellation details."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9930
+#: assets/js/tutor-order-details.js:9959
 msgid "Payment declined"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9932
+#: assets/js/tutor-order-details.js:9961
 msgid "Payment is declined by the gateway."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9935
+#: assets/js/tutor-order-details.js:9964
 msgid "Fraudulent order"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9938
+#: assets/js/tutor-order-details.js:9967
 msgid "The order has been flagged as fraudulent. This action indicates that the order has been identified as potentially fraudulent and requires immediate attention. Please investigate the order details and take appropriate measures to prevent any unauthorized transactions."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9941
+#: assets/js/tutor-order-details.js:9970
 msgid "Courses unavailable"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9943
+#: assets/js/tutor-order-details.js:9972
 msgid "Unfortunately the courses selected on this order is not anymore available."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9963
+#: assets/js/tutor-order-details.js:9992
 msgid "Please select a reason for the order cancellation. Your input is valuable for understanding the cause."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:9998
+#: assets/js/tutor-order-details.js:10027
 msgid "Reason for Cancellation"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:10000
+#: assets/js/tutor-order-details.js:10029
 msgid "Select a reason"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:10018
+#: assets/js/tutor-order-details.js:10047
 msgid "Write a note for this action."
 msgstr ""
 
-#: assets/js/tutor-order-details.js:10035
+#: assets/js/tutor-order-details.js:10064
 msgid "Keep order"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:10042
+#: assets/js/tutor-order-details.js:10071
 msgid "Cancel order"
 msgstr ""
 
 #. translators: %s is the order number or ID
-#: assets/js/tutor-order-details.js:10148
+#: assets/js/tutor-order-details.js:10177
 #, js-format
 msgid "Order #%s"
 msgstr ""
 
 #. translators: %s is the order number
-#: assets/js/tutor-order-details.js:10187
+#: assets/js/tutor-order-details.js:10216
 #, js-format
 msgid "Cancel order #%s"
 msgstr ""
 
-#: assets/js/tutor-order-details.js:10193
+#: assets/js/tutor-order-details.js:10222
 msgid "Cancel Order"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:3517
-#: assets/js/tutor-payment-settings.js:11007
+#: assets/js/tutor-payment-settings.js:3526
+#: assets/js/tutor-payment-settings.js:11045
 msgid "Icon"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:3527
+#: assets/js/tutor-payment-settings.js:3536
 msgid "Payment Instructions"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:3529
+#: assets/js/tutor-payment-settings.js:3538
 msgid "Provide clear, step-by-step instructions on how to complete the payment."
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:10542
+#: assets/js/tutor-payment-settings.js:10580
 msgid "e.g. Bank Transfer"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:10558
-#: assets/js/tutor-payment-settings.js:11349
+#: assets/js/tutor-payment-settings.js:10596
+#: assets/js/tutor-payment-settings.js:11395
 msgid "Recommended size: 48x48"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:10730
-#: assets/js/tutor-payment-settings.js:11019
+#: assets/js/tutor-payment-settings.js:10768
+#: assets/js/tutor-payment-settings.js:11057
 msgid "Supports Subscriptions"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:10742
+#: assets/js/tutor-payment-settings.js:10780
 msgid "Installed"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:10750
+#: assets/js/tutor-payment-settings.js:10788
 msgid "Install"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:10863
+#: assets/js/tutor-payment-settings.js:10901
 msgid "Failed to copy: "
 msgstr ""
 
 #. translators: %s is the label of the item to remove
-#: assets/js/tutor-payment-settings.js:11153
+#: assets/js/tutor-payment-settings.js:11204
 #, js-format
 msgid "Remove %s"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:11154
+#: assets/js/tutor-payment-settings.js:11205
 msgid "Are you sure you want to remove this payment method?"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:11194
+#: assets/js/tutor-payment-settings.js:11245
 msgid "Update Available"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:11216
+#: assets/js/tutor-payment-settings.js:11267
 msgid "Update Now"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:11229
+#: assets/js/tutor-payment-settings.js:11280
 msgid "Plugin Not Installed"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:11241
+#: assets/js/tutor-payment-settings.js:11292
 msgid "Plugin Not Activated"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:11299
+#: assets/js/tutor-payment-settings.js:11350
 msgid "Necessary plugin is not installed to display options!"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:11460
+#: assets/js/tutor-payment-settings.js:11506
 msgid "Supported payment methods"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:11641
+#: assets/js/tutor-payment-settings.js:11687
 msgid "Payment gateways"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:11647
-#: assets/js/tutor-payment-settings.js:11660
+#: assets/js/tutor-payment-settings.js:11693
+#: assets/js/tutor-payment-settings.js:11706
 msgid "Add New Gateway"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:11677
+#: assets/js/tutor-payment-settings.js:11723
 msgid "Set up manual payment method"
 msgstr ""
 
-#: assets/js/tutor-payment-settings.js:11683
+#: assets/js/tutor-payment-settings.js:11729
 msgid "Add Manual Payment"
 msgstr ""
 
@@ -16825,164 +16893,164 @@ msgstr ""
 msgid "Onboarding setup request failed."
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:8223
+#: assets/js/tutor-tax-settings.js:8252
 msgid "Search region"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:8224
+#: assets/js/tutor-tax-settings.js:8253
 msgid "e.g. Arizona"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9164
-#: assets/js/tutor-tax-settings.js:9268
-#: assets/js/tutor-tax-settings.js:10085
+#: assets/js/tutor-tax-settings.js:9193
+#: assets/js/tutor-tax-settings.js:9297
+#: assets/js/tutor-tax-settings.js:10114
 msgid "Region"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9166
+#: assets/js/tutor-tax-settings.js:9195
 msgid "Select state"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9287
-#: assets/js/tutor-tax-settings.js:10117
+#: assets/js/tutor-tax-settings.js:9316
+#: assets/js/tutor-tax-settings.js:10146
 msgid "Tax rate"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9348
+#: assets/js/tutor-tax-settings.js:9377
 msgid "VAT on sales"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9349
+#: assets/js/tutor-tax-settings.js:9378
 msgid "Add region you want to collect tax & their tax rates"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9359
+#: assets/js/tutor-tax-settings.js:9388
 msgid "VAT registration type"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9360
+#: assets/js/tutor-tax-settings.js:9389
 msgid "Select VAT registration type"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9363
+#: assets/js/tutor-tax-settings.js:9392
 msgid "One-Stop Shop registration"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9367
+#: assets/js/tutor-tax-settings.js:9396
 msgid "Micro-business exemption"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9382
-#: assets/js/tutor-tax-settings.js:9398
+#: assets/js/tutor-tax-settings.js:9411
+#: assets/js/tutor-tax-settings.js:9427
 msgid "Add region & VAT rate"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9385
-#: assets/js/tutor-tax-settings.js:9401
+#: assets/js/tutor-tax-settings.js:9414
+#: assets/js/tutor-tax-settings.js:9430
 msgid "Add Country & Tax rate"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9732
+#: assets/js/tutor-tax-settings.js:9761
 msgid "Delete Tax Rate"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9911
+#: assets/js/tutor-tax-settings.js:9940
 msgid "Prices inclusive of tax"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9913
+#: assets/js/tutor-tax-settings.js:9942
 msgid "Enter course prices inclusive of tax."
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9916
+#: assets/js/tutor-tax-settings.js:9945
 msgid "Prices exclusive of tax"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9919
+#: assets/js/tutor-tax-settings.js:9948
 msgid "Enter course prices without tax. Tax will be added at checkout based on your configured rates."
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9928
+#: assets/js/tutor-tax-settings.js:9957
 msgid "Choose how taxes are applied and shown on your product prices."
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9936
+#: assets/js/tutor-tax-settings.js:9965
 msgid "Tax Calculation Method"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9968
+#: assets/js/tutor-tax-settings.js:9997
 msgid "Display tax-inclusive prices site-wide"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9971
+#: assets/js/tutor-tax-settings.js:10000
 msgid "Show tax-inclusive pricing across course listings, detail pages, and at checkout"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9981
+#: assets/js/tutor-tax-settings.js:10010
 msgid "Enable tax configuration per course & membership plan"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:9984
+#: assets/js/tutor-tax-settings.js:10013
 msgid "Allow tax settings when creating individual courses, bundles, and membership plans."
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:10085
+#: assets/js/tutor-tax-settings.js:10114
 msgid "Countries"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:10300
-#: assets/js/tutor-tax-settings.js:10543
-#: assets/js/tutor-tax-settings.js:10547
+#: assets/js/tutor-tax-settings.js:10329
+#: assets/js/tutor-tax-settings.js:10572
+#: assets/js/tutor-tax-settings.js:10576
 msgid "Add tax region"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:10303
+#: assets/js/tutor-tax-settings.js:10332
 msgid "Add Region"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:10317
+#: assets/js/tutor-tax-settings.js:10346
 msgid "Tax Rates and Calculations"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:10324
+#: assets/js/tutor-tax-settings.js:10353
 msgid "Enable tax rates and calculations"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:10342
+#: assets/js/tutor-tax-settings.js:10371
 msgid "Tax Rates"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:10347
+#: assets/js/tutor-tax-settings.js:10376
 msgid "Set up tax rates for different regions. These rates will apply based on your customer's location."
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:10354
+#: assets/js/tutor-tax-settings.js:10383
 msgid "Apply single tax rate for entire country"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:10382
+#: assets/js/tutor-tax-settings.js:10411
 msgid "Add State & VAT Rate"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:10385
+#: assets/js/tutor-tax-settings.js:10414
 msgid "Add State"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:10540
+#: assets/js/tutor-tax-settings.js:10569
 msgid "Tax Banner"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:10541
+#: assets/js/tutor-tax-settings.js:10570
 msgid "Configure Tax Rates"
 msgstr ""
 
-#: assets/js/tutor-tax-settings.js:10542
+#: assets/js/tutor-tax-settings.js:10571
 msgid "Start configuring the tax settings to set up and manage the tax rates."
 msgstr ""
 
 #: assets/js/tutor.js:96
 #: assets/js/tutor.js:202
-#: assets/js/tutor.js:2369
+#: assets/js/tutor.js:2364
 msgid "Updating..."
 msgstr ""
 
@@ -17014,157 +17082,157 @@ msgstr ""
 msgid "Deleting..."
 msgstr ""
 
-#: assets/js/tutor.js:990
+#: assets/js/tutor.js:985
 msgid "weak"
 msgstr ""
 
-#: assets/js/tutor.js:996
+#: assets/js/tutor.js:991
 msgid "medium"
 msgstr ""
 
-#: assets/js/tutor.js:1009
+#: assets/js/tutor.js:1004
 msgid "strong"
 msgstr ""
 
-#: assets/js/tutor.js:1131
+#: assets/js/tutor.js:1126
 msgid "Show Less"
 msgstr ""
 
-#: assets/js/tutor.js:1270
+#: assets/js/tutor.js:1265
 msgid "January"
 msgstr ""
 
-#: assets/js/tutor.js:1271
+#: assets/js/tutor.js:1266
 msgid "February"
 msgstr ""
 
-#: assets/js/tutor.js:1272
+#: assets/js/tutor.js:1267
 msgid "March"
 msgstr ""
 
-#: assets/js/tutor.js:1273
+#: assets/js/tutor.js:1268
 msgid "April"
 msgstr ""
 
-#: assets/js/tutor.js:1274
+#: assets/js/tutor.js:1269
 msgid "May"
 msgstr ""
 
-#: assets/js/tutor.js:1275
+#: assets/js/tutor.js:1270
 msgid "June"
 msgstr ""
 
-#: assets/js/tutor.js:1276
+#: assets/js/tutor.js:1271
 msgid "July"
 msgstr ""
 
-#: assets/js/tutor.js:1277
+#: assets/js/tutor.js:1272
 msgid "August"
 msgstr ""
 
-#: assets/js/tutor.js:1278
+#: assets/js/tutor.js:1273
 msgid "September"
 msgstr ""
 
-#: assets/js/tutor.js:1279
+#: assets/js/tutor.js:1274
 msgid "October"
 msgstr ""
 
-#: assets/js/tutor.js:1280
+#: assets/js/tutor.js:1275
 msgid "November"
 msgstr ""
 
-#: assets/js/tutor.js:1281
+#: assets/js/tutor.js:1276
 msgid "December"
 msgstr ""
 
-#: assets/js/tutor.js:1294
+#: assets/js/tutor.js:1289
 msgid "Sun"
 msgstr ""
 
-#: assets/js/tutor.js:1295
+#: assets/js/tutor.js:1290
 msgid "Mon"
 msgstr ""
 
-#: assets/js/tutor.js:1296
+#: assets/js/tutor.js:1291
 msgid "Tue"
 msgstr ""
 
-#: assets/js/tutor.js:1297
+#: assets/js/tutor.js:1292
 msgid "Wed"
 msgstr ""
 
-#: assets/js/tutor.js:1298
+#: assets/js/tutor.js:1293
 msgid "Thu"
 msgstr ""
 
-#: assets/js/tutor.js:1299
+#: assets/js/tutor.js:1294
 msgid "Fri"
 msgstr ""
 
-#: assets/js/tutor.js:1300
+#: assets/js/tutor.js:1295
 msgid "Sat"
 msgstr ""
 
 #. translators: %d is the number of days selected
-#: assets/js/tutor.js:1761
+#: assets/js/tutor.js:1756
 #, js-format
 msgid "%d day selected"
 msgid_plural "%d days selected"
 msgstr[0] ""
 msgstr[1] ""
 
-#: assets/js/tutor.js:1761
+#: assets/js/tutor.js:1756
 msgid "0 day selected"
 msgstr ""
 
-#: assets/js/tutor.js:2194
-#: assets/js/tutor.js:2224
+#: assets/js/tutor.js:2189
+#: assets/js/tutor.js:2219
 msgid "Are you sure to delete?"
 msgstr ""
 
-#: assets/js/tutor.js:2578
+#: assets/js/tutor.js:2573
 msgid "Mark must be a valid number."
 msgstr ""
 
-#: assets/js/tutor.js:2581
+#: assets/js/tutor.js:2576
 msgid "Mark cannot be negative."
 msgstr ""
 
-#: assets/js/tutor.js:2584
+#: assets/js/tutor.js:2579
 #, js-format
 msgid "Mark cannot exceed %s."
 msgstr ""
 
+#: assets/js/tutor.js:2803
 #: assets/js/tutor.js:2808
-#: assets/js/tutor.js:2813
 msgid "Empty Content not Allowed"
 msgstr ""
 
-#: assets/js/tutor.js:3047
+#: assets/js/tutor.js:3042
 msgid "Course status updated"
 msgstr ""
 
-#: assets/js/tutor.js:3056
+#: assets/js/tutor.js:3051
 msgid "Course status update failed"
 msgstr ""
 
-#: assets/js/tutor.js:3185
+#: assets/js/tutor.js:3180
 msgid "Edit feedback"
 msgstr ""
 
-#: assets/js/tutor.js:3246
+#: assets/js/tutor.js:3241
 msgid "Saved"
 msgstr ""
 
-#: assets/js/tutor.js:3246
+#: assets/js/tutor.js:3241
 msgid "Feedback saved"
 msgstr ""
 
-#: assets/js/tutor.js:3265
+#: assets/js/tutor.js:3260
 msgid "Deleted"
 msgstr ""
 
-#: assets/js/tutor.js:3265
+#: assets/js/tutor.js:3260
 msgid "Feedback deleted"
 msgstr ""

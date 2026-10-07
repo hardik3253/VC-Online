@@ -256,6 +256,13 @@ class Hooks
         $type           = $args['type'];
         $collectionType = $args['collectionType'];
 
+
+        $courses = [
+            'title' => 'Courses',
+            'value' => 'courses',
+            'collectionType' => 'posts',
+        ];
+
         $courses_group = [
             'title'               => 'Course',
             'value'               => 'TUTOR_LMS_COURSES',
@@ -313,6 +320,7 @@ class Hooks
             // $this_options[] = $cart_group; //temporary commented.
         }
 
+        $this_options[] = $courses;
         $this_options[] = $membership_group;
 
         $options[] = array(

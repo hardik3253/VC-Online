@@ -422,7 +422,7 @@ function clarity_section_iframe_callback()
     $query_params = $query_params . "&WordPressBrandAgentSupported=1";
 
     // Additive connector-bridge marker. Older plugins omit it so the dashboard hides
-    // Square UI; older dashboards ignore unknown query params.
+    // connector UI; older dashboards ignore unknown query params.
     $query_params = $query_params . "&WordPressBrandAgentConnectorsSupported=1";
 
     // 0.10.32+ acknowledges project-id persistence. The dashboard waits only when this marker is
@@ -445,7 +445,7 @@ function clarity_section_iframe_callback()
 
 ?>
     <div style="width:100%;height:100vh;padding-right:15px;margin-top:0px;box-sizing:border-box;">
-        <iframe sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-storage-access-by-user-activation" src="<?php echo $iframe_src ?>" width="100%" height="100%" title="Microsoft Clarity" />
+        <iframe sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="<?php echo $iframe_src ?>" width="100%" height="100%" title="Microsoft Clarity" />
     </div>
 <?php
 }

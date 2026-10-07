@@ -58,8 +58,8 @@ var r=t(this).data("text");// Create input to place texts in
 var a=t("<input>");t("body").append(a);a.val(r).select();document.execCommand("copy");a.remove();tutor_toast(__("Copied!","tutor"),r,"success")});// Ajax action
 t(document).on("click",".tutor-list-ajax-action",function(e){if(!e.detail||e.detail==1){e.preventDefault();var r=t(this);var a=r.closest(".tutor-modal");var n=r.html();var o=t(this).data("prompt");var i=t(this).data("delete_element_id");var s=t(this).data("redirect_to");var u=t(this).data("request_data")||{};typeof u=="string"?u=JSON.parse(u):0;if(o&&!window.confirm(o)){return}t.ajax({url:_tutorobject.ajaxurl,type:"POST",data:u,beforeSend:function t(){r.text(__("Deleting...","tutor")).attr("disabled","disabled").addClass("is-loading")},success:function e(e){if(e.success||e.status_code===200){if(i){t("#"+i).fadeOut(function(){t(this).remove()})}if(s!==undefined){window.location.assign(s)}return}var{message:r=__("Something Went Wrong!","tutor")}=e.data||{};tutor_toast(__("Error!","tutor"),r,"error")},error:function t(){tutor_toast(__("Error!","tutor"),__("Something Went Wrong!","tutor"),"error")},complete:function e(){r.html(n).removeAttr("disabled").removeClass("is-loading");if(a.length!==0){t("body").removeClass("tutor-modal-open");a.removeClass("tutor-is-active")}}})}});// Textarea auto height
 t(document).on("input",".tutor-form-control-auto-height",function(){this.style.height="auto";this.style.height=this.scrollHeight+"px"});t(".tutor-form-control-auto-height").trigger("input");// Prevent number input out of range
-t(document).on("input",'input.tutor-form-control[type="number"], input.tutor-form-number-verify[type="number"]',function(){var e=t(this).val();if(e==""){t(this).val("");return}// Allow only 2 decimal places.
-if(e.includes(".")){var r=String(e).split(".")[1].length;console.log(r);if(r>2){t(this).val(parseFloat(e).toFixed(2))}}});// Open location on dropdoqn change
+t(document).on("input",'input.tutor-form-control[type="number"], input.tutor-form-number-verify[type="number"]',function(){var e=t(this).val();// Allow only 2 decimal places.
+if(e.includes(".")){var r=String(e).split(".")[1].length;if(r>2){t(this).val(parseFloat(e).toFixed(2))}}});// Open location on dropdoqn change
 t(document).on("change",".tutor-select-redirector",function(){var e=t(this).val();window.location.assign(e)});/**
 	 * Toggle switch button handler.
 	 *
@@ -156,13 +156,13 @@ r.t=function(a,n){if(n&1)a=this(a);if(n&8)return a;if(typeof a==="object"&&a){if
 r.e=t=>{return Promise.all(Object.keys(r.f).reduce((e,a)=>{r.f[a](t,e);return e},[]))}})();// webpack/runtime/get javascript chunk filename
 (()=>{// This function allow to reference chunks
 r.u=t=>{// return url for filenames not based on template
-if(t==="187")return"js/lazy-chunks/tutor-react-datepicker.js?ver=4.1.0";// return url for filenames based on template
+if(t==="187")return"js/lazy-chunks/tutor-react-datepicker.js?ver=4.1.1";// return url for filenames based on template
 return""+t+".javascript"}})();// webpack/runtime/get mini-css chunk filename
 (()=>{// This function allow to reference chunks
 r.miniCssF=t=>{// return url for filenames not based on template
 // return url for filenames based on template
 return""+t+".css"}})();// webpack/runtime/get_full_hash
-(()=>{r.h=()=>"14f17abcb8dbd6be"})();// webpack/runtime/global
+(()=>{r.h=()=>"5e9314030c3974dd"})();// webpack/runtime/global
 (()=>{r.g=(()=>{if(typeof globalThis==="object")return globalThis;try{return this||new Function("return this")()}catch(t){if(typeof window==="object")return window}})()})();// webpack/runtime/has_own_property
 (()=>{r.o=(t,e)=>Object.prototype.hasOwnProperty.call(t,e)})();// webpack/runtime/load_script
 (()=>{var t={};var e="tutor:";// loadScript function to load a script via script tag

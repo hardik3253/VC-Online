@@ -4,7 +4,7 @@
  * Plugin Name:       Microsoft Clarity
  * Plugin URI:        https://clarity.microsoft.com/
  * Description:       With data and session replay from Clarity, you'll see how people are using your site — where they get stuck and what they love.
- * Version:           0.10.33
+ * Version:           0.10.35
  * Author:            Microsoft
  * Author URI:        https://www.microsoft.com/en-us/
  * License:           MIT
@@ -736,11 +736,21 @@ add_filter( 'Yoast\WP\SEO\allowlist_permalink_vars', 'brandagent_allowlist_yoast
  */
 function brandagent_handle_custom_endpoint() {
     if ( intval( get_query_var( 'brandagent_api' ) ) === 1 ) {
+        if ( ! defined( 'DONOTCACHEPAGE' ) ) {
+            define( 'DONOTCACHEPAGE', true );
+        }
+        if ( function_exists( 'batcache_cancel' ) ) {
+            batcache_cancel();
+        }
+        nocache_headers();
+        header( 'Cache-Control: no-cache, must-revalidate, max-age=0, no-store, private' );
+
         require_once plugin_dir_path( __FILE__ ) . 'includes/brandagent-endpoint.php';
         exit;
     }
 }
-add_action( 'template_redirect', 'brandagent_handle_custom_endpoint' );
+// API requests must complete before WordPress's priority-10 canonical page redirects.
+add_action( 'template_redirect', 'brandagent_handle_custom_endpoint', 0 );
 
 /**
  * Register Brand Agent REST API endpoints

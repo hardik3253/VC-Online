@@ -284,7 +284,6 @@ class BrandAgent_Endpoint {
         if ( $init_status_code === 200 ) {
             // Set SSE headers for the response
             header( 'Content-Type: text/event-stream' );
-            header( 'Cache-Control: no-cache' );
             header( 'Connection: keep-alive' );
 
             echo $init_body;

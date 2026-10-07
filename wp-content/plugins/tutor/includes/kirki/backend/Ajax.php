@@ -92,7 +92,7 @@ class Ajax {
 			$res       = tutor_add_to_cart( $course_id );
 
 			// check is user logged in or not
-			if (! is_user_logged_in() ) {
+			if (! is_user_logged_in() && is_array( $res ) ) {
 				$res['redirect'] = true;
 				$res['data'] = wp_login_url( wp_get_referer() );
 			}

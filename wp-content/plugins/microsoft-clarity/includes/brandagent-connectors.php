@@ -1,6 +1,6 @@
 <?php
 /**
- * Brand Agent third-party connectors (Square).
+ * Brand Agent third-party connectors.
  *
  * The Clarity dashboard iframe owns the UI. This file is the privileged HMAC
  * bridge: admin-ajax operations are signed here and sent directly to AdsAgentServer.
@@ -12,7 +12,33 @@
 defined( 'ABSPATH' ) || exit;
 
 define( 'BRANDAGENT_CONNECTORS_PATH', '/api/v1/advertiser/connectors' );
+define( 'BRANDAGENT_HOUSECALL_PRO_API_KEY_PATH', '/api/housecallpro/api-key' );
+define( 'BRANDAGENT_HOUSECALL_PRO_API_KEY_VALIDATE_PATH', '/api/housecallpro/api-key/validate' );
 define( 'BRANDAGENT_CONNECTOR_SQUARE_PROVIDER_ID', 'square' );
+define( 'BRANDAGENT_CONNECTOR_HUBSPOT_PROVIDER_ID', 'hubspot' );
+define( 'BRANDAGENT_CONNECTOR_CALENDLY_PROVIDER_ID', 'calendly' );
+define( 'BRANDAGENT_CONNECTOR_JOBBER_PROVIDER_ID', 'jobber' );
+define( 'BRANDAGENT_CONNECTOR_HOUSECALL_PRO_PROVIDER_ID', 'housecallpro' );
+define( 'BRANDAGENT_CONNECTOR_MAXIMUM_API_KEY_BYTES', 4096 );
+define( 'BRANDAGENT_CONNECTOR_MAXIMUM_DURATION_MINUTES', 24 * 60 );
+define( 'BRANDAGENT_CONNECTOR_DEFAULT_DURATION_MINUTES', 60 );
+define( 'BRANDAGENT_CONNECTOR_MAXIMUM_SERVICE_COUNT', 200 );
+define( 'BRANDAGENT_CONNECTOR_MAXIMUM_SERVICE_ID_BYTES', 512 );
+define( 'BRANDAGENT_CONNECTOR_MAXIMUM_SERVICE_NAME_BYTES', 512 );
+define( 'BRANDAGENT_CONNECTOR_MAXIMUM_SERVICE_CATALOG_BYTES', 256 * 1024 );
+
+/**
+ * @return array Provider ids this plugin may proxy to AdsAgentServer.
+ */
+function brandagent_connectors_supported_provider_ids() {
+	return array(
+		BRANDAGENT_CONNECTOR_SQUARE_PROVIDER_ID,
+		BRANDAGENT_CONNECTOR_HUBSPOT_PROVIDER_ID,
+		BRANDAGENT_CONNECTOR_CALENDLY_PROVIDER_ID,
+		BRANDAGENT_CONNECTOR_JOBBER_PROVIDER_ID,
+		BRANDAGENT_CONNECTOR_HOUSECALL_PRO_PROVIDER_ID,
+	);
+}
 
 /**
  * @return bool Whether this site has a usable plain-WordPress Brand Agents connection.
@@ -29,10 +55,14 @@ function brandagent_connectors_has_wordpress_connection() {
  * WORDPRESS_CONNECTOR_REQUEST postMessage from the Clarity iframe.
  *
  * The iframe does not send the nonce or connector ids. The parent holds the nonce
- * via wp_localize_script and PHP resolves Square's connector id from status.
+ * via wp_localize_script and PHP resolves connector ids from status.
  */
 add_action( 'wp_ajax_brandagent_connectors', 'brandagent_connectors_ajax' );
 function brandagent_connectors_ajax() {
+	if ( function_exists( 'nocache_headers' ) ) {
+		nocache_headers();
+	}
+
 	$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
 	if ( ! wp_verify_nonce( $nonce, 'wp_ajax_brandagent_connectors' ) ) {
 		wp_send_json_error( array( 'message' => 'Invalid nonce.' ), 403 );
@@ -44,13 +74,28 @@ function brandagent_connectors_ajax() {
 
 	if ( ! brandagent_connectors_has_wordpress_connection() ) {
 		wp_send_json_error(
-			array( 'message' => 'Complete the WordPress Brand Agent connection before connecting Square.' ),
+			array( 'message' => 'Complete the WordPress Brand Agent connection before connecting an integration.' ),
 			409
 		);
 	}
 
-	$operation                     = isset( $_POST['operation'] ) ? sanitize_key( wp_unslash( $_POST['operation'] ) ) : 'status';
-	$provider_id                   = isset( $_POST['providerId'] ) ? sanitize_key( wp_unslash( $_POST['providerId'] ) ) : '';
+	$raw_operation   = isset( $_POST['operation'] ) ? wp_unslash( $_POST['operation'] ) : 'status';
+	$raw_provider_id = isset( $_POST['providerId'] ) ? wp_unslash( $_POST['providerId'] ) : '';
+	if ( ! is_string( $raw_operation ) || ! is_string( $raw_provider_id ) ) {
+		wp_send_json_error(
+			array(
+				'code'    => 'invalid_request',
+				'message' => 'Invalid connector request.',
+			),
+			400
+		);
+	}
+
+	$operation                     = sanitize_key( $raw_operation );
+	$provider_id                   = sanitize_key( $raw_provider_id );
+	$api_key                       = isset( $_POST['apiKey'] ) ? wp_unslash( $_POST['apiKey'] ) : null;
+	$duration_minutes              = isset( $_POST['durationMinutes'] ) ? wp_unslash( $_POST['durationMinutes'] ) : null;
+	$configuration                 = isset( $_POST['configuration'] ) ? wp_unslash( $_POST['configuration'] ) : null;
 	$replace_pending_authorization = false;
 	if ( isset( $_POST['replacePendingAuthorization'] ) ) {
 		$replace_pending_authorization = brandagent_connectors_parse_boolean(
@@ -87,7 +132,10 @@ function brandagent_connectors_ajax() {
 		$operation,
 		$provider_id,
 		$replace_pending_authorization,
-		$expected_authorization_version
+		$expected_authorization_version,
+		$api_key,
+		$duration_minutes,
+		$configuration
 	);
 
 	if ( is_wp_error( $result ) ) {
@@ -104,6 +152,9 @@ function brandagent_connectors_ajax() {
 		);
 		if ( is_array( $error_data ) && isset( $error_data['connector'] ) ) {
 			$error['connector'] = brandagent_connectors_project_connector_for_ui( $error_data['connector'] );
+		}
+		if ( is_array( $error_data ) && isset( $error_data['services'] ) ) {
+			$error['services'] = $error_data['services'];
 		}
 		wp_send_json_error( $error, $status );
 	}
@@ -143,25 +194,44 @@ function brandagent_connectors_parse_boolean( $value ) {
 }
 
 /**
- * Run one allowlisted Square connector operation.
+ * Run one allowlisted connector operation.
  *
  * @param string          $operation                      Requested operation.
  * @param string          $provider_id                    Target provider id (required for every operation but status).
  * @param bool            $replace_pending_authorization  Whether to replace the observed pending authorization.
  * @param int|string|null $expected_authorization_version Version required when replacing pending authorization.
+ * @param mixed           $api_key                        API key used only by validate_api_key and submit_api_key.
+ * @param mixed           $duration_minutes               Default duration used only by submit_api_key.
+ * @param mixed           $configuration                  Structured configuration used by submit_api_key/apply_configuration.
  * @return array|WP_Error Result payload.
  */
 function brandagent_connectors_execute_operation(
 	$operation,
 	$provider_id,
 	$replace_pending_authorization = false,
-	$expected_authorization_version = null
+	$expected_authorization_version = null,
+	$api_key = null,
+	$duration_minutes = null,
+	$configuration = null
 ) {
 	if ( 'status' === $operation ) {
+		if ( null !== $api_key || null !== $duration_minutes || null !== $configuration ) {
+			return new WP_Error(
+				'invalid_request',
+				'API-key fields are only valid for API-key authorization.',
+				array( 'status' => 400 )
+			);
+		}
 		return brandagent_connectors_get_status();
 	}
 
-	if ( ! in_array( $operation, array( 'connect', 'reauthorize', 'sync', 'disconnect' ), true ) ) {
+	if (
+		! in_array(
+			$operation,
+			array( 'connect', 'validate_api_key', 'submit_api_key', 'apply_configuration', 'apply_default_configuration', 'reauthorize', 'sync', 'disconnect' ),
+			true
+		)
+	) {
 		return new WP_Error(
 			'invalid_operation',
 			'Unsupported connector operation.',
@@ -169,16 +239,57 @@ function brandagent_connectors_execute_operation(
 		);
 	}
 
-	if ( BRANDAGENT_CONNECTOR_SQUARE_PROVIDER_ID !== $provider_id ) {
+	if ( ! in_array( $provider_id, brandagent_connectors_supported_provider_ids(), true ) ) {
 		return new WP_Error(
 			'unsupported_provider',
-			'This plugin only supports connecting Square.',
+			'This plugin does not support the requested connector provider.',
 			array( 'status' => 400 )
 		);
 	}
 
+	if (
+		BRANDAGENT_CONNECTOR_HOUSECALL_PRO_PROVIDER_ID === $provider_id
+		&& in_array( $operation, array( 'connect', 'reauthorize' ), true )
+	) {
+		return new WP_Error(
+			'api_key_required',
+			'Housecall Pro requires an API key.',
+			array( 'status' => 400 )
+		);
+	}
+
+	if ( 'validate_api_key' === $operation ) {
+		if ( BRANDAGENT_CONNECTOR_HOUSECALL_PRO_PROVIDER_ID !== $provider_id ) {
+			return new WP_Error(
+				'unsupported_provider',
+				'The requested connector does not support API-key validation.',
+				array( 'status' => 400 )
+			);
+		}
+
+		if (
+			$replace_pending_authorization
+			|| null !== $expected_authorization_version
+			|| null !== $duration_minutes
+			|| null !== $configuration
+		) {
+			return new WP_Error(
+				'invalid_request',
+				'API-key validation does not accept authorization or configuration fields.',
+				array( 'status' => 400 )
+			);
+		}
+
+		$validated_api_key = brandagent_connectors_validate_api_key( $api_key );
+		if ( is_wp_error( $validated_api_key ) ) {
+			return $validated_api_key;
+		}
+
+		return brandagent_connectors_validate_housecall_pro_api_key( $validated_api_key );
+	}
+
 	$reauthorization_payload = null;
-	if ( 'reauthorize' === $operation ) {
+	if ( in_array( $operation, array( 'reauthorize', 'submit_api_key' ), true ) ) {
 		if ( $replace_pending_authorization ) {
 			$expected_authorization_version = brandagent_connectors_parse_authorization_version(
 				$expected_authorization_version
@@ -209,11 +320,99 @@ function brandagent_connectors_execute_operation(
 		);
 	}
 
+	if ( 'apply_configuration' === $operation ) {
+		if ( BRANDAGENT_CONNECTOR_HOUSECALL_PRO_PROVIDER_ID !== $provider_id ) {
+			return new WP_Error(
+				'unsupported_provider',
+				'Configuration is not supported for the requested connector.',
+				array( 'status' => 400 )
+			);
+		}
+
+		if ( null !== $api_key || null !== $duration_minutes ) {
+			return new WP_Error(
+				'invalid_request',
+				'Configuration is not supported for the requested connector.',
+				array( 'status' => 400 )
+			);
+		}
+
+		$validated_configuration = brandagent_connectors_parse_api_key_configuration( $configuration, null );
+		if ( is_wp_error( $validated_configuration ) ) {
+			return $validated_configuration;
+		}
+
+		return brandagent_connectors_apply_configuration_operation( $provider_id, $validated_configuration );
+	}
+
+	if ( 'submit_api_key' === $operation ) {
+		if ( BRANDAGENT_CONNECTOR_HOUSECALL_PRO_PROVIDER_ID !== $provider_id ) {
+			return new WP_Error(
+				'unsupported_provider',
+				'The requested connector does not support API-key authorization.',
+				array( 'status' => 400 )
+			);
+		}
+
+		$validated_api_key = brandagent_connectors_validate_api_key( $api_key );
+		if ( is_wp_error( $validated_api_key ) ) {
+			return $validated_api_key;
+		}
+
+		$validated_configuration = brandagent_connectors_parse_api_key_configuration(
+			$configuration,
+			$duration_minutes
+		);
+		if ( is_wp_error( $validated_configuration ) ) {
+			return $validated_configuration;
+		}
+
+		return brandagent_connectors_connect_api_key_provider(
+			$provider_id,
+			$validated_api_key,
+			$validated_configuration,
+			$reauthorization_payload
+		);
+	}
+
+	if ( 'apply_default_configuration' === $operation ) {
+		if (
+			BRANDAGENT_CONNECTOR_HOUSECALL_PRO_PROVIDER_ID !== $provider_id
+			|| null !== $api_key
+			|| null !== $configuration
+		) {
+			return new WP_Error(
+				'invalid_request',
+				'Default configuration is not supported for the requested connector.',
+				array( 'status' => 400 )
+			);
+		}
+
+		$validated_duration = brandagent_connectors_parse_duration_minutes( $duration_minutes );
+		if ( null === $validated_duration ) {
+			return new WP_Error(
+				'invalid_duration',
+				'Enter a default duration from 1 to 1440 minutes.',
+				array( 'status' => 400 )
+			);
+		}
+
+		return brandagent_connectors_apply_default_configuration( $provider_id, $validated_duration );
+	}
+
+	if ( null !== $api_key || null !== $duration_minutes || null !== $configuration ) {
+		return new WP_Error(
+			'invalid_request',
+			'API-key fields are only valid for API-key authorization.',
+			array( 'status' => 400 )
+		);
+	}
+
 	if ( 'connect' === $operation ) {
 		$response = brandagent_connectors_api_request(
 			'POST',
 			'',
-			array( 'providerId' => BRANDAGENT_CONNECTOR_SQUARE_PROVIDER_ID )
+			array( 'providerId' => $provider_id )
 		);
 		return is_wp_error( $response ) ? $response : brandagent_connectors_validate_authorization_response( $response );
 	}
@@ -223,11 +422,11 @@ function brandagent_connectors_execute_operation(
 		return $status;
 	}
 
-	$connector = brandagent_connectors_find_provider_item( $status['connectors'], BRANDAGENT_CONNECTOR_SQUARE_PROVIDER_ID );
+	$connector = brandagent_connectors_find_provider_item( $status['connectors'], $provider_id );
 	if ( empty( $connector['connectorId'] ) ) {
 		return new WP_Error(
 			'connector_not_found',
-			'No Square connector exists for this site.',
+			'No connector exists for the requested provider.',
 			array( 'status' => 404 )
 		);
 	}
@@ -256,6 +455,806 @@ function brandagent_connectors_execute_operation(
 	);
 }
 
+	/**
+	 * Validate a submitted API key without changing its supported character set.
+	 *
+	 * @param mixed $value Candidate API key.
+	 * @return string|WP_Error Trimmed key or validation error.
+	 */
+	function brandagent_connectors_validate_api_key( $value ) {
+		if ( ! is_string( $value ) || strlen( $value ) > BRANDAGENT_CONNECTOR_MAXIMUM_API_KEY_BYTES ) {
+			return new WP_Error(
+				'invalid_api_key',
+				'Enter a valid Housecall Pro API key.',
+				array( 'status' => 400 )
+			);
+		}
+
+		if ( preg_match( '/[\x00-\x1F\x7F]/', $value ) ) {
+			return new WP_Error(
+				'invalid_api_key',
+				'Enter a valid Housecall Pro API key.',
+				array( 'status' => 400 )
+			);
+		}
+
+		$value = trim( $value );
+		if ( '' === $value ) {
+			return new WP_Error(
+				'api_key_required',
+				'Enter your Housecall Pro API key.',
+				array( 'status' => 400 )
+			);
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Parse a bounded appointment duration.
+	 *
+	 * @param mixed $value Candidate duration.
+	 * @return int|null Parsed duration or null when invalid.
+	 */
+	function brandagent_connectors_parse_duration_minutes( $value ) {
+		if ( is_int( $value ) ) {
+			$parsed = $value;
+		} elseif ( is_string( $value ) && preg_match( '/^[1-9][0-9]*$/', $value ) ) {
+			$parsed = (int) $value;
+		} else {
+			return null;
+		}
+
+		return $parsed >= 1 && $parsed <= BRANDAGENT_CONNECTOR_MAXIMUM_DURATION_MINUTES
+			? $parsed
+			: null;
+	}
+
+	/**
+	 * Parse legacy or structured Housecall Pro configuration.
+	 *
+	 * @param mixed $configuration    Structured browser configuration.
+	 * @param mixed $duration_minutes Legacy uniform duration.
+	 * @return array|WP_Error Validated configuration.
+	 */
+	function brandagent_connectors_parse_api_key_configuration( $configuration, $duration_minutes ) {
+		if ( null === $configuration ) {
+			$validated_duration = brandagent_connectors_parse_duration_minutes( $duration_minutes );
+			if ( null === $validated_duration ) {
+				return new WP_Error(
+					'invalid_duration',
+					'Enter a default duration from 1 to 1440 minutes.',
+					array( 'status' => 400 )
+				);
+			}
+
+			return array(
+				'mode'            => 'default',
+				'durationMinutes' => $validated_duration,
+				'legacy'          => true,
+			);
+		}
+
+		if ( null !== $duration_minutes || ! is_array( $configuration ) || ! isset( $configuration['mode'] ) ) {
+			return new WP_Error(
+				'invalid_configuration',
+				'Enter a valid Housecall Pro service configuration.',
+				array( 'status' => 400 )
+			);
+		}
+
+		if ( 'default' === $configuration['mode'] ) {
+			$validated_duration = isset( $configuration['durationMinutes'] )
+				? brandagent_connectors_parse_duration_minutes( $configuration['durationMinutes'] )
+				: null;
+			if ( null === $validated_duration ) {
+				return new WP_Error(
+					'invalid_duration',
+					'Enter a default duration from 1 to 1440 minutes.',
+					array( 'status' => 400 )
+				);
+			}
+
+			return array(
+				'mode'            => 'default',
+				'durationMinutes' => $validated_duration,
+			);
+		}
+
+		if (
+			'per_service' !== $configuration['mode']
+			|| ! isset( $configuration['services'] )
+			|| ! is_array( $configuration['services'] )
+			|| count( $configuration['services'] ) > BRANDAGENT_CONNECTOR_MAXIMUM_SERVICE_COUNT
+		) {
+			return new WP_Error(
+				'invalid_configuration',
+				'Enter a valid Housecall Pro service configuration.',
+				array( 'status' => 400 )
+			);
+		}
+
+		$services    = array();
+		$service_ids = array();
+		foreach ( $configuration['services'] as $service ) {
+			$service_id = is_array( $service ) && isset( $service['serviceId'] )
+				? brandagent_connectors_validate_service_id( $service['serviceId'] )
+				: null;
+			$duration   = is_array( $service ) && isset( $service['durationMinutes'] )
+				? brandagent_connectors_parse_duration_minutes( $service['durationMinutes'] )
+				: null;
+			if (
+				null === $service_id
+				|| null === $duration
+				|| isset( $service_ids[ $service_id ] )
+			) {
+				return new WP_Error(
+					'invalid_configuration',
+					'Enter a valid Housecall Pro service configuration.',
+					array( 'status' => 400 )
+				);
+			}
+
+			$service_ids[ $service_id ] = true;
+			$services[]                 = array(
+				'serviceId'       => $service_id,
+				'durationMinutes' => $duration,
+			);
+		}
+
+		return array(
+			'mode'     => 'per_service',
+			'services' => $services,
+		);
+	}
+
+	/**
+	 * Validate the canonical service-catalog precondition.
+	 *
+	 * @param mixed $value Candidate version.
+	 * @return string|null Valid version.
+	 */
+	function brandagent_connectors_validate_service_catalog_version( $value ) {
+		return is_string( $value ) && preg_match( '/^v1:[a-f0-9]{64}$/', $value )
+			? $value
+			: null;
+	}
+
+	/**
+	 * Validate a browser-supplied service id.
+	 *
+	 * @param mixed $value Candidate service id.
+	 * @return string|null Valid id.
+	 */
+	function brandagent_connectors_validate_service_id( $value ) {
+		if (
+			! is_string( $value )
+			|| '' === $value
+			|| trim( $value ) !== $value
+			|| strlen( $value ) > BRANDAGENT_CONNECTOR_MAXIMUM_SERVICE_ID_BYTES
+			|| preg_match( '/[\x00-\x1F\x7F]/', $value )
+		) {
+			return null;
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Provision an API key, complete connector authorization, and apply service defaults.
+	 *
+	 * @param string     $provider_id            API-key provider id.
+	 * @param string     $api_key                Validated API key.
+	 * @param array      $configuration          Validated service configuration.
+	 * @param array|null $reauthorization_payload Optional pending-authorization replacement payload.
+	 * @return array|WP_Error Sanitized connection result.
+	 */
+	function brandagent_connectors_connect_api_key_provider(
+		$provider_id,
+		$api_key,
+		$configuration,
+		$reauthorization_payload = null
+	) {
+		$status = brandagent_connectors_get_raw_status();
+		if ( is_wp_error( $status ) ) {
+			return $status;
+		}
+
+		$existing_connector = brandagent_connectors_find_provider_item( $status['connectors'], $provider_id );
+		$is_active_connector = is_array( $existing_connector )
+			&& ! empty( $existing_connector['connectorId'] )
+			&& (
+				! isset( $existing_connector['authorizationStatus'] )
+				|| 'disconnected' !== strtolower( (string) $existing_connector['authorizationStatus'] )
+			);
+
+		$stored = brandagent_connectors_set_housecall_pro_api_key( $api_key );
+		if ( is_wp_error( $stored ) ) {
+			return $stored;
+		}
+
+		if ( $is_active_connector ) {
+			$authorization = brandagent_connectors_api_request(
+				'POST',
+				'/' . rawurlencode( $existing_connector['connectorId'] ) . ':reauthorize',
+				$reauthorization_payload
+			);
+		} else {
+			$authorization = brandagent_connectors_api_request(
+				'POST',
+				'',
+				array( 'providerId' => $provider_id )
+			);
+		}
+		if ( is_wp_error( $authorization ) ) {
+			return $authorization;
+		}
+
+		$authorization_state = is_array( $authorization ) && isset( $authorization['authorizationState'] )
+			? $authorization['authorizationState']
+			: '';
+		if (
+			! is_string( $authorization_state )
+			|| '' === $authorization_state
+			|| strlen( $authorization_state ) > 4096
+			|| preg_match( '/[\x00-\x20\x7F]/', $authorization_state )
+		) {
+			return new WP_Error(
+				'authorization_state_missing',
+				'AdsAgentServer did not return a valid authorization state.',
+				array( 'status' => 502 )
+			);
+		}
+
+		$completed = brandagent_connectors_complete_api_key_callback( $provider_id, $authorization_state );
+		if ( is_wp_error( $completed ) ) {
+			return $completed;
+		}
+
+		$status = brandagent_connectors_get_raw_status();
+		if ( is_wp_error( $status ) ) {
+			return array(
+				'authorizationCompleted'  => true,
+				'configurationApplied'    => false,
+				'configurationErrorCode'  => 'connector_status_refresh_failed',
+			);
+		}
+
+		$connector = brandagent_connectors_find_provider_item( $status['connectors'], $provider_id );
+		if ( empty( $connector['connectorId'] ) ) {
+			return array(
+				'authorizationCompleted' => true,
+				'configurationApplied'   => false,
+				'configurationErrorCode' => 'connector_status_refresh_failed',
+			);
+		}
+
+		$configured = ! empty( $configuration['legacy'] )
+			? brandagent_connectors_apply_default_configuration(
+				$provider_id,
+				$configuration['durationMinutes'],
+				$connector
+			)
+			: brandagent_connectors_apply_housecall_pro_configuration( $provider_id, $configuration, $connector );
+		$result = array(
+			'authorizationCompleted' => true,
+			'connector'              => brandagent_connectors_project_connector_for_ui( $connector ),
+			'configurationApplied'   => ! is_wp_error( $configured ),
+		);
+		if ( 'default' === $configuration['mode'] ) {
+			$result['durationMinutes'] = $configuration['durationMinutes'];
+		}
+		if ( is_wp_error( $configured ) ) {
+			$result['configurationErrorCode'] = $configured->get_error_code();
+			$error_data                       = $configured->get_error_data();
+			if ( is_array( $error_data ) && isset( $error_data['services'] ) ) {
+				$result['services'] = $error_data['services'];
+			}
+			if ( is_array( $error_data ) && isset( $error_data['connector'] ) ) {
+				$result['connector'] = brandagent_connectors_project_connector_for_ui( $error_data['connector'] );
+			}
+			return $result;
+		}
+
+		$result['connector'] = $configured['connector'];
+		return $result;
+	}
+
+	/**
+	 * Apply a keyless Housecall Pro configuration to the existing authorized connector.
+	 *
+	 * @param string $provider_id   Provider id.
+	 * @param array  $configuration Validated configuration.
+	 * @return array|WP_Error Safe result.
+	 */
+	function brandagent_connectors_apply_configuration_operation( $provider_id, $configuration ) {
+		$status = brandagent_connectors_get_raw_status();
+		if ( is_wp_error( $status ) ) {
+			return $status;
+		}
+
+		$connector = brandagent_connectors_find_provider_item( $status['connectors'], $provider_id );
+		if ( empty( $connector['connectorId'] ) ) {
+			return new WP_Error(
+				'connector_not_found',
+				'No connector exists for the requested provider.',
+				array( 'status' => 404 )
+			);
+		}
+
+		$configured = brandagent_connectors_apply_housecall_pro_configuration(
+			$provider_id,
+			$configuration,
+			$connector
+		);
+		$result = array(
+			'authorizationCompleted' => true,
+			'connector'              => brandagent_connectors_project_connector_for_ui( $connector ),
+			'configurationApplied'   => ! is_wp_error( $configured ),
+		);
+		if ( 'default' === $configuration['mode'] ) {
+			$result['durationMinutes'] = $configuration['durationMinutes'];
+		}
+		if ( is_wp_error( $configured ) ) {
+			$result['configurationErrorCode'] = $configured->get_error_code();
+			$error_data                       = $configured->get_error_data();
+			if ( is_array( $error_data ) && isset( $error_data['services'] ) ) {
+				$result['services'] = $error_data['services'];
+			}
+			if ( is_array( $error_data ) && isset( $error_data['connector'] ) ) {
+				$result['connector'] = brandagent_connectors_project_connector_for_ui( $error_data['connector'] );
+			}
+			return $result;
+		}
+
+		$result['connector'] = $configured['connector'];
+		return $result;
+	}
+
+	/**
+	 * Reconcile browser durations with the canonical Housecall Pro catalog and replace configuration.
+	 * Default mode may use backend-owned defaults when legacy connector data lacks a valid catalog.
+	 *
+	 * @param string $provider_id   Provider id.
+	 * @param array  $configuration Validated configuration.
+	 * @param array  $connector     Raw canonical connector.
+	 * @return array|WP_Error Sanitized connector result.
+	 */
+	function brandagent_connectors_apply_housecall_pro_configuration( $provider_id, $configuration, $connector ) {
+		$catalog = brandagent_connectors_get_canonical_housecall_pro_catalog( $connector );
+		if ( is_wp_error( $catalog ) ) {
+			if (
+				'default' === $configuration['mode']
+				&& 'incomplete_service_catalog' === $catalog->get_error_code()
+			) {
+				return brandagent_connectors_apply_default_configuration(
+					$provider_id,
+					$configuration['durationMinutes'],
+					$connector
+				);
+			}
+			return $catalog;
+		}
+
+		$submitted_durations = array();
+		if ( 'per_service' === $configuration['mode'] ) {
+			foreach ( $configuration['services'] as $service ) {
+				$submitted_durations[ $service['serviceId'] ] = $service['durationMinutes'];
+			}
+		}
+
+		$desired_services = array();
+		$safe_services    = array();
+		foreach ( $catalog['services'] as $service ) {
+			$duration = 'default' === $configuration['mode']
+				? $configuration['durationMinutes']
+				: (
+					isset( $submitted_durations[ $service['serviceId'] ] )
+						? $submitted_durations[ $service['serviceId'] ]
+						: BRANDAGENT_CONNECTOR_DEFAULT_DURATION_MINUTES
+				);
+			unset( $submitted_durations[ $service['serviceId'] ] );
+
+			$desired_services[] = array(
+				'serviceId'        => $service['serviceId'],
+				'selected'         => true,
+				'durationMinutes'  => $duration,
+				'amountMinorUnits' => $service['amountMinorUnits'],
+				'currency'         => $service['currency'],
+			);
+			$safe_services[]    = array(
+				'serviceId'       => $service['serviceId'],
+				'name'            => $service['name'],
+				'selected'        => true,
+				'durationMinutes' => $duration,
+			);
+		}
+
+		if ( ! empty( $submitted_durations ) ) {
+			return new WP_Error(
+				'stale_service_catalog',
+				'Housecall Pro services changed. Review the refreshed service list and try again.',
+				array(
+					'status'   => 409,
+					'services' => $safe_services,
+				)
+			);
+		}
+
+		$configured = brandagent_connectors_api_request(
+			'PATCH',
+			'/' . rawurlencode( $connector['connectorId'] ) . '/configuration',
+			array(
+				'serviceCatalogVersion' => $catalog['serviceCatalogVersion'],
+				'services'              => $desired_services,
+			)
+		);
+		if ( is_wp_error( $configured ) ) {
+			if ( 'stale_service_catalog' === $configured->get_error_code() ) {
+				return brandagent_connectors_refresh_stale_service_catalog( $provider_id );
+			}
+			return $configured;
+		}
+
+		return array(
+			'connector' => brandagent_connectors_project_connector_for_ui( $configured ),
+		);
+	}
+
+	/**
+	 * Refresh safe recovery data after a backend catalog-version conflict.
+	 *
+	 * @param string $provider_id Provider id.
+	 * @return WP_Error Safe stale-catalog error.
+	 */
+	function brandagent_connectors_refresh_stale_service_catalog( $provider_id ) {
+		$status = brandagent_connectors_get_raw_status();
+		$data   = array( 'status' => 409 );
+		if ( ! is_wp_error( $status ) ) {
+			$connector = brandagent_connectors_find_provider_item( $status['connectors'], $provider_id );
+			if ( is_array( $connector ) ) {
+				$services = brandagent_connectors_project_housecall_pro_services_for_ui( $connector );
+				if ( ! is_wp_error( $services ) ) {
+					$data['services'] = $services;
+				}
+				$data['connector'] = $connector;
+			}
+		}
+
+		return new WP_Error(
+			'stale_service_catalog',
+			'Housecall Pro services changed. Review the refreshed service list and try again.',
+			$data
+		);
+	}
+
+	/**
+	 * Validate canonical Housecall Pro catalog used to construct the configuration replacement.
+	 *
+	 * @param array $connector Raw connector.
+	 * @return array|WP_Error Canonical catalog.
+	 */
+	function brandagent_connectors_get_canonical_housecall_pro_catalog( $connector ) {
+		if (
+			! isset( $connector['providerDetails'] )
+			|| ! is_array( $connector['providerDetails'] )
+			|| ! array_key_exists( 'serviceCatalogVersion', $connector['providerDetails'] )
+			|| ! array_key_exists( 'services', $connector['providerDetails'] )
+			|| ! is_array( $connector['providerDetails']['services'] )
+		) {
+			return new WP_Error(
+				'incomplete_service_catalog',
+				'Housecall Pro returned an incomplete service catalog.',
+				array( 'status' => 502 )
+			);
+		}
+
+		$provider_details = $connector['providerDetails'];
+		$services         = $provider_details['services'];
+		$catalog_version  = brandagent_connectors_validate_service_catalog_version(
+			$provider_details['serviceCatalogVersion']
+		);
+		if (
+			null === $catalog_version
+			|| empty( $services )
+			|| count( $services ) > BRANDAGENT_CONNECTOR_MAXIMUM_SERVICE_COUNT
+		) {
+			return new WP_Error(
+				'invalid_service_catalog',
+				'Housecall Pro returned an invalid service catalog.',
+				array( 'status' => 502 )
+			);
+		}
+
+		$canonical   = array();
+		$service_ids = array();
+		foreach ( $services as $service ) {
+			$service_id = is_array( $service ) && isset( $service['serviceId'] )
+				? brandagent_connectors_validate_service_id( $service['serviceId'] )
+				: null;
+			$name       = is_array( $service ) && isset( $service['name'] )
+				? brandagent_connectors_validate_service_name( $service['name'] )
+				: null;
+			if (
+				null === $service_id
+				|| null === $name
+				|| isset( $service_ids[ $service_id ] )
+			) {
+				return new WP_Error(
+					'invalid_service_catalog',
+					'Housecall Pro returned an invalid service catalog.',
+					array( 'status' => 502 )
+				);
+			}
+
+			if (
+				! array_key_exists( 'amountMinorUnits', $service )
+				|| ! array_key_exists( 'currency', $service )
+			) {
+				return new WP_Error(
+					'incomplete_service_catalog',
+					'Housecall Pro returned an incomplete service catalog.',
+					array( 'status' => 502 )
+				);
+			}
+
+			if (
+				! is_int( $service['amountMinorUnits'] )
+				|| $service['amountMinorUnits'] < 0
+				|| (
+					null !== $service['currency']
+					&& (
+						! is_string( $service['currency'] )
+						|| ! preg_match( '/^[A-Z]{3}$/', $service['currency'] )
+					)
+				)
+			) {
+				return new WP_Error(
+					'invalid_service_catalog',
+					'Housecall Pro returned an invalid service catalog.',
+					array( 'status' => 502 )
+				);
+			}
+
+			$service_ids[ $service_id ] = true;
+			$canonical[]                = array(
+				'serviceId'        => $service_id,
+				'name'             => $name,
+				'amountMinorUnits' => $service['amountMinorUnits'],
+				'currency'         => $service['currency'],
+			);
+		}
+
+		return array(
+			'serviceCatalogVersion' => $catalog_version,
+			'services'              => $canonical,
+		);
+	}
+
+	/**
+	 * Apply a default duration to an existing Housecall Pro connector.
+	 *
+	 * @param string     $provider_id     Provider id.
+	 * @param int        $duration_minutes Validated duration.
+	 * @param array|null $connector       Optional raw connector already loaded by the caller.
+	 * @return array|WP_Error Sanitized connector result.
+	 */
+	function brandagent_connectors_apply_default_configuration( $provider_id, $duration_minutes, $connector = null ) {
+		if ( null === $connector ) {
+			$status = brandagent_connectors_get_raw_status();
+			if ( is_wp_error( $status ) ) {
+				return $status;
+			}
+			$connector = brandagent_connectors_find_provider_item( $status['connectors'], $provider_id );
+		}
+
+		if ( empty( $connector['connectorId'] ) ) {
+			return new WP_Error(
+				'connector_not_found',
+				'No connector exists for the requested provider.',
+				array( 'status' => 404 )
+			);
+		}
+
+		$configured = brandagent_connectors_api_request(
+			'POST',
+			'/' . rawurlencode( $connector['connectorId'] ) . '/configuration:defaults?durationMinutes=' . $duration_minutes
+		);
+		if ( is_wp_error( $configured ) ) {
+			return $configured;
+		}
+
+		return array(
+			'connector'       => brandagent_connectors_project_connector_for_ui( $configured ),
+			'durationMinutes' => $duration_minutes,
+		);
+	}
+
+	/**
+	 * Validate and store the Housecall Pro API key through the WordPress-HMAC endpoint.
+	 *
+	 * @param string $api_key Validated API key.
+	 * @return array|WP_Error Decoded response.
+	 */
+	function brandagent_connectors_set_housecall_pro_api_key( $api_key ) {
+		$response = brandagent_connectors_signed_api_request(
+			'POST',
+			BRANDAGENT_HOUSECALL_PRO_API_KEY_PATH,
+			array( 'apiKey' => $api_key )
+		);
+		if ( ! is_wp_error( $response ) ) {
+			return $response;
+		}
+
+		if ( in_array( $response->get_error_code(), array( 'invalid_api_key', 'read_only_api_key' ), true ) ) {
+			$error_code = $response->get_error_code();
+			return new WP_Error(
+				$error_code,
+				'invalid_api_key' === $error_code
+					? 'Housecall Pro rejected this API key. Double-check it and try again.'
+					: 'This Housecall Pro API key does not have write access.',
+				array( 'status' => 422 )
+			);
+		}
+
+		return new WP_Error(
+			'api_key_validation_failed',
+			'Housecall Pro API key could not be verified. Try again shortly.',
+			array( 'status' => 502 )
+		);
+	}
+
+	/**
+	 * Validate Housecall Pro access without storing credentials or creating a connector.
+	 *
+	 * @param string $api_key Validated API key.
+	 * @return array|WP_Error Browser-safe validation result.
+	 */
+	function brandagent_connectors_validate_housecall_pro_api_key( $api_key ) {
+		$response = brandagent_connectors_signed_api_request(
+			'POST',
+			BRANDAGENT_HOUSECALL_PRO_API_KEY_VALIDATE_PATH,
+			array( 'apiKey' => $api_key )
+		);
+		if ( ! is_wp_error( $response ) ) {
+			$services = brandagent_connectors_project_service_preview_catalog( $response );
+			if ( is_wp_error( $services ) ) {
+				return $services;
+			}
+			return array(
+				'valid'    => true,
+				'services' => $services,
+			);
+		}
+
+		if ( in_array( $response->get_error_code(), array( 'invalid_api_key', 'read_only_api_key' ), true ) ) {
+			$error_code = $response->get_error_code();
+			return new WP_Error(
+				$error_code,
+				'invalid_api_key' === $error_code
+					? 'Housecall Pro rejected this API key. Double-check it and try again.'
+					: 'This Housecall Pro API key does not have write access.',
+				array( 'status' => 422 )
+			);
+		}
+
+		return new WP_Error(
+			'api_key_validation_failed',
+			'Housecall Pro API key could not be verified. Try again shortly.',
+			array( 'status' => 502 )
+		);
+	}
+
+	/**
+	 * Validate and project the provider service preview.
+	 *
+	 * @param mixed $response Raw validation response.
+	 * @return array|WP_Error Browser-safe service catalog.
+	 */
+	function brandagent_connectors_project_service_preview_catalog( $response ) {
+		$encoded = wp_json_encode( $response );
+		if (
+			! is_array( $response )
+			|| true !== ( isset( $response['valid'] ) ? $response['valid'] : false )
+			|| ! isset( $response['services'] )
+			|| ! is_array( $response['services'] )
+			|| count( $response['services'] ) > BRANDAGENT_CONNECTOR_MAXIMUM_SERVICE_COUNT
+			|| false === $encoded
+			|| strlen( $encoded ) > BRANDAGENT_CONNECTOR_MAXIMUM_SERVICE_CATALOG_BYTES
+		) {
+			return new WP_Error(
+				'invalid_service_catalog',
+				'Housecall Pro returned an invalid service catalog.',
+				array( 'status' => 502 )
+			);
+		}
+
+		$services    = array();
+		$service_ids = array();
+		foreach ( $response['services'] as $service ) {
+			$service_id = is_array( $service ) && isset( $service['serviceId'] )
+				? brandagent_connectors_validate_service_id( $service['serviceId'] )
+				: null;
+			$name       = is_array( $service ) && isset( $service['name'] )
+				? brandagent_connectors_validate_service_name( $service['name'] )
+				: null;
+			if ( null === $service_id || null === $name || isset( $service_ids[ $service_id ] ) ) {
+				return new WP_Error(
+					'invalid_service_catalog',
+					'Housecall Pro returned an invalid service catalog.',
+					array( 'status' => 502 )
+				);
+			}
+
+			$service_ids[ $service_id ] = true;
+			$services[]                 = array(
+				'serviceId' => $service_id,
+				'name'      => $name,
+			);
+		}
+
+		return $services;
+	}
+
+	/**
+	 * Validate a provider-owned service name.
+	 *
+	 * @param mixed $value Candidate name.
+	 * @return string|null Valid name.
+	 */
+	function brandagent_connectors_validate_service_name( $value ) {
+		if (
+			! is_string( $value )
+			|| '' === $value
+			|| trim( $value ) !== $value
+			|| strlen( $value ) > BRANDAGENT_CONNECTOR_MAXIMUM_SERVICE_NAME_BYTES
+			|| preg_match( '/[\x00-\x1F\x7F]/', $value )
+		) {
+			return null;
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Complete the state-gated API-key callback without exposing the state to the browser.
+	 *
+	 * @param string $provider_id        Provider id.
+	 * @param string $authorization_state One-time authorization state.
+	 * @return array|WP_Error Completion result.
+	 */
+	function brandagent_connectors_complete_api_key_callback( $provider_id, $authorization_state ) {
+		$backend = brandagent_connectors_get_backend_base_url();
+		if ( is_wp_error( $backend ) ) {
+			return $backend;
+		}
+
+		$url = rtrim( $backend, '/' )
+			. '/api/connectors/oauth/'
+			. rawurlencode( $provider_id )
+			. '/api-key/callback?state='
+			. rawurlencode( $authorization_state );
+		$response = wp_remote_get( $url, array( 'timeout' => 30 ) );
+		if ( is_wp_error( $response ) ) {
+			return new WP_Error(
+				'connector_transport_failed',
+				'Housecall Pro authorization could not be completed.',
+				array( 'status' => 502 )
+			);
+		}
+
+		$status = (int) wp_remote_retrieve_response_code( $response );
+		if ( $status < 200 || $status >= 400 ) {
+			return new WP_Error(
+				'authorization_callback_failed',
+				'Housecall Pro authorization could not be completed.',
+				array( 'status' => 502 )
+			);
+		}
+
+		return array( 'completed' => true );
+	}
+
 /**
  * Parse a positive AdsAgentServer authorization version.
  *
@@ -278,7 +1277,7 @@ function brandagent_connectors_parse_authorization_version( $value ) {
 }
 
 /**
- * Get browser-safe Square provider metadata and connector status.
+ * Get browser-safe provider metadata and connector status.
  *
  * @return array|WP_Error Status payload.
  */
@@ -289,17 +1288,16 @@ function brandagent_connectors_get_status() {
 	}
 
 	return array(
-		'providers'            => array_map( 'brandagent_connectors_project_provider_for_ui', $status['providers'] ),
-		'connectors'           => array_map( 'brandagent_connectors_project_connector_for_ui', $status['connectors'] ),
-		'supportedProviderIds' => array( BRANDAGENT_CONNECTOR_SQUARE_PROVIDER_ID ),
-		'descriptions'         => array(
-			BRANDAGENT_CONNECTOR_SQUARE_PROVIDER_ID => 'Connect Square to enable bookings on Brand Agents, and measure impact in Clarity.',
-		),
+		'providers'                       => array_map( 'brandagent_connectors_project_provider_for_ui', $status['providers'] ),
+		'connectors'                      => array_map( 'brandagent_connectors_project_connector_for_ui', $status['connectors'] ),
+		'supportedProviderIds'            => brandagent_connectors_get_available_provider_ids( $status['providers'] ),
+		'apiKeyValidationProviderIds'     => array( BRANDAGENT_CONNECTOR_HOUSECALL_PRO_PROVIDER_ID ),
+		'apiKeyServicePreviewProviderIds' => array( BRANDAGENT_CONNECTOR_HOUSECALL_PRO_PROVIDER_ID ),
 	);
 }
 
 /**
- * Get raw Square provider and connector objects for server-side operations.
+ * Get raw allowlisted provider and connector objects for server-side operations.
  *
  * @return array|WP_Error Raw status payload.
  */
@@ -315,9 +1313,38 @@ function brandagent_connectors_get_raw_status() {
 	}
 
 	return array(
-		'providers'  => brandagent_connectors_only_square_items( $providers ),
-		'connectors' => brandagent_connectors_only_square_items( $connectors ),
+		'providers'  => brandagent_connectors_only_supported_items( $providers ),
+		'connectors' => brandagent_connectors_only_supported_items( $connectors ),
 	);
+}
+
+/**
+ * Get enabled provider ids from the allowlisted provider metadata returned by AdsAgentServer.
+ *
+ * @param mixed $providers Provider metadata list.
+ * @return array
+ */
+function brandagent_connectors_get_available_provider_ids( $providers ) {
+	$provider_ids = array();
+	if ( ! is_array( $providers ) ) {
+		return $provider_ids;
+	}
+
+	foreach ( $providers as $provider ) {
+		if ( is_array( $provider ) && isset( $provider['providerId'] ) && is_string( $provider['providerId'] ) ) {
+			$provider_id = strtolower( $provider['providerId'] );
+			// Older Calendly backends advertised interactive configuration. Only expose the zero-config contract.
+			if (
+				BRANDAGENT_CONNECTOR_CALENDLY_PROVIDER_ID === $provider_id
+				&& ( ! array_key_exists( 'supportsConfiguration', $provider ) || false !== $provider['supportsConfiguration'] )
+			) {
+				continue;
+			}
+			$provider_ids[] = $provider_id;
+		}
+	}
+
+	return array_values( array_unique( $provider_ids ) );
 }
 
 /**
@@ -332,10 +1359,6 @@ function brandagent_connectors_project_provider_for_ui( $provider ) {
 		array(
 			'providerId',
 			'displayName',
-			'description',
-			'capabilities',
-			'supportsMultipleConnections',
-			'supportsConfiguration',
 		)
 	);
 }
@@ -368,6 +1391,77 @@ function brandagent_connectors_project_connector_for_ui( $connector ) {
 		$projected['capabilities'] = array_map(
 			'brandagent_connectors_project_capability_for_ui',
 			$connector['capabilities']
+		);
+	}
+
+	if (
+		is_array( $connector )
+		&& isset( $connector['providerId'] )
+		&& BRANDAGENT_CONNECTOR_HOUSECALL_PRO_PROVIDER_ID === strtolower( (string) $connector['providerId'] )
+	) {
+		$services = brandagent_connectors_project_housecall_pro_services_for_ui( $connector );
+		if ( ! is_wp_error( $services ) ) {
+			$projected['services'] = $services;
+		}
+	}
+
+	return $projected;
+}
+
+/**
+ * Project canonical Housecall Pro service configuration without exposing provider details.
+ *
+ * @param mixed $connector Raw connector.
+ * @return array|WP_Error Browser-safe service configuration.
+ */
+function brandagent_connectors_project_housecall_pro_services_for_ui( $connector ) {
+	$services = is_array( $connector )
+		&& isset( $connector['providerDetails'] )
+		&& is_array( $connector['providerDetails'] )
+		&& isset( $connector['providerDetails']['services'] )
+		? $connector['providerDetails']['services']
+		: array();
+	if ( ! is_array( $services ) || count( $services ) > BRANDAGENT_CONNECTOR_MAXIMUM_SERVICE_COUNT ) {
+		return new WP_Error(
+			'invalid_service_catalog',
+			'Housecall Pro returned an invalid service catalog.',
+			array( 'status' => 502 )
+		);
+	}
+
+	$projected   = array();
+	$service_ids = array();
+	foreach ( $services as $service ) {
+		$service_id = is_array( $service ) && isset( $service['serviceId'] )
+			? brandagent_connectors_validate_service_id( $service['serviceId'] )
+			: null;
+		$name       = is_array( $service ) && isset( $service['name'] )
+			? brandagent_connectors_validate_service_name( $service['name'] )
+			: null;
+		$duration   = is_array( $service ) && isset( $service['durationMinutes'] )
+			? brandagent_connectors_parse_duration_minutes( $service['durationMinutes'] )
+			: null;
+		if (
+			null === $service_id
+			|| null === $name
+			|| null === $duration
+			|| ! isset( $service['selected'] )
+			|| ! is_bool( $service['selected'] )
+			|| isset( $service_ids[ $service_id ] )
+		) {
+			return new WP_Error(
+				'invalid_service_catalog',
+				'Housecall Pro returned an invalid service catalog.',
+				array( 'status' => 502 )
+			);
+		}
+
+		$service_ids[ $service_id ] = true;
+		$projected[]                = array(
+			'serviceId'       => $service_id,
+			'name'            => $name,
+			'selected'        => $service['selected'],
+			'durationMinutes' => $duration,
 		);
 	}
 
@@ -429,28 +1523,29 @@ function brandagent_connectors_copy_allowed_fields( $item, $fields ) {
 }
 
 /**
- * Keep only Square entries from a connector/provider list.
+ * Keep only explicitly supported entries from a connector/provider list.
  *
  * @param mixed $items API list.
  * @return array
  */
-function brandagent_connectors_only_square_items( $items ) {
-	$square = array();
+function brandagent_connectors_only_supported_items( $items ) {
+	$supported = array();
 	if ( ! is_array( $items ) ) {
-		return $square;
+		return $supported;
 	}
 
 	foreach ( $items as $item ) {
 		if (
 			is_array( $item )
 			&& isset( $item['providerId'] )
-			&& 0 === strcasecmp( (string) $item['providerId'], BRANDAGENT_CONNECTOR_SQUARE_PROVIDER_ID )
+			&& is_string( $item['providerId'] )
+			&& in_array( strtolower( $item['providerId'] ), brandagent_connectors_supported_provider_ids(), true )
 		) {
-			$square[] = $item;
+			$supported[] = $item;
 		}
 	}
 
-	return array_values( $square );
+	return array_values( $supported );
 }
 
 /**
@@ -465,17 +1560,27 @@ function brandagent_connectors_find_provider_item( $items, $provider_id ) {
 		return null;
 	}
 
+	$disconnected_item = null;
 	foreach ( $items as $item ) {
 		if (
 			is_array( $item )
 			&& isset( $item['providerId'] )
-			&& 0 === strcasecmp( (string) $item['providerId'], $provider_id )
+			&& is_string( $item['providerId'] )
+			&& 0 === strcasecmp( $item['providerId'], $provider_id )
 		) {
-			return $item;
+			if (
+				! isset( $item['authorizationStatus'] )
+				|| 'disconnected' !== strtolower( (string) $item['authorizationStatus'] )
+			) {
+				return $item;
+			}
+			if ( null === $disconnected_item ) {
+				$disconnected_item = $item;
+			}
 		}
 	}
 
-	return null;
+	return $disconnected_item;
 }
 
 /**
@@ -513,6 +1618,19 @@ function brandagent_connectors_validate_authorization_response( $response ) {
  * @return array|WP_Error Decoded response.
  */
 function brandagent_connectors_api_request( $method, $suffix = '', $payload = null ) {
+	return brandagent_connectors_signed_api_request(
+		$method,
+		BRANDAGENT_CONNECTORS_PATH . $suffix,
+		$payload
+	);
+}
+
+/**
+ * Resolve the configured AdsAgentServer base URL.
+ *
+ * @return string|WP_Error Base URL or configuration error.
+ */
+function brandagent_connectors_get_backend_base_url() {
 	if ( ! class_exists( 'BrandAgent_Config' ) || ! method_exists( 'BrandAgent_Config', 'get_backend_base_url' ) ) {
 		return new WP_Error(
 			'backend_unavailable',
@@ -530,7 +1648,23 @@ function brandagent_connectors_api_request( $method, $suffix = '', $payload = nu
 		);
 	}
 
-	$path = BRANDAGENT_CONNECTORS_PATH . $suffix;
+	return $backend;
+}
+
+/**
+ * Send and decode one WordPress-HMAC request to AdsAgentServer.
+ *
+ * @param string     $method  HTTP method.
+ * @param string     $path    Absolute backend path including any query.
+ * @param array|null $payload Optional JSON payload.
+ * @return array|WP_Error Decoded response.
+ */
+function brandagent_connectors_signed_api_request( $method, $path, $payload = null ) {
+	$backend = brandagent_connectors_get_backend_base_url();
+	if ( is_wp_error( $backend ) ) {
+		return $backend;
+	}
+
 	$url  = rtrim( $backend, '/' ) . $path;
 	$body = null === $payload ? '' : wp_json_encode( $payload );
 	if ( false === $body ) {
