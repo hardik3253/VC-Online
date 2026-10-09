@@ -58,6 +58,15 @@ if ( ! function_exists( 'control_active_cart_trans_callback' ) ) {
 	}
 }
 
+if ( ! function_exists( 'control_active_tutor_cart_callback' ) ) {
+	/**
+	 * Active callback for Tutor native cart color controls
+	 */
+	function control_active_tutor_cart_callback() {
+		return defined( 'TUTOR_VERSION' ) && function_exists( 'tutor_utils' ) && tutor_utils()->is_monetize_by_tutor();
+	}
+}
+
 if ( ! function_exists( 'control_active_callback_meta' ) ) {
 	/**
 	 * Control active callback for post meta
@@ -295,12 +304,53 @@ if ( ! function_exists( 'tutorstarter_post_pagination' ) ) {
 	}
 }
 
+if ( ! function_exists( 'tutorstarter_users_can_register' ) ) {
+	/**
+	 * Whether public user registration is allowed.
+	 *
+	 * Honours the site "Anyone can register" setting and, on multisite,
+	 * the network registration policy.
+	 *
+	 * @since 4.0.4
+	 *
+	 * @return bool
+	 */
+	function tutorstarter_users_can_register() {
+		if ( is_multisite() ) {
+			$registration = get_site_option( 'registration', 'none' );
+			if ( ! in_array( $registration, array( 'user', 'all' ), true ) ) {
+				return false;
+			}
+		}
+
+		return (bool) get_option( 'users_can_register' );
+	}
+}
+
 /**
  * Tutor starter ajax signup
  */
 add_action( 'wp_ajax_nopriv_ajaxregister', 'tutor_theme_ajax_register_new_user' );
 
+/**
+ * Tutor starter ajax signup
+ *
+ * @return void
+ */
 function tutor_theme_ajax_register_new_user() {
+	if ( ! tutorstarter_users_can_register() ) {
+		echo json_encode(
+			array(
+				'loggedin' => false,
+				'message'  => __(
+					'User registration is currently not allowed.',
+					'tutorstarter'
+				),
+			)
+		);
+		die();
+	}
+
 	if ( ! check_ajax_referer( 'tutor-starter-signup-nonce', 'signupNonce' ) ) {
 		echo json_encode(
 			array(
@@ -418,6 +468,40 @@ function tutor_theme_ajax_register_new_user() {
 		);
 		die();
 	} else {
+		$sanitized_user_login = sanitize_user( $username );
+		$email                = apply_filters( 'user_registration_email', $email );
+		$errors               = new WP_Error();
+
+		$illegal_user_logins = (array) apply_filters( 'illegal_user_logins', array() );
+		if ( in_array( strtolower( $sanitized_user_login ), array_map( 'strtolower', $illegal_user_logins ), true ) ) {
+			echo json_encode(
+				array(
+					'loggedin' => false,
+					'message'  => __(
+						'Sorry, that username is not allowed.',
+						'tutorstarter'
+					),
+				)
+			);
+			die();
+		}
+
+		/** This action is documented in wp-includes/user.php */
+		do_action( 'register_post', $sanitized_user_login, $email, $errors );
+
+		/** This filter is documented in wp-includes/user.php */
+		$errors = apply_filters( 'registration_errors', $errors, $sanitized_user_login, $email );
+
+		if ( is_wp_error( $errors ) && $errors->has_errors() ) {
+			echo json_encode(
+				array(
+					'loggedin' => false,
+					'message'  => wp_strip_all_tags( $errors->get_error_message() ),
+				)
+			);
+			die();
+		}
+
 		$user_input = array(
 			'user_login'   => $username,
 			'display_name' => $username,
@@ -477,6 +561,11 @@ function tutor_theme_ajax_register_new_user() {
  */
 add_action( 'wp_ajax_nopriv_ajaxlogin', 'tutor_theme_ajax_login' );
 
+/**
+ * Tutor starter ajax signin
+ *
+ * @return void
+ */
 function tutor_theme_ajax_login() {
 	if ( ! check_ajax_referer( 'tutor-starter-signin-nonce', 'signinNonce' ) ) {
 		echo json_encode(

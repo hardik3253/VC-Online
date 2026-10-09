@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: TutorStarter 4.0.3\n"
+"Project-Id-Version: TutorStarter 4.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/tutorstarter\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-26T07:37:18+00:00\n"
+"POT-Creation-Date: 2026-10-05T10:31:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tutorstarter\n"
@@ -495,61 +495,71 @@ msgstr ""
 
 #: inc/Api/Customizer/Header/Header.php:492
 #: inc/Api/Customizer/Header/Header.php:503
-msgid "Show Starter Button?"
+msgid "Cart Icon Color"
 msgstr ""
 
 #: inc/Api/Customizer/Header/Header.php:512
 #: inc/Api/Customizer/Header/Header.php:523
-msgid "Button BG Color"
+msgid "Cart Badge Color"
 msgstr ""
 
 #: inc/Api/Customizer/Header/Header.php:532
-#: inc/Api/Customizer/Header/Header.php:550
-msgid "Transparent Btn BG Color"
+#: inc/Api/Customizer/Header/Header.php:543
+msgid "Show Starter Button?"
 msgstr ""
 
-#: inc/Api/Customizer/Header/Header.php:559
-#: inc/Api/Customizer/Header/Header.php:570
-msgid "Border Color"
+#: inc/Api/Customizer/Header/Header.php:552
+#: inc/Api/Customizer/Header/Header.php:563
+msgid "Button BG Color"
 msgstr ""
 
-#: inc/Api/Customizer/Header/Header.php:579
+#: inc/Api/Customizer/Header/Header.php:572
 #: inc/Api/Customizer/Header/Header.php:590
-msgid "Transparent Border Color"
+msgid "Transparent Btn BG Color"
 msgstr ""
 
 #: inc/Api/Customizer/Header/Header.php:599
 #: inc/Api/Customizer/Header/Header.php:610
+msgid "Border Color"
+msgstr ""
+
+#: inc/Api/Customizer/Header/Header.php:619
+#: inc/Api/Customizer/Header/Header.php:630
+msgid "Transparent Border Color"
+msgstr ""
+
+#: inc/Api/Customizer/Header/Header.php:639
+#: inc/Api/Customizer/Header/Header.php:650
 msgid "Border Width"
 msgstr ""
 
-#: inc/Api/Customizer/Header/Header.php:620
-#: inc/Api/Customizer/Header/Header.php:631
+#: inc/Api/Customizer/Header/Header.php:660
+#: inc/Api/Customizer/Header/Header.php:671
 msgid "Border Radius"
-msgstr ""
-
-#: inc/Api/Customizer/Header/Header.php:641
-#: inc/Api/Customizer/Header/Header.php:652
-msgid "Button Text Color"
-msgstr ""
-
-#: inc/Api/Customizer/Header/Header.php:661
-#: inc/Api/Customizer/Header/Header.php:672
-msgid "Transparent Button Text Color"
 msgstr ""
 
 #: inc/Api/Customizer/Header/Header.php:681
 #: inc/Api/Customizer/Header/Header.php:692
+msgid "Button Text Color"
+msgstr ""
+
+#: inc/Api/Customizer/Header/Header.php:701
+#: inc/Api/Customizer/Header/Header.php:712
+msgid "Transparent Button Text Color"
+msgstr ""
+
+#: inc/Api/Customizer/Header/Header.php:721
+#: inc/Api/Customizer/Header/Header.php:732
 msgid "Button Text"
 msgstr ""
 
-#: inc/Api/Customizer/Header/Header.php:702
-#: inc/Api/Customizer/Header/Header.php:713
+#: inc/Api/Customizer/Header/Header.php:742
+#: inc/Api/Customizer/Header/Header.php:753
 msgid "Button Link"
 msgstr ""
 
-#: inc/Api/Customizer/Header/Header.php:723
-#: inc/Api/Customizer/Header/Header.php:747
+#: inc/Api/Customizer/Header/Header.php:763
+#: inc/Api/Customizer/Header/Header.php:787
 msgid "Button Typography"
 msgstr ""
 
@@ -1175,98 +1185,105 @@ msgstr ""
 msgid "Tutor Starter Schema"
 msgstr ""
 
-#: inc/Helpers.php:290
+#: inc/Helpers.php:299
 msgid "<"
 msgstr ""
 
-#: inc/Helpers.php:291
+#: inc/Helpers.php:300
 msgid ">"
 msgstr ""
 
-#: inc/Helpers.php:308
-#: inc/Helpers.php:485
-msgid "Cheating huh?"
-msgstr ""
-
-#: inc/Helpers.php:325
-msgid "Please provide a username."
-msgstr ""
-
-#: inc/Helpers.php:336
-msgid "A valid email is required."
-msgstr ""
-
-#: inc/Helpers.php:347
-msgid "Please provide a strong password."
+#: inc/Helpers.php:345
+#: page-templates/tpl-signup.php:43
+msgid "User registration is currently not allowed."
 msgstr ""
 
 #: inc/Helpers.php:358
+#: inc/Helpers.php:574
+msgid "Cheating huh?"
+msgstr ""
+
+#: inc/Helpers.php:375
+msgid "Please provide a username."
+msgstr ""
+
+#: inc/Helpers.php:386
+msgid "A valid email is required."
+msgstr ""
+
+#: inc/Helpers.php:397
+msgid "Please provide a strong password."
+msgstr ""
+
+#: inc/Helpers.php:408
 msgid "Please confirm the password."
 msgstr ""
 
-#: inc/Helpers.php:369
+#: inc/Helpers.php:419
 msgid "Username already exists."
 msgstr ""
 
-#: inc/Helpers.php:380
+#: inc/Helpers.php:430
 msgid "Email address is not valid."
 msgstr ""
 
-#: inc/Helpers.php:391
+#: inc/Helpers.php:441
 msgid "This Email already exists."
 msgstr ""
 
-#: inc/Helpers.php:402
+#: inc/Helpers.php:452
 msgid "Password must be 7 characters or more."
 msgstr ""
 
-#: inc/Helpers.php:413
+#: inc/Helpers.php:463
 msgid "Password does not match."
 msgstr ""
 
-#: inc/Helpers.php:441
+#: inc/Helpers.php:480
+msgid "Sorry, that username is not allowed."
+msgstr ""
+
+#: inc/Helpers.php:525
 msgid "Something went wrong! Please try again later."
 msgstr ""
 
-#: inc/Helpers.php:452
+#: inc/Helpers.php:536
 msgid "Registration successful, redirecting..."
 msgstr ""
 
-#: inc/Helpers.php:464
+#: inc/Helpers.php:548
 msgid "Incorrect username or password."
 msgstr ""
 
-#: inc/Helpers.php:500
+#: inc/Helpers.php:589
 msgid "Email is not valid."
 msgstr ""
 
-#: inc/Helpers.php:511
+#: inc/Helpers.php:600
 msgid "Password field is empty."
 msgstr ""
 
-#: inc/Helpers.php:530
+#: inc/Helpers.php:619
 msgid "Invalid login details"
 msgstr ""
 
-#: inc/Helpers.php:541
+#: inc/Helpers.php:630
 msgid "Signin successful, redirecting..."
 msgstr ""
 
-#: inc/Helpers.php:562
-#: inc/Helpers.php:596
-#: views/partials/header/header_default.php:75
-#: views/partials/header/header_transparent.php:82
+#: inc/Helpers.php:651
+#: inc/Helpers.php:685
 msgid "View your shopping cart"
 msgstr ""
 
-#: inc/Helpers.php:619
+#: inc/Helpers.php:708
 #: woocommerce/checkout/form-checkout.php:22
 msgid "Complete Payment"
 msgstr ""
 
-#: inc/Helpers.php:713
-#: inc/Helpers.php:737
-#: views/partials/header/header_transparent.php:122
+#: inc/Helpers.php:802
+#: inc/Helpers.php:826
+#: views/partials/header/header_transparent.php:101
 #, php-format
 msgid "%s"
 msgstr ""
@@ -1372,8 +1389,8 @@ msgstr ""
 #. Template Name of the theme
 #: page-templates/tpl-getting-started.php:3
 #: page-templates/tpl-getting-started.php:29
-#: views/partials/header/header_default.php:107
-#: views/partials/header/header_default.php:108
+#: views/partials/header/header_default.php:86
+#: views/partials/header/header_default.php:87
 msgid "Getting Started"
 msgstr ""
 
@@ -1407,18 +1424,18 @@ msgid "Sign in"
 msgstr ""
 
 #: page-templates/tpl-signin.php:41
-#: page-templates/tpl-signup.php:46
+#: page-templates/tpl-signup.php:54
 #: inc/Custom/Schema/schemajs/src/schema/fields/schema-fields.js:171
 msgid "Email"
 msgstr ""
 
 #: page-templates/tpl-signin.php:42
-#: page-templates/tpl-signup.php:47
+#: page-templates/tpl-signup.php:55
 msgid "name@example.com"
 msgstr ""
 
 #: page-templates/tpl-signin.php:46
-#: page-templates/tpl-signup.php:50
+#: page-templates/tpl-signup.php:58
 msgid "Password"
 msgstr ""
 
@@ -1427,12 +1444,12 @@ msgid "Forgot password?"
 msgstr ""
 
 #: page-templates/tpl-signin.php:52
-#: page-templates/tpl-signup.php:51
+#: page-templates/tpl-signup.php:59
 msgid "Type your password"
 msgstr ""
 
 #: page-templates/tpl-signin.php:55
-#: page-templates/tpl-signup.php:66
+#: page-templates/tpl-signup.php:75
 msgid "Log in"
 msgstr ""
 
@@ -1441,8 +1458,8 @@ msgid "Don't have an account?"
 msgstr ""
 
 #: page-templates/tpl-signin.php:61
-#: page-templates/tpl-signup.php:35
-#: page-templates/tpl-signup.php:61
+#: page-templates/tpl-signup.php:40
+#: page-templates/tpl-signup.php:69
 msgid "Sign up"
 msgstr ""
 
@@ -1451,39 +1468,39 @@ msgstr ""
 msgid "Sign Up"
 msgstr ""
 
-#: page-templates/tpl-signup.php:42
+#: page-templates/tpl-signup.php:50
 msgid "Full Name"
 msgstr ""
 
-#: page-templates/tpl-signup.php:43
+#: page-templates/tpl-signup.php:51
 msgid "John Doe"
 msgstr ""
 
-#: page-templates/tpl-signup.php:54
+#: page-templates/tpl-signup.php:62
 msgid "Confirm Password"
 msgstr ""
 
-#: page-templates/tpl-signup.php:55
+#: page-templates/tpl-signup.php:63
 msgid "Confirm your password"
 msgstr ""
 
-#: page-templates/tpl-signup.php:58
+#: page-templates/tpl-signup.php:66
 msgid "By signing up you agree to the"
 msgstr ""
 
-#: page-templates/tpl-signup.php:58
+#: page-templates/tpl-signup.php:66
 msgid "Terms and Conditions"
 msgstr ""
 
-#: page-templates/tpl-signup.php:58
+#: page-templates/tpl-signup.php:66
 msgid "and the"
 msgstr ""
 
-#: page-templates/tpl-signup.php:58
+#: page-templates/tpl-signup.php:66
 msgid "Privacy Policy"
 msgstr ""
 
-#: page-templates/tpl-signup.php:66
+#: page-templates/tpl-signup.php:75
 msgid "Already have an account?"
 msgstr ""
 
@@ -1528,22 +1545,22 @@ msgstr ""
 msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
-#: views/partials/header/header_default.php:21
-#: views/partials/header/header_transparent.php:16
+#: views/partials/header/header_default.php:20
+#: views/partials/header/header_transparent.php:15
 msgid "Search..."
 msgstr ""
 
-#: views/partials/header/header_default.php:57
-#: views/partials/header/header_default.php:94
-#: views/partials/header/header_transparent.php:101
-#: views/partials/header/header_transparent.php:110
+#: views/partials/header/header_default.php:56
+#: views/partials/header/header_default.php:73
+#: views/partials/header/header_transparent.php:80
+#: views/partials/header/header_transparent.php:89
 msgid "Want to Explore!"
 msgstr ""
 
-#: views/partials/header/header_default.php:60
-#: views/partials/header/header_default.php:96
-#: views/partials/header/header_transparent.php:102
-#: views/partials/header/header_transparent.php:112
+#: views/partials/header/header_default.php:59
+#: views/partials/header/header_default.php:75
+#: views/partials/header/header_transparent.php:81
+#: views/partials/header/header_transparent.php:91
 msgid "Instant Login"
 msgstr ""
 
