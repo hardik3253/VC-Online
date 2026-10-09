@@ -1,0 +1,501 @@
+/**
+ * VC Online - Modern Latest Courses Shortcode Styles
+ * Ultra-modern, responsive luxury course cards & banners
+ */
+
+:root {
+	--vco-lc-bg: #F5EFEB;
+	--vco-lc-card-bg: #ffffff;
+	--vco-lc-text-primary: #171717;
+	--vco-lc-text-secondary: #52525b;
+	--vco-lc-text-muted: #8b8379;
+	--vco-lc-border: rgba(180, 160, 140, 0.28);
+	--vco-lc-accent: #0f172a;
+	--vco-lc-accent-hover: #1e293b;
+	--vco-lc-gold: #f59e0b;
+	--vco-lc-radius-lg: 20px;
+	--vco-lc-radius-md: 12px;
+	--vco-lc-radius-sm: 8px;
+	--vco-lc-radius-pill: 9999px;
+	--vco-lc-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+	--vco-lc-shadow-hover: 0 20px 35px -8px rgba(0, 0, 0, 0.09), 0 10px 15px -5px rgba(0, 0, 0, 0.05);
+	--vco-lc-transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Wrapper Container */
+.vco-latest-courses-wrap {
+	width: 100%;
+	margin: 24px 0;
+	box-sizing: border-box;
+}
+
+.vco-latest-courses-wrap * {
+	box-sizing: border-box;
+}
+
+/* --------------------------------------------------------
+   HORIZONTAL / BANNER LAYOUT (Single & List)
+-------------------------------------------------------- */
+.vco-course-card.vco-layout-horizontal {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	background: var(--vco-lc-bg);
+	border: 1px solid var(--vco-lc-border);
+	border-radius: var(--vco-lc-radius-lg);
+	box-shadow: var(--vco-lc-shadow);
+	overflow: hidden;
+	transition: var(--vco-lc-transition);
+	position: relative;
+	margin-bottom: 24px;
+}
+
+.vco-course-card.vco-layout-horizontal:hover {
+	box-shadow: var(--vco-lc-shadow-hover);
+	border-color: rgba(180, 160, 140, 0.45);
+	transform: translateY(-2px);
+}
+
+/* Horizontal Media (Left) */
+.vco-course-card.vco-layout-horizontal .vco-card-media {
+	flex: 0 0 38%;
+	max-width: 440px;
+	min-width: 280px;
+	position: relative;
+	overflow: hidden;
+	padding: 16px;
+	display: flex;
+}
+
+.vco-course-card.vco-layout-horizontal .vco-media-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	min-height: 220px;
+	border-radius: var(--vco-lc-radius-md);
+	overflow: hidden;
+	background: #e5ded7;
+}
+
+.vco-course-card.vco-layout-horizontal .vco-media-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	display: block;
+	transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vco-course-card:hover .vco-media-img {
+	transform: scale(1.05);
+}
+
+/* Horizontal Content Body (Right) */
+.vco-course-card.vco-layout-horizontal .vco-card-body {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 24px 28px 24px 12px;
+	min-width: 0;
+}
+
+/* --------------------------------------------------------
+   GRID / MULTI-CARD LAYOUT
+-------------------------------------------------------- */
+.vco-courses-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 24px;
+}
+
+.vco-course-card.vco-layout-grid {
+	display: flex;
+	flex-direction: column;
+	background: var(--vco-lc-bg);
+	border: 1px solid var(--vco-lc-border);
+	border-radius: var(--vco-lc-radius-lg);
+	box-shadow: var(--vco-lc-shadow);
+	overflow: hidden;
+	transition: var(--vco-lc-transition);
+	position: relative;
+}
+
+.vco-course-card.vco-layout-grid:hover {
+	box-shadow: var(--vco-lc-shadow-hover);
+	transform: translateY(-4px);
+	border-color: rgba(180, 160, 140, 0.45);
+}
+
+.vco-course-card.vco-layout-grid .vco-card-media {
+	position: relative;
+	overflow: hidden;
+	padding: 14px 14px 0 14px;
+}
+
+.vco-course-card.vco-layout-grid .vco-media-inner {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 16 / 10;
+	border-radius: var(--vco-lc-radius-md);
+	overflow: hidden;
+	background: #e5ded7;
+}
+
+.vco-course-card.vco-layout-grid .vco-media-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vco-course-card.vco-layout-grid .vco-card-body {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding: 20px;
+	justify-content: space-between;
+}
+
+/* --------------------------------------------------------
+   CARD HEADER: Badges, Category, Rating
+-------------------------------------------------------- */
+.vco-card-header {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px 12px;
+	margin-bottom: 12px;
+}
+
+.vco-badges-group {
+	display: inline-flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+/* Category Pill */
+.vco-category-pill {
+	display: inline-flex;
+	align-items: center;
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.8px;
+	color: #635345;
+	background: rgba(99, 83, 69, 0.12);
+	padding: 4px 12px;
+	border-radius: var(--vco-lc-radius-pill);
+	text-decoration: none;
+	transition: background 0.2s ease, color 0.2s ease;
+}
+
+.vco-category-pill:hover {
+	background: rgba(99, 83, 69, 0.22);
+	color: #3e3328;
+}
+
+/* Custom Highlight Badge (Popular, Free, Hot, etc.) */
+.vco-highlight-badge {
+	display: inline-flex;
+	align-items: center;
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: capitalize;
+	letter-spacing: 0.3px;
+	padding: 4px 12px;
+	border-radius: var(--vco-lc-radius-pill);
+	line-height: 1.3;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Rating Pill */
+.vco-rating-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	margin-left: auto;
+	background: rgba(255, 255, 255, 0.75);
+	backdrop-filter: blur(4px);
+	padding: 4px 10px;
+	border-radius: var(--vco-lc-radius-pill);
+	border: 1px solid rgba(180, 160, 140, 0.25);
+	font-size: 12px;
+	line-height: 1;
+}
+
+.vco-stars-list {
+	display: inline-flex;
+	align-items: center;
+	gap: 2px;
+	color: var(--vco-lc-gold);
+}
+
+.vco-star-icon {
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	fill: currentColor;
+}
+
+.vco-star-icon.vco-star-empty {
+	color: #d1d5db;
+}
+
+.vco-rating-val {
+	font-weight: 700;
+	color: #1f2937;
+	font-size: 12px;
+}
+
+.vco-rating-count {
+	font-weight: 500;
+	color: var(--vco-lc-text-muted);
+	font-size: 11px;
+}
+
+/* --------------------------------------------------------
+   CARD TITLE
+-------------------------------------------------------- */
+.vco-card-title-wrap {
+	margin-bottom: 12px;
+}
+
+.vco-course-title {
+	margin: 0;
+	font-size: 20px;
+	line-height: 1.35;
+	font-weight: 700;
+	letter-spacing: -0.2px;
+}
+
+.vco-course-title a {
+	color: var(--vco-lc-text-primary);
+	text-decoration: none;
+	transition: color 0.2s ease;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.vco-course-title a:hover {
+	color: #92400e;
+}
+
+.vco-layout-horizontal .vco-course-title {
+	font-size: 22px;
+	line-height: 1.38;
+}
+
+/* --------------------------------------------------------
+   CARD META: Duration, Level, Lessons
+-------------------------------------------------------- */
+.vco-course-meta-row {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-bottom: 18px;
+	font-size: 12px;
+	color: var(--vco-lc-text-secondary);
+}
+
+.vco-meta-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	background: rgba(255, 255, 255, 0.55);
+	padding: 4px 10px;
+	border-radius: var(--vco-lc-radius-sm);
+	font-weight: 500;
+}
+
+.vco-meta-pill svg {
+	width: 13px;
+	height: 13px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	color: #786b59;
+}
+
+/* --------------------------------------------------------
+   CARD FOOTER: Pricing & Action Button
+-------------------------------------------------------- */
+.vco-card-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 14px;
+	padding-top: 14px;
+	border-top: 1px dashed rgba(180, 160, 140, 0.35);
+	margin-top: auto;
+}
+
+/* Pricing Section */
+.vco-price-block {
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.vco-price-current {
+	font-size: 22px;
+	font-weight: 800;
+	color: #0f172a;
+	letter-spacing: -0.3px;
+	line-height: 1;
+}
+
+.vco-price-regular {
+	font-size: 14px;
+	color: #94a3b8;
+	text-decoration: line-through;
+	font-weight: 500;
+}
+
+.vco-discount-tag {
+	font-size: 11px;
+	font-weight: 700;
+	color: #047857;
+	background: #d1fae5;
+	padding: 2px 8px;
+	border-radius: var(--vco-lc-radius-pill);
+	line-height: 1.4;
+	letter-spacing: 0.2px;
+}
+
+/* Button & Actions Section */
+.vco-actions-block {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.vco-btn-primary {
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	gap: 8px !important;
+	background: #000000 !important;
+	color: #ffffff !important;
+	font-size: 13px !important;
+	font-weight: 700 !important;
+	padding: 10px 22px !important;
+	border-radius: var(--vco-lc-radius-pill) !important;
+	text-decoration: none !important;
+	border: none !important;
+	cursor: pointer !important;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18) !important;
+	transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+	white-space: nowrap !important;
+	line-height: normal !important;
+	font-family: inherit !important;
+}
+
+.vco-btn-primary:hover {
+	background: #27272a !important;
+	color: #ffffff !important;
+	transform: translateY(-2px) !important;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.26) !important;
+}
+
+.vco-btn-primary:active {
+	transform: translateY(0) scale(0.98) !important;
+}
+
+.vco-btn-primary svg {
+	width: 14px;
+	height: 14px;
+	transition: transform 0.2s ease;
+}
+
+.vco-btn-primary:hover svg {
+	transform: translateX(3px);
+}
+
+.vco-btn-secondary {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	color: #52525b;
+	font-size: 13px;
+	font-weight: 600;
+	text-decoration: none;
+	padding: 8px 12px;
+	border-radius: var(--vco-lc-radius-pill);
+	transition: all 0.2s ease;
+}
+
+.vco-btn-secondary:hover {
+	color: #0f172a;
+	background: rgba(0, 0, 0, 0.05);
+}
+
+/* Enrolled State Button */
+.vco-btn-enrolled {
+	background: #059669 !important;
+}
+
+.vco-btn-enrolled:hover {
+	background: #047857 !important;
+}
+
+/* --------------------------------------------------------
+   RESPONSIVE BREAKPOINTS
+-------------------------------------------------------- */
+@media screen and (max-width: 900px) {
+	.vco-course-card.vco-layout-horizontal {
+		flex-direction: column;
+	}
+
+	.vco-course-card.vco-layout-horizontal .vco-card-media {
+		flex: none;
+		max-width: 100%;
+		width: 100%;
+		padding: 14px 14px 0 14px;
+	}
+
+	.vco-course-card.vco-layout-horizontal .vco-media-inner {
+		aspect-ratio: 16 / 9;
+		min-height: auto;
+	}
+
+	.vco-course-card.vco-layout-horizontal .vco-card-body {
+		padding: 20px 16px 18px 16px;
+	}
+
+	.vco-rating-pill {
+		margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.vco-card-footer {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 12px;
+	}
+
+	.vco-actions-block {
+		width: 100%;
+		flex-direction: column;
+	}
+
+	.vco-btn-primary {
+		width: 100% !important;
+	}
+
+	.vco-btn-secondary {
+		justify-content: center;
+	}
+
+	.vco-course-title {
+		font-size: 18px !important;
+	}
+}

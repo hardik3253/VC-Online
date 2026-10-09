@@ -450,3 +450,6 @@ require_once get_stylesheet_directory() . '/inc/razorpay-sync.php';
 
 // Frontend Password Reset Functionality (Tutor LMS Pro)
 require_once get_stylesheet_directory() . '/inc/frontend-password-reset.php';
+
+// Custom Shortcode for Modern Latest Courses Showcase
+require_once get_stylesheet_directory() . '/inc/latest-courses-shortcode.php';
