@@ -3,6 +3,8 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
+(function ($settings) {
+
 $gallery_class = 'zlfms-image-gallery zlfms-masonry-gallery';
 $unique_id = 'gallery_' . uniqid();
 
@@ -47,14 +49,14 @@ foreach ($settings['image_list'] as $item) {
     $image_link_to_type = isset($item['image_link_to_type']) ? $item['image_link_to_type'] : '';
 
     if ($type === 'image') {
+        $is_lightbox_link = false;
         if ($image_link_to_type === 'custom' && !empty($item['link']['url'])) {
             $link = esc_url($item['link']['url']);
+        } elseif ($settings['open_lightbox'] === 'yes') {
+            $link = esc_url($image_url);
+            $is_lightbox_link = true;
         } elseif ($image_link_to_type === 'file') {
-            if ($settings['open_lightbox'] === 'yes') {
-                $link = esc_url($image_url);
-            } else {
-                $link = esc_url(get_attachment_link($attachment_id));
-            }
+            $link = esc_url(get_attachment_link($attachment_id));
         }
     }
 
@@ -68,8 +70,8 @@ foreach ($settings['image_list'] as $item) {
     if ($type === 'image') {
         if (!empty($link)) {
             echo '<a href="' . esc_url($link) . '" target="' . esc_attr($link_target) . '"';
-            if ($settings['open_lightbox'] === 'yes') {
-                echo ' data-elementor-open-lightbox="yes"';
+            if ($is_lightbox_link) {
+                echo ' class="elementor-clickable" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="' . esc_attr($unique_id) . '"';
                 if (!empty($image_title)) {
                     echo ' data-elementor-lightbox-title="' . esc_attr($image_title) . '"';
                 }
@@ -142,3 +144,4 @@ foreach ($settings['image_list'] as $item) {
 
 echo '</div>';
 echo '</div>';
+})($settings);

@@ -71,6 +71,11 @@
     width: 100%;
   }
 
+  .zlfms-gallery-item a {
+    display: block;
+    cursor: pointer;
+  }
+
   .zlfms-custom-embed-play {
     position: absolute;
     top: 50%;
@@ -133,8 +138,32 @@
     width: 100% !important;
   }
 
-  .swiper-button-next:after,
-  .swiper-button-prev:after {
+  /* Elementor 4 only loads the positioning for lightbox arrows with its own Swiper stylesheet,
+     which is absent when only this plugin's gallery is on the page. */
+  .elementor-lightbox .swiper {
+    position: relative;
+  }
+
+  .elementor-lightbox .swiper .elementor-swiper-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+    font-size: 25px;
+  }
+
+  .elementor-lightbox .swiper .elementor-swiper-button svg,
+  .elementor-lightbox .swiper .elementor-swiper-button i {
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
+  }
+
+  .zlfms-carousel .swiper-button-next:after,
+  .zlfms-carousel .swiper-button-prev:after,
+  .zlfms-slideshow .swiper-button-next:after,
+  .zlfms-slideshow .swiper-button-prev:after {
     display: none;
   }
 
@@ -143,7 +172,8 @@
     overflow: hidden;
   }
 
-  .swiper-container {
+  .zlfms-carousel.swiper-container,
+  .zlfms-slideshow .swiper-container {
     position: relative;
   }
 

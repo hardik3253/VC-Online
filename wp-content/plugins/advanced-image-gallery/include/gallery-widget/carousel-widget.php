@@ -2,6 +2,8 @@
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
+
+(function ($settings) {
 $unique_id = "carousel_" . uniqid();
 
 // Get the pagination value from Elementor settings
@@ -84,21 +86,21 @@ $navigation = isset($settings['navigation']) && $settings['navigation'] === 'yes
             $image_url = !empty($item["image"]["url"]) ? esc_url($item["image"]["url"]) : esc_url(\Elementor\Utils::get_placeholder_image_src());
 
             if ($type === "image") {
+                $is_lightbox_link = false;
                 if ($item["image_link_to_type"] === "custom" && !empty($item["link"]["url"])) {
                     $link = esc_url($item["link"]["url"]);
+                } elseif ($settings["open_lightbox"] === "yes") {
+                    $link = esc_url($image_url);
+                    $is_lightbox_link = true;
                 } elseif ($item["image_link_to_type"] === "file") {
-                    if ($settings["open_lightbox"] === "yes") {
-                        $link = esc_url($image_url);
-                    } else {
-                        $link = esc_url(get_attachment_link($item["image"]["id"]));
-                    }
+                    $link = esc_url(get_attachment_link($item["image"]["id"]));
                 }
 
                 echo '<div class="swiper-slide zlfms-gallery-item">';
                 if (!empty($link)) {
                     echo '<a href="' . esc_url($link) . '" target="' . esc_attr($link_target) . '"';
-                    if ($settings["open_lightbox"] === "yes") {
-                        echo ' data-elementor-open-lightbox="yes"';
+                    if ($is_lightbox_link) {
+                        echo ' class="elementor-clickable" data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="' . esc_attr($unique_id) . '"';
                         if (!empty($image_title)) {
                             echo ' data-elementor-lightbox-title="' . esc_attr($image_title) . '"';
                         }
@@ -182,3 +184,5 @@ $navigation = isset($settings['navigation']) && $settings['navigation'] === 'yes
     <div class="swiper-pagination"></div>
 
 </div><!-- Closing swiper-container -->
+<?php
+})($settings);

@@ -3,9 +3,9 @@ Contributors: zluck, divyeshk71, dipika25
 Donate link: https://www.buymeacoffee.com/zluck
 Tags: gallery, carousel, slideshow, elementor, responsive
 Requires at least: 6.0
-Tested up to: 6.9
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -149,6 +149,14 @@ Currently, the plugin is designed specifically for Elementor. However, it may wo
 
 == Changelog ==
 
+= 1.4 =
+* **Lightbox** - Previous/next navigation arrows now display correctly in the lightbox, with a properly sized icon
+* **Lightbox** - Images now link to the full-size file automatically when the lightbox is enabled in all gallery types
+* **Plugin Check** - Fixed all errors and warnings reported by the WordPress Plugin Check scan
+* **Security** - Added nonce verification to the review notice actions and escaped all output
+* **Security** - Deactivation feedback redirect now uses a safe redirect
+* **Code Quality** - Gallery templates no longer define global variables, and debug logging was removed
+
 = 1.3 =
 * **New Gallery Types** - Masonry, Justified & Metro
 * Code improvements for security
@@ -167,23 +175,17 @@ Currently, the plugin is designed specifically for Elementor. However, it may wo
 
 == Upgrade Notice ==
 
+= 1.4 =
+Fixes lightbox navigation arrows and resolves all Plugin Check errors and warnings. Recommended update.
+
 = 1.2 =
-* **Performance Boost** - Added conditional asset loading (50% faster page loads)
-* **Accessibility** - Added ARIA labels and improved keyboard navigation
+Faster page loads with conditional asset loading, plus improved accessibility and keyboard navigation.
 
 = 1.1 =
-* **Code Quality** - Eliminated code duplication and improved maintainability
-* **Unique IDs** - Fixed lightbox conflicts with multiple gallery instances
-* **Video Parsing** - Centralized video URL parsing for better reliability
-* **Bug Fixes** - Fixed text domain inconsistencies and improved error handling
-* **Compatibility** - Updated for WordPress 6.8 and PHP 8.4 compatibility
+Fixes lightbox conflicts with multiple galleries, improves video parsing, and adds WordPress 6.8 and PHP 8.4 compatibility.
 
 = 1.0 =
-* **Initial Release** - Complete gallery system with Grid, Carousel, and Slideshow layouts
-* **Video Support** - YouTube and Vimeo integration
-* **Elementor Integration** - Native Elementor widget with full customization
-* **Responsive Design** - Mobile-first approach with breakpoint controls
-* **Lightbox Support** - Full-screen viewing with Elementor's lightbox system
+Initial release.
 
 == Donate ==
 

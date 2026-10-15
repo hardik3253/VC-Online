@@ -35,23 +35,19 @@ function zlfms_handle_deactivation_form()
         );
 
         // Send the sanitized data to the webhook URL
-        $response = wp_remote_post($webhook_url, array(
+        // A failed request is intentionally ignored so deactivation is never blocked
+        wp_remote_post($webhook_url, array(
             'method'    => 'POST',
             'body'      => wp_json_encode($data), // Convert sanitized data to JSON
             'headers'   => array(
                 'Content-Type' => 'application/json', // Set the content type to JSON
             ),
         ));
-
-        // Log an error if the request to Google Sheets fails
-        if (is_wp_error($response)) {
-            error_log('Error sending data to Google Sheets: ' . $response->get_error_message());
-        }
     }
 
     // Redirect to the URL provided in the POST request if it exists
     if (isset($_POST['redirect'])) {
-        wp_redirect(esc_url_raw(wp_unslash($_POST['redirect']))); // Redirect to the specified URL
+        wp_safe_redirect(esc_url_raw(wp_unslash($_POST['redirect']))); // Redirect to the specified URL
         exit;
     }
 

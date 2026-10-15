@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Advanced Image Gallery for Elementor - Grid, Carousel & Slideshow
  * Description: Advanced Image Gallery is a versatile plugin for creating stunning media grids, carousels, gallery, and slideshows with an ease way.
- * Version: 1.3
+ * Version: 1.4
  * Plugin URI: 
  * Author: Zluck Solutions
  * Author URI: https://zluck.com
@@ -24,14 +24,11 @@ if (! function_exists('get_plugin_data')) {
 $zlfms_aig_plugin_data = get_plugin_data(__FILE__);
 define('ZLFMS_AIG_VERSION', $zlfms_aig_plugin_data['Version']);
 
-$deactivation_feedback_file = plugin_dir_path(__FILE__) . 'include/deactivation-feedback.php';
+$zlfms_aig_feedback_file = plugin_dir_path(__FILE__) . 'include/deactivation-feedback.php';
 
-// Check if the file exists before including it
-if (file_exists($deactivation_feedback_file)) {
-    require_once $deactivation_feedback_file;
-} else {
-    // Optional: Log an error or handle the missing file scenario gracefully
-    error_log('Required file "deactivation-feedback.php" is missing.');
+// Include the deactivation feedback handler only if the file exists
+if (file_exists($zlfms_aig_feedback_file)) {
+    require_once $zlfms_aig_feedback_file;
 }
 
 // Check if Elementor is active and display an admin notice if it's not
@@ -330,22 +327,27 @@ function zlfms_aig_handle_review_actions()
         return;
     }
 
+    if (! isset($_GET['_wpnonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])), 'zlfms_aig_review_action')) {
+        return;
+    }
+
     $action = sanitize_text_field(wp_unslash($_GET['zlfms_aig_review_action']));
 
     switch ($action) {
         case 'done':
             update_option('zlfms_aig_review_status', 'done');
-            wp_safe_redirect(remove_query_arg('zlfms_aig_review_action'));
+            wp_safe_redirect(remove_query_arg(array('zlfms_aig_review_action', '_wpnonce')));
             exit;
         case 'review_now':
             $week_in_seconds = defined('WEEK_IN_SECONDS') ? WEEK_IN_SECONDS : 604800;
             update_option('zlfms_aig_review_dismissed_until', time() + $week_in_seconds);
-            wp_redirect('https://wordpress.org/support/plugin/advanced-image-gallery/reviews/#new-post');
+            // Fixed, trusted wordpress.org URL; wp_safe_redirect() would reject this external host.
+            wp_redirect('https://wordpress.org/support/plugin/advanced-image-gallery/reviews/#new-post'); // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect
             exit;
         case 'later':
             $week_in_seconds = defined('WEEK_IN_SECONDS') ? WEEK_IN_SECONDS : 604800;
             update_option('zlfms_aig_review_dismissed_until', time() + $week_in_seconds);
-            wp_safe_redirect(remove_query_arg('zlfms_aig_review_action'));
+            wp_safe_redirect(remove_query_arg(array('zlfms_aig_review_action', '_wpnonce')));
             exit;
     }
 }
@@ -375,11 +377,11 @@ function zlfms_aig_review_notice()
         return;
     }
 
-    $base_url   = remove_query_arg('zlfms_aig_review_action');
-    $did_url    = esc_url(add_query_arg('zlfms_aig_review_action', 'done', $base_url));
-    $now_url    = esc_url(add_query_arg('zlfms_aig_review_action', 'review_now', $base_url));
-    $later_url  = esc_url(add_query_arg('zlfms_aig_review_action', 'later', $base_url));
+    $base_url   = remove_query_arg(array('zlfms_aig_review_action', '_wpnonce'));
+    $did_url    = wp_nonce_url(add_query_arg('zlfms_aig_review_action', 'done', $base_url), 'zlfms_aig_review_action');
+    $now_url    = wp_nonce_url(add_query_arg('zlfms_aig_review_action', 'review_now', $base_url), 'zlfms_aig_review_action');
+    $later_url  = wp_nonce_url(add_query_arg('zlfms_aig_review_action', 'later', $base_url), 'zlfms_aig_review_action');
 
-    echo '<div class="notice notice-info"><p>' . esc_html__('Enjoying Advanced Image Gallery? Please consider leaving a review to support the project.', 'advanced-image-gallery') . '</p><p><a href="' . $did_url . '">' . esc_html__('I did', 'advanced-image-gallery') . '</a> | <a href="' . $now_url . '">' . esc_html__('Review now', 'advanced-image-gallery') . '</a> | <a href="' . $later_url . '">' . esc_html__('Later', 'advanced-image-gallery') . '</a></p></div>';
+    echo '<div class="notice notice-info"><p>' . esc_html__('Enjoying Advanced Image Gallery? Please consider leaving a review to support the project.', 'advanced-image-gallery') . '</p><p><a href="' . esc_url($did_url) . '">' . esc_html__('I did', 'advanced-image-gallery') . '</a> | <a href="' . esc_url($now_url) . '">' . esc_html__('Review now', 'advanced-image-gallery') . '</a> | <a href="' . esc_url($later_url) . '">' . esc_html__('Later', 'advanced-image-gallery') . '</a></p></div>';
 }
 add_action('admin_notices', 'zlfms_aig_review_notice');
