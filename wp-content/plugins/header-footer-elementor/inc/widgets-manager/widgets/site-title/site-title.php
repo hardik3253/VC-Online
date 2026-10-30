@@ -542,7 +542,9 @@ class Site_Title extends Common_Widget {
 					var before = elementor.helpers.sanitize( settings.before )#>
 					{{{ before }}}  <?php // PHPCS:Ignore WordPressVIPMinimum.Security.Mustache.OutputNotation ?>
 				<#}#>
-				<?php echo wp_kses_post( get_bloginfo( 'name' ) ); ?>
+				<?php // Pass the site name as JSON data so template delimiters inside it are never compiled. ?>
+				<# var hfeSiteTitle = <?php echo wp_json_encode( wp_kses_post( get_bloginfo( 'name' ) ), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT ) ?: '""'; ?>; #>
+				{{{ hfeSiteTitle }}} <?php // PHPCS:Ignore WordPressVIPMinimum.Security.Mustache.OutputNotation ?>
 				<# if ( '' != settings.after ){
 					var after = elementor.helpers.sanitize( settings.after )#>
 					{{{ after }}} <?php // PHPCS:Ignore WordPressVIPMinimum.Security.Mustache.OutputNotation ?>

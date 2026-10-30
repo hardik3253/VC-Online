@@ -8,7 +8,7 @@
  * original navigation. If the request fails, navigation proceeds anyway so
  * the editor is never blocked.
  *
- * @since x.x.x
+ * @since 2.9.6
  */
 ( function( $ ) {
 	'use strict';

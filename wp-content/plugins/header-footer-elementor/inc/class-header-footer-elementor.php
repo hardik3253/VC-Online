@@ -140,6 +140,8 @@ class Header_Footer_Elementor {
 			// Filter to change Astra menu positon.
 			add_filter( 'astra_menu_priority', [ $this, 'update_admin_menu_position' ] );
 			// Scripts and styles.
+			// Priority 1 so HFE template IDs reach Elementor's atomic styles registry before anything calls enqueue_styles().
+			add_action( 'wp_enqueue_scripts', [ $this, 'register_atomic_style_posts' ], 1 );
 			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 
 			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_scripts' ] );
@@ -547,19 +549,13 @@ class Header_Footer_Elementor {
 	}
 
 	/**
-	 * Enqueue styles and scripts.
+	 * Get the published header, footer and before-footer template IDs active on this request.
 	 *
-	 * @return void
+	 * @since 2.9.6
+	 * @return int[]
 	 */
-	public function enqueue_scripts() {
-		wp_enqueue_style( 'hfe-style', HFE_URL . 'assets/css/header-footer-elementor.css', [], HFE_VER );
-
-		// Announce HFE template IDs to Elementor's atomic widget styles pipeline BEFORE
-		// triggering Elementor's enqueue_styles(). Elementor's enqueue_styles() fires
-		// `elementor/frontend/after_enqueue_post_styles` which causes Atomic_Styles_Manager
-		// to render/enqueue CSS files for all collected post IDs and then exit. Because that
-		// method is idempotent (static flag), we must add HFE templates to the registry first.
-		$hfe_template_ids = array_filter(
+	private function get_active_template_ids() {
+		$template_ids = array_filter(
 			[
 				hfe_header_enabled() ? get_hfe_header_id() : null,
 				hfe_footer_enabled() ? get_hfe_footer_id() : null,
@@ -567,13 +563,43 @@ class Header_Footer_Elementor {
 			]
 		);
 
-		foreach ( $hfe_template_ids as $hfe_template_id ) {
-			// Skip trashed, draft, or otherwise non-published templates whose ID may still be stored in an HFE option.
-			if ( 'publish' !== get_post_status( (int) $hfe_template_id ) ) {
-				continue;
+		// Skip trashed, draft, or otherwise non-published templates whose ID may still be stored in an HFE option.
+		$template_ids = array_filter(
+			array_map( 'intval', $template_ids ),
+			function ( $template_id ) {
+				return 'publish' === get_post_status( $template_id );
 			}
-			do_action( 'elementor/post/render', (int) $hfe_template_id );
+		);
+
+		return array_values( array_unique( $template_ids ) );
+	}
+
+	/**
+	 * Announce HFE template IDs to Elementor's atomic widget styles pipeline.
+	 *
+	 * Elementor's enqueue_styles() fires `elementor/frontend/after_enqueue_post_styles`, which makes
+	 * Atomic_Styles_Manager render/enqueue CSS for the post IDs collected so far. That method is
+	 * idempotent (static flag), so HFE templates must be registered before anything calls it -
+	 * hence this runs at priority 1 on `wp_enqueue_scripts`.
+	 *
+	 * @since 2.9.6
+	 * @return void
+	 */
+	public function register_atomic_style_posts() {
+		foreach ( $this->get_active_template_ids() as $template_id ) {
+			do_action( 'elementor/post/render', $template_id );
 		}
+	}
+
+	/**
+	 * Enqueue styles and scripts.
+	 *
+	 * @return void
+	 */
+	public function enqueue_scripts() {
+		wp_enqueue_style( 'hfe-style', HFE_URL . 'assets/css/header-footer-elementor.css', [], HFE_VER );
+
+		$this->enqueue_editor_preview_styles_fix();
 
 		if ( class_exists( '\Elementor\Plugin' ) ) {
 			$elementor = \Elementor\Plugin::instance();
@@ -623,6 +649,48 @@ class Header_Footer_Elementor {
 				$css_file->enqueue();
 			}
 		}
+	}
+
+	/**
+	 * Keep HFE templates' atomic CSS ahead of the editor's base styles in the Elementor preview.
+	 *
+	 * Inside the editor iframe, Elementor injects atomic base styles (e.g. `.elementor .e-flexbox-base`)
+	 * client-side, after the server-rendered stylesheets. It moves `elementor-post-{id}-css` links of
+	 * nested documents below them, but not their atomic `local-{id}-*-css` links, so base styles win
+	 * over the header/footer's own Flexbox direction/padding. The script re-appends those links.
+	 *
+	 * The document being edited is skipped - the editor renders its styles live.
+	 *
+	 * @since 2.9.6
+	 * @return void
+	 */
+	private function enqueue_editor_preview_styles_fix() {
+		if ( ! class_exists( '\Elementor\Plugin' ) ) {
+			return;
+		}
+
+		$preview = \Elementor\Plugin::$instance->preview;
+
+		if ( ! $preview || ! $preview->is_preview_mode() ) {
+			return;
+		}
+
+		$edited_id    = (int) $preview->get_post_id();
+		$template_ids = array_values(
+			array_filter(
+				$this->get_active_template_ids(),
+				function ( $template_id ) use ( $edited_id ) {
+					return $template_id !== $edited_id;
+				}
+			)
+		);
+
+		if ( empty( $template_ids ) ) {
+			return;
+		}
+
+		wp_enqueue_script( 'hfe-editor-preview-styles', HFE_URL . 'assets/js/hfe-editor-preview-styles.js', [], HFE_VER, true );
+		wp_localize_script( 'hfe-editor-preview-styles', 'hfeEditorPreviewStyles', [ 'templateIds' => $template_ids ] );
 	}
 
 	/**

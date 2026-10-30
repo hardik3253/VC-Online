@@ -125,51 +125,21 @@ class Scroll_To_Top {
 
 		if ( ! \Elementor\Plugin::instance()->preview->is_preview_mode() && $scroll_to_top ) {
 
-			$scrolltop_media_type = ! empty( $this->get_elementor_settings( 'hfe_scroll_to_top_media_type' ) ) ? $this->get_elementor_settings( 'hfe_scroll_to_top_media_type' ) : 'icon';
-			$scrolltop_icon_html  = '';
-			if ( 'icon' == $scrolltop_media_type ) {
-				$scrolltop_icon_setting = $this->get_elementor_settings( 'hfe_scroll_to_top_button_icon' );
-				// The icon control stores a font-icon class as a string, but an
-				// SVG icon as an array. Only use the value when it is a string,
-				// otherwise fall back to the default — prevents an "Array to
-				// string conversion" warning when an SVG icon is selected.
-				$scrolltop_icon      = ( ! empty( $scrolltop_icon_setting['value'] ) && is_string( $scrolltop_icon_setting['value'] ) ) ? $scrolltop_icon_setting['value'] : 'fas fa-chevron-up';
-				$scrolltop_icon_html = "<i class='" . esc_attr( $scrolltop_icon ) . "'></i>";
-			} elseif ( 'image' == $scrolltop_media_type ) {
-				$scrolltop_image     = ! empty( $this->get_elementor_settings( 'hfe_scroll_to_top_button_image' ) ) ? $this->get_elementor_settings( 'hfe_scroll_to_top_button_image' )['url'] : '';
-				$scrolltop_icon_html = "<img src='$scrolltop_image'>";
-			} elseif ( 'text' == $scrolltop_media_type ) {
-				$scrolltop_text      = ! empty( $this->get_elementor_settings( 'hfe_scroll_to_top_button_text' ) ) ? $this->get_elementor_settings( 'hfe_scroll_to_top_button_text' ) : '';
-				$scrolltop_icon_html = "<span>$scrolltop_text</span>";
-			}
-
-			$scroll_to_top_html = "<div class='hfe-scroll-to-top-wrap hfe-scroll-to-top-hide'><span class='hfe-scroll-to-top-button'>$scrolltop_icon_html</span></div>";
+			$scrolltop_icon_html = $this->get_scroll_to_top_icon_html();
 
 			$elementor_page = get_post_meta( get_the_ID(), '_elementor_edit_mode', true );
 			if ( (bool) $elementor_page ) {
-				printf( '%1$s', wp_kses_post( $scroll_to_top_html ) );
-			}       
+				$this->print_scroll_to_top_html( $scrolltop_icon_html );
+			}
 		}
 
 		if ( \Elementor\Plugin::instance()->preview->is_preview_mode() ) {
 			if ( $scroll_to_top ) {
-				$scrolltop_media_type = ! empty( $this->get_elementor_settings( 'hfe_scroll_to_top_media_type' ) ) ? $this->get_elementor_settings( 'hfe_scroll_to_top_media_type' ) : 'icon';
-				$scrolltop_icon_html  = '';
-				if ( 'icon' == $scrolltop_media_type ) {
-					$scrolltop_icon      = ! empty( $this->get_elementor_settings( 'hfe_scroll_to_top_button_icon' ) ) ? $this->get_elementor_settings( 'hfe_scroll_to_top_button_icon' )['value'] : 'fas fa-chevron-up';
-					$scrolltop_icon_html = "<i class='$scrolltop_icon'></i>";
-				} elseif ( 'image' == $scrolltop_media_type ) {
-					$scrolltop_image     = ! empty( $this->get_elementor_settings( 'hfe_scroll_to_top_button_image' ) ) ? $this->get_elementor_settings( 'hfe_scroll_to_top_button_image' )['url'] : '';
-					$scrolltop_icon_html = "<img src='$scrolltop_image'>";
-				} elseif ( 'text' == $scrolltop_media_type ) {
-					$scrolltop_text      = ! empty( $this->get_elementor_settings( 'hfe_scroll_to_top_button_text' ) ) ? $this->get_elementor_settings( 'hfe_scroll_to_top_button_text' ) : '';
-					$scrolltop_icon_html = "<span>$scrolltop_text</span>";
-				}
-				$scroll_to_top_html = "<div class='hfe-scroll-to-top-wrap hfe-scroll-to-top-hide'><span class='hfe-scroll-to-top-button'>$scrolltop_icon_html</span></div>";
+				$scrolltop_icon_html = $this->get_scroll_to_top_icon_html();
 
 				$elementor_page = get_post_meta( get_the_ID(), '_elementor_edit_mode', true );
 				if ( (bool) $elementor_page ) {
-					printf( '%1$s', wp_kses_post( $scroll_to_top_html ) );
+					$this->print_scroll_to_top_html( $scrolltop_icon_html );
 				}
 			}
 			?>
@@ -233,8 +203,12 @@ class Scroll_To_Top {
 								}
 
 								if ('icon' == items.media_type) {
-									icon = '<i class="' + hfeSanitizeString(items.icon.value) + '"></i>';
-									button.html(icon);
+									// SVG uploads store an object in `value`; they cannot be
+									// rebuilt client side, so leave the rendered markup alone.
+									if ( items.icon && 'string' === typeof items.icon.value ) {
+										icon = '<i class="' + hfeSanitizeString(items.icon.value) + '"></i>';
+										button.html(icon);
+									}
 								} else if ('image' == items.media_type) {
 									image = '<img src="' + hfeSanitizeURL(items.image.url) + '">';
 									button.html(image);
@@ -268,8 +242,79 @@ class Scroll_To_Top {
 	}
 
 	/**
+	 * Build the inner HTML for the scroll to top button.
+	 *
+	 * The Icon control (Controls_Manager::ICONS) stores its value as an array
+	 * whose 'value' key is a string for font icons but an array for SVG uploads.
+	 * Only the SVG upload is routed through Elementor's Icons_Manager so that the
+	 * inline SVG is rendered. Font icons keep the historical `<i class="...">`
+	 * markup — Icons_Manager would convert them to inline SVG and break any
+	 * custom CSS that targets `.hfe-scroll-to-top-button i`.
+	 *
+	 * @since 2.9.4.1
+	 * @return string Escaped HTML for the button contents.
+	 */
+	private function get_scroll_to_top_icon_html() {
+
+		$media_type = ! empty( $this->get_elementor_settings( 'hfe_scroll_to_top_media_type' ) ) ? $this->get_elementor_settings( 'hfe_scroll_to_top_media_type' ) : 'icon';
+
+		if ( 'image' === $media_type ) {
+			$image = $this->get_elementor_settings( 'hfe_scroll_to_top_button_image' );
+			$url   = ! empty( $image['url'] ) ? $image['url'] : '';
+			return '' !== $url ? '<img src="' . esc_url( $url ) . '">' : '';
+		}
+
+		if ( 'text' === $media_type ) {
+			$text = ! empty( $this->get_elementor_settings( 'hfe_scroll_to_top_button_text' ) ) ? $this->get_elementor_settings( 'hfe_scroll_to_top_button_text' ) : '';
+			return '<span>' . esc_html( $text ) . '</span>';
+		}
+
+		// Default: icon media type (supports both font icons and SVG uploads).
+		$icon = $this->get_elementor_settings( 'hfe_scroll_to_top_button_icon' );
+
+		if ( ! is_array( $icon ) || empty( $icon['value'] ) ) {
+			$icon = [
+				'value'   => 'fas fa-chevron-up',
+				'library' => 'fa-solid',
+			];
+		}
+
+		$is_svg_upload = ( isset( $icon['library'] ) && 'svg' === $icon['library'] ) || is_array( $icon['value'] );
+
+		if ( ! $is_svg_upload ) {
+			// Font icon: keep the original markup so existing custom CSS keeps working.
+			return '<i class="' . esc_attr( $icon['value'] ) . '" aria-hidden="true"></i>';
+		}
+
+		if ( ! class_exists( '\Elementor\Icons_Manager' ) ) {
+			return '';
+		}
+
+		ob_start();
+		\Elementor\Icons_Manager::render_icon( $icon, [ 'aria-hidden' => 'true' ] );
+		return ob_get_clean();
+	}
+
+	/**
+	 * Print the scroll to top markup.
+	 *
+	 * The inner contents (icon/image/text) are already escaped by
+	 * get_scroll_to_top_icon_html(), so they are printed as-is to preserve the
+	 * inline SVG markup that wp_kses_post() would otherwise strip.
+	 *
+	 * @since 2.9.4.1
+	 * @param string $icon_html Pre-escaped inner HTML for the button.
+	 * @return void
+	 */
+	private function print_scroll_to_top_html( $icon_html ) {
+		echo "<div class='hfe-scroll-to-top-wrap hfe-scroll-to-top-hide'><span class='hfe-scroll-to-top-button'>";
+		echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Pre-escaped in get_scroll_to_top_icon_html(); inline SVG must not be re-filtered through wp_kses_post().
+		echo '</span></div>';
+	}
+
+	/**
 	 * Get Elementor settings
-	 * 
+	 *
 	 * @param string $setting_id Setting ID.
 	 * @return string
 	 */

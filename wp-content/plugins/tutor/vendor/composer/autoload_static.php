@@ -15,7 +15,9 @@ class ComposerStaticInit0ca87427174d807eec5eb1da955d3c9b
             'Tutor\\Migrations\\' => 17,
             'Tutor\\Helpers\\' => 14,
             'Tutor\\GDPR\\' => 11,
+            'Tutor\\Exceptions\\' => 17,
             'Tutor\\Ecommerce\\' => 16,
+            'Tutor\\Core\\' => 11,
             'Tutor\\Components\\' => 17,
             'Tutor\\Cache\\' => 12,
             'TUTOR\\' => 6,
@@ -47,9 +49,17 @@ class ComposerStaticInit0ca87427174d807eec5eb1da955d3c9b
         array (
             0 => __DIR__ . '/../..' . '/GDPR',
         ),
+        'Tutor\\Exceptions\\' =>
+        array (
+            0 => __DIR__ . '/../..' . '/exceptions',
+        ),
         'Tutor\\Ecommerce\\' =>
         array (
             0 => __DIR__ . '/../..' . '/ecommerce',
+        ),
+        'Tutor\\Core\\' =>
+        array (
+            0 => __DIR__ . '/../..' . '/core',
         ),
         'Tutor\\Components\\' =>
         array (

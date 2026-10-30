@@ -2113,6 +2113,12 @@ div.hfe-nav-menu,
     color:#fff;
     font-size:16px;
 }
+
+.hfe-scroll-to-top-button svg {
+    width:16px;
+    height:16px;
+    fill:currentColor;
+}
 /* Breadcrumbs CSS */
 
 ul.hfe-breadcrumbs {
