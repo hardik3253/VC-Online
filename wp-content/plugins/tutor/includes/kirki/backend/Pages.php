@@ -9,7 +9,7 @@
 namespace TutorLMSKirki;
 
 use Kirki\HelperFunctions;
-use TUTOR\Input;
+use Tutor\Core\Input;
 use TutorPro\Subscription\Settings;
 use TutorPro\Subscription\Subscription;
 

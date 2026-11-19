@@ -68,14 +68,14 @@ class ProIntegration {
 
 		if ( defined( 'TUTOR_VERSION' ) && version_compare( TUTOR_VERSION, '4', '>=' ) ) {
 			$nav_items['certificate-builder'] = array(
-				'title'       => __( 'Certificate', 'tutor-pro' ),
+				'title'       => __( 'Certificate', 'tutor-lms-certificate-builder' ),
 				'icon'        => Icon::CERTIFICATE_2,
 				'active_icon' => Icon::CERTIFICATE_2_FILL,
 				'auth_cap'    => tutor()->instructor_role,
 			);
 		} else {
 			$nav_items['certificate-builder'] = array(
-				'title'    => __( 'Certificate', 'tutor-pro' ),
+				'title'    => __( 'Certificate', 'tutor-lms-certificate-builder' ),
 				'icon'     => 'tutor-icon-certificate-landscape',
 				'auth_cap' => tutor()->instructor_role,
 			);
@@ -136,7 +136,7 @@ class ProIntegration {
 			array_unshift(
 				$attr['tutor_certificate']['blocks'][2]['segments'],
 				array(
-					'label'      => __( 'Settings for Certificates made by Certificate Builder', 'tutor-pro' ),
+					'label'      => __( 'Settings for Certificates made by Certificate Builder', 'tutor-lms-certificate-builder' ),
 					'slug'       => 'certificate_settings',
 					'block_type' => 'uniform',
 					'fields'     => array(

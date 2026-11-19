@@ -9,8 +9,8 @@ namespace TutorLMSDroip;
 
 use Droip\HelperFunctions;
 use stdClass;
+use Tutor\Core\Input;
 use TutorLMSDroip\ElementGenerator\Preview;
-use TUTOR\Input;
 use Tutor\Models\CourseModel;
 
 if ( ! defined( 'ABSPATH' ) ) {

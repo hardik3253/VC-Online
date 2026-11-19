@@ -7,7 +7,7 @@
 
 namespace TutorLMSDroip;
 
-use TUTOR\Input;
+use Tutor\Core\Input;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.

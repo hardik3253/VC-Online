@@ -22,8 +22,8 @@ defined( 'ABSPATH' ) || exit;
 				<li><?php _e( 'Select your favorite design', 'tutor-lms-certificate-builder' ); ?></li>
 				<li><?php _e( 'Type in your text &amp; upload your signature', 'tutor-lms-certificate-builder' ); ?></li>
 				<li>
-					<strong><?php _e( 'Press Save', 'tutor' ); ?>,</strong>&nbsp;
-					<?php _e( 'Your certificate Ready', 'tutor' ); ?>
+					<strong><?php _e( 'Press Save', 'tutor-lms-certificate-builder' ); ?>,</strong>&nbsp;
+					<?php _e( 'Your certificate Ready', 'tutor-lms-certificate-builder' ); ?>
 				</li>
 			</ul>
 			<div class="tutor-mt-32">

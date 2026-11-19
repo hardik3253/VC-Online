@@ -1,10 +1,87 @@
 ## Changelog
 
-**Admin and Site Enhancements (ASE) v1.0.0** was released on October 17, 2022. Since then, there have been **93 _major_ releases** (e.g. 1.1.0 ) and **212 _minor_ releases** (e.g. 4.9.1), for a **total of 305 releases**.
+**Admin and Site Enhancements (ASE) v1.0.0** was released on October 17, 2022. Since then, there have been **93 _major_ releases** (e.g. 1.1.0 ) and **215 _minor_ releases** (e.g. 4.9.1), for a **total of 308 releases**.
 
 Each **_major release_** usually corresponds with the addition of one new module/feature. Each module/feature usually is the equivalent of one (or more) single-purpose plugin. Each **_minor release_** usually contain one or more bugfix or improvements to existing modules/features.
 
 [**Upgrade to ASE Pro**](https://www.wpase.com/chnlg-to-web). **Currently on YEAR END SALE, 20% discount on new license and license upgrade**. Lifetime Deal (LTD) available.
+
+### 9.3.3 (2026.11.16) - ASE Free and Pro
+
+* **[IMPROVED in Free and Pro] Utilities >> View Admin as Role**: Screen layout changes made while viewing as another role now only last until you switch back. This covers dashboard widgets and meta box order, collapsed and hidden boxes, hidden list columns and the column count. The administrator's own layout on the dashboard and edit screens stays as it was. Props to [@lucasp1](https://wordpress.org/support/users/lucasp1/) for [reporting](https://wordpress.org/support/topic/view-admin-as-role-switch-back-and-recovery-url-stop-working-after-opening-the/#post-19063058) the issue in detail.
+
+* **[IMPROVED in Free and Pro] Log In/Out & Register >> Change Login URL**: The custom login URL now keeps the query parameters other plugins add to the login URL when it hands over to the login form. This fixes FluentAuth's two-factor authentication step, where the email verification code field was missing and users could not finish logging in. Props to [@berthold1](https://wordpress.org/support/users/berthold1/) for [reporting](https://wordpress.org/support/topic/compatibility-issue-ase-custom-login-url-and-fluentauth-2fa/) the issue.
+
+* **[IMPROVED in Free] Disable Components >> Disable All Updates**: Added an admin bar status and switcher to quickly re-enable updates and re-disable it. Props to [Edward B.](https://wordpress.org/support/users/edviser/) for [suggesting](https://wordpress.org/support/topic/suggestion-for-disble-updates-feature/) this.
+
+* **[IMPROVED and FIXED in Pro] Admin Interface >> Admin Menu Organizer**: 
+  * Custom menu separators and section headers can now take a typed color in addition to the color picker. Accepted values are hex, rgb() / rgba(), hsl() / hsla(), named colors and CSS variables.
+  * Hex backgrounds keep automatic light or dark title text, including 3-digit hex such as #999. Other background colors show a Text color choice of Light or Dark.
+  * Allow parent menu items to be dragged / repositioned as a submenu of another parent menu, effectively creating a three-level menu structure. Props to Geert L., Naazim M., Rick A., Jarosław K., Nadja v.M. and Benjamin v.d.B.
+
+* **[IMPROVED and FIXED in Pro] Utilities >> Form Builder**: Implemented the option to add BCC email addresses for email notification. Props to Simon for suggesting this improvement.
+
+* **[FIXED in Pro] Admin Interface >> Admin Columns Manager**: 
+  * Fixed a regression introduced in v9.2.1 causing columns for custom fields to show blank values.
+  * Sorting by columns that other plugins already made sortable now works again. For example, EventON's "Start Date" and "End Date" columns no longer fall back to the wrong order when Admin Columns Manager is enabled. Props to Markus F. for reporting the issue in detail and facilitating the troubleshooting process.
+  * Taxonomy columns that other plugins add and fill in themselves no longer show each term twice. For example, EventON's "Location", "Organizer" and "Event Type" columns now list their terms only once when Admin Columns Manager is enabled. Props to Markus F. for reporting the issue.
+  * Fixed an issue where a column set as the default sort did not take effect on sites where WordPress is installed in a subdirectory, e.g. example.com/sub/. The list table now correctly opens in the default sort order. Props to Markus F. for reporting the issue.
+
+* **[FIXED in Pro] Admin Interface >> Admin Logo**: The logo's hover background in the admin menu now follows the selected admin color scheme, matching how menu items are highlighted, instead of always being dark grey. With the Light scheme, hovering no longer puts a dark patch behind the logo that hides dark-colored logos. Props to Maan D. for reporting the issue in detail along with the code fix.
+
+* **[FIXED in Pro] Content Management >> Custom Content Types >> Custom Field Groups**: 
+  * Fixed an issue where WYSIWYG field can not be set to a height smaller than 150 pixels. Props to Stijn V. for reporting the issue.
+  * Removed extranous border around the WYSIWYG field. Props to Stijn V. for reporting the issue.
+
+* **[FIXED in Pro] Utilities >> Site Backup and Migration**: The Sync database export now removes WordPress's internal % placeholder before sending rows to the other site, as the full backup export already does. Before, the placeholder stayed in the destination database in place of every %. This broke percentage values in post content and styles and made serialized options containing a % unreadable. Please sync again after updating to repair sites that were synced before. Props to Matija S. for reporting the issue in detail.
+
+* **[TRANSLATION in Free and Pro]** ASE is now being translated into [41 languages](https://translate.wpase.com/):
+  * **Added new/improved translation** for:
+    * ASE Free: Updated Indonesian, Turkish, Spanish (Spain), Spanish (Chile), Slovak, Portuguese (Brazil), Polish, Norwegian, Hungarian, Galician, French, Dutch.
+  * ASE Pro: Updated Spanish (Spain), Hungarian, Slovak, Indonesian, Czech.
+
+### 9.3.2 (2026.11.09) - ASE Free and Pro
+
+* **[IMPROVED in Free and Pro] Utilities >> Email Delivery**: added a "Force IPv4 connection" option to SMTP settings. It helps when the server can't reach the SMTP host over IPv6, which shows up as "Could not connect to SMTP host" or SSL handshake timeouts. In Pro, the fallback connection has its own option.
+
+* **[FIXED in Free and Pro] Security >> Password Policy**: Make the number fields wider so two or three digit numbers are not being cut-off. Props to Torben H.V. for reporting the issue.
+
+* **[IMPROVED in Pro] Content Management >> Content Duplication**: When Public Preview for Drafts module is enabled, duplicating a post will no longer copy the public preview URL and expiry period, so the new, duplicate post has it's own URL and a fresh/full expiry period. Props to Rob M. for prompting this improvement.
+
+* **[IMPROVED and FIXED in Pro] Utilities >> Site Backup and Migration**: 
+  * Large backups are more reliable and reduce the risk of failing partway through when the archive grows larger than 4 GB. Failed backups clean up after themselves and gives a clearer error message when disk space or the hosting quota runs out. Props to Jonathan J. for reporting an issue with large backup failing and facilitating the troubleshooting process.
+  * Archives listed in a remote backup location that no longer exist can now be deleted from the backup archives list.
+  * Fixed an issue where migration stalls when the destination is a subdirectory install. Props to Matija S. for reporting the issue in great detail.
+
+* **[FIXED in Pro] Content Management >> Custom Content Types >> Custom Field Groups**: Gallery field's image previews in post edit screen now properly shows square thumbnails, preventing tall images from overlapping the "Edit Selection" button. Props to Andrew T. for reporting the issue with a screenshot.
+
+* **[FIXED in Pro] Utilities >> File Manager**: Checkboxes in the list of folders/files now properly aligns with the heading row, no longer flush to the left edge.
+
+* **[TRANSLATION in Free and Pro]** ASE is now being translated into [41 languages](https://translate.wpase.com/):
+  * **Added new/improved translation** for:
+    * ASE Free: Updated Norwegian, Galician, Polish, Slovak, Portuguese (Brazil), Turkish, Dutch (Netherlands).
+    * ASE Pro: Updated Portuguese (Brazil).
+
+### 9.3.1 (2026.11.02) - ASE Free and Pro
+
+* **[FIXED in Free and Pro] Utilities >> View Admin as Role**: Fixed role lockout when making changes in the block editor preference. Props to [@lucasp1](https://wordpress.org/support/users/lucasp1/) for [reporting](https://wordpress.org/support/topic/view-admin-as-role-switch-back-and-recovery-url-stop-working-after-opening-the/) the issue in detail.
+
+* **[IMPROVED in Free and Pro] Disable Components >> Disable All Updates**: 
+  * ASE Free: Update checks are now also blocked at the HTTP and cron level so they do not keep coming back, and plugin/theme auto-update emails are silenced along with core update emails.
+  * ASE Pro: Renamed the module to Disable Updates. Adds granular settings to disable updates and/or automatic updates for WordPress core, plugins, themes and translations, a core security mode that allows minor/security auto-updates while blocking major and development updates, and separate toggles for update nags, core update emails, plugin/theme auto-update emails, the Dashboard >> Updates menu and Site Health update tests. Existing sites that already had the module enabled keep the previous all-or-nothing behavior until the settings are changed. Props to Jan S., Dominik K., David M., Jamie O., Michael S. and John R. for prompting this improvement.
+
+* **[IMPROVED and FIXED in Pro] Content Management >> Custom Content Types >> Custom Field Groups**: Improve alignments of meta box content in the block editor, both when tab fieldss are set to horizontal or vertical.
+
+* **[IMPROVED in Pro] Utilities >> Redirect Manager**: Added the option to manage redirects via the REST API. Props to Cremel M. for prompting this improvement.
+
+* **[IMPROVED and FIXED in Pro] Utilities >> Maintenance Mode**: Added an option to set the HTTP response code to either be "503 Service Unavailable" (default) or "200 OK" (which works better with troubleshooting and monitoring tools). Props to Ivan C.d.A. for prompting this improvement.
+
+* **[FIXED in Pro] Optimizations >> Image Upload Control**: With Convert to WebP enabled, converted images no longer get an unnecessary "-1" or "-1-1" suffix. Props to Stijn V. for reporting the issue.
+
+* **[TRANSLATION in Free and Pro]** ASE is now being translated into [41 languages](https://translate.wpase.com/):
+  * **Added new/improved translation** for:
+    * ASE Free: Updated Turkish, Spanish, Slovak, Serbian, Portuguese (Brazil), Norwegian, Galician, Dutch.
+    * ASE Pro: Updated Portuguese (Brazil).
 
 ### 9.3.0 (2026.10.26) - ASE Free and Pro
 

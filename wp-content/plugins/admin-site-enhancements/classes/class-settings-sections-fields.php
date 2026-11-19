@@ -2271,10 +2271,13 @@ class Settings_Sections_Fields {
                 'class'                  => 'asenha-toggle disable-components ' . $field_slug,
             )
         );
-        // Disable Auto Updates
+        // Disable All Updates / Disable Updates
         $field_id = 'disable_all_updates';
         $field_slug = 'disable-all-updates';
+        $field_options_wrapper = false;
+        $field_options_moreless = false;
         $field_title = __( 'Disable All Updates', 'admin-site-enhancements' );
+        $field_description = __( 'Completely disable core, theme and plugin updates and auto-updates. Will also disable update checks, notices and emails.', 'admin-site-enhancements' );
         add_settings_field(
             $field_id,
             $field_title,
@@ -2287,9 +2290,9 @@ class Settings_Sections_Fields {
                 'field_slug'             => $field_slug,
                 'field_title'            => $field_title,
                 'field_name'             => ASENHA_SLUG_U . '[' . $field_id . ']',
-                'field_description'      => __( 'Completely disable core, theme and plugin updates and auto-updates. Will also disable update checks, notices and emails.', 'admin-site-enhancements' ),
-                'field_options_wrapper'  => true,
-                'field_options_moreless' => true,
+                'field_description'      => $field_description,
+                'field_options_wrapper'  => $field_options_wrapper,
+                'field_options_moreless' => $field_options_moreless,
                 'class'                  => 'asenha-toggle disable-components ' . $field_slug,
             )
         );
@@ -2795,7 +2798,7 @@ class Settings_Sections_Fields {
                 'field_min'         => 1,
                 'field_max'         => 256,
                 'field_description' => '',
-                'class'             => 'asenha-text with-prefix-suffix extra-narrow no-margin security ' . $field_slug,
+                'class'             => 'asenha-text with-prefix-suffix narrow no-margin security ' . $field_slug,
             )
         );
         $field_id = 'password_policy_require';
@@ -2841,7 +2844,7 @@ class Settings_Sections_Fields {
                 'field_min'         => 0,
                 'field_max'         => 256,
                 'field_description' => '',
-                'class'             => 'asenha-text with-prefix-suffix extra-narrow no-margin security ' . $field_slug,
+                'class'             => 'asenha-text with-prefix-suffix narrow no-margin security ' . $field_slug,
             )
         );
         // Obfuscate Author Slugs
@@ -3563,6 +3566,22 @@ class Settings_Sections_Fields {
                 'field_id'    => $field_id,
                 'field_name'  => ASENHA_SLUG_U . '[' . $field_id . ']',
                 'field_label' => __( 'Bypass verification of SSL certificate. This would be insecure if mail is delivered across the internet but could help in certain local and/or containerized WordPress scenarios.', 'admin-site-enhancements' ),
+                'class'       => 'asenha-checkbox asenha-hide-th margin-top-8 utilities ' . $field_slug,
+            )
+        );
+        $field_id = 'smtp_force_ipv4';
+        $field_slug = 'smtp-force-ipv4';
+        add_settings_field(
+            $field_id,
+            '',
+            [$render_field, 'render_checkbox_plain'],
+            ASENHA_SLUG,
+            'main-section',
+            array(
+                'option_name' => ASENHA_SLUG_U,
+                'field_id'    => $field_id,
+                'field_name'  => ASENHA_SLUG_U . '[' . $field_id . ']',
+                'field_label' => __( 'Force IPv4 connection. Use this when the SMTP host can\'t be reached over IPv6 from this server, e.g. connection or SSL handshake timeouts.', 'admin-site-enhancements' ),
                 'class'       => 'asenha-checkbox asenha-hide-th margin-top-8 utilities ' . $field_slug,
             )
         );

@@ -9,8 +9,8 @@ namespace TutorLMSKirki;
 
 use Kirki\HelperFunctions;
 use stdClass;
+use Tutor\Core\Input;
 use TutorLMSKirki\ElementGenerator\Preview;
-use TUTOR\Input;
 use Tutor\Models\CourseModel;
 
 if ( ! defined( 'ABSPATH' ) ) {

@@ -12,7 +12,8 @@
 defined( 'ABSPATH' ) || exit;
 
 use Tutor\Certificate\Builder\Utils;
-use TUTOR\Input;
+use Tutor\Core\Input;
+
 ?>
 
 <div class="<?php echo is_admin() ? 'tutor-option-single-item' : ''; ?> tutor-cb-templates-table">

@@ -489,7 +489,6 @@ class HFE_Settings_Page {
 	
 		wp_enqueue_script( 'hfe-admin-script', HFE_URL . 'admin/assets/js/ehf-admin.js', [ 'jquery', 'updates' ], HFE_VER, true );
 	
-		$is_dismissed = get_user_meta( get_current_user_id(), 'hfe-popup' );
 		$upgrade_notice_dismissed = get_user_meta( get_current_user_id(), 'hfe_upgrade_notice_dismissed', 'false' ) === 'true';
 
 		$strings = [
@@ -505,14 +504,11 @@ class HFE_Settings_Page {
 			'addon_exists'          => esc_html__( 'Already Exists.', 'header-footer-elementor' ),
 			'visit_site'            => esc_html__( 'Visit Website', 'header-footer-elementor' ),
 			'plugin_error'          => esc_html__( 'Could not install. Please download from WordPress.org and install manually.', 'header-footer-elementor' ),
-			'subscribe_success'     => esc_html__( 'Your details are submitted successfully.', 'header-footer-elementor' ),
 			'subscribe_error'       => esc_html__( 'Encountered an error while performing your request.', 'header-footer-elementor' ),
 			'ajax_url'              => admin_url( 'admin-ajax.php' ),
 			'nonce'                 => wp_create_nonce( 'hfe-admin-nonce' ),
 			'installer_nonce'       => wp_create_nonce( 'updates' ),
 			'upgrade_notice_dismissed' => $upgrade_notice_dismissed,
-			'popup_dismiss'         => false,
-			'data_source'           => 'HFE',
 			'show_all_hfe'          => $show_view_all,
 			'hfe_edit_url'          => $hfe_edit_url,
 			'view_all_text'         => esc_html__( 'View All', 'header-footer-elementor' ),

@@ -23,9 +23,9 @@ global $wp_version;
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title><?php echo esc_html_e( 'Certificate Builder', 'tutor-lms-certificate-builder' ) . ' | ' . get_the_title(); ?></title>
+	<title><?php echo esc_html__( 'Certificate Builder', 'tutor-lms-certificate-builder' ) . ' | ' . get_the_title(); ?></title>
 	<script>
-		window.tutor_previous_url=<?php echo isset($_SERVER['HTTP_REFERER']) ? '"'.$_SERVER['HTTP_REFERER'].'"' : '"'.tutor_utils()->tutor_dashboard_url('certificate-builder').'"'; ?>;
+		window.tutor_previous_url = <?php echo isset( $_SERVER['HTTP_REFERER'] ) ? wp_json_encode( esc_url_raw( $_SERVER['HTTP_REFERER'] ) ) : wp_json_encode( tutor_utils()->tutor_dashboard_url( 'certificate-builder' ) ); ?>;
 	</script>
 	<?php wp_head(); ?>
 </head>

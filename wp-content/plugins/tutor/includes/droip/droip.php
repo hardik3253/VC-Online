@@ -8,7 +8,6 @@ if (! defined('ABSPATH')) {
 }
 
 require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '../../../classes/Input.php'; // Input helper class not loaded, thats why we need to include it manually.
 
 /**
  * Droip element source and filter hook will use using this prefix.

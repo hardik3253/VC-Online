@@ -25,8 +25,8 @@ use Tutor\Components\Constants\Size;
 use Tutor\Components\Constants\Variant;
 use Tutor\Components\Sorting;
 use Tutor\Components\StatusSelect;
+use Tutor\Core\Input;
 use TUTOR\Icon;
-use TUTOR\Input;
 
 $status        = Input::get( 'data' );
 $order         = Input::get( 'order', 'DESC' );
@@ -123,7 +123,7 @@ $status_options = array(
 			</a>
 		</div>
 		<div>
-			<img src="<?php echo esc_attr( TUTOR_CB_PLUGIN_URL . 'assets/images/certificate-illustrations-front.svg' ); ?>" alt="<?php esc_html_e( 'Certificate illustration', 'tutor-lms-certificate-builder' ); ?>" />
+			<?php echo file_get_contents( TUTOR_CB_PLUGIN_PATH . 'assets/images/certificate-illustrations-front.svg' ); ?>
 		</div>
 	</div>
 
@@ -171,7 +171,7 @@ $status_options = array(
 								->menu_min_width( '120px' )
 								->trigger(
 									Button::make()
-										->label( __( 'More options', 'tutor' ) )
+										->label( __( 'More options', 'tutor-lms-certificate-builder' ) )
 										->variant( Variant::GHOST )
 										->size( Size::X_SMALL )
 										->icon( Icon::ELLIPSES, 'left', 16, Color::SECONDARY )

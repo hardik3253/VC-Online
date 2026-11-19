@@ -66,9 +66,9 @@ class HFE_Default_Compat {
 		$templates[] = 'header.php';
 		// Avoid running wp_head hooks again.
 		remove_all_actions( 'wp_head' );
-		ob_start();
-		locate_template( $templates, true );
-		ob_get_clean();
+		// wp_body_open already fired in hfe-header.php; don't fire it again for the discarded theme header.
+		remove_all_actions( 'wp_body_open' );
+		$this->load_discarded_template( $templates );
 	}
 
 	/**
@@ -87,9 +87,38 @@ class HFE_Default_Compat {
 		$templates[] = 'footer.php';
 		// Avoid running wp_footer hooks again.
 		remove_all_actions( 'wp_footer' );
+		$this->load_discarded_template( $templates );
+	}
+
+	/**
+	 * Load the theme's own template once and discard its output.
+	 *
+	 * The template is required once so WordPress core's follow-up
+	 * locate_template() call in get_header()/get_footer() does not load it
+	 * again. Every removable output buffer opened while it runs is closed,
+	 * including ones a third-party callback leaves open, so the theme's
+	 * markup does not leak into the page. A buffer that is not removable
+	 * stops the loop before ob_end_clean() is called on it, so PHP does not
+	 * raise a "failed to delete buffer" notice into the page.
+	 *
+	 * @since 2.9.8
+	 *
+	 * @param string[] $templates Template file names to locate.
+	 * @return void
+	 */
+	private function load_discarded_template( array $templates ): void {
+		$level = ob_get_level();
 		ob_start();
 		locate_template( $templates, true );
-		ob_get_clean();
+		while ( ob_get_level() > $level ) {
+			$status = ob_get_status();
+			if ( ! isset( $status['flags'] ) || ! ( $status['flags'] & PHP_OUTPUT_HANDLER_REMOVABLE ) ) {
+				break;
+			}
+			if ( ! ob_end_clean() ) {
+				break;
+			}
+		}
 	}
 }
 

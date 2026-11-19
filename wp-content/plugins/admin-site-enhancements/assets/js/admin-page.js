@@ -495,6 +495,7 @@
       $('.disable-feeds').appendTo('.fields-disable-components > table > tbody');
       $('.disable-embeds').appendTo('.fields-disable-components > table > tbody');
       $('.disable-all-updates').appendTo('.fields-disable-components > table > tbody');
+      
       $('.disable-author-archives').appendTo('.fields-disable-components > table > tbody');
       $('.disable-smaller-components').appendTo('.fields-disable-components > table > tbody');
       $('.disable-head-generator-tag').appendTo('.fields-disable-components .disable-smaller-components .asenha-subfields');
@@ -574,6 +575,7 @@
       $('.smtp-username').appendTo('.fields-utilities .smtp-email-delivery .asenha-subfields');
       $('.smtp-password').appendTo('.fields-utilities .smtp-email-delivery .asenha-subfields');
       $('.smtp-bypass-ssl-verification').appendTo('.fields-utilities .smtp-email-delivery .asenha-subfields');
+      $('.smtp-force-ipv4').appendTo('.fields-utilities .smtp-email-delivery .asenha-subfields');
       $('.smtp-debug').appendTo('.fields-utilities .smtp-email-delivery .asenha-subfields');
       
       $('.smtp-send-test-email-description').appendTo('.fields-utilities .smtp-email-delivery .asenha-subfields');
@@ -1160,6 +1162,8 @@
       
       
          subfieldsToggler( 'maintenance_mode', 'maintenance-mode' );
+      
+
       
 
       

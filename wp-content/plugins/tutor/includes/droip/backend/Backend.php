@@ -7,8 +7,8 @@
 
 namespace TutorLMSDroip;
 
+use Tutor\Core\Input;
 use TutorLMSDroip\ElementGenerator\ElementGenerator;
-use TUTOR\Input;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.

@@ -77,7 +77,7 @@ class Utils {
 			return count( $certificates );
 		}
 
-		// Assign editional data.
+		// Assign additional data.
 		$url_base = trailingslashit( wp_upload_dir()['baseurl'] ) . Plugin::CERTIFICATE_TEMPLATE_DIR . '/';
 		foreach ( $certificates as $index => $certificate ) {
 			// Assign thumbnail URL.

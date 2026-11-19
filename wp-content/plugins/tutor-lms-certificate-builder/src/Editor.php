@@ -12,7 +12,7 @@
 
 namespace Tutor\Certificate\Builder;
 
-use \Tutor\Certificate\Builder\Plugin;
+use Tutor\Certificate\Builder\Plugin;
 
 /**
  * Class Editor
@@ -44,10 +44,6 @@ class Editor {
 	 * @since 1.0.0
 	 */
 	public function enqueue_scripts() {
-		 // if (false === Helper::is_open_editor()) {
-		// return;
-		// }
-
 		$post = array(
 			'ID'          => 0,
 			'post_title'  => '',
@@ -135,21 +131,39 @@ class Editor {
 		}
 
 		if ( ! Helper::has_editor_access() ) {
-			wp_die( __( 'Sorry, you are not allowed to access this page.' ), 403 );
+			wp_die( __( 'Sorry, you are not allowed to access this page.', 'tutor-lms-certificate-builder' ), 403 );
 		}
 
 		$duplicate = isset( $_REQUEST['duplicate'] ) ? absint( $_REQUEST['duplicate'] ) : 0;
 		if ( $duplicate ) {
+			$this->verify_link_nonce();
+
+			if ( ! Helper::can_manage_certificate( $duplicate ) ) {
+				wp_die( __( 'Sorry, you are not allowed to duplicate this certificate.', 'tutor-lms-certificate-builder' ), 403 );
+			}
+
 			$id = Helper::duplicate_certificate( $duplicate );
 			if ( $id ) {
-				wp_safe_redirect( '?action=tutor_certificate_builder&post=' . $id );
+				wp_safe_redirect(
+					add_query_arg(
+						array(
+							'action' => Plugin::EDITOR_ACTION,
+							'post'   => $id,
+						),
+						get_home_url()
+					)
+				);
 				exit;
 			}
+
+			wp_die( __( 'Sorry, something went wrong.', 'tutor-lms-certificate-builder' ), 500 );
 		}
 
 		$post_id = isset( $_REQUEST['post'] ) ? absint( $_REQUEST['post'] ) : 0;
 
 		if ( 0 === $post_id ) {
+			$this->verify_link_nonce();
+
 			$post_id = wp_insert_post(
 				array(
 					'post_title'  => __( 'Untitled Template', 'tutor-lms-certificate-builder' ),
@@ -158,17 +172,27 @@ class Editor {
 				)
 			);
 
-			$new_url = add_query_arg(
-				array(
-					'post' => $post_id,
-				)
-			);
+			if ( is_wp_error( $post_id ) ) {
+				wp_die( esc_html( $post_id->get_error_message() ) );
+			}
 
-			wp_redirect( $new_url );
-			die();
+			wp_safe_redirect( add_query_arg( 'post', $post_id, remove_query_arg( '_wpnonce' ) ) );
+			exit;
 		} else {
 			$get_post = get_post( $post_id );
-			if ( isset( $get_post ) && 'auto-draft' === $get_post->post_status ) {
+
+			if ( ! $get_post || Plugin::CERTIFICATE_POST_TYPE !== $get_post->post_type ) {
+				wp_die( __( 'Certificate not found.', 'tutor-lms-certificate-builder' ), 404 );
+			}
+
+			$is_preview = isset( $_GET['cert_hash'], $_GET['course_id'] ) && Helper::is_valid_certificate_preview( $post_id );
+
+			// Block users who can't manage this certificate.
+			if ( ! $is_preview && ! Helper::can_manage_certificate( $post_id ) ) {
+				wp_die( __( 'Sorry, you are not allowed to access this certificate.', 'tutor-lms-certificate-builder' ), 403 );
+			}
+
+			if ( 'auto-draft' === $get_post->post_status ) {
 				wp_update_post(
 					array(
 						'ID'          => $post_id,
@@ -226,6 +250,26 @@ class Editor {
 	}
 
 	public function enqueue_translation() {
-		 wp_set_script_translations( 'tutor-lms-certificate-builder-editor-script', 'tutor-lms-certificate-builder', TUTOR_CB_PLUGIN_PATH . 'languages/' );
+		wp_set_script_translations( 'tutor-lms-certificate-builder-editor-script', 'tutor-lms-certificate-builder', TUTOR_CB_PLUGIN_PATH . 'languages/' );
+	}
+
+	/**
+	 * Die with a friendly message if the link nonce is missing or expired.
+	 *
+	 * @since 1.3.3
+	 */
+	private function verify_link_nonce() {
+		$nonce = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
+
+		if ( ! wp_verify_nonce( $nonce, 'tutor-lms-certificate-builder' ) ) {
+			wp_die(
+				esc_html__( 'This link has expired. Please go back, refresh the page, and try again.', 'tutor-lms-certificate-builder' ),
+				esc_html__( 'Link expired', 'tutor-lms-certificate-builder' ),
+				array(
+					'response'  => 403,
+					'back_link' => true,
+				)
+			);
+		}
 	}
 }

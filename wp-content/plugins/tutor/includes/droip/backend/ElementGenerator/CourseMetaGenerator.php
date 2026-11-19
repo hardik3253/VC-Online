@@ -11,6 +11,7 @@ namespace TutorLMSDroip\ElementGenerator;
 use Droip\HelperFunctions;
 use Tutor\Models\CourseModel;
 use Tutor\Ecommerce\CartController;
+use Tutor\Core\Input;
 use Tutor\Ecommerce\Tax;
 use Tutor\Models\OrderModel;
 

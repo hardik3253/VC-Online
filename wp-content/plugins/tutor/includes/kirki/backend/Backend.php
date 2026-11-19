@@ -7,8 +7,8 @@
 
 namespace TutorLMSKirki;
 
+use Tutor\Core\Input;
 use TutorLMSKirki\ElementGenerator\ElementGenerator;
-use TUTOR\Input;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.

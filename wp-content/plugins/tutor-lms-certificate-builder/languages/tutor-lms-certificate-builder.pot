@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Tutor LMS Certificate Builder plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Tutor LMS Certificate Builder 1.3.2\n"
+"Project-Id-Version: Tutor LMS Certificate Builder 1.3.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tutor-lms-certificate-builder\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-18T04:22:54+00:00\n"
+"POT-Creation-Date: 2026-11-09T11:18:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tutor-lms-certificate-builder\n"
@@ -39,61 +39,125 @@ msgstr ""
 msgid "https://themeum.com/"
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/src/Ajax.php:90
-#: src/Ajax.php:90
+#: build/tutor-lms-certificate-builder/src/Ajax.php:49
+#: src/Ajax.php:49
+msgid "Invalid status."
+msgstr ""
+
+#: build/tutor-lms-certificate-builder/src/Ajax.php:53
+#: build/tutor-lms-certificate-builder/src/Ajax.php:71
+#: build/tutor-lms-certificate-builder/src/Ajax.php:109
+#: build/tutor-lms-certificate-builder/src/Ajax.php:143
+#: build/tutor-lms-certificate-builder/src/Ajax.php:227
+#: build/tutor-lms-certificate-builder/src/Ajax.php:316
+#: build/tutor-lms-certificate-builder/src/Ajax.php:350
+#: build/tutor-lms-certificate-builder/src/Ajax.php:356
+#: build/tutor-lms-certificate-builder/src/Ajax.php:406
+#: src/Ajax.php:53
+#: src/Ajax.php:71
+#: src/Ajax.php:109
+#: src/Ajax.php:143
+#: src/Ajax.php:227
+#: src/Ajax.php:316
+#: src/Ajax.php:350
+#: src/Ajax.php:356
+#: src/Ajax.php:406
 msgid "Permission Denied"
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/src/Ajax.php:154
-#: src/Ajax.php:154
+#: build/tutor-lms-certificate-builder/src/Ajax.php:63
+#: src/Ajax.php:63
+msgid "Certificate Status Updated"
+msgstr ""
+
+#: build/tutor-lms-certificate-builder/src/Ajax.php:79
+#: src/Ajax.php:79
+msgid "Could not delete certificate."
+msgstr ""
+
+#: build/tutor-lms-certificate-builder/src/Ajax.php:134
+#: src/Ajax.php:134
+msgid "Invalid Course"
+msgstr ""
+
+#: build/tutor-lms-certificate-builder/src/Ajax.php:166
+#: src/Ajax.php:166
 msgctxt "course-duration"
 msgid "hrs"
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/src/Ajax.php:155
-#: src/Ajax.php:155
+#: build/tutor-lms-certificate-builder/src/Ajax.php:167
+#: src/Ajax.php:167
 msgctxt "course-duration"
 msgid "min"
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/src/Ajax.php:156
-#: src/Ajax.php:156
+#: build/tutor-lms-certificate-builder/src/Ajax.php:168
+#: src/Ajax.php:168
 msgctxt "course-duration"
 msgid "sec"
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/src/Ajax.php:213
-#: build/tutor-lms-certificate-builder/src/Ajax.php:293
-#: build/tutor-lms-certificate-builder/src/Ajax.php:369
-#: src/Ajax.php:213
-#: src/Ajax.php:293
-#: src/Ajax.php:369
+#: build/tutor-lms-certificate-builder/src/Ajax.php:209
+#: src/Ajax.php:209
+msgid "You can not save certificate!"
+msgstr ""
+
+#: build/tutor-lms-certificate-builder/src/Ajax.php:219
+#: build/tutor-lms-certificate-builder/src/Ajax.php:303
+#: build/tutor-lms-certificate-builder/src/Ajax.php:414
+#: src/Ajax.php:219
+#: src/Ajax.php:303
+#: src/Ajax.php:414
 msgid "Bad Request sent. Please try again."
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/src/Ajax.php:264
-#: src/Ajax.php:264
-msgid "Certificate Data Updated Successfully"
+#: build/tutor-lms-certificate-builder/src/Ajax.php:223
+#: build/tutor-lms-certificate-builder/src/Ajax.php:232
+#: build/tutor-lms-certificate-builder/src/Ajax.php:251
+#: src/Ajax.php:223
+#: src/Ajax.php:232
+#: src/Ajax.php:251
+msgid "Invalid certificate data."
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/src/Ajax.php:268
-#: src/Ajax.php:268
+#: build/tutor-lms-certificate-builder/src/Ajax.php:239
+#: src/Ajax.php:239
 msgid "Something was wrong. Please try again."
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/src/Ajax.php:305
-#: src/Ajax.php:305
-msgid "Certificate data found."
+#: build/tutor-lms-certificate-builder/src/Ajax.php:288
+#: src/Ajax.php:288
+msgid "Certificate Data Updated Successfully"
 msgstr ""
 
 #: build/tutor-lms-certificate-builder/src/Ajax.php:308
+#: build/tutor-lms-certificate-builder/src/Editor.php:185
 #: src/Ajax.php:308
+#: src/Editor.php:185
+msgid "Certificate not found."
+msgstr ""
+
+#: build/tutor-lms-certificate-builder/src/Ajax.php:339
+#: src/Ajax.php:339
+msgid "Certificate data found."
+msgstr ""
+
+#: build/tutor-lms-certificate-builder/src/Ajax.php:339
+#: src/Ajax.php:339
 msgid "No certificate data found."
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/src/Ajax.php:329
-#: src/Ajax.php:329
+#: build/tutor-lms-certificate-builder/src/Ajax.php:367
+#: src/Ajax.php:367
 msgid "Could not save preview due to invalid image."
+msgstr ""
+
+#: build/tutor-lms-certificate-builder/src/Ajax.php:375
+#: build/tutor-lms-certificate-builder/src/Ajax.php:383
+#: src/Ajax.php:375
+#: src/Ajax.php:383
+msgid "Could not save preview."
 msgstr ""
 
 #: build/tutor-lms-certificate-builder/src/Core.php:41
@@ -107,8 +171,12 @@ msgstr ""
 
 #: build/tutor-lms-certificate-builder/src/Core.php:42
 #: build/tutor-lms-certificate-builder/src/Core.php:44
+#: build/tutor-lms-certificate-builder/src/ProIntegration.php:71
+#: build/tutor-lms-certificate-builder/src/ProIntegration.php:78
 #: src/Core.php:42
 #: src/Core.php:44
+#: src/ProIntegration.php:71
+#: src/ProIntegration.php:78
 msgid "Certificate"
 msgstr ""
 
@@ -159,18 +227,54 @@ msgstr ""
 msgid "Description."
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/src/Editor.php:155
-#: src/Editor.php:155
+#: build/tutor-lms-certificate-builder/src/Editor.php:134
+#: src/Editor.php:134
+#: assets/editor/dist/main.min.js:1
+msgid "Sorry, you are not allowed to access this page."
+msgstr ""
+
+#: build/tutor-lms-certificate-builder/src/Editor.php:142
+#: src/Editor.php:142
+msgid "Sorry, you are not allowed to duplicate this certificate."
+msgstr ""
+
+#: build/tutor-lms-certificate-builder/src/Editor.php:159
+#: src/Editor.php:159
+msgid "Sorry, something went wrong."
+msgstr ""
+
+#: build/tutor-lms-certificate-builder/src/Editor.php:169
+#: src/Editor.php:169
 msgid "Untitled Template"
 msgstr ""
 
+#: build/tutor-lms-certificate-builder/src/Editor.php:192
+#: src/Editor.php:192
+msgid "Sorry, you are not allowed to access this certificate."
+msgstr ""
+
+#: build/tutor-lms-certificate-builder/src/Editor.php:266
+#: src/Editor.php:266
+msgid "This link has expired. Please go back, refresh the page, and try again."
+msgstr ""
+
+#: build/tutor-lms-certificate-builder/src/Editor.php:267
+#: src/Editor.php:267
+msgid "Link expired"
+msgstr ""
+
 #: build/tutor-lms-certificate-builder/src/ProIntegration.php:123
-#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:34
+#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:35
 #: build/tutor-lms-certificate-builder/templates/dashboard-certificate-list.php:47
 #: src/ProIntegration.php:123
-#: templates/certificate-list-table.php:34
+#: templates/certificate-list-table.php:35
 #: templates/dashboard-certificate-list.php:47
 msgid "All Certificates"
+msgstr ""
+
+#: build/tutor-lms-certificate-builder/src/ProIntegration.php:139
+#: src/ProIntegration.php:139
+msgid "Settings for Certificates made by Certificate Builder"
 msgstr ""
 
 #: build/tutor-lms-certificate-builder/src/ProIntegration.php:146
@@ -223,6 +327,16 @@ msgstr ""
 msgid "Type in your text &amp; upload your signature"
 msgstr ""
 
+#: build/tutor-lms-certificate-builder/templates/add-certificate-area.php:25
+#: templates/add-certificate-area.php:25
+msgid "Press Save"
+msgstr ""
+
+#: build/tutor-lms-certificate-builder/templates/add-certificate-area.php:26
+#: templates/add-certificate-area.php:26
+msgid "Your certificate Ready"
+msgstr ""
+
 #: build/tutor-lms-certificate-builder/templates/add-certificate-area.php:33
 #: build/tutor-lms-certificate-builder/templates/add-certificate-area.php:52
 #: build/tutor-lms-certificate-builder/templates/dashboard-certificate-list.php:122
@@ -244,73 +358,73 @@ msgstr ""
 msgid "Add instructor, Benefits , Requirements/Instructions, Targeted Audience, Materials Included"
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:46
+#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:47
 #: build/tutor-lms-certificate-builder/templates/dashboard-certificate-list.php:143
-#: templates/certificate-list-table.php:46
+#: templates/certificate-list-table.php:47
 #: templates/dashboard-certificate-list.php:143
 #: assets/editor/dist/main.min.js:1
 msgid "A4"
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:46
+#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:47
 #: build/tutor-lms-certificate-builder/templates/dashboard-certificate-list.php:143
-#: templates/certificate-list-table.php:46
+#: templates/certificate-list-table.php:47
 #: templates/dashboard-certificate-list.php:143
 #: assets/editor/dist/main.min.js:1
 msgid "Letter"
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:58
+#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:59
 #: build/tutor-lms-certificate-builder/templates/dashboard-certificate-list.php:154
-#: templates/certificate-list-table.php:58
+#: templates/certificate-list-table.php:59
 #: templates/dashboard-certificate-list.php:154
 msgid "Size:"
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:65
-#: templates/certificate-list-table.php:65
+#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:66
+#: templates/certificate-list-table.php:66
 msgid "Set certificate template status"
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:67
+#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:68
 #: build/tutor-lms-certificate-builder/templates/dashboard-certificate-list.php:55
 #: build/tutor-lms-certificate-builder/templates/dashboard-certificate-list.php:67
-#: templates/certificate-list-table.php:67
+#: templates/certificate-list-table.php:68
 #: templates/dashboard-certificate-list.php:55
 #: templates/dashboard-certificate-list.php:67
 msgid "Draft"
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:70
+#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:71
 #: build/tutor-lms-certificate-builder/templates/dashboard-certificate-list.php:62
-#: templates/certificate-list-table.php:70
+#: templates/certificate-list-table.php:71
 #: templates/dashboard-certificate-list.php:62
 msgid "Published"
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:96
+#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:97
 #: build/tutor-lms-certificate-builder/templates/dashboard-certificate-list.php:222
-#: templates/certificate-list-table.php:96
+#: templates/certificate-list-table.php:97
 #: templates/dashboard-certificate-list.php:222
 msgid "Do You Want to Delete This Certificate?"
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:97
+#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:98
 #: build/tutor-lms-certificate-builder/templates/dashboard-certificate-list.php:223
-#: templates/certificate-list-table.php:97
+#: templates/certificate-list-table.php:98
 #: templates/dashboard-certificate-list.php:223
 msgid "Are you sure you want to delete this certificate permanently from the site? Please confirm your choice."
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:99
+#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:100
 #: build/tutor-lms-certificate-builder/templates/dashboard-certificate-list.php:224
-#: templates/certificate-list-table.php:99
+#: templates/certificate-list-table.php:100
 #: templates/dashboard-certificate-list.php:224
 msgid "Yes, Delete This"
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:131
-#: templates/certificate-list-table.php:131
+#: build/tutor-lms-certificate-builder/templates/certificate-list-table.php:132
+#: templates/certificate-list-table.php:132
 msgid "No certificate!"
 msgstr ""
 
@@ -336,9 +450,9 @@ msgstr ""
 msgid "Add instructor, Benefits, Requirements/Instructions, Targeted Audience, Materials Included."
 msgstr ""
 
-#: build/tutor-lms-certificate-builder/templates/dashboard-certificate-list.php:126
-#: templates/dashboard-certificate-list.php:126
-msgid "Certificate illustration"
+#: build/tutor-lms-certificate-builder/templates/dashboard-certificate-list.php:174
+#: templates/dashboard-certificate-list.php:174
+msgid "More options"
 msgstr ""
 
 #: build/tutor-lms-certificate-builder/templates/dashboard-certificate-list.php:185
@@ -368,7 +482,20 @@ msgid "Certificate Builder"
 msgstr ""
 
 #: assets/editor/dist/main.min.js:1
-msgid "Sorry, you are not allowed to access this page."
+#: assets/editor/dist/main.min.js:1
+msgid "Something Went Wrong."
+msgstr ""
+
+#: assets/editor/dist/main.min.js:1
+msgid "Error"
+msgstr ""
+
+#: assets/editor/dist/main.min.js:1
+msgid "Something Went Wrong"
+msgstr ""
+
+#: assets/editor/dist/main.min.js:1
+msgid "Certificate preview is currently unavailable."
 msgstr ""
 
 #: assets/editor/dist/main.min.js:1

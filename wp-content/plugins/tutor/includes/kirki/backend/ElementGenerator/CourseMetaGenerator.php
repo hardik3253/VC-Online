@@ -9,6 +9,7 @@
 namespace TutorLMSKirki\ElementGenerator;
 
 use Kirki\HelperFunctions;
+use Tutor\Core\Input;
 use Tutor\Models\CourseModel;
 use Tutor\Ecommerce\CartController;
 use Tutor\Ecommerce\Tax;

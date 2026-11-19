@@ -220,11 +220,18 @@
 					_toggleClick( id );
 				}else{
 					var $toggle = $( '.elementor-element-' + id + ' .hfe-nav-menu__toggle' );
-                    var $nextElement= $toggle.next();
-                    var width = $nextElement.parent().width();
-                    if( $nextElement.length ){
-						$nextElement.css( 'width', width + 'px' );
-						$nextElement.css( 'left', '0' );
+					var $nextElement = $toggle.next();
+					if( $nextElement.length ){
+						if ( $toggle.hasClass( 'hfe-active-menu-full-width' ) ) {
+							// Full-width dropdown left open while crossing the breakpoint:
+							// the nav stays position:absolute, so size it to its parent.
+							$nextElement.css( 'width', $nextElement.parent().width() + 'px' );
+							$nextElement.css( 'left', '0' );
+						} else {
+							// In-flow nav: a fixed pixel width would pin it inside flex
+							// rows and stop it shrinking on later resizes.
+							$nextElement.css( { 'width': '', 'left': '' } );
+						}
 					}
 				}
 			}

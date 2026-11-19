@@ -77,8 +77,7 @@ li#toplevel_page_Settings-page,
 .hfe-shortcode,
 .hfe-selected-template-type-none .bsf-target-rules-row,
 .hfe-selected-template-type-none .hfe-shortcode,
-.hfe-selected-template-type-none .enable-for-canvas,
-.hfe-guide-content .form-table th {
+.hfe-selected-template-type-none .enable-for-canvas {
     display: none;
 }
 /* Notice */
@@ -99,8 +98,7 @@ li#toplevel_page_Settings-page,
     height: 100%;
 }
 /* EHF Settings - Step by Step guide */
-#ehf-meta-box .inside,
-.hfe-admin-guide-section.hfe-admin-about-section {
+#ehf-meta-box .inside {
     padding: 0px;
 }
 .appearance_page_hfe-guide .nav-tab-wrapper,
@@ -118,160 +116,9 @@ li#toplevel_page_Settings-page,
 .hfe-heading-inline {
     margin-top: 10px
 }
-.hfe-admin-about-section,
-.hfe-subscription-row {
+.hfe-admin-about-section {
     display: flex;
     justify-content: center;
-}
-.hfe-subscription-row .hfe-input-container {
-    width: 50%;
-    text-align: left;
-    position: relative;    
-    width: 100%;
-}
-.hfe-guide-modal-content .hfe-checkbox-container {
-    display: flex;
-    align-items: flex-start;
-}
-.hfe-guide-modal-content .hfe-admin-column-50:not(.hfe-admin-column-last) {
-    display: flex;
-    align-items: center;
-}
-/* Form CSS */
-.hfe-subscription-row {
-    margin-bottom: 10px;
-}
-.hfe-subscription-row .hfe-subscribe-field:focus {
-    outline: none;
-    box-shadow: none;
-}
-.hfe-subscription-row .hfe-subscribe-field {
-    width: 100%;
-    max-width: 100%;
-    border-radius: 3px;
-    border: 1px solid #585F66;
-    padding: 10px 15px;
-    box-shadow: none;
-    min-height: 44px;
-    font-size: 15px;
-    font-weight: 400;
-    outline: none;
-    background-color: transparent;
-    background-position: right 10px top 55%;
-    margin: 0;
-}
-.hfe-subscription-row .subscription-label {
-    color: #585F66;
-    margin: 12px 10px;
-    position: absolute;
-    top: 0;
-    font-weight: 400;
-    padding: 0 5px;
-    font-size: 14px;
-    left: 0;
-    -webkit-transition: all 0.25s ease;
-    transition: all 0.25s ease;
-    pointer-events: none;
-}
-
-.hfe-subscription-row input#hfe_subscribe_accept {
-	border: 1px solid #585F66;
-	border-radius: 3px;
-	margin: 0 4px 0 0;
-}
-
-.hfe-guide-modal-popup .hfe-guide-modal-popup-wrapper .hfe-subscription-row .hfe-input-container:nth-of-type(3) {
-	margin-bottom: 16px;
-}
-
-.hfe-subscription-row .hfe-input-container:not(.subscription-success, .subscription-error) .hfe-subscribe-field:hover {
-    border-color: #2271b1;
-}
-.hfe-subscription-row .hfe-subscribe-field:hover,
-.hfe-subscription-row .hfe-subscribe-field:focus {
-    color: #2c3338;
-}
-.hfe-subscription-row .subscription-anim .subscription-label {
-    background-color: #fff;
-    font-size: 12px;
-    line-height: 12px;
-    margin-top: 0;
-    padding: 0 4px;
-    top: -5px;
-    transition: all 0.125s ease;
-    -webkit-transition: all 0.125s ease;
-    color: #2271b1;
-}
-.hfe-subscription-row .subscription-error .hfe-subscribe-field,
-.hfe-subscription-row .subscription-error .hfe-subscribe-field:focus {
-    border-color: #ff0000;
-}
-.hfe-subscription-row .subscription-error .subscription-desc,
-.hfe-subscription-row .subscription-anim.subscription-error .subscription-label {
-    color: #ff0000;
-}
-.hfe-subscription-row .subscription-success .hfe-subscribe-field,
-.hfe-subscription-row .subscription-success .hfe-subscribe-field:focus {
-    border-color: #66a700;
-}
-.hfe-subscription-row .subscription-anim.subscription-success .subscription-label {
-    color: #66a700;
-}
-.hfe-input-container .subscription-desc {
-    padding-left: 2px;
-    opacity: 0;
-    visibility: hidden;
-}
-.hfe-input-container.subscription-error .subscription-desc {
-    opacity: 1;
-    visibility: visible;
-}
-input[type="text"].hfe-subscribe-field,
-select.hfe-subscribe-field {
-    text-align: left;
-    width: 100%;
-    padding: 10px 15px;
-    outline: none;
-    margin-left: 0px;
-}
-.hfe-guide-content p.submit {
-    text-align: center;
-    margin-top: 0px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-}
-.hfe-privacy-policy-container {
-    margin-top: 0;
-    text-align: center;
-    display: none;
-}
-.hfe-subscription-step-2-active ~ .hfe-privacy-policy-container {
-    display: block;
-}
-.hfe-privacy-policy-container .hfe-subscription-policy {
-    margin: 0;
-    padding-top: 15px;
-    font-size: 12px;
-}
-.button-subscription-skip:focus {
-    box-shadow: none;
-}
-.button-subscription-skip {
-    width: 100%;
-    text-align: center;
-    margin-top: .8em;
-    display: inline-block;    
-    font-size: 14px;
-}
-.hfe-guide-content .button {
-    text-transform: uppercase;
-    padding: 10px 20px;
-    width: 100%;
-    font-size: 13px;
-}
-.hfe-guide-content .button.submitting {
-    margin-right: 3px;
 }
 /* EHF Settings - About Us */
 .hfe-admin-about-section {
@@ -317,9 +164,6 @@ select.hfe-subscribe-field {
 }
 .hfe-admin-columns .hfe-admin-column-60 {
     width: 60%;
-}
-.hfe-admin-columns .hfe-admin-column-last .hfe-guide-content {
-    width: 100%;
 }
 .hfe-admin-about-section figure {
     margin: 0;
@@ -570,127 +414,8 @@ select.hfe-subscribe-field {
     text-decoration: none;
 }
 
-/* Modal Popup */
-.hfe-guide-modal-header {
-    padding: 10px;
-    text-align: center;
-}
-.hfe-guide-modal-popup-wrapper .heading {
-    background: #ffffff;
-    padding: 5px 20px;
-    margin-top: 0;
-    box-shadow: 0 0 8px rgb(0 0 0 / 10%);
-    display: flex;
-    justify-content: space-between;
-}
-.hfe-guide-modal-popup-wrapper .hfe-admin-guide-section.hfe-admin-about-section,
-.hfe-guide-modal-popup-wrapper .hfe-admin-column-50:not(.hfe-admin-column-last) {
-    margin: 0px;
-}
-.hfe-guide-modal-popup-wrapper .hfe-admin-column-50:not(.hfe-admin-column-last),
-.hfe-admin-column-last .hfe-guide-content form {
-    padding: 50px;
-}
-.hfe-guide-modal-overlay {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    visibility: hidden;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    opacity: 0;
-    background: rgba(0,0,0,0.75);
-    -webkit-transition: all .5s;
-    transition: all .5s;
-}
-.hfe-guide-modal-content {
-    width: 70%;
-    background-color: #ffffff;
-    opacity: 0;
-    position: relative;
-    margin: 0 auto;
-    transition: all .5s;
-}
-.hfe-guide-modal-popup-wrapper {
-    z-index: 99999;
-    top: 51%;
-    transform: translateY(-50%);
-    margin-bottom: 20px;
-    visibility: hidden;
-    position: fixed;
-    left: 0;
-    width: 100%;
-    max-width: 100%;
-    bottom: auto;
-}
-.hfe-guide-modal-popup-wrapper .subscription-anim .subscription-label {
-    background-color: #ffffff;
-}
-.hfe-guide-modal-popup-wrapper .hfe-admin-about-section {
-    background-color: #f1f3f5;
-}
 .hfe-admin-about-section h3 {
     font-size: 20px;
-}
-.hfe-guide-modal-popup-wrapper .hfe-guide-content form {
-    padding: 0px;
-}
-.hfe-guide-modal-popup-wrapper .hfe-guide-content {
-    background-color: #ffffff;
-    box-shadow: 0 2px 30px 0 rgb(0 0 0 / 8%);
-    border: 0px;
-    padding: 50px 50px 25px 50px;
-}
-.hfe-guide-modal-popup-wrapper .hfe-admin-columns .hfe-admin-column-50.hfe-admin-column-last {
-    width: 50%;
-    margin: 0;
-    padding: 50px;
-}
-.hfe-guide-modal-popup-wrapper .hfe-admin-columns .hfe-admin-column-50 {
-    width: 50%;
-    background: unset;
-    border: 0px;
-}
-.hfe-guide-modal-popup-wrapper .heading {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-}
-.hfe-guide-modal-popup-wrapper .hfe-logo {
-    height: 35px;
-} 
-.hfe-guide-modal-popup-wrapper h3 {
-    width: 100%;
-    margin-left: 15px;
-}
-.hfe-guide-modal-popup-wrapper .hfe-admin-about-section.hfe-admin-columns.hfe-admin-guide-section {
-    max-height: 75vh;
-    overflow: auto;
-}
-.hfe-guide-modal-popup-wrapper .hfe-admin-about-section-column {
-    padding-bottom: 20px;
-}
-.hfe-guide-modal-popup-wrapper .hfe-subscription-step-1-active .hfe-subscription-step-2,
-.hfe-guide-modal-popup-wrapper .hfe-subscription-step-2-active .hfe-subscription-step-1 {
-    display: none;
-}
-/* Limited this only for modal Popup */
-.hfe-guide-modal-popup-wrapper .hfe-subscription-row .hfe-input-container,
-.hfe-guide-modal-popup-wrapper .button {
-    width: 100%;
-    margin-bottom: 5px;
-}
-.hfe-guide-modal-popup-wrapper .hfe-subscription-row {
-    display: block;
-    margin-bottom: 0px;
-}
-.hfe-guide-modal-popup-wrapper .hfe-admin-about-section-column h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
 }
 .hfe-admin-about-section-column h3 {
     margin-bottom: 0;
@@ -701,43 +426,6 @@ select.hfe-subscribe-field {
     text-align: center;
     font-size: 18px;
     line-height: 1.3;
-}
-.hfe-show {
-    z-index: 9999;
-} 
-.hfe-show .hfe-modal-close, 
-.hfe-show .hfe-modal-close.action-button,
-.hfe-show .hfe-guide-modal-content {
-    visibility: visible;
-}
-.hfe-show .hfe-guide-modal-overlay {
-    opacity: 1;
-    visibility: visible;
-}
-.hfe-show .hfe-guide-modal-content {
-    opacity: 1;
-}
-.hfe-input-container.hfe-error .hfe-subscribe-field {
-    border-color: #d11212;
-}
-span.hfe-subscribe-message {
-    width: 100%;
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    font-weight: 400;
-    padding: 15px;
-}
-span.hfe-subscribe-message.success {
-    color: #3c763d;
-    background-color: #dff0d8;
-    border-left: 4px solid #93d776;
-}
-span.hfe-subscribe-message.error {
-    color: #d11212;
-    background-color: #f2dede96;
-    border-left: 4px solid #c01a1a66;
 }
 span.dashicons.dashicons-update.hfe-loader {
     animation: rotation 2s infinite linear;
@@ -771,51 +459,14 @@ span.dashicons.dashicons-update.hfe-loader {
 }
 
 @media screen and ( max-width: 782px ) {
-    .hfe-subscription-row,
     .hfe-admin-about-section {
         display: block;
     }
-    .hfe-guide-modal-popup-wrapper p.button,
     .hfe-admin-about-section figure {
         padding-bottom: 0px;
     }
-    .hfe-admin-guide-section.hfe-admin-columns .hfe-admin-column-50,
-    .hfe-guide-modal-popup-wrapper .hfe-admin-columns .hfe-admin-column-50.hfe-admin-column-last,
-    .hfe-subscription-row .hfe-input-container {
-        width: 100%;
-    }
-    .hfe-guide-modal-popup-wrapper .hfe-admin-columns .hfe-admin-column-50.hfe-admin-column-last,
-    .hfe-guide-modal-popup-wrapper .hfe-guide-content,
-    .hfe-admin-guide-section .hfe-admin-column-50:not(.hfe-admin-column-last) {
-        padding: 15px;
-    }
-    .hfe-subscribe-email span.dashicons.dashicons-email {
-        font-size: 15px;
-        height: 15px;
-        line-height: 1;
-        width: 15px;
-    }
-    .hfe-subscribe-email input.hfe-subscribe-field {
-        min-height: unset;
-        font-size: 10px;
-    }
-    .hfe-subscribe-field {
-        padding: 5px;
-    }
-    .hfe-admin-guide-section.hfe-admin-about-section {
-        display: block;
-    }
-    .hfe-guide-content .button {
-        font-size: 10px;
-    }
-    .hfe-checkbox-container {
-        display: flex;
-    }
     .hfe-admin-columns .hfe-admin-column-last {
         padding-top: 0px;
-    }
-    .hfe-subscription-row select.hfe-subscribe-field {
-        padding: 10px 15px;
     }
     .hfe-admin-about-section-column h3 {
         border-bottom: 0px;
